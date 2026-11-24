@@ -1,0 +1,428 @@
+                                Thể lệ cuộc thi
+                    MoMo Tech Contest
+Phần I – Thông tin chung
+Điều 1. Tên cuộc thi: “MoMo Tech Contest” (sau đây gọi là “Cuộc thi”).
+Điều 2. Đơn vị tổ chức (BTC):
+
+Thông tin                       Nội dung
+
+Tên pháp nhân                   Công ty Cổ phần Dịch vụ Di động Trực tuyến
+
+Tên thương hiệu                 MoMo
+
+Đầu mối liên hệ chính thức      Website: techday.momo.vn
+                                Email: techday@mservice.com.vn
+
+Điều 3. Mục đích: Tạo không gian chia sẻ và trao đổi của đội ngũ công nghệ MoMo và những bạn trẻ
+yêu thích công nghệ. Phát triển những ý tưởng mới để cùng nhau xây dựng cách làm việc hiệu quả giữa
+con người và AI trong tương lai.
+
+Phần II – Đối tượng tham gia, thành lập và đăng ký đội
+
+Điều 4. Đối tượng được tham gia: Các thành viên là các sinh viên hiện đang theo học tại các trường đại
+học, cao đẳng trên toàn quốc Việt Nam, có độ tuổi từ đủ 18 đến 23 ( tính đến ngày đăng ký tham dự Cuộc
+thi) và mang quốc tịch Việt Nam.
+
+Điều 5. Đối tượng không được tham gia:
+
+   1.​ Người đang làm việc cho Công ty Cổ phần Dịch vụ Di động Trực tuyến (“MoMo”) hoặc bất kỳ
+       công ty thành viên nào của MoMo, dưới bất kỳ loại hình hợp đồng nào, bao gồm: hợp đồng lao
+       động, thử việc, thực tập (có hoặc không hưởng lương), cộng tác viên, hợp đồng dịch vụ, khoán
+       việc.
+   2.​ Điều kiện tại khoản 1 được xét trong suốt thời gian từ khi đăng ký đến hết ngày thi Techday.
+   3.​ Thành viên BTC, Ban Giám khảo
+   4.​ Người chưa đủ 18 tuổi tính tới ngày đăng ký.
+
+Điều 6. Thành lập đội:
+
+   1.​ Mỗi đội thi phải có tối thiểu 02(hai) thành viên và tối đa 03(ba) thành viên.
+   2.​ Mỗi thí sinh chỉ được đăng ký tham gia 01(một) đội thi duy nhất. Trường hợp thí sinh đăng ký
+       nhiều đội, đăng ký hợp lệ đầu tiên được BTC xác nhận thành công sẽ được ghi nhận.
+   3.​ Mỗi đội thi phải chỉ định 01(một) Trưởng nhóm, chịu trách nhiệm đại diện đội trong toàn bộ quá
+       trình tham gia Chương trình, bao gồm việc đăng ký, nộp bài dự thi, liên lạc và trao đổi thông tin
+       với BTC và nhận giải (nếu có).
+   4.​ Các thành viên trong đội thi tự thỏa thuận và thống nhất việc phân chia giá trị giải thưởng (nếu
+       có) và quyền sở hữu đối với Sản phẩm dự thi. BTC không có trách nhiệm giải quyết các tranh
+       chấp phát sinh giữa các thành viên liên quan đến các nội dung này.
+   5.​ Tên đội không được chứa nội dung mang tính chất xúc phạm, vi phạm pháp luật, trái thuần phong
+       mỹ tục hoặc xâm phạm quyền, lợi ích hợp pháp của bên thứ ba, bao gồm quyền về nhãn hiệu.
+       BTC có quyền yêu cầu đổi tên đội thi nếu có vi phạm theo quy định này.
+
+Điều 7. Đăng ký đội thi:
+
+   1.​ Kênh đăng ký tại : website techday.momo.vn; thời gian đăng ký: từ 10:00:00, 13/11/2026 đến
+       23:59:59, 27/11/2026
+   2.​ Thủ tục đăng ký: Trưởng nhóm đại diện đội thi nhấn nút “Đăng ký” trên website
+       techday.momo.vn. Hệ thống sẽ dẫn tới Nền tảng đăng ký. Trưởng nhóm điền đầy đủ và chính xác
+       các thông tin bắt buộc, bao gồm:
+           ●​ Tên đội;
+           ●​ Thông tin Trưởng nhóm: họ tên, số căn cước công dân/ số căn cước, Tỉnh/Thành phố hiện
+               đang sinh sống, số điện thoại, email liên hệ, tên trường, chuyên ngành, năm học hiện tại
+               (sinh viên năm thứ mấy), mã số sinh viên (MSSV);
+           ●​ Thông tin từng thành viên còn lại: tương tự như thông tin yêu cầu đối với Trưởng nhóm;
+           ●​ Xác nhận “Tôi và các thành viên trong đội đã đọc và đồng ý Thể lệ Cuộc thi.”
+
+       Bằng việc hoàn tất đăng ký, Trưởng nhóm cam kết và bảo đảm đã được tất cả thành viên trong
+       đội đồng ý và ủy quyền thực hiện việc đăng ký thay mặt đội, cung cấp dữ liệu cá nhân của từng
+       thanh viên trong đội để đăng ký Cuộc thi. Đồng thời, tất cả thành viên đều đáp ứng đầy đủ các
+       điều kiện tham gia Cuộc thi theo thể lệ này. Trưởng nhóm chịu trách nhiệm về tính chính xác,
+       trung thực và đầy đủ của các thông tin đăng ký.
+
+   3.​ Xác nhận đăng ký: Trong vòng 24 ( hai mươi bốn) giờ kể từ khi nhận được thông tin đăng ký qua
+       Nền tảng đăng ký, BTC sẽ kiểm tra và gửi email thông báo kết quả đăng ký (hợp lệ hoặc không
+       hợp lệ) đến Trưởng nhóm và tất cả thành viên.
+
+       Tất cả thông báo chính thức được gửi từ techday@mservice.com.vn. Nếu không nhận được email
+       xác nhận trong vòng 24 giờ kể từ thời điểm hoàn tất đăng ký, Trưởng nhóm cần chủ động liên hệ
+       BTC qua email nêu trên để được hỗ trợ.
+
+   4.​ Chỉnh sửa thông tin: trước khi hạn đăng ký đội thi kết thúc (27/11/2026) Trưởng nhóm có thể gửi
+       yêu cầu chỉnh sửa thông tin đăng ký đến BTC qua email techday@mservice.com.vn. Việc chỉnh
+       sửa không được làm thay đổi danh tính thành viên. Mọi yêu cầu chỉnh sửa sẽ được ghi nhận sau
+       khi được BTC xác nhận.
+
+Điều 8. Xác minh điều kiện tham gia và xử lý vi phạm:
+    1.​ BTC có quyền xác minh điều kiện tham gia của bất kỳ thí sinh nào, ở bất kỳ giai đoạn nào, kể cả
+        sau khi trao giải, khi có dấu hiệu vi phạm hoặc theo quyết định của BTC.
+    2.​ Khi được yêu cầu, thí sinh phải cung cấp giấy tờ chứng minh điều kiện tham gia (thẻ sinh viên
+        hoặc giấy xác nhận sinh viên, căn cước công dân) trong thời hạn 03( ba) ngày làm việc kể từ ngày
+        nhận được yêu cầu. Trường hợp cần thêm thời gian cung cấp giấy tờ cần thiết thì sẽ được cộng
+        thêm thời gian nhưng không quá 10 ngày làm việc. Việc không cung cấp đầy đủ tài liệu theo yêu
+        cầu trong thời hạn quy định được xem là không đáp ứng điều kiện tham gia Cuộc thi.
+    3.​ Thí sinh không đáp ứng điều kiện tham gia Cuộc thi sẽ bị loại khỏi Cuộc thi. Trường hợp thí sinh
+        thuộc Đội thi đoạt giải, BTC có quyền hủy bỏ kết quả của Đội thi và thu hồi giải thưởng đã nhận
+        (nếu có).
+    4.​ Trường hợp thí sinh cung cấp thông tin hoặc tài liệu sai sự thật, giả mạo hoặc có hành vi vi phạm
+        pháp luật trong quá trình tham gia Cuộc thi, BTC có quyền áp dụng các biện pháp xử lý phù hợp,
+        bao gồm nhưng không giới hạn ở việc loại thí sinh khỏi Cuộc thi, hủy bỏ kết quả, thu hồi giải
+        thưởng (nếu có) và từ chối cho phép thí sinh tham gia các cuộc thi do BTC tổ chức trong các mùa
+        tiếp theo .
+
+Phần III – Đề thi
+
+Điều 9. Đề thi: Nội dung đề thi và yêu cầu cụ thể được công bố công khai tại Trang web Cuộc thi
+techday.momo.vn. Thời gian công bố đề thi: 10:00:00, 20/11/2026
+
+Điều 10. Nộp bài dự thi - Sản phẩm:
+
+    1.​ Thời gian nộp bài thi: kể từ thời điểm công bố đề thi cho đến hết 23:59:59, 03/12/2026. Các bài
+        dự thi nộp sau thời gian này sẽ không được chấp nhận.
+    2.​ Hình thức nộp bài thi: Trưởng nhóm nhấn nút “Nộp bài” trên Trang web Cuộc thi
+        techday.momo.vn, hệ thống dẫn tới Nền tảng nộp bài để đội thi tải lên và hoàn tất việc nộp các
+        Sản phẩm dự thi. Thời điểm nộp bài được xác định theo thời gian ghi nhận trên Nền tảng nộp bài.
+    3.​ Số lượng bài thi: Mỗi đội thi chỉ được ghi nhận 01 (một) bài dự thi hợp lệ duy nhất. Nếu đội thi
+        nộp bài nhiều lần trước thời hạn quy định, BTC chỉ chấm bài thi được nộp gần nhất trước thời
+        điểm kết thúc hạn nộp bài..
+    4.​ Thành phần và yêu cầu đối với bài thi: Bài thi phải đầy đủ các sản phẩm, tài liệu theo yêu cầu của
+        đề thi (bao gồm mã nguồn, video demo, slide và các tài liệu liên quan khác, định dạng và giới hạn
+        do đề thi quy định). Đội thi phải đảm bảo BTC có thể truy cập, kiểm tra và sử dụng Sản phẩm và
+        duy trì khả năng truy cập và hoạt động của các Sản phẩm này đến hết ngày thi Techday
+    5.​ Sau thời điểm kết thúc hạn nộp bài, đội thi không được phép chỉnh sửa, thay thế, bổ sung hoặc
+        cập nhật bài thi đã nộp.
+
+Điều 11. Thông tin BTC cung cấp: bao gồm Tài nguyên do BTC cung cấp (nếu có) hoặc các nội dung
+làm rõ đề thi, như dữ liệu, API, tài khoản dịch vụ hoặc tài liệu tham khảo, cùng phạm vi và điều kiện sử
+dụng sẽ được nêu trong đề thi hoặc FAQ chính thức trên website chính thức techday.momo.vn. Đội thi chỉ
+được dùng các tài nguyên này cho mục đích dự thi và theo đúng điều kiện đã nêu. Với tài nguyên tự
+chuẩn bị, đội tự chịu chi phí, bảo đảm có quyền sử dụng hợp pháp, tuân thủ pháp luật về dữ liệu cá nhân
+và sở hữu trí tuệ, và tự chịu trách nhiệm về mọi khiếu nại phát sinh.
+
+Điều 12. Quy định về công nghệ và tài nguyên:
+
+    1.​ Ngôn ngữ lập trình và mô hình AI được phép hoặc bị giới hạn (nếu có) do đề thi quy định.
+    2.​ Trừ khi đề thi quy định khác, đội thi được sử dụng thư viện, công cụ, bộ dữ liệu (dataset), mô
+        hình và mã nguồn có sẵn để hỗ trợ xây dựng Sản phẩm, với điều kiện đội có quyền sử dụng hợp
+        pháp theo giấy phép hoặc điều khoản sử dụng của chúng.
+    3.​ Nghiêm cấm sử dụng tài nguyên xâm phạm quyền sở hữu trí tuệ của bên thứ ba hoặc vi phạm
+        pháp luật.
+    4.​ Dữ liệu cá nhân hoặc dữ liệu của doanh nghiệp được dùng trong Sản phẩm phải được ghi rõ trong
+        README theo yêu cầu của đề thi, gồm nguồn dữ liệu, phạm vi sử dụng và căn cứ được phép sử
+        dụng (dữ liệu công khai, có giấy phép, có sự đồng ý hoặc đã ẩn danh hóa).
+    5.​ Đội thi không được nộp Sản phẩm đã phát triển trước Cuộc thi cho chính bài toán của đề. Tài
+        nguyên có sẵn dùng làm nền tảng phải được khai báo là Tài sản có sẵn.
+
+Điều 13. Làm rõ đề thi: Các câu hỏi liên quan đến đề thi có thể gửi qua mail techday@mservice.com.vn
+chậm 23:59:59 ngày 27/11/2026. BTC sẽ tổng hợp câu trả lời và đăng công khai trên website chính thức
+techday.momo.vn dưới dạng “FAQ chính thức” cho tất cả các đội thi xem cùng lúc và có giá trị như một
+phần của đề thi. Mọi giải đáp thắc mắc riêng qua kênh khác không có giá trị ràng buộc.
+
+Phần IV – Thời gian, địa điểm và hình thức liên lạc
+Điều 14. Lịch trình chi tiết:
+
+Giai đoạn                 Thời gian (GMT+7)      Kênh / địa điểm               Ghi chú
+
+Mở đăng ký đội thi        10:00:00, 13/11/2026   Website: techday.momo.vn
+
+Đóng đăng ký đội thi      23:59:59, 27/11/2026                                 Không nhận hồ sơ
+                                                                               muộn
+
+Công bố đề thi            10:00:00, 20/11/2026   Website: techday.momo.vn      Kèm phiên bản đề
+
+Hạn gửi câu hỏi làm rõ 23:59:59, 27/11/2026      Email:
+đề                                               techday@mservice.com.vn
+
+Hạn chót nộp bài          23:59:59, 03/12/2026   Website: techday.momo.vn      Thời điểm nộp bài
+                                                                               được tính theo thời
+                                                                               điểm ghi nhận trên
+                                                                               Nền tảng nộp bài.
+                                                                               Bài nộp sau thời
+                                                                               điểm này không
+                                                                               được chấm.
+
+Công bố kết quả vào       Trong           ngày Website: techday.momo.vn
+vòng chung kết            08/12/2026
+
+Ngày thi Vòng chung Trong                 ngày Trực tiếp tại TP Hồ Chí Minh
+kết (Techday)       11/12/2026
+
+Công bố kết quả, trao Trong               ngày Trực tiếp tại TP Hồ Chí Minh
+giải                  11/12/2026
+
+Điều 15. Hình thức:
+   1.​ Vòng sơ khảo: BTC sẽ chọn 05 (năm) Đội thi có kết quả tốt nhất để tham gia Vòng chung kết
+       Cuộc thi.
+   2.​ Vòng chung kết Cuộc thi được tổ chức theo hình thức trực tiếp tại địa điểm do BTC chỉ định.
+       Thời gian, địa điểm và các hướng dẫn liên quan sẽ được thông báo trên Trang web chính thức
+       Cuộc thi.
+   3.​ Đội thi được lựa chọn vào Vòng chung kết phải xác nhận tham dự trong thời hạn BTC thông báo
+       và có đủ thành viên có mặt trực tiếp đúng thời gian, địa điểm đã thông báo để thuyết trình và trả
+       lời câu hỏi của Ban Giám khảo. Trường hợp đội thi không xác nhận tham dự hoặc không bảo đảm
+       sự có mặt của đầy thủ thành viên theo yêu cầu, BTC có quyền xem xét không công nhận tham dự
+       Vòng chung kết của đội thi đó.
+   4.​ Mọi chi phí đi lại, ăn ở liên quan đến việc tham gia Vòng chung kết( nếu có) sẽ do thí sinh tự chi
+       trả.
+
+Điều 16. Thông báo và liên lạc:
+
+   1.​ Kênh thông báo chính thức của Cuộc thi (sau đây gọi là “Kênh chính thức”) bao gồm Trang web
+       Cuộc thi techday.momo.vn và email techday@mservice.com.vn.
+   2.​ BTC liên lạc với đội thi qua email đã đăng ký, và đăng thông báo chung trên Trang web Cuộc thi.
+   3.​ Thông báo gửi qua email được xem là đội thi đã nhận kể từ thời điểm BTC gửi đi; thông báo
+       đăng trên Trang web Cuộc thi được xem là mọi đội thi đã nhận kể từ thời điểm đăng.
+   4.​ Các Đội thi có trách nhiệm thường xuyên theo dõi email (kể cả thư mục spam) và Trang web
+       Cuộc thi. Việc đội thi không kiểm tra, không đọc hoặc không tiếp nhận thông báo do không theo
+       dõi các Kênh chính thức không được xem là căn cứ để khiếu nại, yêu cầu gia hạn hoặc miễn trừ
+       trách nhiệm đối với việc không tuân thủ các thời hạn, yêu cầu theo thông báo của BTC .
+   5.​ Đội thi liên hệ BTC qua techday@mservice.com.vn; Các yêu cầu, phản hồi hoặc khiếu nại được
+       gửi qua các kênh khác sẽ không được xem là thông tin liên hệ chính thức và không có giá trị ràng
+       buộc đối với BTC .
+
+Điều 17. Sự cố kỹ thuật: nếu Nền tảng đăng ký hoặc Nền tảng nộp bài gặp sự cố có xác nhận, BTC có
+thể gia hạn chung cho tất cả đội thi và thông báo qua Kênh chính thức. Sự cố phía thí sinh (mạng, máy
+tính) không là căn cứ gia hạn.
+
+Phần V – Tiêu chí và quy trình chấm thi
+Điều 18. Tiêu chí chấm: Ban Giám khảo đánh giá bài dự thi dựa trên các tiêu chí sau:
+
+ Tiêu chí                 Nội dung đánh giá
+
+ Sáng tạo                 Ý tưởng mới, có tính đột phá hoặc cách tiếp cận khác biệt so với các giải pháp
+                          hiện có.
+
+ Chất lượng & mức độ Sản phẩm tại thời điểm nộp bài: vận hành ổn định, người dùng có thể trải
+ hoàn thiện          nghiệm trực tiếp, hoàn thiện về tính năng và trải nghiệm.
+
+ Tiềm năng tác động       Giá trị khi được triển khai trong tương lai: khả năng mở rộng trên quy mô lớn
+                          và số lượng người dùng có thể hưởng lợi.
+Cách tính điểm chi tiết do Ban Giám khảo thống nhất trước khi chấm và được áp dụng như nhau cho tất
+cả bài dự thi.
+
+Điều 19. Quy trình chấm:
+
+   1.​ Vòng sơ loại: mỗi bài được ít nhất 03 giám khảo chấm độc lập và 05 đội có điểm cao nhất vào
+       vòng chung kết. Đội vào chung kết bỏ thi, hoặc bị loại được thay bằng đội có điểm sơ khảo cao
+       kế tiếp, nếu việc thay thế còn kịp trước ngày thi Vòng chung kết (Techday).
+
+   2.​ Vòng chung kết: 05 đội thi trình bày Sản phẩm và trả lời câu hỏi của Ban Giám khảo trực tiếp tại
+       Techday. Nội dung thuyết trình phải dựa trên bài dự thi đã nộp trước đó.
+
+Điều 20. Xử lý điểm bằng nhau: Trường hợp có nhiều đội thi có điểm bằng nhau, quyền quyết định sẽ
+do Trưởng Ban Giám khảo quyết định và ghi lý do vào biên bản.
+Điều 21. Ban Giám khảo: gồm 7 người, danh sách Ban Giám khảo sẽ được công bố trên Trang web
+Cuộc thi chậm nhất ngày 13/11/2026.
+Điều 22. Tính chung thẩm: Kết quả đánh giá chuyên môn của Ban Giám khảo là căn cứ để BTC xác
+định và công bố kết quả Cuộc thi.
+
+Phần VI – Giải thưởng
+Điều 23. Cơ cấu giải: là tiền mặt sẽ được trao thông qua hình thức chuyển khoản và tài khoản của
+Trưởng nhóm.
+
+Giải                       Số lượng         Giá trị (VNĐ, đã bao gồm thuế)
+
+Giải Nhất                  1                50.000.000
+
+Giải Nhì                   1                30.000.000
+
+Giải Ba                    1                20.000.000
+
+Điều 24. Thuế thu nhập cá nhân: giải thưởng bằng tiền sẽ được BTC khấu trừ tại nguồn trước khi chi
+trả giải thưởng cho Đội thi thắng cuộc theo luật thuế TNCN hiện hành.
+
+Điều 25. Điều kiện và thời hạn trao giải:
+
+   1.​ Trưởng nhóm phải hoàn tất hồ sơ nhận giải theo mẫu do BTC cung cấp, kèm theo căn cước công
+       dân/ căn cước, mã số thuế cá nhân, thông tin tài khoản ngân hàng đứng tên chính mình trong vòng
+       10 ngày kể từ ngày công bố kết quả.Quá thời hạn mà không hoàn tất hồ sơ và không có lý do
+       chính đáng, đội thi thắng cuộc được xem là từ chối nhận giải.
+   2.​ Giải thưởng của đội thi thắng cuộc được BTC chi trả toàn bộ cho Trưởng nhóm trong vòng 21
+       ngày làm việc kể từ ngày nhận đủ hồ sơ nhận giải hợp lệ, sau khi khấu trừ thuế thu nhập cá nhân
+       tại nguồn theo quy định pháp luật. Trưởng nhóm nhận giải có trách nhiệm thay mặt đội thi và
+       phân chia giải thưởng cho các thành viên theo thỏa thuận nội bộ của đội. Việc BTC chi trả toàn
+       bộ giải thưởng cho Trưởng nhóm được xem là BTC đã hoàn thành đầy đủ nghĩa vụ trao giải đối
+       với đội thi thắng cuộc. BTC không có trách nhiệm tham gia, giải quyết tranh chấp giữa các thành
+       viên về việc phân chia giải thưởng.
+Điều 26. Thu hồi giải:
+
+   1.​ BTC có quyền thu hồi toàn bộ giải thưởng đã trao của đội, kể cả khi đã chi trả, nếu phát hiện đội
+       thi có vi phạm Thể lệ Cuộc thi.
+   2.​ Trưởng nhóm có nghĩa vụ hoàn trả số tiền thưởng đã nhận trong 15 ngày kể từ ngày nhận thông
+       báo thu hồi của BTC.
+
+Phần VII – Quyền sở hữu trí tuệ
+Điều 27. Quyền sở hữu và quyền sử dụng Bài dự thi:
+
+   1.​ Bài dự thi thuộc quyền sở hữu của các thành viên Đội thi là tác giả của Bài dự thi. Việc tham gia
+       Cuộc thi, nộp bài hoặc nhận giải không làm chuyển giao quyền sở hữu Bài dự thi cho BTC trừ
+       trường hợp các bên có thỏa thuận khác bằng văn bản.
+   2.​ Đội thi (toàn bộ các thành viên Đội thi) đồng ý cấp cho BTC quyền sử dụng không độc quyền,
+       miễn phí và không giới hạn thời gian, đối với Bài dự thi, bao gồm quyền sử dụng, trích dẫn, sao
+       chép, trình bày, công bố và phát hành Bài dự thi cho mục đích nghiên cứu, quảng bá, giáo dục và
+       truyền thông liên quan đến Cuộc thi. BTC sẽ không phải xin thêm sự chấp thuận từ đội thi hoặc
+       phải trả phí bổ sung nào khác.
+
+Điều 28. Các quy định khác về sở hữu trí tuệ:
+
+   1.​ Tài sản có sẵn: vẫn thuộc chủ sở hữu ban đầu. Đội thi phải liệt kê trong README theo yêu cầu
+       của đề thi; phần không được liệt kê được suy đoán là tạo ra trong thời gian Cuộc thi.
+   2.​ Tài nguyên của bên thứ ba và tài nguyên BTC cung cấp: Các tài nguyên như tài khoản dịch vụ
+       đám mây (AWS, Google Cloud…), API, dữ liệu, phần mềm và công cụ do BTC cung cấp chỉ
+       được Đội thi sử dụng trong phạm vi, thời hạn và điều kiện do BTC quy định, đồng thời phải tuân
+       thủ điều khoản của nhà cung cấp tương ứng. Việc cấp quyền sử dụng không đồng nghĩa với việc
+       chuyển giao quyền sở hữu tài nguyên cho Đội thi. BTC có quyền giới hạn hoặc thu hồi quyền
+       truy cập khi Cuộc thi kết thúc hoặc khi Đội thi vi phạm quy định.
+   3.​ Mã nguồn mở: Đội thi tự chịu trách nhiệm tuân thủ giấy phép của thư viện, mã nguồn mở đã sử
+       dụng (MIT, Apache, GPL…).
+   4.​ Nội dung do AI tạo ra: Đội thi phải khai báo công cụ AI đã dùng khi được yêu cầu và chịu trách
+       nhiệm nêu nội dung do AI tạo ra vi phạm quyền của bên thứ ba.
+   5.​ Cam đoan và bồi hoàn: Đội thi cam đoan Bài dự thi là sáng tạo của Đội thi và không xâm phạm
+       quyền sở hữu trí tuệ của bên thứ ba; việc tham gia Cuộc thi và nộp Bài dự thi không vi phạm
+       nghĩa vụ của Thí sinh đối với trường học, nơi làm việc, phòng nghiên cứu hoặc tổ chức khác, bao
+       gồm nghĩa vụ bảo mật và thỏa thuận chuyển giao quyền sở hữu trí tuệ (nếu có); nếu có khiếu nại,
+       khởi kiện từ bên thứ ba, Đội thi tự chịu trách nhiệm và bồi hoàn thiệt hại cho BTC.
+   6.​ Chia sẻ mã nguồn: trong thời gian Cuộc thi, Đội thi không được chia sẻ mã nguồn của Bài dự thi
+       cho đội thi khác. Sau khi Cuộc thi kết thúc, BTC khuyến khích các Đội thi tự nguyện công khai
+       giải pháp theo giấy phép mã nguồn mở do Đội thi lựa chọn.
+   7.​ Ý tưởng tương tự: Đội thi hiểu rằng BTC hoặc đội thi khác có thể đang phát triển ý tưởng tương
+       tự một cách độc lập; việc này không bị xem là xâm phạm quyền của Đội thi.
+   8.​ Bảo mật: thông tin nội bộ của BTC mà Đội thi được tiếp cận trong Cuộc thi và được đánh dấu
+       “mật” không được tiết lộ, kể cả sau khi Cuộc thi kết thúc.
+Phần VIII – Bảo vệ dữ liệu cá nhân và hình ảnh
+Điều 29. Thông báo xử lý dữ liệu cá nhân:
+
+Mục                                     Nội dung
+
+Bên kiểm soát dữ liệu                   BTC
+
+Dữ liệu thu thập                        Họ tên, CCCD/ căn cước, Tỉnh/Thành phố hiện đang sinh
+                                        sống, số điện thoại, email, tên trường, chuyên ngành, năm học
+                                        hiện tại (sinh viên năm thứ mấy), mã số sinh viên (MSSV),
+                                        mã số thuế, tài khoản ngân hàng của Trưởng nhóm chỉ khi
+                                        nhận giải .
+                                        Hình ảnh, giọng nói của các thành viên.
+Mục đích                                Quản lý đăng ký, liên lạc, chấm thi, công bố kết quả, trao giải,
+                                        khấu trừ thuế, truyền thông và các hoạt động liên quan đến
+                                        Cuộc thi.
+
+Thời hạn lưu trữ                        12 tháng kể từ ngày kết thúc cuộc thi; hồ sơ thuế theo thời
+                                        hạn luật kế toán
+
+Biện pháp bảo vệ                        BTC áp dụng các biện pháp kỹ thuật và tổ chức cần thiết để
+                                        bảo vệ dữ liệu cá nhân khỏi mất mát, truy cập, thay đổi hoặc
+                                        tiết lộ trái phép; chỉ người có nhiệm vụ liên quan đến Cuộc thi
+                                        được truy cập dữ liệu; dữ liệu được xóa hoặc hủy khi hết thời
+                                        hạn lưu trữ.
+
+Quyền của thí sinh                      Biết, đồng ý / rút lại đồng ý, truy cập, chỉnh sửa, yêu cầu xóa,
+                                        hạn chế, phản đối xử lý.
+                                        Việc rút lại quyền đồng ý, yêu cầu xóa, hạn chế, phản đối xử
+                                        lý dữ liệu cá nhân của thí sinh sẽ dẫn đến việc Thí sinh không
+                                        đủ điều kiện tham gia Cuộc thi.
+
+Liên hệ thực hiện quyền                 Email: techday@mservice.com.vn
+
+Điều 30. Hình ảnh và giọng nói: BTC có thể ghi hình, chụp ảnh và ghi âm trong các hoạt động của Cuộc
+thi. Hình ảnh, giọng nói chỉ được dùng để truyền thông về Cuộc thi và các hoạt động liên quan của BTC;
+không dùng để quảng cáo sản phẩm, dịch vụ thương mại khi chưa có thỏa thuận riêng với Thí sinh.
+
+Phần IX – Quy tắc ứng xử, gian lận và chế tài
+Điều 31. Hành vi bị cấm:
+
+    1.​ Nộp bài dự thi (Sản phẩm) đã phát triển trước cuộc thi cho chính bài toán này, hoặc sao chép Sản
+        phẩm của người khác.
+    2.​ Người ngoài đội trực tiếp tham gia xây dựng Sản phẩm.
+    3.​ Thông đồng, chia sẻ mã nguồn giữa các đội.
+    4.​ Chỉnh sửa mã nguồn, slide hoặc các Sản phẩm đã nộp, hoặc cập nhật Sản phẩm đang chạy tại
+        đường link đã nộp, sau hạn chót (BTC căn cứ các tệp đã nộp trước hạn).
+    5.​ Tấn công, khai thác lỗ hổng hệ thống của BTC hoặc đội khác.
+    6.​ Quấy rối, phân biệt đối xử, ngôn từ xúc phạm; nội dung vi phạm pháp luật, thuần phong mỹ tục.
+    7.​ Cố ý che giấu việc sử dụng Tài sản có sẵn.
+
+Phần X – Khiếu nại, tranh chấp và điều khoản chung
+
+Điều 32. Khiếu nại:
+
+    1.​ BTC không tiếp nhận khiếu nại hoặc yêu cầu phúc khảo liên quan đến điểm số, đánh giá chuyên
+        môn và thứ hạng của các đội thi.
+    2.​ Đối với các phản ánh liên quan đến quá trình tổ chức hoặc hành vi vi phạm Thể lệ, Thí sinh và
+        Đội thi có thể gửi thông tin kèm bằng chứng đến techday@mservice.com.vn nhưng không trễ hơn
+        07 ngày làm việc kể từ ngày công bố kết quả chính thức. Quá thời gian này, BTC không tiếp nhận
+        các khiếu nại liên quan đến Cuộc thi. BTC xem xét và phản hồi trong vòng 10 ngày làm việc kể
+        từ khi nhận đủ thông tin.
+    3.​ Quyết định của BTC về kết quả chấm thi, xếp hạng, trao giải và giải quyết các vấn đề phát sinh là
+        quyết định cuối cùng trong phạm vi Cuộc thi.
+
+Điều 33. Luật áp dụng và giải quyết tranh chấp: Thể lệ này được điều chỉnh và giải thích theo pháp
+luật Việt Nam, trừ khi đề thi có quy định khác. Tranh chấp phát sinh từ Thể lệ trước hết được giải quyết
+bằng thương lượng; nếu không thành, các bên đồng ý đưa tranh chấp ra Tòa án có thẩm quyền tại Việt
+Nam.
+
+Điều 34. Giới hạn trách nhiệm:
+
+    1.​ BTC không chịu trách nhiệm về: mất mát tài sản cá nhân tại sự kiện; sự cố của dịch vụ bên thứ ba
+        (GitHub, cloud…) ngoài tầm kiểm soát; tranh chấp nội bộ giữa các thành viên đội; lỗi in ấn, hiển
+        thị hoặc nhầm lẫn Bài dự thi. Trong mọi trường hợp, mức bồi thường thiệt hại (nếu có) của BTC
+        liên quan đến Cuộc thi tối đa tương đương tổng giá trị giải thưởng của Cuộc thi.
+    2.​ Trừ trường hợp các bên có thỏa thuận khác bằng văn bản, không bên nào phải chịu trách nhiệm
+        đối với bên còn lại về bất kỳ thiệt hại gián tiếp, thiệt hại mang tính hệ quả hoặc thiệt hại đặc biệt
+        nào phát sinh từ hoặc liên quan đến Cuộc thi này, bao gồm nhưng không giới hạn ở mất doanh
+        thu, mất lợi nhuận, mất cơ hội kinh doanh, mất khách hàng, mất dữ liệu, gián đoạn hoạt động
+        kinh doanh hoặc tổn thất về uy tín, dù bên đó đã được thông báo trước về khả năng xảy ra các
+        thiệt hại này.
+    3.​ Việc tham gia Cuộc thi hoặc nhận giải không hình thành quan hệ lao động và không phải là lời
+        mời làm việc hay thực tập tại MoMo.
+
+Điều 35. Tạm ngừng, điều chỉnh hoặc hủy Cuộc thi: Khi Cuộc thi không thể vận hành bình thường do
+virus, gian lận, can thiệp trái phép, sự cố kỹ thuật, thiên tai, dịch bệnh, quyết định của cơ quan nhà nước
+hoặc sự kiện khách quan khác, BTC có quyền tạm ngừng, điều chỉnh, dừng hoặc hủy Cuộc thi. BTC
+thông báo quyết định này trên Kênh chính thức. Trường hợp Cuộc thi bị hủy, BTC không có nghĩa vụ trao
+giải cho vòng thi chưa hoàn tất.
+
+Điều 36. Thay đổi Thể lệ:
+
+    1.​ Trong trường hợp cần thiết, BTC có quyền điều chỉnh, bổ sung hoặc thay đổi Thể lệ, nội dung đề
+        thi, hình thức thi, thời gian tổ chức và cơ cấu giải thưởng.
+      2.​ Mọi thay đổi được BTC công bố trên Kênh chính thức, ghi rõ phiên bản và nội dung thay đổi, và
+          có hiệu lực từ thời điểm đăng tải, trừ khi thông báo ghi thời điểm khác. Các thay đổi về lịch trình
+          hoặc điều kiện dự thi được công bố ít nhất 03 ngày trước khi áp dụng.
+
+Điều 37. Điều khoản chung:
+
+      ●​ Nếu Thể lệ có bản dịch, bản tiếng Việt được ưu tiên áp dụng.
+      ●​ Thể lệ có hiệu lực từ ngày 13/11/2026 đến khi hoàn tất trao giải và giải quyết xong khiếu nại.
+
+Nhật ký phiên bản thể lệ:
+
+Phiên bản                          Ngày               Thay đổi
+
+1.0                                13/11/2026         Ban hành lần đầu
+

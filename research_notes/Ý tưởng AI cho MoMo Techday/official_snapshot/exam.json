@@ -1,0 +1,47 @@
+{
+  "blocks": [
+    {
+      "id": "de-bai",
+      "title": "Đề bài",
+      "paragraphs": [
+        "**Imagine the Future Workspace (Human Centered. AI Powered)**: Hãy tưởng tượng AI sẽ thay đổi cách đội ngũ fintech làm  việc, và qua đó thay đổi cách con người mua sắm, thanh toán, quản lý tài chính và tự bảo vệ mình trên không gian số, rồi biến ý tưởng đó thành sản phẩm dùng được ngay hôm nay.",
+        "**Phạm vi người dùng**: không giới hạn. Đội tự chọn đối tượng người dùng (cá nhân, người bán, doanh nghiệp, đội vận hành…) và nêu rõ trong tài liệu mô tả.",
+        "Sản phẩm ứng dụng AI phải thuộc ít nhất 01 trong 3 chủ đề: **Trợ lý AI, An ninh mạng, Chống lừa đảo**. Một sản phẩm có thể thuộc nhiều chủ đề."
+      ],
+      "table": {
+        "head": ["Chủ đề", "Mô tả"],
+        "rows": [
+          ["Trợ lý AI", "Sản phẩm hiểu nhu cầu và hành động thay người dùng, giúp họ bớt thời gian cho giúp cuộc sống trở nên tiện lợi, an toàn và thoải mái hơn.\n**Trợ lý mua sắm**: đại diện người dùng trong hành trình mua sắm trực tuyến.\n**Trợ lý cá nhân**: quản lý công việc, thời gian, thông tin cá nhân.\n**Trợ lý thanh toán**: thực hiện và quản lý giao dịch thanh toán.\n**Trợ lý bán hàng**: tư vấn, chăm sóc khách hàng và bán hàng.\n**Trợ lý tài chính**: đồng hành quản lý tài chính cá nhân."],
+          ["An ninh mạng", "Sản phẩm giúp phát hiện, ngăn chặn và phản ứng với các mối đe dọa an ninh, để hệ thống và người dùng an toàn hơn. Ví dụ: hệ thống phát hiện lỗ hổng bảo mật, cảnh báo bất thường, truy vết xâm nhập… "],
+          ["Chống lừa đảo", "Sản phẩm giúp người dùng nhận diện và được cảnh báo trước các hình thức lừa đảo trực tuyến, trước khi mất tiền hoặc thông tin. Ví dụ: sản phẩm giúp phát hiện tin giả, cảnh báo cuộc gọi lừa đảo,..."]
+        ]
+      }
+    },
+    {
+      "id": "yeu-cau-san-pham",
+      "title": "Yêu cầu sản phẩm",
+      "paragraphs": [
+        "Mỗi đội cần có một sản phẩm cụ thể, sử dụng được trực tuyến, không chỉ là bản trình diễn hay bản mẫu thử."
+      ],
+      "items": [
+        "**Hình thức sản phẩm**: ứng dụng, dịch vụ API, công cụ…",
+        "**Dùng thử được**: Ban giám khảo truy cập và tự dùng thử sản phẩm, không phụ thuộc vào máy local của đội.",
+        "**AI là thành phần cốt lõi** tạo ra giá trị của sản phẩm, không chỉ là tính năng phụ."
+      ]
+    },
+    {
+      "id": "thanh-phan-bai-nop",
+      "title": "Thành phần bài nộp",
+      "table": {
+        "head": ["Thành phần", "Yêu cầu và định dạng"],
+        "rows": [
+          ["Sản phẩm", "Tài liệu hướng dẫn sử dụng tối đa 1 trang A4, định dạng PDF chứa đường link sản phẩm để Ban giám khảo sử dụng trực tuyến được ngay, kèm tài khoản dùng thử nếu sản phẩm cần đăng nhập."],
+          ["Mã nguồn", "Tệp nén .zip chứa toàn bộ mã nguồn. File README khai báo cách chạy, công nghệ sử dụng và danh sách Tài sản có sẵn, thư viện mã nguồn mở, công cụ AI đã dùng."],
+          ["Tài liệu mô tả", "Bản trình chiếu (slide) tối đa 10 trang, định dạng PDF. Nêu rõ vấn đề và giải pháp của sản phẩm. Slide này được dùng cho vòng chung kết và không được sửa sau khi nộp."],
+          ["Video giới thiệu", "Tối đa 3 phút, định dạng MP4. Quay sản phẩm đang chạy thật; phần vượt quá 3 phút sẽ không được xem."]
+        ]
+      }
+    }
+  ],
+  "action": { "label": "Nộp bài", "url": "https://docs.google.com/forms/d/e/1FAIpQLSc0C4Zcc_ILiL-DEC-S5nYjgwH29vYtT9J-qAIMGe3DMcJH8A/viewform?usp=dialog" }
+}
