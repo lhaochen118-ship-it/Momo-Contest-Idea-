@@ -3,10 +3,10 @@
     "name": "Hoàn Đủ",
     "slug": "hoan-du",
     "section": "9.1",
-    "one_liner": "AI đọc chứng từ và hỏi hoàn cảnh để người làm công, làm tự do không bỏ sót giảm trừ mới, đăng ký người phụ thuộc đúng hạn và biết trước hồ sơ có bị kẹt hoàn; mã cố định tính thuế, người dùng tự nộp trên eTax",
+    "one_liner": "AI đọc chứng từ và hỏi hoàn cảnh để người làm công và người làm tự do không bỏ sót **giảm trừ mới**, đăng ký người phụ thuộc đúng hạn và **biết trước hồ sơ có bị kẹt hoàn**; mã cố định tính thuế, người dùng tự nộp trên eTax",
     "topic": "Trợ lý AI (tài chính, cá nhân); phụ: Chống lừa đảo",
-    "limitation": "MoMo chỉ có công cụ thuế cho tiểu thương; với cá nhân chưa có quyết toán, giảm trừ hay hoàn thuế",
-    "problem": "Mùa 2026 có 1.312.255 tờ khai TNCN và 95% đề nghị hoàn được hoàn tự động, nhưng khoảng 56.000 hồ sơ chưa được hoàn sau bốn tháng, 2.872 doanh nghiệp ở TP.HCM nợ gần 276 tỷ đồng thuế đã khấu trừ, và 26% đề nghị hoàn ở TP.HCM phải xử lý thủ công. Từ kỳ 2026, muốn giảm trừ y tế (tối đa 23 triệu) và giáo dục (tối đa 24 triệu đồng/năm) phải tự quyết toán",
+    "limitation": "MoMo chỉ có công cụ thuế cho tiểu thương; với cá nhân **chưa có quyết toán, giảm trừ hay hoàn thuế**",
+    "problem": "Mùa quyết toán năm 2026 có 1.312.255 tờ khai TNCN và 95% đề nghị hoàn được hoàn tự động, nhưng **khoảng 56.000 hồ sơ** chưa được hoàn sau bốn tháng, 2.872 doanh nghiệp ở TP.HCM nợ gần 276 tỷ đồng thuế đã khấu trừ của người lao động, và 26% đề nghị hoàn ở TP.HCM phải xử lý thủ công. Từ kỳ tính thuế 2026, muốn được **giảm trừ y tế** (tối đa 23 triệu) và **giáo dục** (tối đa 24 triệu đồng/năm), người nộp thuế phải tự quyết toán",
     "problem_sources": [
       {
         "label": "Thời báo Tài chính 26/05/2026: 1.312.255 tờ khai, 95% hoàn tự động",
@@ -25,9 +25,9 @@
         "url": "https://congbaocdn.chinhphu.vn/180507251028987904/2026/7/16/469959-1784171413_v1_1784174315_signed.pdf"
       }
     ],
-    "ai_does": "Đọc chứng từ khấu trừ, phiếu lương, hóa đơn và bảng kê bệnh viện, học phí, ảnh tờ khai gợi ý; hỏi hoàn cảnh; soát điều kiện giảm trừ; đối chiếu với tờ khai gợi ý để dự báo kẹt hoàn; soạn thư; phân loại tin nhắn hoàn thuế giả",
-    "strengths": "Bằng chứng từ chính ngành thuế; hạn chót thật ngay sau chung kết (31/12/2026, 30/4/2027); không trùng sản phẩm nào của MoMo; luật công khai nên làm thật được; dùng chung lõi luật với Sổ Sẵn",
-    "weaknesses": "Ý tưởng gốc trùng gần hết với eTax; eTax tiến nhanh; nhóm hưởng lợi hẹp lại; luật còn điểm chưa rõ; không có dòng tiền trực tiếp cho MoMo; không độc lập với Sổ Sẵn",
+    "ai_does": "Đọc chứng từ khấu trừ, phiếu lương, hóa đơn và bảng kê bệnh viện, học phí, ảnh tờ khai gợi ý; hỏi hoàn cảnh; soát điều kiện giảm trừ; đối chiếu với tờ khai gợi ý để **dự báo kẹt hoàn**; soạn thư gửi công ty; nhận diện **tin nhắn hoàn thuế giả**",
+    "strengths": "Bằng chứng từ chính ngành thuế; hạn chót thật ngay sau chung kết (31/12/2026, 30/4/2027); **không trùng sản phẩm nào của MoMo**; luật công khai nên làm thật được; **dùng chung lõi luật với Sổ Sẵn**",
+    "weaknesses": "Việc đọc chứng từ và tính số được hoàn **eTax đã làm gần hết**; eTax tiến nhanh; nhóm hưởng lợi hẹp dần; luật còn điểm chưa rõ; không có dòng tiền trực tiếp cho MoMo; **không độc lập với Sổ Sẵn**",
     "verdict": "Mô-đun của Sổ Sẵn; thay thế khi MoMo đã có trợ lý thuế cho hộ",
     "scores": [
       3,
@@ -43,10 +43,10 @@
     "name": "Bản Đồ Chiêu Lừa",
     "slug": "ban-do-chieu-lua",
     "section": "9.2",
-    "one_liner": "Agent gom báo cáo và cảnh báo rời rạc thành chiến dịch lừa đảo, soạn cảnh báo trước cho đúng nhóm người dùng để chuyên viên duyệt",
+    "one_liner": "Agent gom báo cáo và cảnh báo rời rạc thành **chiến dịch lừa đảo**, soạn **cảnh báo trước** cho đúng nhóm người dùng để chuyên viên duyệt",
     "topic": "Chống lừa đảo + An ninh mạng",
-    "limitation": "MoMo chỉ thấy 'phút thứ 89' của vụ lừa; tín hiệu cảnh báo phân tán giữa các tổ chức",
-    "problem": "Năm 2025 người Việt mất hơn 8.000 tỷ đồng vì lừa đảo trực tuyến. Chiêu giả kỹ thuật viên lắp loa bị ít nhất bốn cơ quan công an và một ngân hàng cảnh báo riêng lẻ từ 09/06 đến 12/09/2026, trong khi form của MoMo nhận 12,3 nghìn báo cáo trong 30 ngày",
+    "limitation": "MoMo chỉ thấy **'phút thứ 89'** của vụ lừa; tín hiệu cảnh báo phân tán giữa các tổ chức",
+    "problem": "Năm 2025 người Việt mất **hơn 8.000 tỷ đồng** vì lừa đảo trực tuyến. Chiêu giả kỹ thuật viên lắp loa được ít nhất bốn cơ quan công an và một ngân hàng **cảnh báo riêng lẻ** từ 09/06 đến 12/09/2026. Riêng form Báo cáo lừa đảo của MoMo nhận 12,3 nghìn báo cáo trong 30 ngày",
     "problem_sources": [
       {
         "label": "MoMo 14/05/2026: hơn 8.000 tỷ đồng, 'phút thứ 89'",
@@ -77,9 +77,9 @@
         "url": "https://www.momo.vn/an-toan-bao-mat/bao-cao-lua-dao"
       }
     ],
-    "ai_does": "Trích xuất kịch bản và định danh từ chữ và ảnh tiếng Việt, chống trùng, gom cụm chiến dịch, phát hiện biến thể, soạn bản tin và cảnh báo có trích dẫn",
-    "strengths": "AI là lõi thật; chạy trên dữ liệu công khai thật; đúng hạn chế MoMo tự nêu; nằm đúng chủ đề 'trước khi mất tiền'; công nghệ khác hẳn Sổ Sẵn",
-    "weaknesses": "Ít người dùng trực tiếp; không chứng minh được phát hiện sớm trên dữ liệu MoMo; trùng một phần với AI phân loại báo cáo và AI Central Hub",
+    "ai_does": "Trích xuất kịch bản và định danh từ chữ và ảnh tiếng Việt, chống trùng, **gom cụm chiến dịch**, phát hiện biến thể, soạn bản tin và cảnh báo **có trích dẫn**",
+    "strengths": "**AI là lõi thật**; chạy trên dữ liệu công khai thật; đúng hạn chế MoMo tự nêu; nằm đúng chủ đề 'trước khi mất tiền'; **công nghệ khác hẳn Sổ Sẵn**",
+    "weaknesses": "**Ít người dùng trực tiếp**; không chứng minh được phát hiện sớm trên dữ liệu MoMo; trùng một phần với AI phân loại báo cáo của MoMo và AI Central Hub",
     "verdict": "Dự phòng mạnh nhất",
     "scores": [
       4,
@@ -95,10 +95,10 @@
     "name": "Canh Quầy",
     "slug": "canh-quay",
     "section": "9.3",
-    "one_liner": "AI phát hiện QR bị tráo, loa mất kết nối và lỗi nhận tiền tại quầy, chủ động báo người bán; nhân viên MoMo duyệt hành động",
+    "one_liner": "AI phát hiện **QR bị tráo**, loa mất kết nối và lỗi nhận tiền tại quầy, **chủ động báo người bán**; nhân viên MoMo duyệt hành động",
     "topic": "An ninh mạng + Chống lừa đảo + Trợ lý AI (bán hàng)",
-    "limitation": "Ngân hàng tặng loa, phần mềm đến 2028; giám sát merchant của MoMo bảo vệ ví, không báo người bán khi mất doanh thu",
-    "problem": "Kẻ gian dán khoảng 20 mã QR ở Bắc Ninh (3–6/4/2026), lái 85 lượt chuyển khoản, gần 6,5 triệu đồng; giả kỹ thuật viên lắp loa chiếm khoảng 27 triệu đồng ở Đà Nẵng; mã QR nhận tiền cũ của MoMo bị giới hạn 3 giao dịch/ngày từ 07/10/2026; MoMo có hơn 500.000 merchant dùng QR",
+    "limitation": "Ngân hàng tặng loa, phần mềm đến 2028; giám sát merchant của MoMo **bảo vệ ví**, không báo người bán khi họ mất doanh thu",
+    "problem": "Kẻ gian dán đè khoảng 20 mã QR ở Bắc Ninh (3–6/4/2026), lái **85 lượt chuyển khoản**, gần 6,5 triệu đồng; kẻ giả kỹ thuật viên lắp loa chiếm khoảng 27 triệu đồng ở Đà Nẵng; mã QR nhận tiền cũ của MoMo bị giới hạn 3 giao dịch/ngày từ 07/10/2026; MoMo có **hơn 500.000 merchant** dùng QR",
     "problem_sources": [
       {
         "label": "Báo Lào Cai 24/04/2026: 20 mã QR, 85 lượt, gần 6,5 triệu",
@@ -117,9 +117,9 @@
         "url": "https://tuoitre.vn/momo-va-hanh-trinh-15-nam-cung-tieu-thuong-viet-trong-chuyen-doi-so-20251230111814396.htm"
       }
     ],
-    "ai_does": "Chẩn đoán nguyên nhân từ nhiều tín hiệu, đọc ảnh tấm QR và đối chiếu tài khoản, nhắn người bán bằng lời dễ hiểu, soạn đề xuất hành động cho nhân viên duyệt",
-    "strengths": "Khớp mục tiêu giữ chân merchant của MoMo; thể hiện rõ phối hợp người và AI; kiểm tra QR chạy thật; ít đội chọn hướng này",
-    "weaknesses": "Mô hình sụt giảm vô dụng với quán ít giao dịch và vụ dán đè nhỏ lẻ; phần lớn phát hiện là quy tắc; phụ thuộc dữ liệu mô phỏng; bằng chứng tần suất yếu",
+    "ai_does": "**Chẩn đoán nguyên nhân** từ nhiều tín hiệu, **đọc ảnh tấm QR** và đối chiếu tài khoản, nhắn người bán bằng lời dễ hiểu, soạn đề xuất hành động cho nhân viên duyệt",
+    "strengths": "Khớp mục tiêu **giữ chân merchant** của MoMo; thể hiện rõ phối hợp người và AI; kiểm tra QR chạy thật; **ít đội chọn hướng này**",
+    "weaknesses": "Mô hình sụt giảm **vô dụng với quán ít giao dịch** và vụ dán đè nhỏ lẻ; **phần lớn phát hiện là quy tắc**; phụ thuộc dữ liệu mô phỏng; bằng chứng về tần suất còn yếu",
     "verdict": "Mô-đun cho Sổ Sẵn hoặc tổ hợp người bán",
     "scores": [
       4,
@@ -135,10 +135,10 @@
     "name": "Sân Thử Agent",
     "slug": "san-thu-agent",
     "section": "9.4",
-    "one_liner": "Tấn công trợ lý ví tiếng Việt bằng dữ liệu thanh toán và lời dụ dỗ, kiểm tra tiền có rời ví không, xuất hồ sơ theo Thông tư 53 trước khi trao quyền chuyển tiền",
+    "one_liner": "Tấn công thử trợ lý ví tiếng Việt bằng **dữ liệu thanh toán** và lời dụ dỗ, kiểm tra **tiền có rời ví không**, xuất hồ sơ theo Thông tư 53 trước khi trao quyền chuyển tiền",
     "topic": "An ninh mạng (chính); hỗ trợ Trợ lý AI",
-    "limitation": "Moni chưa có bằng chứng thực thi giao dịch; muốn trao quyền hành động phải có hồ sơ kiểm tra tiêm lệnh theo Thông tư 53/2026",
-    "problem": "Thông tư 53/2026/TT-NHNN (hiệu lực 15/11/2026) bắt AI tạo sinh phải được kiểm tra tiêm lệnh trước vận hành; hệ thống đang chạy phải đáp ứng từ 01/03/2027. Kẻ gian đã dùng khoản chuyển 2.000đ để gửi chữ vào lịch sử giao dịch; ở châu Âu, một khoản €0,02 đã điều khiển được trợ lý AI của ngân hàng",
+    "limitation": "Moni chưa có bằng chứng thực thi giao dịch; muốn trao quyền hành động phải có **hồ sơ kiểm tra tiêm lệnh** theo Thông tư 53/2026",
+    "problem": "Thông tư 53/2026/TT-NHNN (hiệu lực 15/11/2026) buộc AI tạo sinh phải được **kiểm tra tấn công tiêm lệnh** trước khi vận hành; hệ thống đang chạy phải đáp ứng từ **01/03/2027**. Kẻ gian đã dùng khoản chuyển 2.000đ để gửi chữ vào lịch sử giao dịch; ở châu Âu, một khoản €0,02 đã điều khiển được trợ lý AI của ngân hàng",
     "problem_sources": [
       {
         "label": "LuatVietnam: Thông tư 53/2026/TT-NHNN",
@@ -153,9 +153,9 @@
         "url": "https://blue41.com/blog/how-we-helped-bunq-secure-their-financial-ai-assistant/"
       }
     ],
-    "ai_does": "AI tấn công sinh biến thể tiếng Việt và hội thoại nhiều lượt; LLM chấm lỗi câu chữ; AI đề xuất cách sửa. Mã kiểm tra tiền, hạn mức, nhật ký; con người duyệt",
-    "strengths": "Khớp nguyên văn ví dụ của chủ đề An ninh mạng; gắn với nghĩa vụ pháp lý có hạn chót; chấm bằng trạng thái tiền nên đáng tin; đúng mối quan tâm của hội đồng kỹ thuật",
-    "weaknesses": "Trùng tầng động cơ với promptfoo, PyRIT, garak; người dùng trực tiếp ít; chưa có vụ việc ở Việt Nam; đánh số Thông tư 53 cần đối chiếu Công báo",
+    "ai_does": "**AI tấn công** sinh biến thể tiếng Việt và hội thoại nhiều lượt; LLM chấm lỗi câu chữ; AI đề xuất cách sửa. **Mã kiểm tra** tiền, hạn mức và nhật ký; con người duyệt",
+    "strengths": "**Khớp gần nguyên văn ví dụ** của chủ đề An ninh mạng; gắn với **nghĩa vụ pháp lý có hạn chót**; chấm bằng trạng thái tiền nên đáng tin; đúng mối quan tâm của hội đồng kỹ thuật",
+    "weaknesses": "**Trùng tầng động cơ** với promptfoo, PyRIT, garak; **người dùng trực tiếp ít**; chưa có vụ việc ở Việt Nam; cách đánh số Thông tư 53 cần đối chiếu Công báo",
     "verdict": "Xếp sau; chỉ chọn nếu đội mạnh về bảo mật",
     "scores": [
       3,
@@ -171,10 +171,10 @@
     "name": "Soi Hợp Đồng",
     "slug": "soi-hop-dong",
     "section": "9.5",
-    "one_liner": "Chụp lời mời vay, hợp đồng trả sau hoặc bảo hiểm để biết chi phí thật quy đổi %/năm, rủi ro chính và dấu hiệu lừa đảo trước khi ký hoặc chuyển phí",
+    "one_liner": "Chụp lời mời vay, hợp đồng trả sau hoặc bảo hiểm để biết **chi phí thật quy đổi %/năm**, rủi ro chính và **dấu hiệu lừa đảo** trước khi ký hoặc chuyển phí",
     "topic": "Chống lừa đảo + Trợ lý AI (tài chính)",
-    "limitation": "Ví không được cấp tín dụng nên MoMo chỉ phân phối khoản vay, trả sau, bảo hiểm của đối tác nhưng vẫn chịu ảnh hưởng uy tín",
-    "problem": "Trang Vay Nhanh niêm yết lãi 2,20–5,92%/tháng trên gốc mà không ghi %/năm (ví dụ 2,95%/tháng quy đổi khoảng 60%/năm, suy luận); Ví Trả Sau thu phí chuyển đổi 3% mỗi kỳ; một đường dây ở Đà Nẵng lừa hàng trăm người hơn 4 tỷ đồng bằng phí 1–2% trước giải ngân; 57% hợp đồng bảo hiểm AIA bán qua ngân hàng bị hủy trong năm đầu",
+    "limitation": "Ví không được cấp tín dụng nên MoMo chỉ **phân phối** khoản vay, trả sau, bảo hiểm của đối tác, nhưng vẫn **chịu ảnh hưởng về uy tín**",
+    "problem": "Trang Vay Nhanh niêm yết lãi 2,20–5,92%/tháng trên gốc mà **không ghi %/năm** (ví dụ 2,95%/tháng quy đổi khoảng 60%/năm, suy luận); Ví Trả Sau thu phí chuyển đổi 3% mỗi kỳ; một đường dây ở Đà Nẵng lừa hàng trăm người, chiếm hơn 4 tỷ đồng bằng chiêu thu **phí 1–2% trước giải ngân**; 57% hợp đồng bảo hiểm AIA bán qua ngân hàng bị hủy trong năm đầu",
     "problem_sources": [
       {
         "label": "MoMo Vay Nhanh: lãi 2,20–5,92%/tháng trên gốc",
@@ -193,9 +193,9 @@
         "url": "https://tuoitre.vn/ket-luan-thanh-tra-ve-bao-hiem-aia-57-hop-dong-mua-qua-ngan-hang-bi-huy-sau-1-nam-20240401170117812.htm"
       }
     ],
-    "ai_does": "Đọc ảnh, PDF, tin nhắn thành dữ liệu có trích dẫn; phân loại điều khoản và kịch bản lừa đảo; giải thích bằng lời thường; soạn câu hỏi và đơn từ chối bảo hiểm trong 21 ngày. Phép tính và kết luận pháp lý do bộ tính và bộ quy tắc đảm nhận",
-    "strengths": "Chưa thấy sản phẩm tương tự ở Việt Nam; bằng chứng mới và cụ thể; căn cứ pháp lý rõ; có cả vế người dùng và vế đội vận hành",
-    "weaknesses": "Thế giới đã có công cụ tương tự; người dùng ít khi cần; xung đột với doanh thu phân phối của MoMo; dễ bị xem là ChatGPT đọc hợp đồng",
+    "ai_does": "Đọc ảnh, PDF, tin nhắn thành dữ liệu **có trích dẫn**; phân loại điều khoản và kịch bản lừa đảo; giải thích bằng lời thường; soạn câu hỏi và đơn từ chối bảo hiểm trong 21 ngày. Phép tính và kết luận pháp lý do **bộ tính và bộ quy tắc** đảm nhận",
+    "strengths": "**Chưa thấy sản phẩm tương tự ở Việt Nam**; bằng chứng mới và cụ thể; căn cứ pháp lý rõ; có cả **vế người dùng và vế đội vận hành**",
+    "weaknesses": "Nước ngoài đã có công cụ tương tự; người dùng ít khi cần; **xung đột với doanh thu phân phối** của MoMo; dễ bị xem là **'ChatGPT đọc hợp đồng'**",
     "verdict": "Xếp sau",
     "scores": [
       3,
@@ -211,10 +211,10 @@
     "name": "Hóa Đơn Biết Nói",
     "slug": "hoa-don-biet-noi",
     "section": "9.6",
-    "one_liner": "Chụp hoặc dán mọi khoản đòi tiền điện nước; AI đọc, bộ tính kiểm theo biểu giá và quy định, người thuê trọ và chủ trọ cùng thấy một con số đúng",
+    "one_liner": "Chụp hoặc dán mọi khoản đòi tiền điện nước; AI đọc, **bộ tính kiểm** theo biểu giá và quy định, người thuê trọ và chủ trọ cùng thấy **một con số đúng**",
     "topic": "Trợ lý AI (thanh toán, tài chính); phụ: Chống lừa đảo",
-    "limitation": "Mọi công cụ hóa đơn của MoMo bắt đầu từ mã khách hàng, nên người thuê trọ trả chủ nhà bằng chuyển khoản thường đứng ngoài",
-    "problem": "Gần 1,94 triệu người thuê trọ ở TP.HCM có định mức điện, nhưng mức thu phổ biến vẫn là 3.800–4.000đ/kWh, trong khi biểu sinh hoạt từ 01/11/2026 là 1.901–3.844đ/kWh chưa thuế; thu cao hơn quy định bị phạt 20–30 triệu đồng; một người ở TP.HCM mất hơn 2,25 tỷ đồng vì app điện lực giả",
+    "limitation": "Mọi công cụ hóa đơn của MoMo bắt đầu từ **mã khách hàng**, nên **người thuê trọ** trả chủ nhà bằng chuyển khoản thường đứng ngoài",
+    "problem": "Gần 1,94 triệu người thuê trọ ở TP.HCM có định mức điện, nhưng mức thu phổ biến vẫn là **3.800–4.000đ/kWh**, trong khi biểu sinh hoạt từ 01/11/2026 là 1.901–3.844đ/kWh chưa thuế; thu cao hơn quy định bị **phạt 20–30 triệu đồng**; một người ở TP.HCM mất hơn 2,25 tỷ đồng vì app điện lực giả",
     "problem_sources": [
       {
         "label": "Tiền Phong 14/05/2026: gần 1,94 triệu người thuê trọ có định mức",
@@ -237,9 +237,9 @@
         "url": "https://tapchicongthuong.vn/gia-danh-nhan-vien-dien-luc-lua-dao-cai-ung-dung-cskh-chiem-doat-tien-ty--evnspc-canh-bao-khan-259825.htm"
       }
     ],
-    "ai_does": "Đọc hóa đơn, tin Zalo, phiếu viết tay, ảnh công tơ; hỏi lại điều kiện quyết định kết quả; giải thích vì sao hóa đơn đổi; soạn tin nhắn lịch sự; nhận diện tin nhắn mạo danh điện lực. Mọi con số do bộ tính đưa ra",
-    "strengths": "Phục vụ người trả tiền nhưng không đứng tên hợp đồng; bằng chứng mới, biểu giá vừa đổi; bộ tính kiểm thử được; dữ liệu thật dễ thu",
-    "weaknesses": "Vai trò AI chỉ ở mức trung bình; phần hộ gia đình trùng một phần với MoMo và EVN; kết luận thường chỉ ở mức 'rất có thể'; giá trị cho MoMo gián tiếp",
+    "ai_does": "Đọc hóa đơn, tin Zalo, phiếu viết tay, ảnh công tơ; hỏi lại điều kiện quyết định kết quả; giải thích vì sao hóa đơn đổi; soạn tin nhắn lịch sự; nhận diện tin nhắn mạo danh điện lực. **Mọi con số do bộ tính đưa ra**",
+    "strengths": "Phục vụ **người trả tiền nhưng không đứng tên hợp đồng**; bằng chứng mới, biểu giá vừa đổi; **bộ tính kiểm thử được**; dữ liệu thật dễ thu thập",
+    "weaknesses": "**Vai trò AI chỉ ở mức trung bình**; phần hộ gia đình trùng một phần với MoMo và EVN; kết luận thường chỉ ở mức 'rất có thể'; giá trị cho MoMo gián tiếp",
     "verdict": "Xếp sau",
     "scores": [
       3,
@@ -255,10 +255,10 @@
     "name": "Cọc An Toàn",
     "slug": "coc-an-toan",
     "section": "9.7",
-    "one_liner": "Trước khi chuyển cọc cho người bán trên mạng xã hội, AI kiểm tra tiền có đến đúng người bán bạn nghĩ không và lập phiếu cọc khớp điều kiện bồi thường của MoMo",
+    "one_liner": "Trước khi chuyển cọc cho người bán trên mạng xã hội, AI kiểm tra **tiền có đến đúng người bán** bạn nghĩ không và lập **phiếu cọc** khớp điều kiện bồi thường của MoMo",
     "topic": "Chống lừa đảo (chính); phụ: Trợ lý AI (mua sắm, thanh toán)",
-    "limitation": "Nhãn màu tài khoản nhận không chặn giao dịch và không xét bối cảnh; Bảo hiểm An toàn chuyển tiền chỉ trả sau khi mất tiền, tối đa 2 triệu đồng",
-    "problem": "PC02 Công an TP.HCM cho biết nạn nhân đặt phòng qua trang giả thường chuyển 50–100% giá trị gói, có người mất tới 90 triệu đồng; một sinh viên bán vé concert ảo lừa hơn 200 người, trên 2 tỷ đồng; 11% người Việt được hỏi bị lừa trong 12 tháng qua; bảo hiểm mới của MoMo bồi thường tối đa 2 triệu đồng mỗi giao dịch",
+    "limitation": "Nhãn màu tài khoản nhận **không chặn giao dịch** và không xét bối cảnh; Bảo hiểm An toàn chuyển tiền **chỉ trả sau khi mất tiền**, tối đa 2 triệu đồng",
+    "problem": "PC02 Công an TP.HCM cho biết nạn nhân đặt phòng qua trang giả thường chuyển 50–100% giá trị gói, có người mất tới **90 triệu đồng**; một sinh viên bán vé concert ảo lừa hơn 200 người, trên **2 tỷ đồng**; 11% người Việt được hỏi bị lừa trong 12 tháng qua; bảo hiểm mới của MoMo bồi thường tối đa 2 triệu đồng mỗi giao dịch",
     "problem_sources": [
       {
         "label": "Znews 04/06/2026: 50–100%, 90 triệu đồng",
@@ -277,9 +277,9 @@
         "url": "https://www.momo.vn/tin-tuc/thong-bao/momo-ra-mat-bao-hiem-an-toan-chuyen-tien-boi-9119"
       }
     ],
-    "ai_does": "Đọc ảnh chụp trang và đoạn chat, đối chiếu tên trang, hotline, địa chỉ, tên chủ tài khoản với nguồn độc lập, nhận diện kịch bản cọc, lập phiếu cọc và chỉ ra điều khoản thiếu",
-    "strengths": "Bắt trang giả ngay ngày đầu; bổ trợ trực tiếp cho bảo hiểm mới của MoMo; mùa Tết bắt đầu ngay sau chung kết; dẫn khách về MoMo Du lịch",
-    "weaknesses": "Bản gốc trùng Mua sắm đảm bảo và bảo hiểm mới; dễ báo nhầm người bán nhỏ; phụ thuộc ảnh chụp vì Facebook chặn truy cập; bằng chứng quy mô yếu",
+    "ai_does": "Đọc ảnh chụp trang và đoạn chat, đối chiếu tên trang, hotline, địa chỉ, tên chủ tài khoản **với nguồn độc lập**, nhận diện kịch bản cọc, lập **phiếu cọc** và chỉ ra điều khoản còn thiếu",
+    "strengths": "**Bắt trang giả ngay ngày đầu**; **bổ trợ trực tiếp cho bảo hiểm mới** của MoMo; mùa Tết bắt đầu ngay sau chung kết; dẫn khách về MoMo Du lịch",
+    "weaknesses": "Phần giữ cọc **trùng Mua sắm đảm bảo và bảo hiểm mới**; **dễ báo nhầm người bán nhỏ**; phụ thuộc ảnh chụp vì Facebook chặn truy cập khi chưa đăng nhập; bằng chứng quy mô yếu",
     "verdict": "Xếp sau; ghép với bảo hiểm mới",
     "scores": [
       3,
@@ -295,10 +295,10 @@
     "name": "Hồ Sơ Thu Nhập",
     "slug": "ho-so-thu-nhap",
     "section": "9.8",
-    "one_liner": "AI gom, phân loại và đối chiếu chéo thu nhập từ nhiều nguồn thành các khẳng định có ghi nguồn; người lao động tự chọn chia sẻ, đặt hạn và thu hồi",
+    "one_liner": "AI gom, phân loại và **đối chiếu chéo thu nhập** từ nhiều nguồn thành các **khẳng định có ghi nguồn**; người lao động tự chọn chia sẻ, đặt hạn và thu hồi",
     "topic": "Trợ lý AI (tài chính); phụ: Chống lừa đảo",
-    "limitation": "Ví không được tự cấp tín dụng; Điểm Tin Cậy chỉ thấy dữ liệu bên trong ứng dụng (suy luận)",
-    "problem": "Khoảng 29% người trưởng thành chưa có lịch sử tín dụng; 32,4 triệu lao động phi chính thức (61,5%); ngân hàng nói khó nhất là chứng minh thu nhập; 6 sao kê lương giả đã được dùng để chiếm đoạt 575 triệu đồng",
+    "limitation": "Ví không được tự cấp tín dụng; **Điểm Tin Cậy chỉ thấy dữ liệu bên trong ứng dụng** (suy luận)",
+    "problem": "Khoảng 29% người trưởng thành chưa có lịch sử tín dụng; 32,4 triệu lao động phi chính thức (61,5% lao động có việc làm); ngân hàng nói **khó nhất là chứng minh thu nhập**; **6 sao kê lương giả** đã được dùng để chiếm đoạt 575 triệu đồng",
     "problem_sources": [
       {
         "label": "VnExpress 24/02/2026: 71% có lịch sử tín dụng",
@@ -317,9 +317,9 @@
         "url": "https://vneconomy.vn/cong-an-ha-noi-lien-tiep-triet-pha-cac-vu-lam-gia-tai-lieu-lua-dao-ngan-hang.htm"
       }
     ],
-    "ai_does": "Đọc sao kê và ảnh thu nhập nền tảng; tách thu nhập khỏi tiền gia đình, chuyển nội bộ, giải ngân; đối chiếu chéo để phát hiện chỗ lệch; cảnh báo lời mời vay đòi phí trước",
-    "strengths": "Chống gian lận bằng đối chiếu chéo; chia sẻ tối thiểu, thu hồi được; không chấm điểm nên tránh vùng rủi ro cao",
-    "weaknesses": "Khoản vay nhỏ đã có kênh không cần chứng minh thu nhập; bên cho vay chỉ tin dữ liệu từ ngân hàng; có thể vướng Nghị định 58/2021; trùng công nghệ với Sổ Sẵn",
+    "ai_does": "Đọc sao kê và ảnh thu nhập từ nền tảng; tách thu nhập khỏi tiền gia đình, chuyển nội bộ, giải ngân; **đối chiếu chéo** để phát hiện chỗ lệch; cảnh báo lời mời vay đòi phí trước",
+    "strengths": "**Chống gian lận bằng đối chiếu chéo**; chia sẻ tối thiểu, **thu hồi được**; không chấm điểm nên tránh vùng rủi ro cao",
+    "weaknesses": "**Khoản vay nhỏ đã có kênh không cần chứng minh thu nhập**; bên cho vay chỉ tin dữ liệu lấy thẳng từ ngân hàng; có thể vướng Nghị định 58/2021; trùng công nghệ với Sổ Sẵn",
     "verdict": "Xếp sau; gộp vào lộ trình hồ sơ dòng tiền của Sổ Sẵn",
     "scores": [
       3,
@@ -335,10 +335,10 @@
     "name": "Người Thân Xác Nhận",
     "slug": "nguoi-than-xac-nhan",
     "section": "9.8",
-    "one_liner": "Khi giao dịch bị giữ vì nghi bị dẫn dắt, AI báo tình huống cho người thân đã chọn trước và hướng dẫn họ gọi lại; người thân bấm Ổn thì tiền đi ngay",
+    "one_liner": "Khi giao dịch bị giữ vì nghi bị dẫn dắt, AI báo tình huống cho **người thân đã chọn trước** và hướng dẫn họ gọi lại; người thân bấm **Ổn** thì tiền đi ngay",
     "topic": "Chống lừa đảo; Trợ lý AI",
-    "limitation": "Hơn 90% thiệt hại do nạn nhân tự chuyển; cảnh báo chỉ nói với chính người đang bị dẫn dắt",
-    "problem": "Hơn 90% tiền bị lừa trên MoMo do nạn nhân tự chuyển và 70% nạn nhân dưới 25 tuổi; kẻ gian ép nạn nhân cắt liên lạc; SIMO gửi 5,6 triệu lượt cảnh báo nhưng chỉ 1,9 triệu lượt dừng hoặc hủy",
+    "limitation": "Hơn 90% thiệt hại do nạn nhân tự chuyển; **cảnh báo chỉ nói với chính người đang bị dẫn dắt**",
+    "problem": "**Hơn 90%** tiền bị lừa trên MoMo do nạn nhân tự chuyển và 70% nạn nhân dưới 25 tuổi; **kẻ gian ép nạn nhân cắt liên lạc**; SIMO gửi 5,6 triệu lượt cảnh báo nhưng chỉ 1,9 triệu lượt dừng hoặc hủy",
     "problem_sources": [
       {
         "label": "VnExpress 29/05/2026 (số liệu MoMo): hơn 90%, 70%",
@@ -353,9 +353,9 @@
         "url": "https://cafef.vn/chuyen-tien-thay-canh-bao-do-day-la-viec-can-lam-ngay-lap-tuc-188261104190434579.chn"
       }
     ],
-    "ai_does": "Nhận diện kịch bản và dấu hiệu cô lập, viết bản tóm tắt trung thực cho người thân, gợi ý câu hỏi trong cuộc gọi",
-    "strengths": "Chặn đúng bước cô lập; chưa có ở ví hay ngân hàng Việt Nam; có thể giảm thời gian chờ cho người dùng hợp lệ; demo hai vai dễ hiểu",
-    "weaknesses": "Cơ chế lõi đã có ở Monzo và CPF; AI không phải phần duy nhất tạo giá trị; tỷ lệ tham gia và hiệu quả chưa có số liệu",
+    "ai_does": "Nhận diện kịch bản và **dấu hiệu cô lập**, viết bản tóm tắt trung thực cho người thân, gợi ý câu hỏi trong cuộc gọi",
+    "strengths": "**Chặn đúng bước cô lập**; **chưa có ở ví hay ngân hàng Việt Nam**; có thể giảm thời gian chờ cho người dùng hợp lệ; demo hai vai dễ hiểu",
+    "weaknesses": "**Cơ chế lõi đã có ở Monzo và CPF**; AI không phải phần duy nhất tạo giá trị; chưa có số liệu về tỷ lệ tham gia và hiệu quả",
     "verdict": "Xếp sau; mô-đun trước giao dịch cho 30 Phút Vàng",
     "scores": [
       3,
@@ -371,10 +371,10 @@
     "name": "Lương Hưu Tự Lo",
     "slug": "luong-huu-tu-lo",
     "section": "9.8",
-    "one_liner": "Trợ lý giúp lao động tự do so sánh 'rút BHXH một lần' với 'giữ và đóng tiếp' trên chính quá trình đóng của mình, rồi chuẩn bị lệnh đóng theo nhịp thu nhập thất thường",
+    "one_liner": "Trợ lý giúp lao động tự do so sánh **'rút BHXH một lần'** với **'giữ và đóng tiếp'** trên chính quá trình đóng của mình, rồi chuẩn bị lệnh đóng theo nhịp thu nhập thất thường",
     "topic": "Trợ lý AI (tài chính, thanh toán); phụ: Chống lừa đảo",
-    "limitation": "Luồng BHXH tự nguyện của MoMo để người dùng tự nhập mức thu nhập làm căn cứ đóng; công cụ lộ trình chỉ mang tính tham khảo",
-    "problem": "32,4 triệu lao động phi chính thức nhưng chỉ 2,59 triệu người tham gia BHXH tự nguyện; hơn 1,04 triệu người hưởng BHXH một lần năm 2025; mức đóng thấp nhất tăng từ 330.000 lên 484.000 đồng/tháng từ 01/01/2027",
+    "limitation": "Luồng BHXH tự nguyện của MoMo để người dùng **tự nhập mức thu nhập** làm căn cứ đóng; công cụ lộ trình chỉ mang tính tham khảo",
+    "problem": "32,4 triệu lao động phi chính thức nhưng **chỉ 2,59 triệu người** tham gia BHXH tự nguyện; **hơn 1,04 triệu người** hưởng BHXH một lần năm 2025; mức đóng thấp nhất tăng từ 330.000 lên 484.000 đồng/tháng từ 01/01/2027",
     "problem_sources": [
       {
         "label": "VietnamPlus 03/10/2026: 32,4 triệu lao động phi chính thức",
@@ -393,9 +393,9 @@
         "url": "https://baolaocai.vn/muc-dong-ho-tro-dong-bao-hiem-xa-hoi-tu-nguyen-tang-tu-nam-2027-post914984.html"
       }
     ],
-    "ai_does": "Dựng hồ sơ BHXH từ lời kể và ảnh giấy tờ; giải thích quy định có trích dẫn; mô phỏng thu nhập theo mùa và chọn kỳ đóng; chuẩn bị lệnh đóng chờ duyệt; nhận diện lời mời 'rút BHXH nhanh'",
-    "strengths": "Số liệu chính thức về quy mô; mốc 01/01/2027 ngay sau chung kết; nằm trên dịch vụ MoMo đã vận hành; mô-đun BHXH chủ hộ ghép được vào Sổ Sẵn",
-    "weaknesses": "MoMo đã có thanh toán, nhắc hạn và công cụ tính lộ trình; lõi giá trị là quy tắc nên AI dễ bị xem là phụ",
+    "ai_does": "Dựng hồ sơ BHXH từ lời kể và ảnh giấy tờ; giải thích quy định có trích dẫn; mô phỏng thu nhập theo mùa và chọn kỳ đóng; **chuẩn bị lệnh đóng chờ duyệt**; nhận diện lời mời 'rút BHXH nhanh'",
+    "strengths": "Số liệu chính thức về quy mô; **mốc 01/01/2027** ngay sau chung kết; nằm trên dịch vụ MoMo đã vận hành; **mô-đun BHXH chủ hộ** ghép được vào Sổ Sẵn",
+    "weaknesses": "**MoMo đã có thanh toán, nhắc hạn và công cụ tính lộ trình**; lõi giá trị là quy tắc nên AI dễ bị xem là phụ",
     "verdict": "Xếp sau; mô-đun an sinh cho chủ hộ trong Sổ Sẵn",
     "scores": [
       3,
@@ -411,10 +411,10 @@
     "name": "Tai Nghe Người Dùng",
     "slug": "tai-nghe-nguoi-dung",
     "section": "9.8",
-    "one_liner": "Trợ lý trực sự cố thanh toán: từ phàn nàn công khai đến cảnh báo sự cố, câu trả lời đúng sự thật và danh sách cần hoàn tiền, có người duyệt",
+    "one_liner": "**Trợ lý trực sự cố thanh toán**: biến phàn nàn công khai thành cảnh báo sự cố, câu trả lời đúng sự thật và danh sách người cần hoàn tiền, có người duyệt",
     "topic": "Trợ lý AI (cho đội vận hành); phụ: An ninh mạng, Chống lừa đảo",
-    "limitation": "Hotline tính phí 1.000đ/phút; câu trả lời trên kho ứng dụng chỉ theo mẫu",
-    "problem": "Trong mẫu 2.000 đánh giá Google Play, MoMo trả lời 87% nhưng chỉ bằng 5 mẫu câu; hai đợt sự cố 05/11 và 16/11/2026 (66 và 38 đánh giá 1–2★, so với trung vị 11/ngày) được trả lời sau trung vị 32–47 giờ; hotline tính phí 1.000đ/phút",
+    "limitation": "Hotline tính phí 1.000đ/phút; câu trả lời trên kho ứng dụng **chỉ theo mẫu**",
+    "problem": "Trong mẫu 2.000 đánh giá Google Play, MoMo trả lời 87% nhưng **chỉ bằng 5 mẫu câu**; hai đợt sự cố 05/11 và 16/11/2026 (66 và 38 đánh giá 1–2★, so với trung vị 11/ngày) được trả lời sau trung vị **32–47 giờ**; hotline tính phí 1.000đ/phút",
     "problem_sources": [
       {
         "label": "Google Play MoMo, mẫu 2.000 đánh giá 17/10–24/11/2026",
@@ -425,9 +425,9 @@
         "url": "https://www.momo.vn/blog/dung-momo-co-mat-tien-khong-c198dt2876"
       }
     ],
-    "ai_does": "Phân loại phàn nàn tiếng Việt, trích hậu quả tiền, gom nhóm, viết bản tóm tắt sự cố có trích dẫn, soạn câu trả lời từ dữ kiện đã xác nhận",
-    "strengths": "Chạy trên dữ liệu thật; thử nghiệm ngược bắt cả hai sự cố sau 14–16 phút, không báo động nhầm trong 32 ngày; khớp vế 'đội ngũ fintech làm việc'",
-    "weaknesses": "Nhóm công cụ đã bão hòa; MoMo đang tự làm phần gom tín hiệu; phần phát hiện không cần AI; quyền dùng dữ liệu kho ứng dụng chưa chắc",
+    "ai_does": "Phân loại phàn nàn tiếng Việt, trích thiệt hại về tiền, gom nhóm, viết **bản tóm tắt sự cố có trích dẫn**, soạn câu trả lời từ dữ kiện đã xác nhận",
+    "strengths": "Chạy trên dữ liệu thật; **kiểm thử hồi cứu** bắt được cả hai sự cố sau **14–16 phút**, không báo động nhầm trong 32 ngày; khớp vế 'đội ngũ fintech làm việc'",
+    "weaknesses": "**Nhóm công cụ đã bão hòa**; MoMo đang tự làm phần gom tín hiệu; phần phát hiện không cần AI; quyền dùng dữ liệu kho ứng dụng chưa chắc",
     "verdict": "Xếp sau",
     "scores": [
       3,

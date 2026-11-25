@@ -274,29 +274,33 @@ def _anchor(section):
     return '#r' + '-'.join(parts) if len(parts) > 1 else '#r' + section
 
 
+def md(t):
+    return re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", esc(t))
+
+
 def render_new(cards, combos):
     if not cards:
         return ''
-    out = ['  <section class="section" aria-labelledby="h-bosung">\n    <div class="wrap">\n      <div class="section-head">\n        <div class="eyebrow">Ý tưởng bổ sung, bám vào giới hạn hiện tại của MoMo</div>\n        <h2 id="h-bosung">' + str(len(cards)) + ' ý tưởng bổ sung</h2>\n        <p>Không ý tưởng nào vượt Sổ Sẵn (27/30). Nhiều ý tưởng phải đổi hướng sau khi kiểm tra trùng lặp; thẻ dưới đây mô tả phiên bản sau khi đổi hướng.</p>\n      </div>\n      <div class="alts">']
+    out = ['  <section class="section" aria-labelledby="h-bosung">\n    <div class="wrap">\n      <div class="section-head">\n        <div class="eyebrow">Ý tưởng bổ sung</div>\n        <h2 id="h-bosung">' + str(len(cards)) + ' ý tưởng bổ sung</h2>\n        <p>Mỗi ý tưởng xuất phát từ <strong>một giới hạn cụ thể của MoMo</strong>. <strong>Không ý tưởng nào vượt Sổ Sẵn (27/30)</strong>; ý tưởng mạnh nhất là <strong>Hoàn Đủ (24)</strong> và <strong>Bản Đồ Chiêu Lừa (23)</strong>.</p>\n      </div>\n      <div class="alts">']
     for c in cards:
         srcs = ''.join(f'<a class="src" href="{esc(s["url"])}">{esc(s["label"])}</a>' for s in c.get('problem_sources', []))
         out.append(
             f'<article class="alt" id="y-{esc(c["slug"])}"><header><span class="badge {_badge(c["verdict"])}">{esc(c["verdict"])}</span><span class="alt-score">{c["total"]}/30</span></header>'
-            f'<h3>{esc(c["name"])}</h3><div class="alt-topic">{esc(c["topic"])}</div><p class="alt-one">{esc(c["one_liner"])}</p>'
-            f'<dl><dt>Hạn chế của MoMo</dt><dd>{esc(c["limitation"])}</dd>'
-            f'<dt>Vấn đề</dt><dd>{esc(c["problem"])} {srcs}</dd>'
-            f'<dt>AI làm gì</dt><dd>{esc(c["ai_does"])}</dd>'
-            f'<dt class="plus">Điểm mạnh</dt><dd>{esc(c["strengths"])}</dd>'
-            f'<dt class="minus">Điểm yếu</dt><dd>{esc(c["weaknesses"])}</dd></dl>'
+            f'<h3>{esc(c["name"])}</h3><div class="alt-topic">{esc(c["topic"])}</div><p class="alt-one">{md(c["one_liner"])}</p>'
+            f'<dl><dt>Hạn chế của MoMo</dt><dd>{md(c["limitation"])}</dd>'
+            f'<dt>Vấn đề</dt><dd>{md(c["problem"])} {srcs}</dd>'
+            f'<dt>AI làm gì</dt><dd>{md(c["ai_does"])}</dd>'
+            f'<dt class="plus">Điểm mạnh</dt><dd>{md(c["strengths"])}</dd>'
+            f'<dt class="minus">Điểm yếu</dt><dd>{md(c["weaknesses"])}</dd></dl>'
             f'<a class="more-link" href="{_anchor(c["section"])}">Phân tích đầy đủ</a></article>')
     out.append('</div>')
     if combos:
-        out.append('<h3 class="sub-h">Ghép ý tưởng để mạnh hơn</h3><p class="note">Điểm của các phương án ghép là ước tính (suy luận). Ghép càng nhiều phần càng khó hoàn thiện trong 8 ngày.</p><div class="combos">')
+        out.append('<h3 class="sub-h">Ghép ý tưởng để mạnh hơn</h3><p class="note">Điểm là <strong>ước tính</strong> (suy luận). Ghép càng nhiều phần thì <strong>càng khó làm xong trong 8 ngày</strong>.</p><div class="combos">')
         for k in combos:
             parts = ''.join(f'<span>{esc(p)}</span>' for p in k['parts'])
-            out.append(f'<article class="combo"><h3>{esc(k["name"])}</h3><div class="parts">{parts}</div><p>{esc(k["why"])}</p><p><strong>Rủi ro thêm:</strong> {esc(k["extra_risk"])}</p><p><strong>Ước tính: {k["est_total"]}/30</strong></p></article>')
+            out.append(f'<article class="combo"><h3>{esc(k["name"])}</h3><div class="parts">{parts}</div><p>{md(k["why"])}</p><p><strong>Rủi ro thêm:</strong> {md(k["extra_risk"])}</p><p><strong>Ước tính: {k["est_total"]}/30</strong></p></article>')
         out.append('</div>')
-    out.append('<p class="more">Bảng so sánh giới hạn của MoMo với từng ý tưởng và khuyến nghị cuối cùng: xem <a href="#r9">mục 9 của báo cáo</a>.</p>\n    </div>\n  </section>\n')
+    out.append('<p class="more">Phân tích đầy đủ và khuyến nghị cuối cùng: <a href="#r9">mục 9 của báo cáo</a>.</p>\n    </div>\n  </section>\n')
     return '\n'.join(out)
 
 

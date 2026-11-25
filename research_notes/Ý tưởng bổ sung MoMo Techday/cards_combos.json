@@ -6,8 +6,8 @@
       "Hoàn Đủ",
       "Mô-đun BHXH chủ hộ doanh thu trên 1 tỷ đồng (từ Lương Hưu Tự Lo)"
     ],
-    "why": "Cùng kiến trúc 'AI hiểu, bộ quy tắc tính, con người duyệt' giải ba nghĩa vụ có hạn liền nhau (31/12/2026, 31/01/2027, 30/4/2027); ngưỡng 1 tỷ đồng vừa là ngưỡng thuế vừa là ngưỡng BHXH bắt buộc; dùng chung kho luật có phiên bản, trích xuất chứng từ và màn hình duyệt chính sách",
-    "extra_risk": "Hai kho luật và hai bộ đánh giá (120 và 80 câu) cùng 60 chứng từ giả lập; với 2–3 người trong khoảng 8 ngày, phần P0 của Sổ Sẵn dễ mỏng đi; giám khảo có thể coi Hoàn Đủ là 'Sổ Sẵn thứ hai'. Nên chỉ thêm quy tắc BHXH chủ hộ và để Hoàn Đủ ở slide lộ trình",
+    "why": "Cùng một kiến trúc **'AI hiểu, bộ quy tắc tính, con người duyệt'** giải quyết **ba nghĩa vụ có hạn liền nhau** (31/12/2026, 31/01/2027, 30/4/2027); ngưỡng 1 tỷ đồng vừa là ngưỡng thuế vừa là ngưỡng BHXH bắt buộc; dùng chung kho luật có phiên bản, trích xuất chứng từ và màn hình duyệt chính sách",
+    "extra_risk": "Hai kho luật và hai bộ đánh giá (120 và 80 câu) cùng 60 chứng từ giả lập; với 2–3 người trong khoảng 8 ngày, **phần P0 của Sổ Sẵn dễ mỏng đi**; giám khảo có thể coi Hoàn Đủ là 'Sổ Sẵn thứ hai'. Nên **chỉ thêm quy tắc BHXH chủ hộ** và để Hoàn Đủ ở slide lộ trình",
     "est_scores": [
       4,
       3,
@@ -25,8 +25,8 @@
       "Người Thân Xác Nhận",
       "30 Phút Vàng"
     ],
-    "why": "Phủ cả ba thời điểm: tình báo ở thượng nguồn, người thân xác nhận lúc giao dịch bị tạm giữ, hỗ trợ sau khi mất tiền; lấp điểm yếu 'lệch định nghĩa Chống lừa đảo' của 30 Phút Vàng. Bảo hiểm An toàn chuyển tiền (09/11/2026) chồng lên khâu sau khi mất tiền ở nhóm mua bán giá trị nhỏ, nhưng hồ sơ của 30 Phút Vàng có thể dùng để xin bồi thường (suy luận)",
-    "extra_risk": "Ba sản phẩm, ba vai người dùng, thông báo thật đến điện thoại giám khảo và toàn bộ tín hiệu giao dịch phải giả lập; đây là tổ hợp khó hoàn thiện nhất",
+    "why": "Phủ **cả ba thời điểm**: tình báo ở thượng nguồn, người thân xác nhận lúc giao dịch bị tạm giữ, hỗ trợ sau khi mất tiền; lấp điểm yếu 'lệch định nghĩa Chống lừa đảo' của 30 Phút Vàng. Bảo hiểm An toàn chuyển tiền (09/11/2026) chồng lên khâu sau khi mất tiền ở nhóm mua bán giá trị nhỏ, nhưng hồ sơ của 30 Phút Vàng có thể **dùng để xin bồi thường** (suy luận)",
+    "extra_risk": "Ba sản phẩm, ba vai người dùng, thông báo thật đến điện thoại giám khảo và toàn bộ tín hiệu giao dịch phải giả lập; đây là **tổ hợp khó hoàn thiện nhất**",
     "est_scores": [
       5,
       2,
@@ -44,8 +44,8 @@
       "Tiền Về Thật",
       "Cảnh báo nhắm vào người bán từ Bản Đồ Chiêu Lừa"
     ],
-    "why": "Cùng phục vụ vấn đề 'tiền về chắc chắn, sự cố được xử lý trước khi merchant phải gọi lên' và dùng chung sổ giao dịch của Sổ Sẵn; ghép phát hiện sự cố tại quầy, kiểm tra tiền về và cảnh báo chiến dịch như giả kỹ thuật viên lắp loa",
-    "extra_risk": "Luồng giao dịch, trạng thái loa và thiết bị đều phải mô phỏng; bộ thu thập cảnh báo công khai là một đường xử lý dữ liệu riêng; phần AI của Canh Quầy và Tiền Về Thật chỉ ở mức 3",
+    "why": "Cùng phục vụ vấn đề **'tiền về chắc chắn, sự cố được xử lý trước khi merchant phải gọi lên'** và **dùng chung sổ giao dịch của Sổ Sẵn**; ghép phát hiện sự cố tại quầy, kiểm tra tiền về và cảnh báo các chiến dịch như giả kỹ thuật viên lắp loa",
+    "extra_risk": "Luồng giao dịch, trạng thái loa và thiết bị đều phải mô phỏng; bộ thu thập cảnh báo công khai là một đường xử lý dữ liệu riêng; phần AI của Canh Quầy và Tiền Về Thật **chỉ ở mức 3**",
     "est_scores": [
       4,
       3,
