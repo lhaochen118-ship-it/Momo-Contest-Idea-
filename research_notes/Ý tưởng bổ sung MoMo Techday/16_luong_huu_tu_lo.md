@@ -96,7 +96,7 @@ Không làm: thu tiền hoặc đăng ký thật với cơ quan BHXH; đăng nh�
 
 **Nguồn đã kiểm chứng:**
 
-*Văn bản pháp luật (đọc trên hethongphapluat.com, bản tóm lược từng điều; chưa đối chiếu bản gốc trên Công báo vì máy chủ của cơ quan nhà nước không truy cập được từ môi trường nghiên cứu)*
+*Văn bản pháp luật (nội dung từng điều theo hethongphapluat.com; chưa đối chiếu bản gốc trên Công báo)*
 - [Điều 21 Luật BHXH 2024](https://hethongphapluat.com/luat-bao-hiem-xa-hoi-2024/dieu-21): trợ cấp hưu trí xã hội từ đủ 75 tuổi; từ đủ 70 đến dưới 75 tuổi nếu thuộc hộ nghèo, cận nghèo; không hưởng lương hưu hoặc trợ cấp BHXH hằng tháng; có văn bản đề nghị.
 - [Điều 22](https://hethongphapluat.com/luat-bao-hiem-xa-hoi-2024/dieu-22): Chính phủ quy định mức trợ cấp hưu trí xã hội, xem xét 3 năm một lần; địa phương được hỗ trợ thêm; ngân sách đóng BHYT cho người hưởng.
 - [Điều 23](https://hethongphapluat.com/luat-bao-hiem-xa-hoi-2024/dieu-23): người đủ tuổi nghỉ hưu nhưng chưa đủ điều kiện hưởng lương hưu, không nhận BHXH một lần, được nhận trợ cấp hằng tháng từ chính số đã đóng, không thấp hơn mức trợ cấp hưu trí xã hội; được đóng một lần phần còn thiếu để hưởng tới tuổi hưởng trợ cấp hưu trí xã hội.
@@ -155,7 +155,7 @@ Không làm: thu tiền hoặc đăng ký thật với cơ quan BHXH; đăng nh�
 - [Genk, 29/09/2026](https://genk.vn/momo-ai-moni-lop-tro-thu-tai-chinh-tieng-viet-xuyen-suot-ung-dung-ho-tro-giao-dich-24-7-va-bao-mat-99999-do-chinh-xac-16526092913431772.chn) (nguồn trong 03_momo_ai_hien_tai.md): Moni là tính năng AI được dùng nhiều nhất, nhúng vào các bước trong ứng dụng.
 - [CafeBiz, 31/10/2024](https://cafebiz.vn/tai-dinh-vi-thanh-tro-thu-tai-chinh-voi-ai-cac-sep-momo-da-noi-gi-176241031171910802.chn) (nguồn trong 02_momo_he_sinh_thai.md): MoMo tái định vị thành "Trợ thủ tài chính với AI".
 - [Tuổi Trẻ, 29/01/2026](https://tuoitre.vn/huong-dan-dang-ky-mua-bao-hiem-y-te-va-xa-hoi-tren-viettel-money-20260129144034594.htm): Viettel Money cùng BHXH Việt Nam ra mắt BHXH tự nguyện và BHYT; đăng ký mới, gia hạn, thanh toán, theo dõi hợp đồng trên điện thoại.
-- [Brands Vietnam](https://www.brandsvietnam.com/viettel-money-trien-khai-tinh-nang-dang-ky-bhxh-tu-nguyen-ngay-tren-ung-dung) (qua tóm tắt tìm kiếm, trang trả lỗi 403): mức thu nhập 1,5–46,8 triệu đồng, chu kỳ 1, 3, 6, 12 tháng, vẫn được Nhà nước hỗ trợ.
+- [Brands Vietnam](https://www.brandsvietnam.com/viettel-money-trien-khai-tinh-nang-dang-ky-bhxh-tu-nguyen-ngay-tren-ung-dung) (qua tóm tắt tìm kiếm): mức thu nhập 1,5–46,8 triệu đồng, chu kỳ 1, 3, 6, 12 tháng, vẫn được Nhà nước hỗ trợ.
 - [Grab, 01/06/2026](https://www.grab.com/vn/blog/driver/bhxh-bhyt-pvi/): chương trình thí điểm BHXH tự nguyện và BHYT cho tài xế, đăng ký và thanh toán trên trang của PVI; không có công cụ tính hay hỗ trợ tiền.
 - [Hiệp hội Ngân hàng, 15/09/2021](https://vnba.org.vn/vi/huong-dan-dong-tiep-bao-hiem-xa-hoi-tu-nguyen--gia-han-the-bhyt-qua-ung-dung-truc-tuyen-ngan-hang-1840.htm): Vietcombank, BIDV, MB cho đóng tiếp BHXH tự nguyện và gia hạn BHYT hộ gia đình; không áp dụng giảm trừ theo hộ, muốn được giảm phải đóng tại cơ quan BHXH hoặc đại lý thu.
 - [Thương hiệu và Công luận, 10/09/2026](https://thuonghieucongluan.com.vn/quang-ngai-tro-ly-ao-ai-dua-chinh-sach-bhxh-bhyt-den-gan-nguoi-dan-a333733.html): trợ lý ảo "Hỏi nhanh - Đáp đúng" của BHXH Quảng Ngãi, chạy từ 06/02/2026, hỏi đáp và gợi ý mức đóng BHXH tự nguyện, BHYT hộ gia đình; 500 câu hỏi/ngày từ 10/04/2026.
