@@ -249,6 +249,64 @@ def process_html(body):
             parts[i] = transform_text(p)
     return "".join(parts)
 
+import json as _json
+ORIGINAL_SIX = [
+    dict(name='Sổ Sẵn', desc='Trợ lý thuế và sổ sách bằng giọng nói cho hộ kinh doanh, kèm màn hình duyệt chính sách', topic='Trợ lý AI · Chống lừa đảo', s=[4, 5, 5, 4, 5, 4]),
+    dict(name='30 Phút Vàng', desc='Trợ lý phản ứng sau lừa đảo cho nạn nhân và chuyên viên', topic='An ninh mạng · Chống lừa đảo', s=[5, 4, 3, 4, 4, 4]),
+    dict(name='Tiền Về Thật', desc='Xác minh tiền về cho người bán: ảnh chuyển khoản giả, đối soát', topic='Chống lừa đảo', s=[4, 4, 3, 3, 4, 5]),
+    dict(name='Gỡ Rối Giao Dịch', desc='Agent xử lý giao dịch treo và trả trùng', topic='Trợ lý thanh toán', s=[3, 3, 5, 3, 4, 2]),
+    dict(name='Phòng Tập Chống Lừa', desc='Nhận diện kịch bản và mô phỏng lừa đảo cho Gen Z', topic='Chống lừa đảo', s=[3, 5, 3, 4, 3, 2]),
+    dict(name='Rõ Phí', desc='Minh bạch chi phí và quyền trừ tiền tự động', topic='Trợ lý thanh toán', s=[2, 4, 3, 2, 3, 2]),
+]
+
+
+def _badge(verdict):
+    v = verdict.lower()
+    if 'dự phòng' in v:
+        return 'b-backup'
+    if 'mô-đun' in v or 'ghép' in v:
+        return 'b-module'
+    return 'b-no'
+
+
+def _anchor(section):
+    parts = section.split('.')
+    return '#r' + '-'.join(parts) if len(parts) > 1 else '#r' + section
+
+
+def render_new(cards, combos):
+    if not cards:
+        return ''
+    out = ['  <section class="section" aria-labelledby="h-bosung">\n    <div class="wrap">\n      <div class="section-head">\n        <div class="eyebrow">Ý tưởng bổ sung, bám vào giới hạn hiện tại của MoMo</div>\n        <h2 id="h-bosung">' + str(len(cards)) + ' ý tưởng bổ sung</h2>\n        <p>Không ý tưởng nào vượt Sổ Sẵn (27/30). Nhiều ý tưởng phải đổi hướng sau khi kiểm tra trùng lặp; thẻ dưới đây mô tả phiên bản sau khi đổi hướng.</p>\n      </div>\n      <div class="alts">']
+    for c in cards:
+        srcs = ''.join(f'<a class="src" href="{esc(s["url"])}">{esc(s["label"])}</a>' for s in c.get('problem_sources', []))
+        out.append(
+            f'<article class="alt" id="y-{esc(c["slug"])}"><header><span class="badge {_badge(c["verdict"])}">{esc(c["verdict"])}</span><span class="alt-score">{c["total"]}/30</span></header>'
+            f'<h3>{esc(c["name"])}</h3><div class="alt-topic">{esc(c["topic"])}</div><p class="alt-one">{esc(c["one_liner"])}</p>'
+            f'<dl><dt>Hạn chế của MoMo</dt><dd>{esc(c["limitation"])}</dd>'
+            f'<dt>Vấn đề</dt><dd>{esc(c["problem"])} {srcs}</dd>'
+            f'<dt>AI làm gì</dt><dd>{esc(c["ai_does"])}</dd>'
+            f'<dt class="plus">Điểm mạnh</dt><dd>{esc(c["strengths"])}</dd>'
+            f'<dt class="minus">Điểm yếu</dt><dd>{esc(c["weaknesses"])}</dd></dl>'
+            f'<a class="more-link" href="{_anchor(c["section"])}">Phân tích đầy đủ</a></article>')
+    out.append('</div>')
+    if combos:
+        out.append('<h3 class="sub-h">Ghép ý tưởng để mạnh hơn</h3><p class="note">Điểm của các phương án ghép là ước tính (suy luận). Ghép càng nhiều phần càng khó hoàn thiện trong 8 ngày.</p><div class="combos">')
+        for k in combos:
+            parts = ''.join(f'<span>{esc(p)}</span>' for p in k['parts'])
+            out.append(f'<article class="combo"><h3>{esc(k["name"])}</h3><div class="parts">{parts}</div><p>{esc(k["why"])}</p><p><strong>Rủi ro thêm:</strong> {esc(k["extra_risk"])}</p><p><strong>Ước tính: {k["est_total"]}/30</strong></p></article>')
+        out.append('</div>')
+    out.append('<p class="more">Bảng so sánh giới hạn của MoMo với từng ý tưởng và khuyến nghị cuối cùng: xem <a href="#r9">mục 9 của báo cáo</a>.</p>\n    </div>\n  </section>\n')
+    return '\n'.join(out)
+
+
+def ideas_json(cards):
+    rows = [dict(name=d['name'], desc=d['desc'], topic=d['topic'], s=d['s']) for d in ORIGINAL_SIX]
+    for c in cards:
+        rows.append(dict(name=c['name'], desc=c['one_liner'], topic=c['topic'], s=c['scores'], isNew=True))
+    rows.sort(key=lambda r: -sum(r['s']))
+    return _json.dumps(rows, ensure_ascii=False), len(rows)
+
 
 def main():
     md = REPORT.read_text(encoding="utf-8")
@@ -295,7 +353,13 @@ def main():
             items.append(f'<li><a href="#{hid}">{text}</a>{sub}</li>')
         return "<ol>" + "".join(items) + "</ol>"
 
+    cards_p = Path(sys.argv[4]) if len(sys.argv) > 4 else None
+    cards = _json.loads(cards_p.read_text(encoding="utf-8")) if cards_p and cards_p.exists() else []
+    combos_p = cards_p.with_name("cards_combos.json") if cards_p else None
+    combos = _json.loads(combos_p.read_text(encoding="utf-8")) if combos_p and combos_p.exists() else []
+    ij, n = ideas_json(cards)
     page = TEMPLATE.read_text(encoding="utf-8")
+    page = page.replace("{{NEWIDEAS}}", render_new(cards, combos)).replace("{{IDEAS_JSON}}", ij).replace("{{N_IDEAS}}", str(n))
     page = page.replace("{{LAWS}}", render_laws()).replace("{{TOC}}", toc_html()).replace("{{ARTICLE}}", art)
     page = re.sub(r'<a class="src" href="(https?://[^"]+)"', r'<a class="src" href="\1" target="_blank" rel="noopener noreferrer"', page)
     OUT.write_text(page, encoding="utf-8")
