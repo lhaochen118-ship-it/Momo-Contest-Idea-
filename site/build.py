@@ -52,7 +52,7 @@ LAWS = [
              points=["Chia nhóm sổ theo nghĩa vụ thuế thực tế, mỗi nhóm 1–4 sổ.",
                      "Chủ hộ tự ghi hoặc giao bố mẹ, vợ chồng, con, anh chị em ruột làm kế toán.",
                      "Lưu trữ sổ tối thiểu 5 năm."],
-             status="mid", status_text="Có link toàn văn trên Công báo; nội dung trong ghi chép lấy cùng các bài tóm tắt.",
+             status="mid", status_text="Có link toàn văn trên Công báo; nội dung đối chiếu cùng các bài tóm tắt.",
              sources=[("Công báo (PDF)", "https://congbaocdn.chinhphu.vn/180507251028987904/2026/1/28/final-152signed-17695739990221209521402.pdf"),
                       ("Sapo", "https://www.sapo.vn/blog/thong-tu-152-2025-tt-btc"),
                       ("Thư viện pháp luật", "https://thuvienphapluat.vn/phap-luat-doanh-nghiep/cong-viec-phap-ly/che-do-ke-toan-ho-kinh-doanh-527.html")]),

@@ -1,22 +1,21 @@
-# Đặt cược vào trợ lý thuế cho hộ kinh doanh
+# Ý tưởng nên làm: trợ lý thuế cho hộ kinh doanh
 
-Ý tưởng đáng đầu tư nhất cho một đội sinh viên ở MoMo Tech Contest 2026 là **"Sổ Sẵn"**. Đây là trợ lý AI dùng giọng nói, giúp hộ kinh doanh tự ghi sổ, canh ngưỡng doanh thu 1 tỷ đồng và hiểu nghĩa vụ thuế mới dựa trên chính dòng tiền của họ. Đi kèm là một "bàn làm việc chính sách": AI đọc văn bản luật mới và đề xuất thay đổi quy tắc, nhân viên vận hành duyệt. Ý tưởng này hội đủ những gì đề thi và hội đồng giám khảo đòi hỏi:
-- **Nỗi đau có số liệu độc lập mạnh:** chỉ **13,9%** hộ hiểu rõ quy định thuế áp dụng từ 2026, và **73,3%** coi thủ tục pháp lý là trở ngại lớn nhất.
+Ý tưởng đáng đầu tư nhất cho một đội sinh viên ở MoMo Tech Contest 2026 là **"Sổ Sẵn"**. Đây là trợ lý AI dùng giọng nói, giúp hộ kinh doanh tự ghi sổ, canh ngưỡng doanh thu 1 tỷ đồng và hiểu nghĩa vụ thuế mới dựa trên chính dòng tiền của họ. Đi kèm là một "màn hình duyệt chính sách": AI đọc văn bản luật mới và đề xuất thay đổi quy tắc, nhân viên vận hành duyệt. Ý tưởng này hội đủ những gì đề thi và hội đồng giám khảo đòi hỏi:
+- **Vấn đề có số liệu độc lập mạnh:** chỉ **13,9%** hộ hiểu rõ quy định thuế áp dụng từ 2026, và **73,3%** coi thủ tục pháp lý là trở ngại lớn nhất.
 - **Quy mô lớn:** cả nước có khoảng **6,1 triệu hộ**, trong đó **hơn 500.000** điểm bán dùng MoMo QR.
 - **Thời điểm gấp:** chu kỳ khai năm đầu tiên sau khi bỏ thuế khoán kết thúc **31/01/2027**, ngay sau chung kết.
 - **Ít trùng với AI MoMo đang chạy:** chấm điểm gian lận, nhãn người nhận, eKYC, chấm điểm tín dụng và Moni đều không đụng tới bài toán này.
 - **Làm được trong 9 ngày:** dữ liệu giả lập cộng văn bản luật công khai là đủ để AI tạo giá trị thật.
 
-Phương án dự phòng là **"30 Phút Vàng"**, trợ lý phản ứng sau lừa đảo cho cả nạn nhân lẫn chuyên viên chống gian lận. Đây là ý tưởng sáng tạo nhất và đánh thẳng vào giới hạn mà chính MoMo thừa nhận. Điểm yếu là tác động khó chứng minh, và ý tưởng hơi lệch định nghĩa "Chống lừa đảo" của đề (đề nhấn vào việc cảnh báo *trước khi* mất tiền). Một số hướng phổ biến nên tránh vì MoMo đã có hoặc vì đội không có dữ liệu để làm thật: cảnh báo trước khi chuyển tiền, gắn nhãn tài khoản nhận, phát hiện tài khoản trung gian nhận tiền lừa đảo (money mule), giải thích điểm tín dụng, nhắc gia hạn tự động. Rủi ro lớn nhất của Sổ Sẵn nằm ở hai chỗ: AI trích sai điều luật, và hạ tầng phải chạy không đổi từ 03/12 đến hết 11/12. Mục 8 nêu cách xử lý cụ thể cho cả hai.
+Phương án dự phòng là **"30 Phút Vàng"**, trợ lý phản ứng sau lừa đảo cho cả nạn nhân lẫn chuyên viên chống gian lận. Đây là ý tưởng sáng tạo nhất và nhắm đúng vào giới hạn mà chính MoMo thừa nhận. Điểm yếu là tác động khó chứng minh, và ý tưởng hơi lệch định nghĩa "Chống lừa đảo" của đề (đề nhấn vào việc cảnh báo *trước khi* mất tiền). Một số hướng phổ biến nên tránh vì MoMo đã có hoặc vì đội không có dữ liệu để làm thật: cảnh báo trước khi chuyển tiền, gắn nhãn tài khoản nhận, phát hiện tài khoản trung gian nhận tiền lừa đảo (money mule), giải thích điểm tín dụng, nhắc gia hạn tự động. Rủi ro lớn nhất của Sổ Sẵn nằm ở hai chỗ: AI trích sai điều luật, và hạ tầng phải chạy không đổi từ 03/12 đến hết 11/12. Mục 8 nêu cách xử lý cụ thể cho cả hai.
 
-> **Cách đọc báo cáo.**
-> - **Dữ kiện có link nguồn, không kèm ghi chú:** lấy từ văn bản chính thức hoặc báo chí, đã được đối chiếu trong ghi chép nghiên cứu.
+> **Ký hiệu.**
 > - **"(MoMo tự công bố)":** số liệu do MoMo đưa ra, chưa có kiểm chứng độc lập.
-> - **"(qua tóm tắt tìm kiếm)":** nhóm nghiên cứu chỉ thấy đoạn trích, chưa đọc toàn văn.
-> - **"(suy luận)":** nhận định của người viết.
-> - **"(kiến thức kỹ thuật chung)":** hiểu biết về mô hình và công cụ, không lấy từ ghi chép nghiên cứu.
+> - **"(qua tóm tắt tìm kiếm)":** mới thấy qua đoạn trích, chưa đọc toàn văn.
+> - **"(suy luận)":** nhận định, chưa có số liệu trực tiếp.
+> - **"(kiến thức kỹ thuật chung)":** hiểu biết chung về mô hình và công cụ, không có nguồn trích dẫn.
 >
-> Mọi số liệu tính đến 24/11/2026. Hôm nay là thứ Ba 24/11, còn khoảng 9,5 ngày đến hạn nộp.
+> Số liệu tính đến 24/11/2026.
 
 ## 1. Đề thi thưởng cho sản phẩm thật, nơi AI làm việc thay người
 
@@ -77,7 +76,7 @@ Từ các ràng buộc trên, có ba hướng sản phẩm hợp đề nhất:
 2. Phòng thủ ở những khâu MoMo chưa phủ: trước khi người dùng mở màn hình chuyển tiền, sau khi tiền đã đi, và phía người bán.
 3. Công cụ cho người bán và đội vận hành, nơi thể hiện được mô hình "agent làm, con người duyệt" đúng tinh thần "Future Workspace".
 
-## 2. MoMo đã phủ kín khâu giao dịch; khoảng trống nằm ở hai đầu và phía người bán
+## 2. MoMo đã phủ kín khâu giao dịch; khoảng trống nằm ở trước, sau giao dịch và phía người bán
 
 ### Mô hình kinh doanh và quy mô
 
@@ -100,7 +99,7 @@ Một ý tưởng tạo thêm báo cáo cho con người đọc sẽ đi ngượ
 
 ### Danh mục AI hiện có của MoMo
 
-Bảng dưới tóm tắt các sáng kiến AI công khai của MoMo. Gần như mọi số liệu hiệu quả đều do MoMo tự công bố; ghi chép không tìm thấy kiểm toán hay đánh giá độc lập nào.
+Gần như mọi số liệu hiệu quả về AI của MoMo đều do MoMo tự công bố; chưa có kiểm toán hay đánh giá độc lập nào được công bố.
 
 | Sáng kiến AI của MoMo | Kết quả công bố | Hạn chế có bằng chứng | Hệ quả cho ý tưởng thi |
 |---|---|---|---|
@@ -122,20 +121,20 @@ Các khoảng trống có bằng chứng tốt nhất đến từ chính lời M
 
 Hai chi tiết sau quyết định mức trùng lặp của các ý tưởng về thuế:
 - Bộ giải pháp cho tiểu thương mà MoMo công bố tháng 7/2025 **đã có** khai thuế online, hóa đơn điện tử, chữ ký số, đồng bộ kế toán và chấm điểm tín dụng từ dữ liệu giao dịch ([MoMo, 11/07/2025](https://www.momo.vn/tin-tuc/thong-cao-bao-chi/bo-giai-phap-tai-chinh-tu-momo-giup-tieu-thuong-7891)).
-- Tháng 3/2026, MoMo nói **đang lên kế hoạch** cho tờ khai thuế điền sẵn thông tin hộ ([MoMo, 20/03/2026](https://www.momo.vn/tin-tuc/thong-cao-bao-chi/momo-cap-nhat-moi-nhat-ve-giai-phap-nhan-tien-8587)). Đến 11/2026, ghi chép chưa xác minh được tính năng này đã ra mắt hay chưa.
+- Tháng 3/2026, MoMo nói **đang lên kế hoạch** cho tờ khai thuế điền sẵn thông tin hộ ([MoMo, 20/03/2026](https://www.momo.vn/tin-tuc/thong-cao-bao-chi/momo-cap-nhat-moi-nhat-ve-giai-phap-nhan-tien-8587)). Đến 11/2026, chưa có thông tin tính năng này đã ra mắt.
 
-Ngoài ra, ghi chép có liệt kê chiến dịch "Không Một Mình 2026" của MoMo nhưng không mô tả nội dung. Cần kiểm tra chiến dịch này có đụng tới hỗ trợ nạn nhân hay không trước khi chọn ý tưởng 30 Phút Vàng.
+MoMo có chiến dịch "Không Một Mình 2026" nhưng chưa rõ nội dung. Cần kiểm tra chiến dịch này có đụng tới hỗ trợ nạn nhân hay không trước khi chọn ý tưởng 30 Phút Vàng.
 
-## 3. Người dùng đau nhất ở giao dịch treo, người bán đau nhất ở luật thuế mới
+## 3. Người dùng gặp khó nhất ở giao dịch treo, người bán gặp khó nhất ở luật thuế mới
 
 ### 3.1 Người dùng cá nhân: sự cố giao dịch, lừa đảo thao túng và phí khó hiểu
 
-Ghi chép có một phân tích review riêng ([Google Play](https://play.google.com/store/apps/details?id=com.mservice.momotransfer); [App Store VN](https://apps.apple.com/vn/app/id918751511)):
+Phân tích review MoMo ([Google Play](https://play.google.com/store/apps/details?id=com.mservice.momotransfer); [App Store VN](https://apps.apple.com/vn/app/id918751511)):
 - Mẫu gồm 2.000 review mới nhất trên Google Play VN (15/10–23/11/2026) và 500 review App Store VN (09–23/11/2026).
 - Review 1–2★ được tính là tiêu cực: 668 review, gán chủ đề bằng từ khóa tiếng Việt.
-- Mẫu chỉ bao 5–6 tuần và có một sự cố ngày 05/11/2026 làm phồng số review xấu.
+- Mẫu chỉ bao 5–6 tuần và có một sự cố ngày 05/11/2026 đẩy tăng số review xấu.
 
-Vì vậy các con số dưới đây là **tín hiệu định hướng**, không đại diện cho toàn bộ người dùng.
+Các con số dưới đây chỉ là **tín hiệu định hướng**, không đại diện cho toàn bộ người dùng.
 
 | Chủ đề trong review tiêu cực | Google Play (558 review) | iOS (110 review) |
 |---|---|---|
@@ -148,15 +147,15 @@ Vì vậy các con số dưới đây là **tín hiệu định hướng**, khô
 | Nhắc tới AI hoặc trợ thủ (hầu hết là chê) | 5,7% | 3,6% |
 | Lừa đảo, bảo mật (phần lớn là người dùng gọi chính MoMo là "lừa đảo") | 3,4% | 10,0% |
 
-**Giao dịch treo là nỗi đau lớn nhất.** Người dùng viết: "Chuyển tiền cho tiệm cơm bị lỗi 'đang chờ xử lý'… tiền vẫn bị trừ mà tiệm chưa nhận được tiền nên mình đã dùng tài khoản khác để chuyển", và "không lẽ cái hóa đơn vài chục mà đi tra soát". Chính sách của MoMo là không cho hủy giao dịch đang xử lý ([MoMo FAQ](https://www.momo.vn/hoi-dap/toi-co-the-huy-giao-dich-dang-cho-xu-ly-hoac-thuc-hien-lai-giao-dich-duoc-khong)); tiền bị trừ ở ngân hàng mà ví chưa cộng sẽ được hoàn trong 48 giờ ([MoMo FAQ](https://www.momo.vn/hoi-dap/nap-tien-tu-ngan-hang-tai-khoan-ngan-hang-bi-tru-tien-nhung-tai-khoan-momo-khong-thay-doi)). Hotline tính phí 1.000đ/phút ([MoMo, 20/08/2025](https://www.momo.vn/tin-tuc/thong-bao/khong-ranh-cong-nghe-van-co-the-chuyen-khoan-de-7826)). Gốc rễ là trạng thái giao dịch bất định giữa MoMo, ngân hàng và NAPAS, cộng với việc không có đường hủy hay hoàn tự động. Người dùng vì vậy trả lần hai qua kênh khác và mất tiền thật ở những khoản nhỏ không đáng tra soát (suy luận).
+**Giao dịch treo là vấn đề lớn nhất.** Người dùng viết: "Chuyển tiền cho tiệm cơm bị lỗi 'đang chờ xử lý'… tiền vẫn bị trừ mà tiệm chưa nhận được tiền nên mình đã dùng tài khoản khác để chuyển", và "không lẽ cái hóa đơn vài chục mà đi tra soát". Chính sách của MoMo là không cho hủy giao dịch đang xử lý ([MoMo FAQ](https://www.momo.vn/hoi-dap/toi-co-the-huy-giao-dich-dang-cho-xu-ly-hoac-thuc-hien-lai-giao-dich-duoc-khong)); tiền bị trừ ở ngân hàng mà ví chưa cộng sẽ được hoàn trong 48 giờ ([MoMo FAQ](https://www.momo.vn/hoi-dap/nap-tien-tu-ngan-hang-tai-khoan-ngan-hang-bi-tru-tien-nhung-tai-khoan-momo-khong-thay-doi)). Hotline tính phí 1.000đ/phút ([MoMo, 20/08/2025](https://www.momo.vn/tin-tuc/thong-bao/khong-ranh-cong-nghe-van-co-the-chuyen-khoan-de-7826)). Gốc rễ là trạng thái giao dịch bất định giữa MoMo, ngân hàng và NAPAS, cộng với việc không có đường hủy hay hoàn tự động. Người dùng vì vậy trả lần hai qua kênh khác và mất tiền thật ở những khoản nhỏ không đáng tra soát (suy luận).
 
-**Lừa đảo là nỗi đau được đo đạc tốt nhất ở tầm quốc gia.**
+**Lừa đảo là vấn đề được đo đạc tốt nhất ở tầm quốc gia.**
 - Bộ Công an ghi nhận khoảng **4.200 vụ**, thiệt hại **khoảng 8.000 tỷ đồng** năm 2025 ([VOV](https://vov.vn/phap-luat/thiet-hai-tu-lua-dao-truc-tuyen-len-toi-8000-ty-dong-trong-nam-2025-post1286479.vov)).
 - Khảo sát của Hiệp hội An ninh mạng Quốc gia (NCA) năm 2025: tỷ lệ nạn nhân giảm còn 0,18%; mạo danh công an là thủ đoạn số một; 34,13% người dùng gặp sự cố mã độc ([Dân trí, 08/01/2026](https://dantri.com.vn/cong-nghe/nam-2025-nan-lua-dao-truc-tuyen-giam-nguoi-viet-van-mat-hon-6000-ty-dong-20260107104833121.htm)).
 - Hệ thống SIMO của Ngân hàng Nhà nước trong 9 tháng 2026: hơn 5,6 triệu lượt cảnh báo, hơn 1,9 triệu lượt dừng hoặc hủy giao dịch, hơn 6.300 tỷ đồng ([Vietstock, 08/10/2026](https://vietstock.vn/2026/10/hang-trieu-chu-tai-khoan-nhan-mot-canh-bao-hon-6300-ty-phai-tam-dung-757-1500164.htm)).
 - Theo đưa tin về SIMO, cảnh báo vẫn dựa trên danh sách đen, và nạn nhân bị thao túng vẫn chuyển tiền dù đã qua OTP và sinh trắc ([Vietnam+, 15/07/2026](https://www.vietnamplus.vn/tu-nhung-cu-chuyen-khoan-vo-thuc-den-la-chan-canh-bao-som-post1124247.vnp)).
 
-Lớp chống lừa đảo hiện tại cũng gây ma sát cho người dùng hợp lệ. Có ít review nhắc tới, nhưng rất cụ thể: "con AI chống lừa đảo tệ, bắt tôi phải đánh từng chữ"; "đang cần gấp mà cứ bắt 10 phút". Con số "99,5% dừng lại" của MoMo đo sự tạm dừng, không đo số vụ lừa bị ngăn (suy luận). Theo tính toán của nhóm nghiên cứu từ số liệu SIMO, chỉ khoảng một phần ba cảnh báo dẫn đến dừng hoặc hủy, tức phần lớn cảnh báo vẫn bị bỏ qua.
+Lớp chống lừa đảo hiện tại cũng gây phiền toái cho người dùng hợp lệ. Có ít review nhắc tới, nhưng rất cụ thể: "con AI chống lừa đảo tệ, bắt tôi phải đánh từng chữ"; "đang cần gấp mà cứ bắt 10 phút". Con số "99,5% dừng lại" của MoMo đo sự tạm dừng, không đo số vụ lừa bị ngăn (suy luận). Tính từ số liệu SIMO, chỉ khoảng một phần ba cảnh báo dẫn đến dừng hoặc hủy, tức phần lớn cảnh báo vẫn bị bỏ qua.
 
 **Phí và các khoản trừ tự động gây cảm giác bị "gài".** Ví Trả Sau thu phí 33.000đ/tháng kể từ tháng có giao dịch thứ 6 ([MoMo – Biểu phí](https://www.momo.vn/vi-tra-sau/bieu-phi)). Review phàn nàn Ví Trả Sau bị chọn làm nguồn tiền mặc định. Năm 2024 có khách "bỗng dưng nợ" 1.194.000đ vì Ví Trả Sau trả tiền App Store ([CafeF, 01/04/2024](https://cafef.vn/vu-khach-hang-bong-dung-no-gan-12-trieu-dong-do-vi-tra-sau-momo-chinh-thuc-len-tieng-188240401151950347.chn)). Tuy vậy, tháng 9/2025 MoMo đã thêm tính năng đánh dấu giao dịch định kỳ, nhắc trước hạn và quản lý dịch vụ liên kết ([MoMo, 03/10/2025](https://www.momo.vn/tin-tuc/thong-bao/ban-tin-gop-y-va-tinh-nang-moi-thang-9-2025-8004)).
 
@@ -175,7 +174,7 @@ Về nền tảng tài chính cá nhân, chỉ khoảng **33%** người trưở
 
 Ngưỡng đã đi qua chuỗi 100 triệu → 200 triệu → 500 triệu → 1 tỷ ([Vietstock](https://vietstock.vn/2026/07/ho-kinh-doanh-lo-kho-ke-khai-thue-bo-tai-chinh-noi-gi-758-1472527.htm)). Lần đổi từ 500 triệu lên 1 tỷ diễn ra chưa đầy hai tháng sau Nghị định 68, nếu tính theo ngày ký 29/04/2026 mà các nguồn thứ cấp ghi.
 
-**Nỗi đau tuân thủ có số liệu mạnh nhất cả báo cáo.** Khảo sát VCCI trên hơn 1.000 hộ ở 34 tỉnh thành (2–4/2026) cho thấy ([Thương hiệu & Công luận, 10/05/2026](https://thuonghieucongluan.com.vn/de-ho-kinh-doanh-khong-con-co-minh-truoc-rao-can-phap-ly-a317628.html)):
+**Vấn đề tuân thủ có số liệu mạnh nhất cả báo cáo.** Khảo sát VCCI trên hơn 1.000 hộ ở 34 tỉnh thành (2–4/2026) cho thấy ([Thương hiệu & Công luận, 10/05/2026](https://thuonghieucongluan.com.vn/de-ho-kinh-doanh-khong-con-co-minh-truoc-rao-can-phap-ly-a317628.html)):
 - **73,3%** coi quy định pháp luật và thủ tục là trở ngại lớn nhất.
 - Khoảng 40% thường lo lắng khi tuân thủ quy định mới.
 - Chỉ **13,9%** hiểu rõ quy định áp dụng từ đầu 2026; hơn 33% chỉ "nghe nói".
@@ -238,7 +237,7 @@ Bài học trực tiếp cho Sổ Sẵn: sổ sách phải là sản phẩm ph�
 - VCB Digibot xử lý 88,5% yêu cầu ([VNBA](https://vnba.org.vn/vi/tri-tue-nhan-tao--ai--day-nhanh-chuyen-doi-so-nganh-ngan-hang-15271.htm)). TPBank có VoicePay và ChatPay ([VnEconomy](https://vneconomy.vn/tpbank-ngan-hang-so-voi-ai-va-tu-dong-hoa.htm)).
 - Zalo có chatbot "Chống lừa đảo" từ 12/2025 ([Nhân Dân](https://nhandan.vn/video-chatbot-ai-chong-lua-dao-tro-ly-an-ninh-mang-cua-ban-post938903.html)).
 - Viettel đã huấn luyện mô hình tiếng Việt 120 tỷ tham số ([Thị trường Tài chính Tiền tệ](https://thitruongtaichinhtiente.vn/viettel-huan-luyen-thanh-cong-mo-hinh-ai-chu-quyen-tieng-viet-120-ty-tham-so-dat-hieu-suat-thuoc-nhom-dan-dau-cung-quy-mo-83392.html)). CMC công bố mô hình pháp luật 32B và bộ đánh giá VLegal-Bench ([VTC](https://vtcnews.vn/doanh-nghiep-ai-viet-nam-tren-ban-do-cong-nghe-the-gioi-ar1042792.html)).
-- Ghi chép **không tìm thấy** ví điện tử nào ra mắt công cụ AI kê khai thuế cho hộ kinh doanh trong năm 2026.
+- Chưa có ví điện tử nào công bố công cụ AI kê khai thuế cho hộ kinh doanh trong năm 2026.
 
 **Khung pháp lý định hình thiết kế.**
 - **Thông tư 53/2026/TT-NHNN** ký ngày 30/09/2026, hiệu lực từ 15/11/2026, áp dụng cả cho tổ chức trung gian thanh toán ([Thị trường Tài chính Tiền tệ](https://thitruongtaichinhtiente.vn/nhnn-ban-hanh-quy-dinh-ve-an-toan-quan-ly-rui-ro-khi-ung-dung-ai-trong-nganh-ngan-hang-86130.html)). Thông tư coi **AI tự động thanh toán vượt 10 triệu đồng/lần hoặc 20 triệu đồng/ngày** (với cá nhân) và **AI tự quyết tín dụng từ 50 triệu đồng** là rủi ro cao. Theo đưa tin, có thể từ bản dự thảo, chatbot phải báo ngay đầu phiên rằng người dùng đang tương tác với AI, và khách hàng phải có công cụ tạm dừng hoặc hủy quyền để AI tự thanh toán ([Vietnam+](https://www.vietnamplus.vn/ngan-hang-nha-nuoc-dat-nhieu-yeu-cau-khi-ngan-hang-ung-dung-ai-post1140808.vnp)).
@@ -251,33 +250,33 @@ Bài học trực tiếp cho Sổ Sẵn: sổ sách phải là sản phẩm ph�
 | Trợ lý chat đa năng không tạo thói quen (Zhixiaobao, Ah Bao) | Trợ lý phải gắn vào một tác vụ có thời hạn và hậu quả thật |
 | AI cho người bán sống được khi gắn vào thiết bị và dòng tiền (Paytm, Grab, BukuWarung) | Lấy dữ liệu QR và loa làm điểm tựa, không làm app sổ sách đứng riêng |
 | Can thiệp đúng lúc hiệu quả hơn mô hình chính xác hơn (Anh, Úc, Singapore) | Ý tưởng chống lừa đảo nên sáng tạo ở *hành động*, không ở bộ phân loại |
-| Thanh toán bằng agent ngoài Trung Quốc còn là trình diễn (OpenAI, Visa) | Không đặt cược vào "agent tự mua hàng" |
+| Thanh toán bằng agent ngoài Trung Quốc còn là trình diễn (OpenAI, Visa) | Không đầu tư vào "agent tự mua hàng" |
 | Thay người bằng AI chỉ vì chi phí thì phải đảo chiều (Klarna, CBA, CFPB) | Luôn có đường thoát sang người thật; đo cả tỷ lệ giải quyết lẫn tỷ lệ liên hệ lại |
 | Thông tư 53/2026 áp dụng cho trung gian thanh toán | Tuân thủ ngay từ thiết kế (báo đang dùng AI, có người duyệt, có nhật ký, có nút dừng) là điểm cộng |
 
-## 5. Hai mươi mốt ý tưởng thô, sáu ý tưởng qua được bốn bộ lọc
+## 5. Danh sách ý tưởng và tiêu chí chọn
 
-Các ý tưởng dưới đây được sinh ra rộng có chủ đích: người dùng cá nhân, người bán, đội vận hành; trước, trong và sau giao dịch; cả các hướng ít hiển nhiên như lừa đảo nhắm vào người bán, phục hồi sau lừa đảo, giao dịch treo, thuế hộ kinh doanh. Mỗi ý tưởng phải qua bốn bộ lọc:
-1. **Có bằng chứng nỗi đau độc lập**, không tự giả định MoMo gặp vấn đề.
+Tiêu chí để một ý tưởng được giữ lại:
+1. **Có bằng chứng độc lập về vấn đề**, không tự giả định MoMo gặp vấn đề.
 2. **Không trùng** với thứ MoMo đã chạy.
 3. **AI là lõi:** làm được việc mà quy tắc cứng không làm được.
 4. **Làm thật được trong 9 ngày**, với dữ liệu công khai hoặc giả lập, để giám khảo tự thử trực tuyến.
 
 | # | Ý tưởng | Chủ đề | Kết luận | Lý do then chốt |
 |---|---|---|---|---|
-| 1 | **Sổ Sẵn:** trợ lý thuế và sổ sách bằng giọng nói cho hộ kinh doanh, kèm bàn làm việc chính sách | Trợ lý AI + Chống lừa đảo | Phân tích sâu | Nỗi đau mạnh, có hạn chót, ít trùng, dữ liệu công khai đủ dùng |
+| 1 | **Sổ Sẵn:** trợ lý thuế và sổ sách bằng giọng nói cho hộ kinh doanh, kèm màn hình duyệt chính sách | Trợ lý AI + Chống lừa đảo | Phân tích sâu | Vấn đề mạnh, có hạn chót, ít trùng, dữ liệu công khai đủ dùng |
 | 2 | **30 Phút Vàng:** trợ lý phản ứng sau lừa đảo cho nạn nhân và chuyên viên | An ninh mạng + Chống lừa đảo | Phân tích sâu | Khoảng trống MoMo tự thừa nhận |
 | 3 | **Tiền Về Thật:** xác minh tiền về cho người bán (ảnh chuyển khoản giả, đối soát) | Chống lừa đảo | Phân tích sâu | Có án thật; tín hiệu "Merchant Trust" |
-| 4 | **Gỡ Rối Giao Dịch:** agent xử lý giao dịch treo và trả trùng | Trợ lý thanh toán | Phân tích sâu | Nỗi đau lớn nhất trong review |
+| 4 | **Gỡ Rối Giao Dịch:** agent xử lý giao dịch treo và trả trùng | Trợ lý thanh toán | Phân tích sâu | Vấn đề lớn nhất trong review |
 | 5 | **Phòng Tập Chống Lừa:** nhận diện kịch bản và mô phỏng lừa đảo cho Gen Z | Chống lừa đảo | Phân tích sâu | Dữ liệu MoMo cho thấy nạn nhân trẻ |
-| 6 | **Rõ Phí:** minh bạch chi phí và quyền trừ tiền tự động | Trợ lý thanh toán | Phân tích sâu (đối chứng) | Nỗi đau có thật nhưng MoMo đã xử lý một phần |
-| 7 | AI hỏi mục đích trước khi chuyển tiền | Chống lừa đảo | Loại | MoMo đã có "điểm dừng có chủ đích" và câu hỏi xác nhận; cần tín hiệu rủi ro nội bộ; người dùng đã than ma sát |
+| 6 | **Rõ Phí:** minh bạch chi phí và quyền trừ tiền tự động | Trợ lý thanh toán | Phân tích sâu (đối chứng) | Vấn đề có thật nhưng MoMo đã xử lý một phần |
+| 7 | AI hỏi mục đích trước khi chuyển tiền | Chống lừa đảo | Loại | MoMo đã có "điểm dừng có chủ đích" và câu hỏi xác nhận; cần tín hiệu rủi ro nội bộ; người dùng đã phàn nàn vì rườm rà |
 | 8 | Phát hiện "đang gọi + chia sẻ màn hình" khi mở ví | Chống lừa đảo | Loại | Cần quyền hệ điều hành và app native, giám khảo khó tự thử; Google đã thí điểm |
 | 9 | Người thân giám hộ tài chính cho người cao tuổi | Chống lừa đảo | Hạ xuống thành tính năng | 70% nạn nhân MoMo dưới 25 tuổi; bằng chứng về người già chỉ là các ca lẻ |
 | 10 | Phát hiện tài khoản mule phía nhận | An ninh mạng | Loại | Cần đồ thị nội bộ; MoMo đã có Graph Network |
 | 11 | Trợ lý giải thích Điểm Tin Cậy | Trợ lý tài chính | Loại | Không có mô hình thật để giải thích; MoMo không công bố ngưỡng |
 | 12 | Tín dụng dòng tiền chống vay chồng cho tiểu thương | Trợ lý tài chính | Để vào lộ trình | Quyết định thuộc ngân hàng đối tác; Thông tư 53 coi khoản từ 50 triệu là rủi ro cao; cần sự đồng ý theo luật dữ liệu |
-| 13 | Ví ủy quyền cho AI trả hóa đơn trong hạn mức | Trợ lý thanh toán | Loại khỏi nhóm đầu | Là hạ tầng, khác biệt thấp; thanh toán bằng agent đang thoái trào ngoài Trung Quốc |
+| 13 | Ví ủy quyền cho AI trả hóa đơn trong hạn mức | Trợ lý thanh toán | Loại khỏi nhóm đầu | Là hạ tầng, khác biệt thấp; thanh toán bằng agent đang chững lại ngoài Trung Quốc |
 | 14 | Trợ lý mua sắm so giá nhiều sàn | Trợ lý mua sắm | Loại | Phụ thuộc scraping và điều khoản sàn; không dùng tài sản của MoMo |
 | 15 | Trợ lý cho chuyên viên xử lý 29.000 cờ gian lận mỗi ngày | An ninh mạng | Gộp vào #2 | Không biết công cụ nội bộ; ít người hưởng lợi trực tiếp |
 | 16 | Loa thông báo biết trò chuyện cho tiểu thương lớn tuổi | Trợ lý bán hàng | Gộp vào #1 làm giao diện | Cần phần cứng; demo bằng web |
@@ -293,16 +292,16 @@ Các ý tưởng dưới đây được sinh ra rộng có chủ đích: ngườ
 
 | Hạng mục | Phân tích |
 |---|---|
-| Tên ý tưởng | **Sổ Sẵn:** "Hộ kinh doanh nói, AI ghi sổ và canh thuế", kèm bàn làm việc chính sách cho đội vận hành merchant |
+| Tên ý tưởng | **Sổ Sẵn:** "Hộ kinh doanh nói, AI ghi sổ và canh thuế", kèm màn hình duyệt chính sách cho đội vận hành merchant |
 | Đối tượng mục tiêu | Chính: chủ hộ nhỏ (tạp hóa, quán ăn, sạp chợ, người bán online) có nhận QR, nhất là nhóm quanh ngưỡng 1 tỷ và người lớn tuổi ít gõ phím. Phụ: con cháu làm kế toán theo Thông tư 152/2025; đội chăm sóc merchant và đội chính sách của ví |
 | Pain point | Không biết mình phải khai gì, khi nào, đã vượt ngưỡng chưa; sợ sai bị phạt; sổ sách và chi phí phải nhập tay; doanh thu nằm rải ở nhiều tài khoản, ví và tiền mặt |
-| Nguyên nhân và bản chất | (suy luận) Thiếu "lớp hiểu" chứ không thiếu công cụ nộp, vì 99,6% đã khai điện tử. Ba nguyên nhân gốc: (1) dữ liệu phân mảnh, vì QR chủ yếu là chuyển khoản P2P trong khi ngưỡng tính gộp mọi kênh; (2) luật đổi nhanh, ngưỡng 500 triệu thành 1 tỷ sau chưa đầy hai tháng; (3) văn bản viết cho người hiểu kế toán, còn người bán quen nói hơn quen gõ |
-| Bằng chứng nỗi đau tồn tại | VCCI 2026: 13,9% hiểu rõ, 73,3% coi thủ tục là trở ngại lớn nhất, 71,2%, 67,6%, 66,8%, khoảng 40% lo lắng; 6,1 triệu hộ; 80% hộ dưới ngưỡng vẫn phải thông báo doanh thu năm; làn sóng né chuyển khoản 6/2025; khảo sát của MoMo trên 203 hộ cho thấy phần lớn còn quản lý thủ công ([MoMo, 11/07/2025](https://www.momo.vn/tin-tuc/thong-cao-bao-chi/bo-giai-phap-tai-chinh-tu-momo-giup-tieu-thuong-7891)) |
+| Nguyên nhân và bản chất | (suy luận) Thiếu "khâu hiểu quy định" chứ không thiếu công cụ nộp, vì 99,6% đã khai điện tử. Ba nguyên nhân gốc: (1) dữ liệu phân mảnh, vì QR chủ yếu là chuyển khoản P2P trong khi ngưỡng tính gộp mọi kênh; (2) luật đổi nhanh, ngưỡng 500 triệu thành 1 tỷ sau chưa đầy hai tháng; (3) văn bản viết cho người hiểu kế toán, còn người bán quen nói hơn quen gõ |
+| Bằng chứng vấn đề có thật | VCCI 2026: 13,9% hiểu rõ, 73,3% coi thủ tục là trở ngại lớn nhất, 71,2%, 67,6%, 66,8%, khoảng 40% lo lắng; 6,1 triệu hộ; 80% hộ dưới ngưỡng vẫn phải thông báo doanh thu năm; làn sóng né chuyển khoản 6/2025; khảo sát của MoMo trên 203 hộ cho thấy phần lớn còn quản lý thủ công ([MoMo, 11/07/2025](https://www.momo.vn/tin-tuc/thong-cao-bao-chi/bo-giai-phap-tai-chinh-tu-momo-giup-tieu-thuong-7891)) |
 | Giải pháp hiện có và hạn chế | Chatbot AI và eTax của ngành thuế, Sổ tay Cục Thuế: chung chung, không biết số liệu của từng hộ. MISA, Sapo, KiotViet, gói miễn phí của ngân hàng: phải nhập liệu, mỗi bên chỉ thấy tài khoản của mình. MoMo đã có khai thuế, hóa đơn điện tử, chữ ký số (7/2025) và kế hoạch tờ khai điền sẵn (3/2026): giải quyết khâu *nộp*, chưa giải quyết khâu *hiểu* |
-| Giải pháp AI đề xuất | AI lo phần *hiểu* (giọng nói, ảnh hóa đơn, sao kê lộn xộn, văn bản luật); một máy luật tất định *tính* nghĩa vụ; con người *duyệt*. Bốn năng lực: (1) ghi sổ không cần gõ; (2) tách tiền bán hàng khỏi tiền gia đình và tiền chuyển giữa các tài khoản của chính mình; (3) canh ngưỡng 1 tỷ và dự báo ngày vượt; (4) hỏi đáp có trích điều khoản và nhận biết văn bản sửa đổi. Thêm bàn làm việc chính sách: AI đọc văn bản mới, đề xuất thay đổi quy tắc, nhân viên duyệt, hệ thống tính lại và báo cho đúng những hộ bị ảnh hưởng |
+| Giải pháp AI đề xuất | AI lo phần *hiểu* (giọng nói, ảnh hóa đơn, sao kê lộn xộn, văn bản luật); một bộ quy tắc cố định *tính* nghĩa vụ; con người *duyệt*. Bốn năng lực: (1) ghi sổ không cần gõ; (2) tách tiền bán hàng khỏi tiền gia đình và tiền chuyển giữa các tài khoản của chính mình; (3) canh ngưỡng 1 tỷ và dự báo ngày vượt; (4) hỏi đáp có trích điều khoản và nhận biết văn bản sửa đổi. Thêm màn hình duyệt chính sách: AI đọc văn bản mới, đề xuất thay đổi quy tắc, nhân viên duyệt, hệ thống tính lại và báo cho đúng những hộ bị ảnh hưởng |
 | Cách hoạt động và kịch bản sử dụng | (1) Cô Ba bán tạp hóa bấm mic: "Sáng nay bán hai thùng mì ba trăm nghìn tiền mặt, chú Tư nợ một trăm rưỡi". AI tạo hai bút toán và hỏi lại: "Chú Tư là khách ghi nợ quen, đúng không cô?". (2) Giao dịch QR và sao kê ngân hàng tự vào sổ; khoản "Me chuyen 2tr" được đánh dấu để cô xác nhận có phải tiền bán hàng không. (3) Màn hình Ngưỡng: lũy kế 812 triệu, dự báo vượt 1 tỷ cuối tháng 12 vì mùa Tết; nếu vượt, cô phải khai theo quý và đăng ký hóa đơn điện tử trong 30 ngày (trích Nghị định 141/2026). (4) Cô kể "có người xưng cán bộ thuế bảo chuyển phí hồ sơ"; AI cảnh báo mạo danh. (5) Cuối tháng 1, AI lập bản nháp số liệu thông báo doanh thu năm; con gái cô duyệt từ xa |
-| Công nghệ, mô hình AI và dữ liệu | (kiến thức kỹ thuật chung) LLM đa phương thức qua API để trích xuất và soạn câu trả lời; mô hình nhỏ hơn để phân loại; nhận dạng giọng nói tiếng Việt; truy xuất lai BM25 + embedding đa ngôn ngữ trên kho luật chia theo Điều/Khoản, có ngày hiệu lực và quan hệ sửa đổi; máy luật viết bằng mã, mỗi quy tắc kèm trích dẫn; dự báo chuỗi thời gian có mùa vụ. Dữ liệu: văn bản luật công khai (Nghị định 68/2026, 141/2026, 70/2025; Thông tư 18/2026, 152/2025, 25/2025; Nghị quyết 198/2025), giao dịch giả lập, 100 ghi chú chuyển khoản do đội tự viết tay, 60 câu thoại tự thu |
-| Điểm sáng tạo và khác biệt | (1) Nghĩa vụ được cá nhân hóa theo dòng tiền thật từ nhiều nguồn, điều mỗi ngân hàng không tự làm được. (2) Truy xuất nhận biết sửa đổi: RAG thông thường sẽ trả lời "500 triệu" vì Nghị định 68 ghi vậy. (3) Bàn làm việc chính sách thể hiện đúng hai vế của đề: AI đổi cách đội fintech làm việc, qua đó đổi cách người bán quản lý tài chính. (4) Giọng nói hướng tới loa mà MoMo đã phát cho khoảng 200.000 điểm bán |
+| Công nghệ, mô hình AI và dữ liệu | (kiến thức kỹ thuật chung) LLM đa phương thức qua API để trích xuất và soạn câu trả lời; mô hình nhỏ hơn để phân loại; nhận dạng giọng nói tiếng Việt; truy xuất lai BM25 + embedding đa ngôn ngữ trên kho luật chia theo Điều/Khoản, có ngày hiệu lực và quan hệ sửa đổi; bộ quy tắc viết bằng mã, mỗi quy tắc kèm trích dẫn; dự báo chuỗi thời gian có mùa vụ. Dữ liệu: văn bản luật công khai (Nghị định 68/2026, 141/2026, 70/2025; Thông tư 18/2026, 152/2025, 25/2025; Nghị quyết 198/2025), giao dịch giả lập, 100 ghi chú chuyển khoản do đội tự viết tay, 60 câu thoại tự thu |
+| Điểm sáng tạo và khác biệt | (1) Nghĩa vụ được cá nhân hóa theo dòng tiền thật từ nhiều nguồn, điều mỗi ngân hàng không tự làm được. (2) Truy xuất nhận biết sửa đổi: RAG thông thường sẽ trả lời "500 triệu" vì Nghị định 68 ghi vậy. (3) Màn hình duyệt chính sách thể hiện đúng hai vế của đề: AI đổi cách đội fintech làm việc, qua đó đổi cách người bán quản lý tài chính. (4) Giọng nói hướng tới loa mà MoMo đã phát cho khoảng 200.000 điểm bán |
 | Giá trị cho người dùng và MoMo | Hộ kinh doanh: hiểu nghĩa vụ, không phải nhập tay, tránh bị phạt, tránh bị lừa bởi kẻ mạo danh cán bộ thuế. MoMo (suy luận): công cụ giữ chân merchant khi ngân hàng cho không phần mềm; bớt câu hỏi thuế dồn về chăm sóc khách hàng; có hồ sơ dòng tiền, khi chủ hộ đồng ý, để sau này mở tín dụng dòng tiền qua đối tác; thêm lý do để doanh thu tiếp tục chảy qua QR MoMo |
 | Tính khả thi khi xây MVP | Cao. Dữ liệu cần thiết đều công khai hoặc giả lập hợp lệ; không cần API của MoMo; giám khảo thử được trên trình duyệt. Phần khó nhất là bộ đánh giá luật và hạ tầng ổn định, không phải mô hình |
 | Khó khăn, rủi ro, hạn chế | AI trích sai luật khiến hộ bị phạt; luật tiếp tục đổi; trách nhiệm pháp lý; dữ liệu giao dịch là dữ liệu nhạy cảm; hộ có thể né QR vì sợ lộ doanh thu; ngân hàng miễn phí; nhận dạng giọng nói ở chợ ồn; chi phí suy luận so với doanh thu thấp từ mỗi hộ; MoMo có thể đang làm nội bộ |
@@ -313,8 +312,8 @@ Các ý tưởng dưới đây được sinh ra rộng có chủ đích: ngườ
 | Câu hỏi hoài nghi | Điểm yếu thật | Cách khắc phục trong MVP |
 |---|---|---|
 | "Đây chỉ là RAG về thuế. Ngành thuế đã có chatbot AI." | Đúng, nếu sản phẩm chỉ có hỏi đáp | Hỏi đáp chỉ là một trong bốn năng lực; trọng tâm là nghĩa vụ cá nhân hóa từ sổ thật. Trình bày so sánh RAG thông thường với hệ thống nhận biết sửa đổi trên bộ câu hỏi chuẩn |
-| "MoMo đã có khai thuế, hóa đơn điện tử và đang làm tờ khai điền sẵn." | Có trùng ở khâu nộp | Không làm khâu nộp. Xuất bản nháp số liệu sang công cụ hiện có. Định vị là lớp hiểu nằm trước khâu nộp và ghi rõ trên slide |
-| "LLM bịa điều luật, hộ bị phạt thì ai chịu?" | Rủi ro nghiêm trọng nhất | LLM không bao giờ tự tính con số; mọi con số đến từ máy luật có trích dẫn. Kiểm tra câu trích có thật trong văn bản; tự từ chối khi không đủ căn cứ; có nút "hỏi kế toán viên"; ghi rõ hộ tự khai và tự chịu trách nhiệm theo Nghị định 68/2026 |
+| "MoMo đã có khai thuế, hóa đơn điện tử và đang làm tờ khai điền sẵn." | Có trùng ở khâu nộp | Không làm khâu nộp. Xuất bản nháp số liệu sang công cụ hiện có. Định vị là khâu hiểu quy định, nằm trước khâu nộp và ghi rõ trên slide |
+| "LLM bịa điều luật, hộ bị phạt thì ai chịu?" | Rủi ro nghiêm trọng nhất | LLM không bao giờ tự tính con số; mọi con số đến từ bộ quy tắc có trích dẫn. Kiểm tra câu trích có thật trong văn bản; tự từ chối khi không đủ căn cứ; có nút "hỏi kế toán viên"; ghi rõ hộ tự khai và tự chịu trách nhiệm theo Nghị định 68/2026 |
 | "Ngân hàng cho không đến 2028, merchant dùng của bạn làm gì?" | Không thắng về giá | Thắng ở chỗ không phải nhập liệu, dùng giọng nói, gộp nhiều nguồn. Với MoMo đây là công cụ giữ chân, không phải nguồn thu |
 | "Hộ sợ lộ doanh thu sẽ né QR." | Rủi ro hành vi có thật (6/2025) | Không tự gửi dữ liệu cho cơ quan thuế; dữ liệu thuộc chủ hộ; ghi cả tiền mặt; thông điệp "tuân thủ dễ, không bị phạt"; từ chối tư vấn né thuế |
 | "Gửi dữ liệu giao dịch nhạy cảm ra LLM nước ngoài?" | Vấn đề thật khi triển khai thật | MVP chỉ dùng dữ liệu giả lập. Lộ trình: che thông tin cá nhân trước khi gọi mô hình, xin đồng ý riêng theo Nghị định 356/2025, cân nhắc LLM nội địa |
@@ -367,7 +366,7 @@ Các ý tưởng dưới đây được sinh ra rộng có chủ đích: ngườ
 | Giải pháp AI | Agent có công cụ: đọc trạng thái giao dịch, phát hiện trả trùng cùng người nhận, tự mở yêu cầu hoàn tiền kèm bằng chứng, chủ động báo tiến độ, cho người bán xem "khách đã trả, tiền về lúc X". Nhân viên vận hành duyệt các khoản hoàn vượt ngưỡng |
 | Sáng tạo | Trung bình: agent chăm sóc khách hàng là xu hướng chung (Toss, Klarna) |
 | Khả thi | Trung bình: toàn bộ hệ thống nội bộ của MoMo phải giả lập, và giám khảo biết rõ cái gì là giả |
-| Rủi ro | Gốc rễ nằm ở khâu đối soát backend, nên AI dễ bị xem là miếng băng dán; trùng với chatbot hiện có; dễ trông ngây thơ trước chính đội đã xây hệ thống |
+| Rủi ro | Gốc rễ nằm ở khâu đối soát backend, nên AI dễ bị xem là giải pháp chữa cháy; trùng với chatbot hiện có; dễ trông ngây thơ trước chính đội đã xây hệ thống |
 | Phù hợp | Trợ lý thanh toán; tác động lớn nhưng khó thuyết phục về sáng tạo |
 
 ### 6.5 Phòng Tập Chống Lừa: nhận diện kịch bản và mô phỏng cho Gen Z
@@ -395,7 +394,7 @@ Các ý tưởng dưới đây được sinh ra rộng có chủ đích: ngườ
 
 ## 7. Sổ Sẵn dẫn bảng điểm vì cân bằng được tác động và khả thi
 
-Thể lệ không công bố trọng số, nên bảng dưới cho các tiêu chí trọng số bằng nhau. Điểm từ 1 đến 5 là đánh giá của người viết (suy luận), dựa trên bằng chứng ở các mục trên. Các cột được ghép với tiêu chí chính thức như sau:
+Trọng số bằng nhau vì thể lệ không công bố trọng số. Điểm 1–5 là đánh giá chủ quan (suy luận). Cách ghép cột với tiêu chí chính thức:
 - "Sáng tạo" và "Ít trùng với MoMo" ứng với tiêu chí Sáng tạo.
 - "Hoàn thiện được trong 9 ngày" ứng với Chất lượng & mức độ hoàn thiện.
 - "Tác động và quy mô" và "Giá trị cho MoMo" ứng với Tiềm năng tác động.
@@ -414,10 +413,10 @@ Thứ hạng khá vững khi đổi trọng số. Nhân đôi cột Sáng tạo:
 
 Các đánh đổi thể hiện rõ:
 - Ý tưởng sáng tạo nhất (30 Phút Vàng) có tác động khó chứng minh nhất.
-- Nỗi đau lớn nhất theo review (giao dịch treo) lại ít cần AI nhất và phụ thuộc nhiều nhất vào hệ thống nội bộ MoMo.
-- Ý tưởng dễ làm nhất (Phòng Tập) nằm ở sân đông người nhất.
+- Vấn đề lớn nhất theo review (giao dịch treo) lại ít cần AI nhất và phụ thuộc nhiều nhất vào hệ thống nội bộ MoMo.
+- Ý tưởng dễ làm nhất (Phòng Tập) nằm ở hướng có nhiều đội cạnh tranh nhất.
 
-Sổ Sẵn không thắng ở chủ đề, vì công cụ thuế đã có nhiều. Nó thắng ở cách tiếp cận: cá nhân hóa theo sổ thật, nhận biết sửa đổi luật, và có bàn làm việc người–AI. Điểm yếu cảm tính là thuế kém "hấp dẫn" hơn chống lừa đảo trong mắt một hội đồng vừa nhận giải AI cho niềm tin số. Cách bù là kể câu chuyện bằng số liệu và bằng hai vế của đề thi.
+Sổ Sẵn không thắng ở chủ đề, vì công cụ thuế đã có nhiều. Nó thắng ở cách tiếp cận: cá nhân hóa theo sổ thật, nhận biết sửa đổi luật, và có quy trình phối hợp người–AI. Điểm yếu cảm tính là thuế kém "hấp dẫn" hơn chống lừa đảo trong mắt một hội đồng vừa nhận giải AI cho niềm tin số. Cách bù là kể câu chuyện bằng số liệu và bằng hai vế của đề thi.
 
 **Quy tắc quyết định trước khi bắt tay làm.** Ngay hôm nay, hãy mở app Đối tác/Merchant MoMo và kiểm tra tờ khai điền sẵn hay trợ lý thuế đã ra mắt chưa. Nếu MoMo đã có một trợ lý thuế dùng AI theo đúng hướng này, chuyển sang 30 Phút Vàng. Nếu đội mạnh về bảo mật và an toàn LLM hơn là xử lý dữ liệu, 30 Phút Vàng cũng là lựa chọn hợp lý. Tiền Về Thật chỉ nên làm như một mô-đun của Sổ Sẵn.
 
@@ -429,11 +428,11 @@ Sổ Sẵn không thắng ở chủ đề, vì công cụ thuế đã có nhiề
 |---|---|---|---|
 | P0 | Sổ đa nguồn | Nhập giao dịch QR giả lập và file CSV sao kê; phân loại tiền bán hàng, tiền cá nhân, tiền hoàn, tiền chuyển giữa tài khoản của mình; loại trùng | Dữ liệu MoMo và ngân hàng đều giả lập, khai báo trong README theo Điều 12.4 |
 | P0 | Ghi sổ bằng giọng nói và chữ | Nhận dạng giọng nói → trích xuất cấu trúc (món, số lượng, tiền, người nợ) → thẻ xác nhận | — |
-| P0 | Canh ngưỡng và nghĩa vụ | Máy luật có phiên bản và ngày hiệu lực; dự báo ngày vượt 1 tỷ; liệt kê nghĩa vụ phát sinh | Chưa tính số thuế phải nộp cho đến khi đối chiếu được tỷ lệ % theo ngành trong văn bản gốc |
+| P0 | Canh ngưỡng và nghĩa vụ | Bộ quy tắc có phiên bản và ngày hiệu lực; dự báo ngày vượt 1 tỷ; liệt kê nghĩa vụ phát sinh | Chưa tính số thuế phải nộp cho đến khi đối chiếu được tỷ lệ % theo ngành trong văn bản gốc |
 | P0 | Hỏi đáp có trích dẫn | Truy xuất nhận biết sửa đổi, kiểm tra trích dẫn, tự từ chối khi không đủ căn cứ | — |
 | P0 | Bản nháp số liệu khai | Tổng hợp số liệu cho thông báo doanh thu năm và khai quý | Không nộp lên cổng thuế; không trình bày như mẫu chính thức |
 | P0 | Sandbox cho từng giám khảo | Nút "Tạo cửa hàng mẫu mới" và "Đặt lại" | — |
-| P1 | Bàn làm việc chính sách | AI đọc Nghị định 141 → đề xuất thay đổi quy tắc có trích dẫn → nhân viên duyệt → tính lại cho 1.000 hộ giả lập → soạn thông báo cho các hộ bị ảnh hưởng | Quần thể hộ là giả lập |
+| P1 | Màn hình duyệt chính sách | AI đọc Nghị định 141 → đề xuất thay đổi quy tắc có trích dẫn → nhân viên duyệt → tính lại cho 1.000 hộ giả lập → soạn thông báo cho các hộ bị ảnh hưởng | Quần thể hộ là giả lập |
 | P1 | Người thân duyệt từ xa | Link chỉ đọc, có ô bình luận | — |
 | P1 | Cảnh báo mạo danh cán bộ thuế | Phân loại tin nhắn hoặc lời kể về cuộc gọi, kèm hướng dẫn | — |
 | P1 | Ảnh hóa đơn đầu vào | Trích xuất thành dòng chi phí | — |
@@ -443,18 +442,18 @@ Không làm: nộp tờ khai thật, chấm điểm tín dụng, dùng logo MoMo
 
 ### Kiến trúc và bộ đánh giá
 
-Kiến trúc chia ba lớp: *AI hiểu, máy luật tính, con người duyệt*. Đây là cách trả lời trực tiếp câu "Dẫn dắt AI, đừng để AI dẫn dắt mình" của CTO.
+Kiến trúc chia ba lớp: *AI hiểu, bộ quy tắc tính, con người duyệt*. Đây là cách trả lời trực tiếp câu "Dẫn dắt AI, đừng để AI dẫn dắt mình" của CTO.
 
 | Lớp | Vai trò | Công nghệ (kiến thức kỹ thuật chung) |
 |---|---|---|
 | AI hiểu | Đọc giọng nói, ảnh, sao kê, văn bản luật | LLM gọi hàm (function calling) |
-| Máy luật | Ngưỡng, nghĩa vụ, hạn nộp; mỗi quy tắc có trích dẫn và ngày hiệu lực | Quy tắc viết bằng mã |
-| Lớp hội thoại | Lấy con số từ máy luật qua công cụ; không bao giờ để LLM tự tính | LLM kèm công cụ |
+| Bộ quy tắc | Ngưỡng, nghĩa vụ, hạn nộp; mỗi quy tắc có trích dẫn và ngày hiệu lực | Quy tắc viết bằng mã |
+| Lớp hội thoại | Lấy con số từ bộ quy tắc qua công cụ; không bao giờ để LLM tự tính | LLM kèm công cụ |
 | Truy xuất | Kho luật chia theo Điều/Khoản, gắn quan hệ "được sửa đổi bởi" để Nghị định 141 ghi đè Nghị định 68 | BM25 + embedding đa ngôn ngữ |
 | Vòng phản hồi | Khoản nào AI không chắc thì hỏi lại chủ hộ; câu trả lời thành nhãn mới | Học chủ động |
 
 Các phương án công nghệ cụ thể (kiến thức kỹ thuật chung):
-- Một LLM đa phương thức thương mại hỗ trợ tiếng Việt. Ghi chép cho thấy Grab dùng mô hình của OpenAI và Anthropic cho MAI ([Grab](https://www.grab.com/sg/press/others/grab-deploys-agentic-ai-to-empower-merchants-and-driver-partners/)), TPBank dùng nhiều LLM.
+- Một LLM đa phương thức thương mại hỗ trợ tiếng Việt. Grab dùng mô hình của OpenAI và Anthropic cho MAI ([Grab](https://www.grab.com/sg/press/others/grab-deploys-agentic-ai-to-empower-merchants-and-driver-partners/)), TPBank dùng nhiều LLM.
 - Nhận dạng giọng nói tiếng Việt từ nhà cung cấp đám mây hoặc mô hình mã nguồn mở.
 - Cơ sở dữ liệu quan hệ có hỗ trợ vector.
 - Máy chủ luôn bật, không dùng gói miễn phí tự ngủ.
@@ -471,12 +470,12 @@ Công bố số thật, kể cả khi chưa đẹp.
 
 | Ngày | AI và backend (A) | Giao diện và giọng nói (B) | Dữ liệu, luật, pitch (C) | Mốc kiểm tra |
 |---|---|---|---|---|
-| T3 24/11 | Chốt schema; khung máy luật | Khung web app chạy tốt trên điện thoại, đăng nhập, sandbox | Kiểm tra MoMo đã có trợ lý thuế chưa; đăng ký đội nếu chưa; gom văn bản luật | Chốt phạm vi |
+| T3 24/11 | Chốt schema; khung bộ quy tắc | Khung web app chạy tốt trên điện thoại, đăng nhập, sandbox | Kiểm tra MoMo đã có trợ lý thuế chưa; đăng ký đội nếu chưa; gom văn bản luật | Chốt phạm vi |
 | T4 25/11 | Bộ sinh dữ liệu giả lập; bộ phân loại v1 | Màn hình Sổ và màn hình Ngưỡng | Chia luật theo Điều/Khoản; bảng sửa đổi từ Nghị định 141 sang 68 | Sổ hiển thị từ dữ liệu giả |
 | T5 26/11 | Truy xuất và kiểm tra trích dẫn | Thu âm và nhận dạng giọng nói | Viết 120 câu hỏi chuẩn | Hỏi đáp có trích dẫn chạy trọn luồng |
 | T6 27/11 | Trích xuất bút toán từ giọng nói | Thẻ xác nhận, sửa lỗi | **Gửi email câu hỏi cho BTC trước 23:59**; thu 60 câu thoại | Nói một câu ra đúng bút toán |
 | T7 28/11 | Dự báo ngưỡng; bản nháp số liệu khai | Bảng tổng quan | Đánh giá vòng 1 | Luồng demo chính chạy được |
-| CN 29/11 | Bàn làm việc chính sách | Chia sẻ cho người thân; cảnh báo mạo danh | Đánh giá vòng 2, gom lỗi | Xong P1 hoặc cắt bỏ |
+| CN 29/11 | Màn hình duyệt chính sách | Chia sẻ cho người thân; cảnh báo mạo danh | Đánh giá vòng 2, gom lỗi | Xong P1 hoặc cắt bỏ |
 | T2 30/11 | Đưa lên production, LLM dự phòng, giới hạn tần suất, ghi log | Tối ưu cho điện thoại, HTTPS cho mic | Cho người ngoài dùng thử (chỉ dùng thử, không tham gia xây, theo Điều 31.2) | **Đóng băng tính năng lúc 23:59** |
 | T3 01/12 | Sửa lỗi, kiểm tra tải | Quay video | Slide v1, hướng dẫn 1 trang | Có video thô |
 | T4 02/12 | README: tài sản có sẵn, mã nguồn mở, công cụ AI (kể cả trợ lý viết code), nguồn dữ liệu; xóa khóa API khỏi mã nguồn | Dựng video hoàn chỉnh | Slide bản cuối | Chạy thử toàn bộ quy trình nộp |
@@ -497,7 +496,7 @@ Bốn câu hỏi nên gửi BTC trước 23:59 ngày 27/11. Câu trả lời s�
 | 0:50–1:20 | Sổ tự gom QR và sao kê; khoản "Me chuyen 2tr" được hỏi lại | AI tách tiền gia đình khỏi doanh thu, con người quyết |
 | 1:20–1:50 | Màn hình Ngưỡng: 812 triệu, dự báo vượt cuối tháng 12; nghĩa vụ phát sinh, trích Nghị định 141 | Cá nhân hóa theo dòng tiền thật |
 | 1:50–2:15 | Hỏi về chi phí được trừ; dán tin nhắn "cán bộ thuế" đòi chuyển tiền | Trả lời có trích dẫn; cảnh báo mạo danh |
-| 2:15–2:40 | Bàn làm việc chính sách: nạp Nghị định 141 → AI đề xuất thay đổi → nhân viên duyệt → 312 hộ được báo | AI đổi cách đội fintech làm việc, qua đó đổi cách người bán tuân thủ |
+| 2:15–2:40 | Màn hình duyệt chính sách: nạp Nghị định 141 → AI đề xuất thay đổi → nhân viên duyệt → 312 hộ được báo | AI đổi cách đội fintech làm việc, qua đó đổi cách người bán tuân thủ |
 | 2:40–3:00 | Số đo của bộ đánh giá; 6,1 triệu hộ, 500.000 merchant | Tác động và đường đi vào hệ sinh thái MoMo |
 
 ### Cốt truyện slide 10 trang
@@ -510,14 +509,14 @@ Bốn câu hỏi nên gửi BTC trước 23:59 ngày 27/11. Câu trả lời s�
 | 4 | Giải pháp hiện có và khoảng trống: 99,6% đã khai điện tử nhưng khai được không có nghĩa là hiểu |
 | 5 | Sổ Sẵn: ba hành động và một bàn làm việc |
 | 6 | Bốn ảnh chụp luồng demo |
-| 7 | Kiến trúc: AI hiểu, máy luật tính, con người duyệt; các lớp chặn sai sót |
+| 7 | Kiến trúc: AI hiểu, bộ quy tắc tính, con người duyệt; các lớp chặn sai sót |
 | 8 | Đánh giá: số đo thật, có so sánh với RAG thông thường |
 | 9 | Tác động và độ khớp với MoMo: giữ chân merchant, giảm chi phí phục vụ, đường tới tín dụng có sự đồng ý; tuân thủ |
 | 10 | Rủi ro và cách khắc phục, lộ trình (loa, app Merchant), đội |
 
 ### Tài liệu nộp và tuân thủ ngay từ thiết kế
 
-**Hướng dẫn một trang** cho giám khảo đi theo đúng bốn bước của video: chọn hoặc tạo cửa hàng mẫu, nói một câu bán hàng, xem màn hình Ngưỡng, hỏi một câu về thuế. Thêm bước năm: mở bàn làm việc chính sách bằng vai trò nhân viên.
+**Hướng dẫn một trang** cho giám khảo đi theo đúng bốn bước của video: chọn hoặc tạo cửa hàng mẫu, nói một câu bán hàng, xem màn hình Ngưỡng, hỏi một câu về thuế. Thêm bước năm: mở màn hình duyệt chính sách bằng vai trò nhân viên.
 
 Sản phẩm cần có sẵn các lớp tuân thủ sau:
 - Báo ngay đầu phiên rằng người dùng đang trò chuyện với AI, theo Luật AI và tinh thần Thông tư 53.
@@ -600,7 +599,7 @@ Bảng này liệt kê mọi văn bản pháp lý được dùng trong báo cáo
 - Chia nhóm sổ theo nghĩa vụ thuế thực tế, mỗi nhóm 1–4 sổ.
 - Chủ hộ tự ghi hoặc giao bố mẹ, vợ chồng, con, anh chị em ruột làm kế toán.
 - Lưu trữ sổ tối thiểu 5 năm.
-- Mức độ: Qua bài tóm tắt. Có link toàn văn trên Công báo; nội dung trong ghi chép lấy cùng các bài tóm tắt.
+- Mức độ: Qua bài tóm tắt. Có link toàn văn trên Công báo; nội dung đối chiếu cùng các bài tóm tắt.
 - Nguồn: [Công báo (PDF)](https://congbaocdn.chinhphu.vn/180507251028987904/2026/1/28/final-152signed-17695739990221209521402.pdf); [Sapo](https://www.sapo.vn/blog/thong-tu-152-2025-tt-btc); [Thư viện pháp luật](https://thuvienphapluat.vn/phap-luat-doanh-nghiep/cong-viec-phap-ly/che-do-ke-toan-ho-kinh-doanh-527.html)
 
 **Nghị định 117/2025/NĐ-CP** (Quản lý thuế với kinh doanh trên nền tảng thương mại điện tử, nền tảng số). Ban hành: 09/06/2025; Hiệu lực: 01/07/2025.
