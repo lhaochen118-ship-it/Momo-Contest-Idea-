@@ -557,3 +557,117 @@ Phong tỏa tài khoản, kết nối SIMO và phản hồi của ngân hàng đ
 Bài học quan trọng nhất từ nghiên cứu này là tìm lợi thế ở đúng chỗ. AI của MoMo mạnh nhất ở nơi dữ liệu nằm *bên trong* MoMo: rủi ro giao dịch, tín dụng, cá nhân hóa. Đội sinh viên không có dữ liệu đó, nên chỉ thắng được ở nơi tri thức *công khai nhưng lộn xộn*: văn bản luật đổi liên tục, thủ đoạn lừa đảo đã công bố, lời nói của người bán ở chợ. Ở đó, dữ liệu giả lập cộng nguồn công khai vẫn đủ để AI làm việc thật. Cũng từ đó, câu đề "AI thay đổi cách đội ngũ fintech làm việc, và qua đó…" trở thành một tiêu chí ngầm. Đội nào cho giám khảo thấy một vòng người–AI cụ thể, AI đề xuất và con người duyệt, rồi tác động lan tới hàng triệu người dùng, sẽ khác biệt với phần đông chỉ làm vế sau của đề.
 
 Điều quyết định trước một hội đồng toàn kỹ sư và nhà nghiên cứu AI không phải là mô hình mới nhất, mà là sự trung thực khi đánh giá. Một bài thi chỉ ra được lỗi "500 triệu hay 1 tỷ" mà RAG thông thường mắc phải, đo được lỗi của chính mình và để LLM tránh xa phần tính toán sẽ thuyết phục hơn một bản demo mượt mà không có số đo. Thời điểm cũng đang đứng về phía Sổ Sẵn: chung kết rơi đúng vào tháng cuối trước chu kỳ khai năm đầu tiên sau khi bỏ thuế khoán. Đó là thứ "dùng được ngay hôm nay" theo nghĩa đen của đề.
+
+## Phụ lục: Văn bản pháp lý và nguồn
+
+Bảng này liệt kê mọi văn bản pháp lý được dùng trong báo cáo, kèm ngày, nội dung được dùng, mức độ kiểm chứng và link nguồn. Mức độ: **Đã đọc trang nguồn** (cổng chính phủ, công báo, thư viện luật có nội dung văn bản); **Qua bài tóm tắt** (báo hoặc hãng luật, chưa đọc toàn văn); **Chưa chắc chắn** (chỉ thấy qua đoạn trích tìm kiếm, hoặc nguồn mâu thuẫn).
+
+### Thuế và hộ kinh doanh
+
+**Nghị quyết 198/2025/QH15** (Quốc hội). Ban hành: 17/05/2025; Áp dụng phần được dùng: 01/01/2026.
+
+- Điều 10 khoản 6: bỏ thuế khoán với hộ, cá nhân kinh doanh từ 01/01/2026.
+- Điều 10 khoản 7: chấm dứt lệ phí môn bài từ 01/01/2026.
+- Mức độ: Chưa chắc chắn. Chỉ thấy qua đoạn trích tìm kiếm của hai trang tóm tắt; chưa đọc văn bản.
+- Nguồn: [LuatVietnam](https://luatvietnam.vn/thue-phi-le-phi/10-chinh-sach-moi-ve-thue-phi-theo-nghi-quyet-198-2025-qh15-565-102213-article.html); [Thư viện nhà đất](https://thuviennhadat.vn/phap-luat/nghi-quyet-198-bo-thue-khoan-bo-le-phi-mon-bai-tu-01-01-2026-680780.html)
+
+**Nghị định 68/2026/NĐ-CP và Thông tư 18/2026/TT-BTC** (Chính sách thuế và quản lý thuế với hộ, cá nhân kinh doanh). Ban hành: 05/03/2026; Hiệu lực: từ ngày ban hành.
+
+- Hộ tự khai, tự tính, tự nộp thuế.
+- Phải thông báo mọi tài khoản ngân hàng và ví điện tử dùng cho kinh doanh (Khoản 4 Điều 13); hộ đang hoạt động nộp mẫu 01/BK-STK chậm nhất 20/4/2026.
+- Hộ dưới ngưỡng thông báo doanh thu thực tế mỗi năm một lần qua mẫu 01/TKN-CNKD, hạn 31/01 năm sau. Hộ trên ngưỡng khai theo quý (mẫu 01/CNKD).
+- Doanh thu tính ngưỡng gồm cả doanh thu đã được tổ chức khác khấu trừ hoặc nộp thay.
+- Mức độ: Qua bài tóm tắt. Đã đọc bài của Báo Chính phủ và Thời báo Tài chính Việt Nam; chưa đọc nguyên văn nghị định.
+- Nguồn: [Báo Chính phủ · 07/03/2026](https://baochinhphu.vn/tu-2026-ho-kinh-doanh-phai-bao-co-quan-thue-cac-tai-khoan-nhan-tien-102260307185152112.htm); [Thời báo Tài chính VN · 10/03/2026](https://thoibaotaichinhvietnam.vn/nghi-dinh-682026nd-cp-buoc-chuyen-quan-trong-trong-quan-ly-thue-ho-kinh-doanh-193417.html)
+
+**Nghị định 141/2026/NĐ-CP** (Sửa Nghị định 68/2026 và Nghị định 320/2025). Ngày ký: 29/04/2026, chỉ có ở nguồn thứ cấp; Đăng toàn văn: 25/05/2026 trên chinhphu.vn; Áp dụng: kỳ tính thuế 2026, từ 01/01/2026.
+
+- Thay “500 triệu đồng” bằng “01 tỷ đồng” ở các Điều 3, 4, 8, 9, 10, 11, 12, 17, 18 của Nghị định 68/2026.
+- Doanh thu trên 1 tỷ đồng/năm phải dùng hóa đơn điện tử có mã hoặc khởi tạo từ máy tính tiền; từ 1 tỷ trở xuống được tự chọn.
+- Doanh thu lũy kế vượt 1 tỷ trong năm: đăng ký hóa đơn điện tử trong 30 ngày sau kỳ tính thuế vượt ngưỡng.
+- Bộ Tài chính (7/2026): khoảng 80% hộ có doanh thu từ 1 tỷ trở xuống nên không phải nộp GTGT, TNCN; 99,6% hộ khai thuế điện tử trong nửa đầu 2026.
+- Mức độ: Đã đọc trang nguồn. Nội dung đối chiếu trên trang toàn văn của chinhphu.vn. Ngày ký chưa xác nhận vì trang chính phủ không ghi.
+- Nguồn: [chinhphu.vn · 25/05/2026](https://xaydungchinhsach.chinhphu.vn/toan-van-nghi-dinh-so-141-2026-nd-cp-nang-nguong-doanh-thu-khong-phai-chiu-thue-len-1-ty-dong-119260504154326455.htm); [VnEconomy](https://vneconomy.vn/ho-kinh-doanh-co-doanh-thu-duoi-1-ty-dong-chua-bat-buoc-dung-hoa-don-dien-tu.htm); [LuatVietnam](https://luatvietnam.vn/tin-van-ban-moi/chinh-thuc-nang-nguong-doanh-thu-len-1-ty-dong-doi-voi-ho-kinh-doanh-tu-2026-186-108719-article.html); [Bộ Tài chính qua Vietstock · 28/07/2026](https://vietstock.vn/2026/07/ho-kinh-doanh-lo-kho-ke-khai-thue-bo-tai-chinh-noi-gi-758-1472527.htm)
+
+**Nghị định 70/2025/NĐ-CP** (Sửa Nghị định 123/2020 về hóa đơn, chứng từ). Ban hành: 20/03/2025; Hiệu lực: 01/06/2025.
+
+- Hộ có doanh thu từ 1 tỷ đồng/năm trở lên trong một số ngành (ăn uống, khách sạn, bán lẻ, vận tải hành khách, làm đẹp, vui chơi…) phải dùng hóa đơn điện tử khởi tạo từ máy tính tiền kết nối cơ quan thuế.
+- Mức độ: Qua bài tóm tắt. Qua bài tóm tắt của LuatVietnam và PwC Việt Nam; chưa đọc toàn văn.
+- Nguồn: [LuatVietnam](https://luatvietnam.vn/tin-van-ban-moi/5-truong-hop-bat-buoc-su-dung-hoa-don-khoi-tao-tu-may-tinh-tien-tu-01-6-2025-186-101567-article.html); [PwC Việt Nam · 16/04/2025](https://www.pwc.com/vn/vn/publications/news-brief/250416-changes-to-invoicing-regulations.html)
+
+**Thông tư 152/2025/TT-BTC** (Chế độ kế toán hộ, cá nhân kinh doanh; thay Thông tư 88/2021). Ban hành: 31/12/2025; Hiệu lực: 01/01/2026.
+
+- Chia nhóm sổ theo nghĩa vụ thuế thực tế, mỗi nhóm 1–4 sổ.
+- Chủ hộ tự ghi hoặc giao bố mẹ, vợ chồng, con, anh chị em ruột làm kế toán.
+- Lưu trữ sổ tối thiểu 5 năm.
+- Mức độ: Qua bài tóm tắt. Có link toàn văn trên Công báo; nội dung trong ghi chép lấy cùng các bài tóm tắt.
+- Nguồn: [Công báo (PDF)](https://congbaocdn.chinhphu.vn/180507251028987904/2026/1/28/final-152signed-17695739990221209521402.pdf); [Sapo](https://www.sapo.vn/blog/thong-tu-152-2025-tt-btc); [Thư viện pháp luật](https://thuvienphapluat.vn/phap-luat-doanh-nghiep/cong-viec-phap-ly/che-do-ke-toan-ho-kinh-doanh-527.html)
+
+**Nghị định 117/2025/NĐ-CP** (Quản lý thuế với kinh doanh trên nền tảng thương mại điện tử, nền tảng số). Ban hành: 09/06/2025; Hiệu lực: 01/07/2025.
+
+- Sàn có chức năng thanh toán khấu trừ, kê khai, nộp thay thuế cho người bán: hàng hóa 1% GTGT + 0,5% TNCN trên doanh thu gộp.
+- Tháng 8–9/2025: 63 sàn (55 trong nước, 8 nước ngoài) đã khai, nộp thay 1,07 nghìn tỷ đồng.
+- Mức độ: Qua bài tóm tắt. Qua bài tóm tắt của LuatVietnam và EY; chưa đọc toàn văn.
+- Nguồn: [LuatVietnam](https://luatvietnam.vn/tin-van-ban-moi/da-co-nghi-dinh-117-2025-nd-cp-ve-quan-ly-thue-doi-voi-kinh-doanh-tren-nen-tang-so-cua-ho-ca-nhan-186-102478-article.html); [EY · 6/2025](https://www.ey.com/vi_vn/technical/tax/tax-and-law-updates/tin-nhanh-tu-van-thue-nhan-su-thang-6-nam-2025-nghi-dinh-117-ve-quan-ly-thue-doi-voi-hoat-dong-kinh-doanh-tren-nen-tang-thuong-mai-dien-tu-nen-tang-so)
+
+### Ví điện tử và thanh toán
+
+**Thông tư 25/2025/TT-NHNN** (Sửa Thông tư 17/2024 về tài khoản thanh toán). Ban hành: 31/08/2025; Quy định tên tài khoản: từ 01/03/2026.
+
+- Tài khoản dùng cho kinh doanh phải đúng tên hộ trên Giấy chứng nhận đăng ký hộ kinh doanh; cấm bí danh, biệt danh.
+- MoMo cho biết Mã QR Doanh nghiệp là tài khoản nhận tiền đứng tên hộ theo quy định này (20/3/2026).
+- Mức độ: Qua bài tóm tắt. Qua bài tóm tắt của báo và LuatVietnam; chưa đọc toàn văn.
+- Nguồn: [Người Quan sát · 01/03/2026](https://nguoiquansat.vn/tu-1-3-2026-ho-kinh-doanh-phai-mo-tai-khoan-dung-ten-dang-ky-276481.html); [LuatVietnam](https://luatvietnam.vn/linh-vuc-khac/diem-moi-ve-thong-tu-25-2025-tt-nhnn-ve-tai-khoan-thanh-toan-883-103982-article.html); [MoMo · 20/03/2026](https://www.momo.vn/tin-tuc/thong-cao-bao-chi/momo-cap-nhat-moi-nhat-ve-giai-phap-nhan-tien-8587)
+
+**Quyết định 2345/QĐ-NHNN** (Ngân hàng Nhà nước). Hiệu lực: 01/07/2024.
+
+- Chuyển tiền trực tuyến hoặc nạp ví trên 10 triệu đồng/lần, hoặc tổng trên 20 triệu đồng/ngày, phải xác thực sinh trắc học đối chiếu chip căn cước.
+- Mức độ: Qua bài tóm tắt. Qua bài của báo và thư viện luật; chưa đọc toàn văn quyết định.
+- Nguồn: [Báo Pháp luật](https://baophapluat.vn/chuyen-tien-bang-xac-thuc-sinh-trac-hoc-tu-172024-giam-thieu-cac-vu-lua-dao-chuyen-tien-qua-tai-khoan-post515757.html); [Thư viện pháp luật](https://thuvienphapluat.vn/chinh-sach-phap-luat-moi/vn/ho-tro-phap-luat/chinh-sach-moi/57646/chuyen-khoan-nap-tien-vi-dien-tu-tren-10-trieu-phai-xac-thuc-sinh-trac-hoc-tu-01-07-2024); [LuatVietnam](https://luatvietnam.vn/tin-van-ban-moi/tu-2024-chuyen-khoan-tren-10-trieu-dong-phai-xac-thuc-sinh-trac-hoc-186-96491-article.html)
+
+**Thông tư 40/2024/TT-NHNN, sửa bởi Thông tư 41/2025/TT-NHNN** (Dịch vụ trung gian thanh toán, ví điện tử). Thông tư 41 hiệu lực: 05/11/2025.
+
+- Ví điện tử không được cấp tín dụng hay trả lãi trên số dư (Khoản 5 Điều 25 Thông tư 40/2024).
+- Hạn mức 100 triệu đồng/tháng; 300 triệu đồng/tháng cho dịch vụ thiết yếu (điện, nước, viễn thông, học phí, viện phí, bảo hiểm, khoản vay đến hạn).
+- Từ 01/01/2026, mở ví phải xác thực sinh trắc học.
+- Mức độ: Qua bài tóm tắt. Có link văn bản Thông tư 40 trên Thư viện pháp luật; nội dung Thông tư 41 qua VNBA và Tuổi Trẻ, chưa đọc toàn văn.
+- Nguồn: [Thư viện pháp luật (TT 40)](https://thuvienphapluat.vn/van-ban/Tien-te-Ngan-hang/Thong-tu-40-2024-TT-NHNN-huong-dan-hoat-dong-cung-ung-dich-vu-trung-gian-thanh-toan-615328.aspx); [VNBA · 10/11/2025](https://vnba.org.vn/vi/quy-dinh-moi-ve-vi-dien-tu--tang-an-toan--mo-rong-han-muc--siet-dinh-danh-19550.htm); [Tuổi Trẻ · 10/11/2025](https://tuoitre.vn/plo/tu-1-1-2026-muon-mo-vi-dien-tu-phai-xac-minh-thong-tin-sinh-trac-hoc-post880385.html); [VietnamFinance · 24/08/2026](https://vietnamfinance.vn/thu-phi-nguoi-dung-bai-toan-kho-cua-vi-dien-tu-d149537.html)
+
+**Thông tư 53/2026/TT-NHNN** (An toàn, quản lý rủi ro khi ứng dụng AI trong ngành ngân hàng). Ký: 30/09/2026; Hiệu lực: 15/11/2026.
+
+- Phạm vi gồm cả tổ chức cung ứng dịch vụ trung gian thanh toán, tức các ví như MoMo.
+- AI tự động thực hiện thanh toán là rủi ro cao khi vượt 10 triệu đồng/lần hoặc 20 triệu đồng/ngày với cá nhân (50 triệu/lần, 100 triệu/ngày với tổ chức).
+- AI tự động quyết định tín dụng từ 50 triệu đồng trở lên là rủi ro cao.
+- Theo đưa tin, khách hàng phải có công cụ tạm dừng hoặc hủy quyền để AI tự động thanh toán; chi tiết này có thể lấy từ bản dự thảo.
+- Mức độ: Qua bài tóm tắt. Chưa đọc toàn văn; nội dung qua Thị trường Tài chính Tiền tệ và VietnamPlus. Yêu cầu về giải thích và chuyển tiếp cần đối chiếu.
+- Nguồn: [Thị trường Tài chính Tiền tệ](https://thitruongtaichinhtiente.vn/nhnn-ban-hanh-quy-dinh-ve-an-toan-quan-ly-rui-ro-khi-ung-dung-ai-trong-nganh-ngan-hang-86130.html); [VietnamPlus](https://www.vietnamplus.vn/ngan-hang-nha-nuoc-dat-nhieu-yeu-cau-khi-ngan-hang-ung-dung-ai-post1140808.vnp)
+
+**Nghị định 340/2025/NĐ-CP** (Xử phạt vi phạm hành chính, trong đó có mua bán, thuê, cho thuê tài khoản). Hiệu lực: 09/02/2026.
+
+- Phạt 100–150 triệu đồng khi mua, bán, thuê, cho thuê, mượn từ 1 đến dưới 10 tài khoản; 150–200 triệu đồng từ 10 tài khoản trở lên.
+- Có thể bị xử lý hình sự theo Điều 291 Bộ luật Hình sự (đến 7 năm tù).
+- Một bài CafeF khác ghi mức “đến 250 triệu”, có thể là mức với tổ chức; chưa đối chiếu.
+- Mức độ: Chưa chắc chắn. Qua báo; các bài ghi mức phạt tối đa khác nhau và chưa đọc toàn văn nghị định.
+- Nguồn: [CafeF · 01/10/2026](https://cafef.vn/mua-ban-tai-khoan-ngan-hang-coi-chung-ruoc-hoa-vao-than-188261001071944878.chn); [CafeF · 05/08/2026](https://cafef.vn/phat-den-250-trieu-dong-neu-nguoi-dung-tai-khoan-ngan-hang-co-hanh-vi-sau-188260805112154922.chn)
+
+### Dữ liệu cá nhân và AI
+
+**Luật Bảo vệ dữ liệu cá nhân 91/2025/QH15** (Quốc hội). Thông qua: 26/06/2025; Hiệu lực: 01/01/2026.
+
+- Điều 27: thông tin tài chính, ngân hàng, tín dụng phải áp dụng quy định về dữ liệu nhạy cảm.
+- Không được dùng thông tin tín dụng để chấm điểm, xếp hạng, đánh giá tín nhiệm khi chưa có sự đồng ý của chủ thể dữ liệu.
+- Mức độ: Qua bài tóm tắt. Có link văn bản trên Thư viện pháp luật; nội dung lấy cùng bài của Bộ Công an và hãng luật.
+- Nguồn: [Bộ Công an](https://bocongan.gov.vn/chinh-sach-phap-luat/bai-viet/bao-ve-du-lieu-ca-nhan-trong-mot-so-hoat-dong-1754989261); [Thư viện pháp luật](https://thuvienphapluat.vn/van-ban/Bo-may-hanh-chinh/Luat-Bao-ve-du-lieu-ca-nhan-2025-so-91-2025-QH15-625628.aspx); [Yen Nam Law](https://yennamlawfirm.vn/luat-bao-ve-du-lieu-ca-nhan-91-2025-qh15/)
+
+**Nghị định 356/2025/NĐ-CP** (Hướng dẫn Luật Bảo vệ dữ liệu cá nhân; thay Nghị định 13/2023). Ban hành: 31/12/2025; Hiệu lực: 01/01/2026.
+
+- Danh mục dữ liệu nhạy cảm được đưa tin là gồm thông tin tài khoản số, dữ liệu sinh trắc học và lịch sử giao dịch tài chính.
+- Mức độ: Qua bài tóm tắt. Qua bài tóm tắt của EY, LuatVietnam và PwC; chưa đọc toàn văn.
+- Nguồn: [EY](https://www.ey.com/vi_vn/technical/tax/tax-and-law-updates/nghi-dinh-so-356-2025-nd-cp-quy-dinh-chi-tiet-mot-so-dieu-va-bien-phap-thi-hanh-luat-bao-ve-du-lieu-ca-nhan); [LuatVietnam](https://luatvietnam.vn/legal-updates/new-features-of-decree-356-2025-compared-with-decree-13-2023-on-personal-data-protection-892-106712-article.html); [PwC · 28/01/2026](https://www.pwc.com/vn/vn/publications/legal-news-brief/20260128-new-rules-personal-data-protection.html)
+
+**Luật Trí tuệ nhân tạo (134/2025/QH15)** (Quốc hội). Thông qua: 10/12/2025; Hiệu lực: 01/03/2026; Chuyển tiếp: 18 tháng cho tài chính, y tế, giáo dục, đến khoảng 01/09/2027.
+
+- Phân loại theo mức rủi ro; hệ thống rủi ro cao phải quản lý rủi ro, có hồ sơ kỹ thuật, nhật ký vận hành và đánh giá sự phù hợp trước khi triển khai.
+- Chatbot phải cho người dùng biết họ đang tương tác với AI; âm thanh, hình ảnh, video do AI tạo phải gắn nhãn máy đọc được.
+- Mức độ: Chưa chắc chắn. Qua hãng luật và thư viện quốc tế. Số hiệu luật chỉ thấy ở nguồn thứ cấp; các nguồn mâu thuẫn về số tầng rủi ro (3 hay 4) và danh mục hệ thống rủi ro cao.
+- Nguồn: [Allen & Gledhill](https://www.allenandgledhill.com/vn/publication/articles/32667/s-new-law-on-artificial-intelligence-risk-based-regulatory-framework-in-force-1-march-2026); [Library of Congress · 03/04/2026](https://www.loc.gov/item/global-legal-monitor/2026-04-03/vietnam-ai-law-takes-effect); [Duane Morris · 03/03/2026](https://blogs.duanemorris.com/vietnam/2026/03/03/vietnam-the-first-law-on-artificial-intelligence-what-you-must-know/); [Vietnam Briefing](https://www.vietnam-briefing.com/news/vietnams-ai-law-regulatory-milestone-business-implications.html/); [CASRAI (số hiệu luật)](https://casrai.org/guides/vietnam-ai-law-134-2025)

@@ -1,0 +1,604 @@
+<title>Ý tưởng AI cho MoMo Techday</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&display=swap">
+<style>
+/* Layout: a contest dossier — dark ledger-green cover band, a deadline rail, the brief at a glance,
+   the scorecard, the policy register, then the full report with a sticky table of contents. */
+:root {
+  --paper: #F3F6F5;
+  --surface: #FFFFFF;
+  --surface-2: #E9EFED;
+  --ink: #13201D;
+  --ink-2: #4B5C57;
+  --rule: #D3DDD9;
+  --accent: #0B6B5A;
+  --accent-ink: #FFFFFF;
+  --accent-soft: #DDEFEA;
+  --cover: #0C3A32;
+  --cover-ink: #ECF6F2;
+  --cover-muted: #A8CDC2;
+  --cover-hi: #86E3C8;
+  --warn: #9A5300;
+  --warn-soft: #FBEBD6;
+  --crit: #A4262C;
+  --crit-soft: #F9E1E2;
+  --ok: #1D6B32;
+  --ok-soft: #DEF0E2;
+  --s1: #E3F1EC; --s2: #B9DED2; --s3: #7FC2AE; --s4: #2F8F77; --s5: #0B5E4F;
+  --s-ink-lo: #13201D; --s-ink-hi: #FFFFFF;
+  --font-display: "Bricolage Grotesque", "Be Vietnam Pro", system-ui, sans-serif;
+  --font-body: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --step--1: 0.8125rem;
+  --step-0: 1rem;
+  --step-1: 1.1875rem;
+  --step-2: 1.5rem;
+  --step-3: 2rem;
+  --step-4: clamp(2rem, 1.3rem + 3vw, 3.25rem);
+  --radius: 10px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0D1413; --surface: #141D1B; --surface-2: #1B2724; --ink: #E3ECE9; --ink-2: #9FB2AC; --rule: #2A3835;
+    --accent: #5CCFB3; --accent-ink: #0D1413; --accent-soft: #173029;
+    --cover: #0F2723; --cover-ink: #E8F3EF; --cover-muted: #93B9AE; --cover-hi: #7FDDC2;
+    --warn: #F0B062; --warn-soft: #33261A; --crit: #F08A8E; --crit-soft: #3A1D20; --ok: #7FCF92; --ok-soft: #1A2E20;
+    --s1: #1A2925; --s2: #1F4840; --s3: #24705F; --s4: #3BA287; --s5: #73D8BE;
+    --s-ink-lo: #E3ECE9; --s-ink-hi: #0D1413;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0D1413; --surface: #141D1B; --surface-2: #1B2724; --ink: #E3ECE9; --ink-2: #9FB2AC; --rule: #2A3835;
+  --accent: #5CCFB3; --accent-ink: #0D1413; --accent-soft: #173029;
+  --cover: #0F2723; --cover-ink: #E8F3EF; --cover-muted: #93B9AE; --cover-hi: #7FDDC2;
+  --warn: #F0B062; --warn-soft: #33261A; --crit: #F08A8E; --crit-soft: #3A1D20; --ok: #7FCF92; --ok-soft: #1A2E20;
+  --s1: #1A2925; --s2: #1F4840; --s3: #24705F; --s4: #3BA287; --s5: #73D8BE;
+  --s-ink-lo: #E3ECE9; --s-ink-hi: #0D1413;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+body { background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: var(--step-0); line-height: 1.65; }
+a { color: var(--accent); text-underline-offset: 2px; text-decoration-thickness: 1px; }
+a:focus-visible, button:focus-visible, [tabindex]:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+h1, h2, h3, h4 { text-wrap: balance; line-height: 1.2; margin: 0; }
+p { margin: 0; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.eyebrow { font-size: var(--step--1); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); }
+.section { padding-block: 56px 8px; }
+.section-head { display: grid; gap: 8px; margin-bottom: 24px; max-width: 72ch; }
+.section-head h2 { font-family: var(--font-display); font-weight: 800; font-size: var(--step-3); letter-spacing: -0.01em; }
+.section-head p { color: var(--ink-2); }
+
+/* Source chips: every figure in the summary carries one */
+.src { display: inline-flex; align-items: center; gap: 4px; font-size: 0.75rem; font-weight: 500; line-height: 1.3; padding: 1px 7px; border-radius: 999px; border: 1px solid var(--rule); color: var(--ink-2); text-decoration: none; white-space: nowrap; vertical-align: 1px; background: var(--surface); }
+.src:hover { border-color: var(--accent); color: var(--accent); }
+.cover-facts .src, .stop .src { justify-self: start; width: fit-content; }
+.src::before { content: "↗"; font-size: 0.7rem; }
+.cover .src { background: transparent; border-color: rgba(255,255,255,0.25); color: var(--cover-muted); }
+.cover .src:hover { border-color: var(--cover-hi); color: var(--cover-hi); }
+
+/* Cover */
+.cover { background: var(--cover); color: var(--cover-ink); margin-top: calc(-1 * env(safe-area-inset-top, 0px)); padding-top: calc(env(safe-area-inset-top, 0px) + 48px); padding-bottom: 44px; }
+.cover .eyebrow { color: var(--cover-muted); }
+.cover h1 { font-family: var(--font-display); font-weight: 800; font-size: var(--step-4); letter-spacing: -0.02em; max-width: 26ch; margin-top: 14px; }
+.nowrap { white-space: nowrap; }
+.cover h1 em { font-style: normal; color: var(--cover-hi); }
+.cover .lede { margin-top: 18px; max-width: 64ch; font-size: var(--step-1); color: var(--cover-ink); opacity: 0.92; }
+.verdicts { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; margin-top: 28px; }
+.verdict { border: 1px solid rgba(255,255,255,0.18); border-radius: var(--radius); padding: 16px 18px; display: grid; gap: 6px; min-width: 0; }
+.verdict.main { background: rgba(255,255,255,0.06); border-color: var(--cover-hi); }
+.verdict .k { font-size: var(--step--1); letter-spacing: 0.06em; text-transform: uppercase; color: var(--cover-muted); font-weight: 600; }
+.verdict .v { font-family: var(--font-display); font-size: var(--step-2); font-weight: 800; display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.verdict .v small { font-family: var(--font-body); font-size: var(--step--1); font-weight: 500; color: var(--cover-muted); }
+.verdict p { color: var(--cover-muted); font-size: 0.9375rem; }
+.cover-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px 28px; margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.14); }
+.cover-facts div { display: grid; gap: 4px; align-content: start; min-width: 0; }
+.cover-facts b { font-family: var(--font-display); font-size: var(--step-3); font-weight: 800; color: var(--cover-hi); font-variant-numeric: tabular-nums; line-height: 1.1; }
+.cover-facts span { font-size: 0.9375rem; color: var(--cover-ink); }
+
+/* Deadline rail */
+.rail { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; border: 1px solid var(--rule); border-radius: var(--radius); background: var(--surface); overflow: hidden; }
+.stop { padding: 16px; display: grid; gap: 6px; align-content: start; border-right: 1px solid var(--rule); position: relative; min-width: 0; }
+.stop:last-child { border-right: 0; }
+.stop .date { font-family: var(--font-display); font-weight: 800; font-size: var(--step-2); font-variant-numeric: tabular-nums; }
+.stop .what { font-size: 0.9375rem; }
+.stop .left { font-size: var(--step--1); font-weight: 600; display: inline-flex; width: fit-content; padding: 2px 8px; border-radius: 999px; background: var(--surface-2); color: var(--ink-2); }
+.stop.soon .left { background: var(--warn-soft); color: var(--warn); }
+.stop.past { opacity: 0.6; }
+.stop.ext { background: var(--surface-2); }
+.stop .tag { font-size: 0.6875rem; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 700; color: var(--ink-2); }
+.stop .srcs { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 2px; }
+@media (max-width: 860px) {
+  .rail { grid-template-columns: 1fr; }
+  .stop { border-right: 0; border-bottom: 1px solid var(--rule); grid-template-columns: 7.5rem minmax(0, 1fr); column-gap: 12px; }
+  .stop:last-child { border-bottom: 0; }
+  .stop .date { grid-row: span 4; font-size: var(--step-1); }
+}
+
+/* Brief */
+.brief { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.panel { background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius); padding: 20px; display: grid; gap: 12px; align-content: start; min-width: 0; }
+.panel h3 { font-family: var(--font-display); font-weight: 700; font-size: var(--step-1); display: flex; justify-content: space-between; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+.panel h3 small { font-family: var(--font-body); font-size: var(--step--1); font-weight: 500; color: var(--ink-2); }
+.panel ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.panel li { display: grid; gap: 2px; }
+.panel li b { font-weight: 600; }
+.panel li span { color: var(--ink-2); font-size: 0.9375rem; }
+.constraints { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.chip { font-size: 0.875rem; padding: 4px 10px; border-radius: 999px; background: var(--accent-soft); color: var(--ink); }
+.panel-note { font-size: 0.875rem; color: var(--ink-2); }
+.panel-foot { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-size: var(--step--1); color: var(--ink-2); }
+@media (max-width: 900px) { .brief { grid-template-columns: 1fr; } }
+
+/* Scorecard */
+.score-tools { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+.seg { display: inline-flex; border: 1px solid var(--rule); border-radius: 999px; padding: 3px; background: var(--surface); flex-wrap: wrap; }
+.seg button { font: inherit; font-size: 0.875rem; border: 0; background: transparent; color: var(--ink-2); padding: 6px 14px; border-radius: 999px; cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); font-weight: 600; }
+.legend { display: flex; align-items: center; gap: 8px; font-size: var(--step--1); color: var(--ink-2); }
+.legend i { width: 18px; height: 12px; border-radius: 3px; display: inline-block; }
+.scroll-x { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+table.score { width: 100%; border-collapse: separate; border-spacing: 2px; min-width: 820px; font-variant-numeric: tabular-nums; table-layout: fixed; }
+table.score th:first-child { width: 27%; }
+table.score th:last-child { width: 20%; }
+table.score th { font-size: var(--step--1); font-weight: 600; color: var(--ink-2); text-align: center; padding: 6px 4px; vertical-align: bottom; line-height: 1.3; }
+table.score th.idea-h { text-align: left; }
+table.score th .x2 { display: inline-block; margin-left: 4px; font-size: 0.6875rem; padding: 0 6px; border-radius: 999px; background: var(--warn-soft); color: var(--warn); font-weight: 700; }
+table.score td { padding: 0; }
+td.idea { padding: 10px 12px 10px 0 !important; min-width: 220px; }
+td.idea b { display: block; font-weight: 700; }
+td.idea span { display: block; font-size: 0.8125rem; color: var(--ink-2); line-height: 1.4; }
+td.idea .topic { display: inline-block; margin-top: 4px; font-size: 0.6875rem; letter-spacing: 0.04em; text-transform: uppercase; font-weight: 700; color: var(--accent); }
+.cell { height: 44px; min-width: 56px; border-radius: 4px; display: grid; place-items: center; font-weight: 700; font-size: 1rem; cursor: default; }
+.cell.dbl { box-shadow: inset 0 0 0 2px var(--warn); }
+td.total { padding-left: 12px !important; min-width: 200px; }
+.bar-row { display: grid; grid-template-columns: minmax(0, 1fr) 4.5rem; align-items: center; gap: 10px; }
+.track { height: 12px; background: var(--surface-2); border-radius: 0 4px 4px 0; position: relative; }
+.bar { position: absolute; left: 0; top: 0; bottom: 0; background: var(--accent); border-radius: 0 4px 4px 0; transition: width 300ms ease; }
+.tot { font-weight: 700; white-space: nowrap; }
+.tot small { color: var(--ink-2); font-weight: 500; }
+.rank { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--surface-2); font-size: 0.75rem; font-weight: 700; margin-right: 6px; vertical-align: 1px; }
+tr.top .rank { background: var(--accent); color: var(--accent-ink); }
+.note { font-size: 0.875rem; color: var(--ink-2); margin-top: 12px; max-width: 80ch; }
+.tooltip { position: fixed; z-index: 50; pointer-events: none; background: var(--ink); color: var(--paper); font-size: 0.8125rem; line-height: 1.4; padding: 8px 10px; border-radius: 6px; max-width: 280px; box-shadow: 0 6px 20px rgba(0,0,0,0.18); }
+
+/* Actions */
+.actions { display: grid; gap: 12px; counter-reset: act; }
+.act { background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius); padding: 18px 20px; display: grid; grid-template-columns: 9rem minmax(0, 1fr); gap: 16px; }
+.act .when { font-weight: 700; color: var(--warn); font-size: 0.9375rem; }
+.act .when small { display: block; font-weight: 500; color: var(--ink-2); font-size: var(--step--1); }
+.act h3 { font-size: var(--step-1); font-weight: 700; font-family: var(--font-body); }
+.act p, .act ol { color: var(--ink); margin: 6px 0 0; }
+.act ol { padding-left: 1.25rem; display: grid; gap: 4px; }
+.copy-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 10px; }
+.btn { font: inherit; font-size: 0.875rem; font-weight: 600; border: 1px solid var(--accent); color: var(--accent); background: transparent; padding: 6px 14px; border-radius: 999px; cursor: pointer; }
+.btn:hover { background: var(--accent-soft); }
+.copy-status { font-size: var(--step--1); color: var(--ok); }
+@media (max-width: 640px) { .act { grid-template-columns: 1fr; gap: 6px; } }
+
+/* Policy register */
+.law-groups { display: grid; gap: 28px; }
+.law-group h3 { font-family: var(--font-display); font-weight: 700; font-size: var(--step-1); margin-bottom: 12px; }
+.laws { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 12px; }
+.law { background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius); padding: 16px 18px; display: grid; gap: 10px; align-content: start; scroll-margin-top: calc(env(safe-area-inset-top, 0px) + 16px); min-width: 0; }
+.law:target { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+.law h4 { font-size: 1rem; font-weight: 700; }
+.law h4 span { display: block; font-weight: 500; font-size: 0.875rem; color: var(--ink-2); margin-top: 2px; }
+.law dl { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 2px 10px; margin: 0; font-size: 0.875rem; }
+.law dt { color: var(--ink-2); }
+.law dd { margin: 0; font-variant-numeric: tabular-nums; }
+.law ul { margin: 0; padding-left: 1.1rem; display: grid; gap: 4px; font-size: 0.9375rem; }
+.status { display: inline-flex; align-items: flex-start; gap: 6px; font-size: 0.8125rem; line-height: 1.4; padding: 6px 10px; border-radius: 8px; }
+.status::before { font-weight: 700; }
+.status.ok { background: var(--ok-soft); color: var(--ok); }
+.status.ok::before { content: "✓"; }
+.status.mid { background: var(--warn-soft); color: var(--warn); }
+.status.mid::before { content: "!"; }
+.status.low { background: var(--crit-soft); color: var(--crit); }
+.status.low::before { content: "?"; }
+.law .srcs { display: flex; flex-wrap: wrap; gap: 6px; }
+.status-key { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+
+/* Full report */
+.report { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 48px; align-items: start; }
+.toc { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 16px); max-height: calc(100vh - 32px - env(safe-area-inset-top, 0px)); overflow: auto; font-size: 0.875rem; padding-bottom: 16px; }
+.toc .eyebrow { margin-bottom: 10px; display: block; }
+.toc ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+.toc ol ol { padding-left: 12px; margin: 2px 0 6px; border-left: 1px solid var(--rule); }
+.toc a { display: block; padding: 4px 8px; border-radius: 6px; color: var(--ink-2); text-decoration: none; line-height: 1.35; }
+.toc a:hover { background: var(--surface-2); color: var(--ink); }
+.toc a.on { color: var(--accent); background: var(--accent-soft); font-weight: 600; }
+.toc-mobile { display: none; }
+@media (max-width: 980px) {
+  .report { grid-template-columns: 1fr; gap: 0; }
+  .toc { display: none; }
+  .toc-mobile { display: block; background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius); padding: 12px 16px; margin-bottom: 24px; font-size: 0.9375rem; }
+  .toc-mobile summary { cursor: pointer; font-weight: 600; }
+  .toc-mobile ol { padding-left: 1rem; margin: 10px 0 0; display: grid; gap: 4px; }
+  .toc-mobile ol ol { margin: 4px 0; }
+  .toc-mobile a { text-decoration: none; }
+}
+.article { min-width: 0; }
+.article > * + * { margin-top: 1em; }
+.article h2 { font-family: var(--font-display); font-weight: 800; font-size: var(--step-3); letter-spacing: -0.01em; margin-top: 2.2em; padding-top: 0.4em; border-top: 1px solid var(--rule); scroll-margin-top: calc(env(safe-area-inset-top, 0px) + 16px); }
+.article h2:first-child { margin-top: 0; border-top: 0; padding-top: 0; }
+.article h3 { font-size: var(--step-1); font-weight: 700; margin-top: 1.8em; scroll-margin-top: calc(env(safe-area-inset-top, 0px) + 16px); }
+.article p, .article li { max-width: 74ch; }
+.article ul, .article ol { padding-left: 1.3rem; }
+.article li + li { margin-top: 0.35em; }
+.article strong { font-weight: 700; }
+.article blockquote { margin: 1.2em 0; padding: 14px 18px; background: var(--accent-soft); border-radius: var(--radius); }
+.article blockquote > * + * { margin-top: 0.5em; }
+.article blockquote ul { margin: 0.4em 0 0; }
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--rule); border-radius: var(--radius); background: var(--surface); margin-top: 1.2em; }
+.article table { border-collapse: collapse; width: 100%; font-size: 0.875rem; line-height: 1.5; }
+.article th, .article td { text-align: left; vertical-align: top; padding: 9px 12px; border-bottom: 1px solid var(--rule); min-width: 9rem; }
+.article th { background: var(--surface-2); font-weight: 600; position: sticky; top: 0; }
+.article tr:last-child td { border-bottom: 0; }
+.article td:first-child { font-weight: 600; }
+a.law-ref { text-decoration: underline dotted; text-decoration-thickness: 1px; color: inherit; }
+a.law-ref:hover { color: var(--accent); }
+.ev { display: inline-block; font-size: 0.75rem; font-weight: 600; padding: 0 7px; border-radius: 999px; line-height: 1.6; vertical-align: 1px; white-space: nowrap; }
+.ev-inf { background: var(--surface-2); color: var(--ink-2); }
+.ev-self { background: var(--warn-soft); color: var(--warn); }
+.ev-snip { background: var(--crit-soft); color: var(--crit); }
+.ev-tech { background: var(--accent-soft); color: var(--accent); }
+
+footer { margin-top: 72px; border-top: 1px solid var(--rule); padding-block: 28px 40px; color: var(--ink-2); font-size: 0.875rem; }
+footer .wrap { display: grid; gap: 8px; }
+</style>
+
+<header class="cover">
+  <div class="wrap">
+    <div class="eyebrow">MoMo Tech Contest 2026 · Bảng sinh viên · Báo cáo nghiên cứu của đội</div>
+    <h1>Đặt cược vào <em class="nowrap">trợ lý thuế</em> cho hộ kinh doanh</h1>
+    <p class="lede">Sau khi rà đề thi, hệ sinh thái và các AI MoMo đang chạy, review người dùng, nỗi đau của tiểu thương và thị trường AI fintech, ý tưởng nên làm là <b>Sổ Sẵn</b>: trợ lý AI dùng giọng nói giúp hộ kinh doanh ghi sổ, canh ngưỡng doanh thu 1 tỷ đồng và hiểu nghĩa vụ thuế mới dựa trên chính dòng tiền của họ.</p>
+    <div class="verdicts">
+      <div class="verdict main">
+        <div class="k">Nên làm</div>
+        <div class="v">Sổ Sẵn <small>27/30 điểm, do người viết chấm</small></div>
+        <p>Ghi sổ không cần gõ, gộp doanh thu từ QR, sao kê và tiền mặt, canh ngưỡng 1 tỷ, hỏi đáp có trích điều khoản. Kèm bàn làm việc chính sách: AI đọc luật mới, nhân viên duyệt.</p>
+      </div>
+      <div class="verdict">
+        <div class="k">Dự phòng</div>
+        <div class="v">30 Phút Vàng <small>24/30</small></div>
+        <p>Trợ lý phản ứng ngay sau khi bị lừa, cho nạn nhân và chuyên viên chống gian lận. Sáng tạo nhất nhưng tác động khó chứng minh.</p>
+      </div>
+    </div>
+    <div class="cover-facts">
+      <div><b>13,9%</b><span>hộ kinh doanh hiểu rõ quy định thuế áp dụng từ 2026; 73,3% coi thủ tục pháp lý là trở ngại lớn nhất. Khảo sát VCCI 2–4/2026, hơn 1.000 hộ.</span><a class="src" href="https://thuonghieucongluan.com.vn/de-ho-kinh-doanh-khong-con-co-minh-truoc-rao-can-phap-ly-a317628.html">Thương hiệu &amp; Công luận · 10/05/2026</a></div>
+      <div><b>6,1 triệu</b><span>hộ kinh doanh, khoảng 10 triệu lao động (báo cáo kinh tế tư nhân 2025 của VCCI). Các nguồn khác đếm từ 5 triệu.</span><a class="src" href="https://www.vcci.com.vn/tin-tuc/suc-khoe-ho-kinh-doanh-suy-giam-phan-lon-chi-lai-mong-hoac-hoa-von">VCCI · 19/05/2026</a></div>
+      <div><b>1 tỷ đồng</b><span>ngưỡng doanh thu năm phải nộp GTGT, TNCN và dùng hóa đơn điện tử, áp dụng cho kỳ tính thuế 2026.</span><a class="src" href="#l-nd141">NĐ 141/2026 · xem thẻ nguồn</a></div>
+      <div><b>500.000+</b><span>tiểu thương và hộ kinh doanh dùng MoMo QR (MoMo công bố).</span><a class="src" href="https://tuoitre.vn/momo-va-hanh-trinh-15-nam-cung-tieu-thuong-viet-trong-chuyen-doi-so-20251230111814396.htm">Tuổi Trẻ · 30/12/2025</a></div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="section" aria-labelledby="h-moc">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Lịch · giờ Việt Nam (GMT+7)</div>
+        <h2 id="h-moc">Các mốc phải canh</h2>
+        <p>Số ngày còn lại tự tính theo ngày bạn mở trang. Bốn mốc đầu lấy từ thể lệ; mốc cuối là hạn của hộ kinh doanh, bối cảnh của Sổ Sẵn.</p>
+      </div>
+      <div class="rail" id="rail">
+        <div class="stop" data-due="2026-11-27T23:59:59+07:00">
+          <div class="date">27/11</div>
+          <div class="what">Hạn đăng ký đội và gửi câu hỏi làm rõ đề, 23:59:59</div>
+          <span class="left">27/11/2026</span>
+          <div class="srcs"><a class="src" href="https://techday.momo.vn/assets/docs/the-le-cuoc-thi.pdf">Thể lệ v1.0</a></div>
+        </div>
+        <div class="stop" data-due="2026-12-03T23:59:59+07:00">
+          <div class="date">03/12</div>
+          <div class="what">Hạn nộp bài, 23:59:59. Sau mốc này không được cập nhật sản phẩm ở link đã nộp (Điều 31.4)</div>
+          <span class="left">03/12/2026</span>
+          <div class="srcs"><a class="src" href="https://techday.momo.vn/assets/docs/the-le-cuoc-thi.pdf">Thể lệ v1.0</a></div>
+        </div>
+        <div class="stop" data-due="2026-12-08T23:59:59+07:00">
+          <div class="date">08/12</div>
+          <div class="what">Công bố 5 đội vào chung kết</div>
+          <span class="left">08/12/2026</span>
+          <div class="srcs"><a class="src" href="https://techday.momo.vn/assets/docs/the-le-cuoc-thi.pdf">Thể lệ v1.0</a></div>
+        </div>
+        <div class="stop" data-due="2026-12-11T23:59:59+07:00">
+          <div class="date">11/12</div>
+          <div class="what">Chung kết trực tiếp tại TP.HCM. Sản phẩm phải chạy đến hết ngày</div>
+          <span class="left">11/12/2026</span>
+          <div class="srcs"><a class="src" href="https://techday.momo.vn/assets/docs/the-le-cuoc-thi.pdf">Thể lệ v1.0</a></div>
+        </div>
+        <div class="stop ext" data-due="2027-01-31T23:59:59+07:00">
+          <div class="tag">Hộ kinh doanh</div>
+          <div class="date">31/01/2027</div>
+          <div class="what">Hạn thông báo doanh thu năm 2026 của hộ dưới ngưỡng (mẫu 01/TKN-CNKD, "hạn 31/01 năm sau" theo NĐ 68/2026)</div>
+          <span class="left">31/01/2027</span>
+          <div class="srcs"><a class="src" href="#l-nd68">NĐ 68/2026 · xem thẻ nguồn</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="h-de">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Đề thi bảng sinh viên</div>
+        <h2 id="h-de">Imagine the Future Workspace</h2>
+        <p>"Hãy tưởng tượng AI sẽ thay đổi cách đội ngũ fintech làm việc, và qua đó thay đổi cách con người mua sắm, thanh toán, quản lý tài chính và tự bảo vệ mình trên không gian số, rồi biến ý tưởng đó thành sản phẩm dùng được ngay hôm nay."</p>
+      </div>
+      <div class="brief">
+        <div class="panel">
+          <h3>Chủ đề <small>chọn ít nhất 1</small></h3>
+          <ul>
+            <li><b>Trợ lý AI</b><span>"hiểu nhu cầu và hành động thay người dùng": mua sắm, cá nhân, thanh toán, bán hàng, tài chính</span></li>
+            <li><b>An ninh mạng</b><span>"phát hiện, ngăn chặn và phản ứng với các mối đe dọa"</span></li>
+            <li><b>Chống lừa đảo</b><span>giúp người dùng "nhận diện và được cảnh báo trước… trước khi mất tiền hoặc thông tin"</span></li>
+          </ul>
+          <div class="panel-foot"><a class="src" href="https://techday.momo.vn/content/exam.json">exam.json · 20/11/2026</a></div>
+        </div>
+        <div class="panel">
+          <h3>Tiêu chí chấm <small>không công bố trọng số</small></h3>
+          <ul>
+            <li><b>Sáng tạo</b><span>"ý tưởng mới, có tính đột phá hoặc cách tiếp cận khác biệt so với các giải pháp hiện có"</span></li>
+            <li><b>Chất lượng &amp; mức độ hoàn thiện</b><span>"vận hành ổn định, người dùng có thể trải nghiệm trực tiếp", tính tại thời điểm nộp</span></li>
+            <li><b>Tiềm năng tác động</b><span>"khả năng mở rộng trên quy mô lớn và số lượng người dùng có thể hưởng lợi"</span></li>
+          </ul>
+          <p class="panel-note">Chấm bởi 7 giám khảo, đều là lãnh đạo công nghệ và AI của MoMo.</p>
+          <div class="panel-foot"><a class="src" href="https://techday.momo.vn/assets/docs/the-le-cuoc-thi.pdf">Thể lệ, Điều 18</a><a class="src" href="https://techday.momo.vn/content/content.json">content.json</a></div>
+        </div>
+        <div class="panel">
+          <h3>Hồ sơ nộp <small>4 phần</small></h3>
+          <ul>
+            <li><b>Hướng dẫn sử dụng</b><span>tối đa 1 trang A4 (PDF), có link sản phẩm và tài khoản dùng thử</span></li>
+            <li><b>Mã nguồn .zip</b><span>README khai báo cách chạy, công nghệ, tài sản có sẵn, thư viện mã nguồn mở, công cụ AI đã dùng</span></li>
+            <li><b>Slide</b><span>tối đa 10 trang (PDF), không sửa sau khi nộp, dùng luôn cho chung kết</span></li>
+            <li><b>Video</b><span>tối đa 3 phút (MP4), quay sản phẩm chạy thật</span></li>
+          </ul>
+          <div class="panel-foot"><a class="src" href="https://techday.momo.vn/content/exam.json">exam.json</a></div>
+        </div>
+      </div>
+      <div class="constraints" aria-label="Ràng buộc chính">
+        <span class="chip">Đội 2–3 sinh viên, 18–23 tuổi</span>
+        <span class="chip">Sản phẩm thật, giám khảo tự dùng thử online</span>
+        <span class="chip">AI là thành phần cốt lõi</span>
+        <span class="chip">Không có dữ liệu, API, sandbox của MoMo</span>
+        <span class="chip">Cấm sản phẩm làm từ trước cho cùng bài toán</span>
+        <span class="chip">Giải 50 / 30 / 20 triệu đồng</span>
+        <a class="src" href="https://techday.momo.vn/assets/docs/the-le-cuoc-thi.pdf">Thể lệ v1.0 · 13/11/2026</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="h-diem">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Đánh giá của người viết, không phải số liệu</div>
+        <h2 id="h-diem">Bảng điểm sáu ý tưởng vào vòng sâu</h2>
+        <p>Thang 1–5 cho mỗi cột, chấm dựa trên bằng chứng trong báo cáo. Thể lệ không công bố trọng số, nên thử đổi trọng số để xem thứ hạng có giữ được không.</p>
+      </div>
+      <div class="score-tools">
+        <div class="seg" role="group" aria-label="Trọng số">
+          <button type="button" id="w-eq" data-w="eq" aria-pressed="true">Trọng số bằng nhau</button>
+          <button type="button" id="w-cr" data-w="cr" aria-pressed="false">Nhân đôi Sáng tạo</button>
+          <button type="button" id="w-im" data-w="im" aria-pressed="false">Nhân đôi Tác động</button>
+        </div>
+        <div class="legend" aria-hidden="true">1 <i style="background:var(--s1)"></i><i style="background:var(--s2)"></i><i style="background:var(--s3)"></i><i style="background:var(--s4)"></i><i style="background:var(--s5)"></i> 5</div>
+      </div>
+      <div class="scroll-x">
+        <table class="score" id="score">
+          <thead><tr id="score-head"></tr></thead>
+          <tbody id="score-body"></tbody>
+        </table>
+      </div>
+      <p class="note">Cột "Sáng tạo" và "Ít trùng MoMo" ứng với tiêu chí Sáng tạo; "Hoàn thiện trong 9 ngày" ứng với Chất lượng &amp; mức độ hoàn thiện; "Tác động &amp; quy mô" và "Giá trị cho MoMo" ứng với Tiềm năng tác động; "AI là lõi" là điều kiện bắt buộc của đề. Lý do của từng điểm nằm ở mục 6 và 7 của báo cáo bên dưới.</p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="h-viec">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Trước khi viết dòng code đầu tiên</div>
+        <h2 id="h-viec">Ba việc cần làm ngay</h2>
+      </div>
+      <div class="actions">
+        <div class="act">
+          <div class="when">Ngay hôm nay<small>quy tắc chọn đề</small></div>
+          <div>
+            <h3>Kiểm tra app Merchant/Đối tác MoMo</h3>
+            <p>Xem tờ khai điền sẵn hay trợ lý thuế đã ra mắt chưa. Ngày 20/3/2026 MoMo mới nói là "đang lên kế hoạch" tờ khai thuế điền sẵn <a class="src" href="https://www.momo.vn/tin-tuc/thong-cao-bao-chi/momo-cap-nhat-moi-nhat-ve-giai-phap-nhan-tien-8587">MoMo · 20/03/2026</a>; nhóm nghiên cứu chưa xác nhận được đã ra mắt. Nếu MoMo đã có trợ lý thuế dùng AI theo đúng hướng này, chuyển sang 30 Phút Vàng.</p>
+          </div>
+        </div>
+        <div class="act">
+          <div class="when">Trước 23:59 ngày 27/11<small>hạn đăng ký và hỏi đề</small></div>
+          <div>
+            <h3>Đăng ký đội và gửi ban tổ chức bốn câu hỏi</h3>
+            <ol id="btc-questions">
+              <li>Sản phẩm chạy độc lập, ngoài app MoMo, có hợp lệ không?</li>
+              <li>Đội có được dùng tên và nhận diện thương hiệu MoMo trong giao diện không?</li>
+              <li>Khởi động lại máy chủ sau 03/12 mà không đổi mã nguồn có bị coi là cập nhật sản phẩm không?</li>
+              <li>Ban tổ chức có cấp credit đám mây cho đội thi không?</li>
+            </ol>
+            <div class="copy-row"><button type="button" class="btn" id="copy-q">Sao chép 4 câu hỏi</button><span class="copy-status" id="copy-status" aria-live="polite"></span></div>
+          </div>
+        </div>
+        <div class="act">
+          <div class="when">Trước khi làm slide<small>số liệu chính sách</small></div>
+          <div>
+            <h3>Đối chiếu văn bản gốc những chỗ còn đánh dấu vàng hoặc đỏ</h3>
+            <p>Gồm ngày ký <a href="#l-nd141">NĐ 141/2026</a>, toàn văn <a href="#l-tt53">Thông tư 53/2026</a>, <a href="#l-ailaw">Luật AI</a> và tỷ lệ thuế theo ngành. Ghi chép chưa có tỷ lệ % theo ngành, nên MVP không tự tính số thuế phải nộp cho tới khi đội đối chiếu xong.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="h-luat">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Văn bản pháp lý trong báo cáo và ghi chép nghiên cứu</div>
+        <h2 id="h-luat">Văn bản pháp lý và nguồn</h2>
+        <p>Mỗi thẻ ghi ngày ban hành, ngày hiệu lực, nội dung được dùng, link nguồn và mức độ đã kiểm chứng. Trong báo cáo bên dưới, tên văn bản gạch chấm dẫn về thẻ tương ứng. Nhóm nghiên cứu chưa đọc toàn văn phần lớn các văn bản; nội dung lấy qua cổng chính phủ, công báo, báo chí và hãng luật như ghi trên từng thẻ.</p>
+      </div>
+      <div class="status-key">
+        <span class="status ok">Đã đọc trang nguồn có nội dung văn bản (cổng chính phủ, công báo, thư viện luật)</span>
+        <span class="status mid">Qua bài tóm tắt của báo hoặc hãng luật, chưa đọc toàn văn</span>
+        <span class="status low">Chỉ thấy qua đoạn trích tìm kiếm, hoặc các nguồn mâu thuẫn</span>
+      </div>
+      <div class="law-groups">{{LAWS}}</div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="h-full">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Khoảng 13.400 từ · số liệu tính đến 24/11/2026</div>
+        <h2 id="h-full">Báo cáo đầy đủ</h2>
+        <p>Nhãn màu đánh dấu loại thông tin: <span class="ev ev-self">MoMo tự công bố</span> <span class="ev ev-snip">qua tóm tắt tìm kiếm</span> <span class="ev ev-inf">suy luận</span> <span class="ev ev-tech">kiến thức kỹ thuật chung</span>. Dữ kiện có link nguồn và không kèm nhãn đã được đối chiếu trong ghi chép nghiên cứu.</p>
+      </div>
+      <div class="report">
+        <nav class="toc" aria-label="Mục lục"><span class="eyebrow">Mục lục</span>{{TOC}}</nav>
+        <div class="article" id="article">
+          <details class="toc-mobile"><summary>Mục lục</summary>{{TOC}}</details>
+          {{ARTICLE}}
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Tài liệu nghiên cứu độc lập của đội thi, không phải tài liệu chính thức của MoMo hay của ban tổ chức. Đề thi và thể lệ trích từ techday.momo.vn (exam.json đăng 20/11/2026, thể lệ v1.0 ngày 13/11/2026).</p>
+    <p>Văn bản pháp lý có thể tiếp tục được sửa đổi. Kiểm tra lại trên cổng thông tin chính thức trước khi đưa vào sản phẩm hoặc slide.</p>
+  </div>
+</footer>
+<div class="tooltip" id="tip" hidden></div>
+
+<script>
+(function () {
+  // Deadline rail: days left, computed in Vietnam time
+  var DAY = 86400000;
+  var now = Date.now();
+  var stops = document.querySelectorAll('#rail .stop');
+  for (var i = 0; i < stops.length; i++) {
+    var s = stops[i];
+    var due = Date.parse(s.getAttribute('data-due'));
+    var left = s.querySelector('.left');
+    if (isNaN(due) || !left) continue;
+    var diff = due - now;
+    if (diff < 0) { s.classList.add('past'); left.textContent = 'Đã qua'; continue; }
+    var days = Math.floor(diff / DAY);
+    left.textContent = days === 0 ? 'Hôm nay' : 'Còn ' + days + ' ngày';
+    if (days <= 3) s.classList.add('soon');
+  }
+
+  // Scorecard
+  var CRIT = [
+    { key: 'cr', label: 'Sáng tạo', tip: 'Ý tưởng mới, cách tiếp cận khác biệt' },
+    { key: 'done', label: 'Hoàn thiện trong 9 ngày', tip: '2–3 sinh viên, không có dữ liệu hay API của MoMo' },
+    { key: 'im', label: 'Tác động & quy mô', tip: 'Số người hưởng lợi, độ mạnh của bằng chứng nỗi đau' },
+    { key: 'ai', label: 'AI là lõi', tip: 'AI làm việc mà quy tắc cứng không làm được' },
+    { key: 'val', label: 'Giá trị cho MoMo', tip: 'Giữ chân người dùng hoặc merchant, giảm chi phí, mở nguồn thu' },
+    { key: 'dup', label: 'Ít trùng MoMo', tip: 'Càng cao càng ít trùng với thứ MoMo đã chạy' }
+  ];
+  var IDEAS = [
+    { name: 'Sổ Sẵn', desc: 'Trợ lý thuế và sổ sách bằng giọng nói cho hộ kinh doanh, kèm bàn làm việc chính sách', topic: 'Trợ lý AI · Chống lừa đảo', s: [4, 5, 5, 4, 5, 4] },
+    { name: '30 Phút Vàng', desc: 'Trợ lý phản ứng sau lừa đảo cho nạn nhân và chuyên viên', topic: 'An ninh mạng · Chống lừa đảo', s: [5, 4, 3, 4, 4, 4] },
+    { name: 'Tiền Về Thật', desc: 'Xác minh tiền về cho người bán: ảnh chuyển khoản giả, đối soát', topic: 'Chống lừa đảo', s: [4, 4, 3, 3, 4, 5] },
+    { name: 'Gỡ Rối Giao Dịch', desc: 'Agent xử lý giao dịch treo và trả trùng', topic: 'Trợ lý thanh toán', s: [3, 3, 5, 3, 4, 2] },
+    { name: 'Phòng Tập Chống Lừa', desc: 'Nhận diện kịch bản và mô phỏng lừa đảo cho Gen Z', topic: 'Chống lừa đảo', s: [3, 5, 3, 4, 3, 2] },
+    { name: 'Rõ Phí', desc: 'Minh bạch chi phí và quyền trừ tiền tự động', topic: 'Trợ lý thanh toán', s: [2, 4, 3, 2, 3, 2] }
+  ];
+  var WEIGHTS = { eq: [1, 1, 1, 1, 1, 1], cr: [2, 1, 1, 1, 1, 1], im: [1, 1, 2, 1, 1, 1] };
+  var mode = 'eq';
+  try { var saved = localStorage.getItem('score-mode'); if (saved && WEIGHTS[saved]) mode = saved; } catch (e) {}
+
+  var head = document.getElementById('score-head');
+  var body = document.getElementById('score-body');
+  function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function render() {
+    var w = WEIGHTS[mode];
+    var max = w.reduce(function (a, b) { return a + b; }, 0) * 5;
+    var totals = IDEAS.map(function (d) { return d.s.reduce(function (a, v, i) { return a + v * w[i]; }, 0); });
+    var sorted = totals.slice().sort(function (a, b) { return b - a; });
+    var h = '<th class="idea-h" scope="col">Ý tưởng</th>';
+    CRIT.forEach(function (c, i) { h += '<th scope="col" title="' + esc(c.tip) + '">' + esc(c.label) + (w[i] > 1 ? '<span class="x2">×2</span>' : '') + '</th>'; });
+    h += '<th scope="col" class="idea-h">Tổng /' + max + '</th>';
+    head.innerHTML = h;
+    var rows = '';
+    IDEAS.forEach(function (d, r) {
+      var rank = sorted.indexOf(totals[r]) + 1;
+      rows += '<tr class="' + (rank === 1 ? 'top' : '') + '"><td class="idea"><b>' + esc(d.name) + '</b><span>' + esc(d.desc) + '</span><span class="topic">' + esc(d.topic) + '</span></td>';
+      d.s.forEach(function (v, i) {
+        var ink = v >= 4 ? 'var(--s-ink-hi)' : 'var(--s-ink-lo)';
+        rows += '<td><div class="cell' + (w[i] > 1 ? ' dbl' : '') + '" style="background:var(--s' + v + ');color:' + ink + '" data-tip="' + esc(d.name + ' · ' + CRIT[i].label + ': ' + v + '/5' + (w[i] > 1 ? ' (tính ×2)' : '') + '. ' + CRIT[i].tip) + '">' + v + '</div></td>';
+      });
+      var pct = (totals[r] / max * 100).toFixed(1);
+      rows += '<td class="total"><div class="bar-row"><div class="track" tabindex="0" role="img" aria-label="' + esc(d.name + ': ' + totals[r] + ' trên ' + max + ', hạng ' + rank) + '" data-tip="' + esc(d.name + ': ' + totals[r] + '/' + max + ' · hạng ' + rank) + '"><div class="bar" style="width:' + pct + '%"></div></div><div class="tot"><span class="rank">' + rank + '</span>' + totals[r] + '<small>/' + max + '</small></div></div></td></tr>';
+    });
+    body.innerHTML = rows;
+    var btns = document.querySelectorAll('.seg button');
+    for (var i = 0; i < btns.length; i++) btns[i].setAttribute('aria-pressed', btns[i].getAttribute('data-w') === mode ? 'true' : 'false');
+  }
+  render();
+  document.querySelector('.seg').addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    mode = b.getAttribute('data-w');
+    try { localStorage.setItem('score-mode', mode); } catch (err) {}
+    render();
+  });
+
+  // Tooltip
+  var tip = document.getElementById('tip');
+  function show(el) {
+    var t = el.getAttribute('data-tip'); if (!t) return;
+    tip.textContent = t; tip.hidden = false;
+    var r = el.getBoundingClientRect();
+    var tw = tip.offsetWidth, th = tip.offsetHeight;
+    var x = Math.min(Math.max(8, r.left + r.width / 2 - tw / 2), window.innerWidth - tw - 8);
+    var y = r.top - th - 8; if (y < 8) y = r.bottom + 8;
+    tip.style.left = x + 'px'; tip.style.top = y + 'px';
+  }
+  function hide() { tip.hidden = true; }
+  document.addEventListener('pointerover', function (e) { var el = e.target.closest('[data-tip]'); if (el) show(el); else hide(); });
+  document.addEventListener('focusin', function (e) { var el = e.target.closest('[data-tip]'); if (el) show(el); else hide(); });
+  document.addEventListener('focusout', hide);
+  window.addEventListener('scroll', hide, { passive: true });
+
+  // Copy the four questions
+  var copyBtn = document.getElementById('copy-q');
+  var status = document.getElementById('copy-status');
+  copyBtn.addEventListener('click', function () {
+    var items = document.querySelectorAll('#btc-questions li');
+    var text = Array.prototype.map.call(items, function (li, i) { return (i + 1) + '. ' + li.textContent; }).join('\n');
+    function fallback() {
+      var range = document.createRange(); range.selectNodeContents(document.getElementById('btc-questions'));
+      var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(range);
+      status.textContent = 'Đã bôi đen 4 câu hỏi. Nhấn Ctrl+C hoặc ⌘C để sao chép.';
+    }
+    try {
+      navigator.clipboard.writeText(text).then(function () { status.textContent = 'Đã sao chép.'; }, fallback);
+    } catch (e) { fallback(); }
+  });
+
+  // Table of contents: highlight the section in view
+  var links = document.querySelectorAll('.toc a');
+  var map = {};
+  for (var j = 0; j < links.length; j++) map[links[j].getAttribute('href').slice(1)] = links[j];
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting && map[en.target.id]) {
+          for (var k = 0; k < links.length; k++) links[k].classList.remove('on');
+          map[en.target.id].classList.add('on');
+        }
+      });
+    }, { rootMargin: '0px 0px -70% 0px' });
+    document.querySelectorAll('.article h2[id], .article h3[id]').forEach(function (h) { io.observe(h); });
+  }
+})();
+</script>

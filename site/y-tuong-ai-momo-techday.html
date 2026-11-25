@@ -1,0 +1,1997 @@
+<title>Ý tưởng AI cho MoMo Techday</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&display=swap">
+<style>
+/* Layout: a contest dossier — dark ledger-green cover band, a deadline rail, the brief at a glance,
+   the scorecard, the policy register, then the full report with a sticky table of contents. */
+:root {
+  --paper: #F3F6F5;
+  --surface: #FFFFFF;
+  --surface-2: #E9EFED;
+  --ink: #13201D;
+  --ink-2: #4B5C57;
+  --rule: #D3DDD9;
+  --accent: #0B6B5A;
+  --accent-ink: #FFFFFF;
+  --accent-soft: #DDEFEA;
+  --cover: #0C3A32;
+  --cover-ink: #ECF6F2;
+  --cover-muted: #A8CDC2;
+  --cover-hi: #86E3C8;
+  --warn: #9A5300;
+  --warn-soft: #FBEBD6;
+  --crit: #A4262C;
+  --crit-soft: #F9E1E2;
+  --ok: #1D6B32;
+  --ok-soft: #DEF0E2;
+  --s1: #E3F1EC; --s2: #B9DED2; --s3: #7FC2AE; --s4: #2F8F77; --s5: #0B5E4F;
+  --s-ink-lo: #13201D; --s-ink-hi: #FFFFFF;
+  --font-display: "Bricolage Grotesque", "Be Vietnam Pro", system-ui, sans-serif;
+  --font-body: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --step--1: 0.8125rem;
+  --step-0: 1rem;
+  --step-1: 1.1875rem;
+  --step-2: 1.5rem;
+  --step-3: 2rem;
+  --step-4: clamp(2rem, 1.3rem + 3vw, 3.25rem);
+  --radius: 10px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0D1413; --surface: #141D1B; --surface-2: #1B2724; --ink: #E3ECE9; --ink-2: #9FB2AC; --rule: #2A3835;
+    --accent: #5CCFB3; --accent-ink: #0D1413; --accent-soft: #173029;
+    --cover: #0F2723; --cover-ink: #E8F3EF; --cover-muted: #93B9AE; --cover-hi: #7FDDC2;
+    --warn: #F0B062; --warn-soft: #33261A; --crit: #F08A8E; --crit-soft: #3A1D20; --ok: #7FCF92; --ok-soft: #1A2E20;
+    --s1: #1A2925; --s2: #1F4840; --s3: #24705F; --s4: #3BA287; --s5: #73D8BE;
+    --s-ink-lo: #E3ECE9; --s-ink-hi: #0D1413;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0D1413; --surface: #141D1B; --surface-2: #1B2724; --ink: #E3ECE9; --ink-2: #9FB2AC; --rule: #2A3835;
+  --accent: #5CCFB3; --accent-ink: #0D1413; --accent-soft: #173029;
+  --cover: #0F2723; --cover-ink: #E8F3EF; --cover-muted: #93B9AE; --cover-hi: #7FDDC2;
+  --warn: #F0B062; --warn-soft: #33261A; --crit: #F08A8E; --crit-soft: #3A1D20; --ok: #7FCF92; --ok-soft: #1A2E20;
+  --s1: #1A2925; --s2: #1F4840; --s3: #24705F; --s4: #3BA287; --s5: #73D8BE;
+  --s-ink-lo: #E3ECE9; --s-ink-hi: #0D1413;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+body { background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: var(--step-0); line-height: 1.65; }
+a { color: var(--accent); text-underline-offset: 2px; text-decoration-thickness: 1px; }
+a:focus-visible, button:focus-visible, [tabindex]:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+h1, h2, h3, h4 { text-wrap: balance; line-height: 1.2; margin: 0; }
+p { margin: 0; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.eyebrow { font-size: var(--step--1); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); }
+.section { padding-block: 56px 8px; }
+.section-head { display: grid; gap: 8px; margin-bottom: 24px; max-width: 72ch; }
+.section-head h2 { font-family: var(--font-display); font-weight: 800; font-size: var(--step-3); letter-spacing: -0.01em; }
+.section-head p { color: var(--ink-2); }
+
+/* Source chips: every figure in the summary carries one */
+.src { display: inline-flex; align-items: center; gap: 4px; font-size: 0.75rem; font-weight: 500; line-height: 1.3; padding: 1px 7px; border-radius: 999px; border: 1px solid var(--rule); color: var(--ink-2); text-decoration: none; white-space: nowrap; vertical-align: 1px; background: var(--surface); }
+.src:hover { border-color: var(--accent); color: var(--accent); }
+.cover-facts .src, .stop .src { justify-self: start; width: fit-content; }
+.src::before { content: "↗"; font-size: 0.7rem; }
+.cover .src { background: transparent; border-color: rgba(255,255,255,0.25); color: var(--cover-muted); }
+.cover .src:hover { border-color: var(--cover-hi); color: var(--cover-hi); }
+
+/* Cover */
+.cover { background: var(--cover); color: var(--cover-ink); margin-top: calc(-1 * env(safe-area-inset-top, 0px)); padding-top: calc(env(safe-area-inset-top, 0px) + 48px); padding-bottom: 44px; }
+.cover .eyebrow { color: var(--cover-muted); }
+.cover h1 { font-family: var(--font-display); font-weight: 800; font-size: var(--step-4); letter-spacing: -0.02em; max-width: 26ch; margin-top: 14px; }
+.nowrap { white-space: nowrap; }
+.cover h1 em { font-style: normal; color: var(--cover-hi); }
+.cover .lede { margin-top: 18px; max-width: 64ch; font-size: var(--step-1); color: var(--cover-ink); opacity: 0.92; }
+.verdicts { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; margin-top: 28px; }
+.verdict { border: 1px solid rgba(255,255,255,0.18); border-radius: var(--radius); padding: 16px 18px; display: grid; gap: 6px; min-width: 0; }
+.verdict.main { background: rgba(255,255,255,0.06); border-color: var(--cover-hi); }
+.verdict .k { font-size: var(--step--1); letter-spacing: 0.06em; text-transform: uppercase; color: var(--cover-muted); font-weight: 600; }
+.verdict .v { font-family: var(--font-display); font-size: var(--step-2); font-weight: 800; display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.verdict .v small { font-family: var(--font-body); font-size: var(--step--1); font-weight: 500; color: var(--cover-muted); }
+.verdict p { color: var(--cover-muted); font-size: 0.9375rem; }
+.cover-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px 28px; margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.14); }
+.cover-facts div { display: grid; gap: 4px; align-content: start; min-width: 0; }
+.cover-facts b { font-family: var(--font-display); font-size: var(--step-3); font-weight: 800; color: var(--cover-hi); font-variant-numeric: tabular-nums; line-height: 1.1; }
+.cover-facts span { font-size: 0.9375rem; color: var(--cover-ink); }
+
+/* Deadline rail */
+.rail { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; border: 1px solid var(--rule); border-radius: var(--radius); background: var(--surface); overflow: hidden; }
+.stop { padding: 16px; display: grid; gap: 6px; align-content: start; border-right: 1px solid var(--rule); position: relative; min-width: 0; }
+.stop:last-child { border-right: 0; }
+.stop .date { font-family: var(--font-display); font-weight: 800; font-size: var(--step-2); font-variant-numeric: tabular-nums; }
+.stop .what { font-size: 0.9375rem; }
+.stop .left { font-size: var(--step--1); font-weight: 600; display: inline-flex; width: fit-content; padding: 2px 8px; border-radius: 999px; background: var(--surface-2); color: var(--ink-2); }
+.stop.soon .left { background: var(--warn-soft); color: var(--warn); }
+.stop.past { opacity: 0.6; }
+.stop.ext { background: var(--surface-2); }
+.stop .tag { font-size: 0.6875rem; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 700; color: var(--ink-2); }
+.stop .srcs { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 2px; }
+@media (max-width: 860px) {
+  .rail { grid-template-columns: 1fr; }
+  .stop { border-right: 0; border-bottom: 1px solid var(--rule); grid-template-columns: 7.5rem minmax(0, 1fr); column-gap: 12px; }
+  .stop:last-child { border-bottom: 0; }
+  .stop .date { grid-row: span 4; font-size: var(--step-1); }
+}
+
+/* Brief */
+.brief { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.panel { background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius); padding: 20px; display: grid; gap: 12px; align-content: start; min-width: 0; }
+.panel h3 { font-family: var(--font-display); font-weight: 700; font-size: var(--step-1); display: flex; justify-content: space-between; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+.panel h3 small { font-family: var(--font-body); font-size: var(--step--1); font-weight: 500; color: var(--ink-2); }
+.panel ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.panel li { display: grid; gap: 2px; }
+.panel li b { font-weight: 600; }
+.panel li span { color: var(--ink-2); font-size: 0.9375rem; }
+.constraints { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.chip { font-size: 0.875rem; padding: 4px 10px; border-radius: 999px; background: var(--accent-soft); color: var(--ink); }
+.panel-note { font-size: 0.875rem; color: var(--ink-2); }
+.panel-foot { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-size: var(--step--1); color: var(--ink-2); }
+@media (max-width: 900px) { .brief { grid-template-columns: 1fr; } }
+
+/* Scorecard */
+.score-tools { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+.seg { display: inline-flex; border: 1px solid var(--rule); border-radius: 999px; padding: 3px; background: var(--surface); flex-wrap: wrap; }
+.seg button { font: inherit; font-size: 0.875rem; border: 0; background: transparent; color: var(--ink-2); padding: 6px 14px; border-radius: 999px; cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); font-weight: 600; }
+.legend { display: flex; align-items: center; gap: 8px; font-size: var(--step--1); color: var(--ink-2); }
+.legend i { width: 18px; height: 12px; border-radius: 3px; display: inline-block; }
+.scroll-x { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+table.score { width: 100%; border-collapse: separate; border-spacing: 2px; min-width: 820px; font-variant-numeric: tabular-nums; table-layout: fixed; }
+table.score th:first-child { width: 27%; }
+table.score th:last-child { width: 20%; }
+table.score th { font-size: var(--step--1); font-weight: 600; color: var(--ink-2); text-align: center; padding: 6px 4px; vertical-align: bottom; line-height: 1.3; }
+table.score th.idea-h { text-align: left; }
+table.score th .x2 { display: inline-block; margin-left: 4px; font-size: 0.6875rem; padding: 0 6px; border-radius: 999px; background: var(--warn-soft); color: var(--warn); font-weight: 700; }
+table.score td { padding: 0; }
+td.idea { padding: 10px 12px 10px 0 !important; min-width: 220px; }
+td.idea b { display: block; font-weight: 700; }
+td.idea span { display: block; font-size: 0.8125rem; color: var(--ink-2); line-height: 1.4; }
+td.idea .topic { display: inline-block; margin-top: 4px; font-size: 0.6875rem; letter-spacing: 0.04em; text-transform: uppercase; font-weight: 700; color: var(--accent); }
+.cell { height: 44px; min-width: 56px; border-radius: 4px; display: grid; place-items: center; font-weight: 700; font-size: 1rem; cursor: default; }
+.cell.dbl { box-shadow: inset 0 0 0 2px var(--warn); }
+td.total { padding-left: 12px !important; min-width: 200px; }
+.bar-row { display: grid; grid-template-columns: minmax(0, 1fr) 4.5rem; align-items: center; gap: 10px; }
+.track { height: 12px; background: var(--surface-2); border-radius: 0 4px 4px 0; position: relative; }
+.bar { position: absolute; left: 0; top: 0; bottom: 0; background: var(--accent); border-radius: 0 4px 4px 0; transition: width 300ms ease; }
+.tot { font-weight: 700; white-space: nowrap; }
+.tot small { color: var(--ink-2); font-weight: 500; }
+.rank { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--surface-2); font-size: 0.75rem; font-weight: 700; margin-right: 6px; vertical-align: 1px; }
+tr.top .rank { background: var(--accent); color: var(--accent-ink); }
+.note { font-size: 0.875rem; color: var(--ink-2); margin-top: 12px; max-width: 80ch; }
+.tooltip { position: fixed; z-index: 50; pointer-events: none; background: var(--ink); color: var(--paper); font-size: 0.8125rem; line-height: 1.4; padding: 8px 10px; border-radius: 6px; max-width: 280px; box-shadow: 0 6px 20px rgba(0,0,0,0.18); }
+
+/* Actions */
+.actions { display: grid; gap: 12px; counter-reset: act; }
+.act { background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius); padding: 18px 20px; display: grid; grid-template-columns: 9rem minmax(0, 1fr); gap: 16px; }
+.act .when { font-weight: 700; color: var(--warn); font-size: 0.9375rem; }
+.act .when small { display: block; font-weight: 500; color: var(--ink-2); font-size: var(--step--1); }
+.act h3 { font-size: var(--step-1); font-weight: 700; font-family: var(--font-body); }
+.act p, .act ol { color: var(--ink); margin: 6px 0 0; }
+.act ol { padding-left: 1.25rem; display: grid; gap: 4px; }
+.copy-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 10px; }
+.btn { font: inherit; font-size: 0.875rem; font-weight: 600; border: 1px solid var(--accent); color: var(--accent); background: transparent; padding: 6px 14px; border-radius: 999px; cursor: pointer; }
+.btn:hover { background: var(--accent-soft); }
+.copy-status { font-size: var(--step--1); color: var(--ok); }
+@media (max-width: 640px) { .act { grid-template-columns: 1fr; gap: 6px; } }
+
+/* Policy register */
+.law-groups { display: grid; gap: 28px; }
+.law-group h3 { font-family: var(--font-display); font-weight: 700; font-size: var(--step-1); margin-bottom: 12px; }
+.laws { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 12px; }
+.law { background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius); padding: 16px 18px; display: grid; gap: 10px; align-content: start; scroll-margin-top: calc(env(safe-area-inset-top, 0px) + 16px); min-width: 0; }
+.law:target { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+.law h4 { font-size: 1rem; font-weight: 700; }
+.law h4 span { display: block; font-weight: 500; font-size: 0.875rem; color: var(--ink-2); margin-top: 2px; }
+.law dl { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 2px 10px; margin: 0; font-size: 0.875rem; }
+.law dt { color: var(--ink-2); }
+.law dd { margin: 0; font-variant-numeric: tabular-nums; }
+.law ul { margin: 0; padding-left: 1.1rem; display: grid; gap: 4px; font-size: 0.9375rem; }
+.status { display: inline-flex; align-items: flex-start; gap: 6px; font-size: 0.8125rem; line-height: 1.4; padding: 6px 10px; border-radius: 8px; }
+.status::before { font-weight: 700; }
+.status.ok { background: var(--ok-soft); color: var(--ok); }
+.status.ok::before { content: "✓"; }
+.status.mid { background: var(--warn-soft); color: var(--warn); }
+.status.mid::before { content: "!"; }
+.status.low { background: var(--crit-soft); color: var(--crit); }
+.status.low::before { content: "?"; }
+.law .srcs { display: flex; flex-wrap: wrap; gap: 6px; }
+.status-key { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+
+/* Full report */
+.report { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 48px; align-items: start; }
+.toc { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 16px); max-height: calc(100vh - 32px - env(safe-area-inset-top, 0px)); overflow: auto; font-size: 0.875rem; padding-bottom: 16px; }
+.toc .eyebrow { margin-bottom: 10px; display: block; }
+.toc ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+.toc ol ol { padding-left: 12px; margin: 2px 0 6px; border-left: 1px solid var(--rule); }
+.toc a { display: block; padding: 4px 8px; border-radius: 6px; color: var(--ink-2); text-decoration: none; line-height: 1.35; }
+.toc a:hover { background: var(--surface-2); color: var(--ink); }
+.toc a.on { color: var(--accent); background: var(--accent-soft); font-weight: 600; }
+.toc-mobile { display: none; }
+@media (max-width: 980px) {
+  .report { grid-template-columns: 1fr; gap: 0; }
+  .toc { display: none; }
+  .toc-mobile { display: block; background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius); padding: 12px 16px; margin-bottom: 24px; font-size: 0.9375rem; }
+  .toc-mobile summary { cursor: pointer; font-weight: 600; }
+  .toc-mobile ol { padding-left: 1rem; margin: 10px 0 0; display: grid; gap: 4px; }
+  .toc-mobile ol ol { margin: 4px 0; }
+  .toc-mobile a { text-decoration: none; }
+}
+.article { min-width: 0; }
+.article > * + * { margin-top: 1em; }
+.article h2 { font-family: var(--font-display); font-weight: 800; font-size: var(--step-3); letter-spacing: -0.01em; margin-top: 2.2em; padding-top: 0.4em; border-top: 1px solid var(--rule); scroll-margin-top: calc(env(safe-area-inset-top, 0px) + 16px); }
+.article h2:first-child { margin-top: 0; border-top: 0; padding-top: 0; }
+.article h3 { font-size: var(--step-1); font-weight: 700; margin-top: 1.8em; scroll-margin-top: calc(env(safe-area-inset-top, 0px) + 16px); }
+.article p, .article li { max-width: 74ch; }
+.article ul, .article ol { padding-left: 1.3rem; }
+.article li + li { margin-top: 0.35em; }
+.article strong { font-weight: 700; }
+.article blockquote { margin: 1.2em 0; padding: 14px 18px; background: var(--accent-soft); border-radius: var(--radius); }
+.article blockquote > * + * { margin-top: 0.5em; }
+.article blockquote ul { margin: 0.4em 0 0; }
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--rule); border-radius: var(--radius); background: var(--surface); margin-top: 1.2em; }
+.article table { border-collapse: collapse; width: 100%; font-size: 0.875rem; line-height: 1.5; }
+.article th, .article td { text-align: left; vertical-align: top; padding: 9px 12px; border-bottom: 1px solid var(--rule); min-width: 9rem; }
+.article th { background: var(--surface-2); font-weight: 600; position: sticky; top: 0; }
+.article tr:last-child td { border-bottom: 0; }
+.article td:first-child { font-weight: 600; }
+a.law-ref { text-decoration: underline dotted; text-decoration-thickness: 1px; color: inherit; }
+a.law-ref:hover { color: var(--accent); }
+.ev { display: inline-block; font-size: 0.75rem; font-weight: 600; padding: 0 7px; border-radius: 999px; line-height: 1.6; vertical-align: 1px; white-space: nowrap; }
+.ev-inf { background: var(--surface-2); color: var(--ink-2); }
+.ev-self { background: var(--warn-soft); color: var(--warn); }
+.ev-snip { background: var(--crit-soft); color: var(--crit); }
+.ev-tech { background: var(--accent-soft); color: var(--accent); }
+
+footer { margin-top: 72px; border-top: 1px solid var(--rule); padding-block: 28px 40px; color: var(--ink-2); font-size: 0.875rem; }
+footer .wrap { display: grid; gap: 8px; }
+</style>
+
+<header class="cover">
+  <div class="wrap">
+    <div class="eyebrow">MoMo Tech Contest 2026 · Bảng sinh viên · Báo cáo nghiên cứu của đội</div>
+    <h1>Đặt cược vào <em class="nowrap">trợ lý thuế</em> cho hộ kinh doanh</h1>
+    <p class="lede">Sau khi rà đề thi, hệ sinh thái và các AI MoMo đang chạy, review người dùng, nỗi đau của tiểu thương và thị trường AI fintech, ý tưởng nên làm là <b>Sổ Sẵn</b>: trợ lý AI dùng giọng nói giúp hộ kinh doanh ghi sổ, canh ngưỡng doanh thu 1 tỷ đồng và hiểu nghĩa vụ thuế mới dựa trên chính dòng tiền của họ.</p>
+    <div class="verdicts">
+      <div class="verdict main">
+        <div class="k">Nên làm</div>
+        <div class="v">Sổ Sẵn <small>27/30 điểm, do người viết chấm</small></div>
+        <p>Ghi sổ không cần gõ, gộp doanh thu từ QR, sao kê và tiền mặt, canh ngưỡng 1 tỷ, hỏi đáp có trích điều khoản. Kèm bàn làm việc chính sách: AI đọc luật mới, nhân viên duyệt.</p>
+      </div>
+      <div class="verdict">
+        <div class="k">Dự phòng</div>
+        <div class="v">30 Phút Vàng <small>24/30</small></div>
+        <p>Trợ lý phản ứng ngay sau khi bị lừa, cho nạn nhân và chuyên viên chống gian lận. Sáng tạo nhất nhưng tác động khó chứng minh.</p>
+      </div>
+    </div>
+    <div class="cover-facts">
+      <div><b>13,9%</b><span>hộ kinh doanh hiểu rõ quy định thuế áp dụng từ 2026; 73,3% coi thủ tục pháp lý là trở ngại lớn nhất. Khảo sát VCCI 2–4/2026, hơn 1.000 hộ.</span><a class="src" href="https://thuonghieucongluan.com.vn/de-ho-kinh-doanh-khong-con-co-minh-truoc-rao-can-phap-ly-a317628.html" target="_blank" rel="noopener noreferrer">Thương hiệu &amp; Công luận · 10/05/2026</a></div>
+      <div><b>6,1 triệu</b><span>hộ kinh doanh, khoảng 10 triệu lao động (báo cáo kinh tế tư nhân 2025 của VCCI). Các nguồn khác đếm từ 5 triệu.</span><a class="src" href="https://www.vcci.com.vn/tin-tuc/suc-khoe-ho-kinh-doanh-suy-giam-phan-lon-chi-lai-mong-hoac-hoa-von" target="_blank" rel="noopener noreferrer">VCCI · 19/05/2026</a></div>
+      <div><b>1 tỷ đồng</b><span>ngưỡng doanh thu năm phải nộp GTGT, TNCN và dùng hóa đơn điện tử, áp dụng cho kỳ tính thuế 2026.</span><a class="src" href="#l-nd141">NĐ 141/2026 · xem thẻ nguồn</a></div>
+      <div><b>500.000+</b><span>tiểu thương và hộ kinh doanh dùng MoMo QR (MoMo công bố).</span><a class="src" href="https://tuoitre.vn/momo-va-hanh-trinh-15-nam-cung-tieu-thuong-viet-trong-chuyen-doi-so-20251230111814396.htm" target="_blank" rel="noopener noreferrer">Tuổi Trẻ · 30/12/2025</a></div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="section" aria-labelledby="h-moc">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Lịch · giờ Việt Nam (GMT+7)</div>
+        <h2 id="h-moc">Các mốc phải canh</h2>
+        <p>Số ngày còn lại tự tính theo ngày bạn mở trang. Bốn mốc đầu lấy từ thể lệ; mốc cuối là hạn của hộ kinh doanh, bối cảnh của Sổ Sẵn.</p>
+      </div>
+      <div class="rail" id="rail">
+        <div class="stop" data-due="2026-11-27T23:59:59+07:00">
+          <div class="date">27/11</div>
+          <div class="what">Hạn đăng ký đội và gửi câu hỏi làm rõ đề, 23:59:59</div>
+          <span class="left">27/11/2026</span>
+          <div class="srcs"><a class="src" href="https://techday.momo.vn/assets/docs/the-le-cuoc-thi.pdf" target="_blank" rel="noopener noreferrer">Thể lệ v1.0</a></div>
+        </div>
+        <div class="stop" data-due="2026-12-03T23:59:59+07:00">
+          <div class="date">03/12</div>
+          <div class="what">Hạn nộp bài, 23:59:59. Sau mốc này không được cập nhật sản phẩm ở link đã nộp (Điều 31.4)</div>
+          <span class="left">03/12/2026</span>
+          <div class="srcs"><a class="src" href="https://techday.momo.vn/assets/docs/the-le-cuoc-thi.pdf" target="_blank" rel="noopener noreferrer">Thể lệ v1.0</a></div>
+        </div>
+        <div class="stop" data-due="2026-12-08T23:59:59+07:00">
+          <div class="date">08/12</div>
+          <div class="what">Công bố 5 đội vào chung kết</div>
+          <span class="left">08/12/2026</span>
+          <div class="srcs"><a class="src" href="https://techday.momo.vn/assets/docs/the-le-cuoc-thi.pdf" target="_blank" rel="noopener noreferrer">Thể lệ v1.0</a></div>
+        </div>
+        <div class="stop" data-due="2026-12-11T23:59:59+07:00">
+          <div class="date">11/12</div>
+          <div class="what">Chung kết trực tiếp tại TP.HCM. Sản phẩm phải chạy đến hết ngày</div>
+          <span class="left">11/12/2026</span>
+          <div class="srcs"><a class="src" href="https://techday.momo.vn/assets/docs/the-le-cuoc-thi.pdf" target="_blank" rel="noopener noreferrer">Thể lệ v1.0</a></div>
+        </div>
+        <div class="stop ext" data-due="2027-01-31T23:59:59+07:00">
+          <div class="tag">Hộ kinh doanh</div>
+          <div class="date">31/01/2027</div>
+          <div class="what">Hạn thông báo doanh thu năm 2026 của hộ dưới ngưỡng (mẫu 01/TKN-CNKD, "hạn 31/01 năm sau" theo NĐ 68/2026)</div>
+          <span class="left">31/01/2027</span>
+          <div class="srcs"><a class="src" href="#l-nd68">NĐ 68/2026 · xem thẻ nguồn</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="h-de">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Đề thi bảng sinh viên</div>
+        <h2 id="h-de">Imagine the Future Workspace</h2>
+        <p>"Hãy tưởng tượng AI sẽ thay đổi cách đội ngũ fintech làm việc, và qua đó thay đổi cách con người mua sắm, thanh toán, quản lý tài chính và tự bảo vệ mình trên không gian số, rồi biến ý tưởng đó thành sản phẩm dùng được ngay hôm nay."</p>
+      </div>
+      <div class="brief">
+        <div class="panel">
+          <h3>Chủ đề <small>chọn ít nhất 1</small></h3>
+          <ul>
+            <li><b>Trợ lý AI</b><span>"hiểu nhu cầu và hành động thay người dùng": mua sắm, cá nhân, thanh toán, bán hàng, tài chính</span></li>
+            <li><b>An ninh mạng</b><span>"phát hiện, ngăn chặn và phản ứng với các mối đe dọa"</span></li>
+            <li><b>Chống lừa đảo</b><span>giúp người dùng "nhận diện và được cảnh báo trước… trước khi mất tiền hoặc thông tin"</span></li>
+          </ul>
+          <div class="panel-foot"><a class="src" href="https://techday.momo.vn/content/exam.json" target="_blank" rel="noopener noreferrer">exam.json · 20/11/2026</a></div>
+        </div>
+        <div class="panel">
+          <h3>Tiêu chí chấm <small>không công bố trọng số</small></h3>
+          <ul>
+            <li><b>Sáng tạo</b><span>"ý tưởng mới, có tính đột phá hoặc cách tiếp cận khác biệt so với các giải pháp hiện có"</span></li>
+            <li><b>Chất lượng &amp; mức độ hoàn thiện</b><span>"vận hành ổn định, người dùng có thể trải nghiệm trực tiếp", tính tại thời điểm nộp</span></li>
+            <li><b>Tiềm năng tác động</b><span>"khả năng mở rộng trên quy mô lớn và số lượng người dùng có thể hưởng lợi"</span></li>
+          </ul>
+          <p class="panel-note">Chấm bởi 7 giám khảo, đều là lãnh đạo công nghệ và AI của MoMo.</p>
+          <div class="panel-foot"><a class="src" href="https://techday.momo.vn/assets/docs/the-le-cuoc-thi.pdf" target="_blank" rel="noopener noreferrer">Thể lệ, Điều 18</a><a class="src" href="https://techday.momo.vn/content/content.json" target="_blank" rel="noopener noreferrer">content.json</a></div>
+        </div>
+        <div class="panel">
+          <h3>Hồ sơ nộp <small>4 phần</small></h3>
+          <ul>
+            <li><b>Hướng dẫn sử dụng</b><span>tối đa 1 trang A4 (PDF), có link sản phẩm và tài khoản dùng thử</span></li>
+            <li><b>Mã nguồn .zip</b><span>README khai báo cách chạy, công nghệ, tài sản có sẵn, thư viện mã nguồn mở, công cụ AI đã dùng</span></li>
+            <li><b>Slide</b><span>tối đa 10 trang (PDF), không sửa sau khi nộp, dùng luôn cho chung kết</span></li>
+            <li><b>Video</b><span>tối đa 3 phút (MP4), quay sản phẩm chạy thật</span></li>
+          </ul>
+          <div class="panel-foot"><a class="src" href="https://techday.momo.vn/content/exam.json" target="_blank" rel="noopener noreferrer">exam.json</a></div>
+        </div>
+      </div>
+      <div class="constraints" aria-label="Ràng buộc chính">
+        <span class="chip">Đội 2–3 sinh viên, 18–23 tuổi</span>
+        <span class="chip">Sản phẩm thật, giám khảo tự dùng thử online</span>
+        <span class="chip">AI là thành phần cốt lõi</span>
+        <span class="chip">Không có dữ liệu, API, sandbox của MoMo</span>
+        <span class="chip">Cấm sản phẩm làm từ trước cho cùng bài toán</span>
+        <span class="chip">Giải 50 / 30 / 20 triệu đồng</span>
+        <a class="src" href="https://techday.momo.vn/assets/docs/the-le-cuoc-thi.pdf" target="_blank" rel="noopener noreferrer">Thể lệ v1.0 · 13/11/2026</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="h-diem">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Đánh giá của người viết, không phải số liệu</div>
+        <h2 id="h-diem">Bảng điểm sáu ý tưởng vào vòng sâu</h2>
+        <p>Thang 1–5 cho mỗi cột, chấm dựa trên bằng chứng trong báo cáo. Thể lệ không công bố trọng số, nên thử đổi trọng số để xem thứ hạng có giữ được không.</p>
+      </div>
+      <div class="score-tools">
+        <div class="seg" role="group" aria-label="Trọng số">
+          <button type="button" id="w-eq" data-w="eq" aria-pressed="true">Trọng số bằng nhau</button>
+          <button type="button" id="w-cr" data-w="cr" aria-pressed="false">Nhân đôi Sáng tạo</button>
+          <button type="button" id="w-im" data-w="im" aria-pressed="false">Nhân đôi Tác động</button>
+        </div>
+        <div class="legend" aria-hidden="true">1 <i style="background:var(--s1)"></i><i style="background:var(--s2)"></i><i style="background:var(--s3)"></i><i style="background:var(--s4)"></i><i style="background:var(--s5)"></i> 5</div>
+      </div>
+      <div class="scroll-x">
+        <table class="score" id="score">
+          <thead><tr id="score-head"></tr></thead>
+          <tbody id="score-body"></tbody>
+        </table>
+      </div>
+      <p class="note">Cột "Sáng tạo" và "Ít trùng MoMo" ứng với tiêu chí Sáng tạo; "Hoàn thiện trong 9 ngày" ứng với Chất lượng &amp; mức độ hoàn thiện; "Tác động &amp; quy mô" và "Giá trị cho MoMo" ứng với Tiềm năng tác động; "AI là lõi" là điều kiện bắt buộc của đề. Lý do của từng điểm nằm ở mục 6 và 7 của báo cáo bên dưới.</p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="h-viec">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Trước khi viết dòng code đầu tiên</div>
+        <h2 id="h-viec">Ba việc cần làm ngay</h2>
+      </div>
+      <div class="actions">
+        <div class="act">
+          <div class="when">Ngay hôm nay<small>quy tắc chọn đề</small></div>
+          <div>
+            <h3>Kiểm tra app Merchant/Đối tác MoMo</h3>
+            <p>Xem tờ khai điền sẵn hay trợ lý thuế đã ra mắt chưa. Ngày 20/3/2026 MoMo mới nói là "đang lên kế hoạch" tờ khai thuế điền sẵn <a class="src" href="https://www.momo.vn/tin-tuc/thong-cao-bao-chi/momo-cap-nhat-moi-nhat-ve-giai-phap-nhan-tien-8587" target="_blank" rel="noopener noreferrer">MoMo · 20/03/2026</a>; nhóm nghiên cứu chưa xác nhận được đã ra mắt. Nếu MoMo đã có trợ lý thuế dùng AI theo đúng hướng này, chuyển sang 30 Phút Vàng.</p>
+          </div>
+        </div>
+        <div class="act">
+          <div class="when">Trước 23:59 ngày 27/11<small>hạn đăng ký và hỏi đề</small></div>
+          <div>
+            <h3>Đăng ký đội và gửi ban tổ chức bốn câu hỏi</h3>
+            <ol id="btc-questions">
+              <li>Sản phẩm chạy độc lập, ngoài app MoMo, có hợp lệ không?</li>
+              <li>Đội có được dùng tên và nhận diện thương hiệu MoMo trong giao diện không?</li>
+              <li>Khởi động lại máy chủ sau 03/12 mà không đổi mã nguồn có bị coi là cập nhật sản phẩm không?</li>
+              <li>Ban tổ chức có cấp credit đám mây cho đội thi không?</li>
+            </ol>
+            <div class="copy-row"><button type="button" class="btn" id="copy-q">Sao chép 4 câu hỏi</button><span class="copy-status" id="copy-status" aria-live="polite"></span></div>
+          </div>
+        </div>
+        <div class="act">
+          <div class="when">Trước khi làm slide<small>số liệu chính sách</small></div>
+          <div>
+            <h3>Đối chiếu văn bản gốc những chỗ còn đánh dấu vàng hoặc đỏ</h3>
+            <p>Gồm ngày ký <a href="#l-nd141">NĐ 141/2026</a>, toàn văn <a href="#l-tt53">Thông tư 53/2026</a>, <a href="#l-ailaw">Luật AI</a> và tỷ lệ thuế theo ngành. Ghi chép chưa có tỷ lệ % theo ngành, nên MVP không tự tính số thuế phải nộp cho tới khi đội đối chiếu xong.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="h-luat">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Văn bản pháp lý trong báo cáo và ghi chép nghiên cứu</div>
+        <h2 id="h-luat">Văn bản pháp lý và nguồn</h2>
+        <p>Mỗi thẻ ghi ngày ban hành, ngày hiệu lực, nội dung được dùng, link nguồn và mức độ đã kiểm chứng. Trong báo cáo bên dưới, tên văn bản gạch chấm dẫn về thẻ tương ứng. Nhóm nghiên cứu chưa đọc toàn văn phần lớn các văn bản; nội dung lấy qua cổng chính phủ, công báo, báo chí và hãng luật như ghi trên từng thẻ.</p>
+      </div>
+      <div class="status-key">
+        <span class="status ok">Đã đọc trang nguồn có nội dung văn bản (cổng chính phủ, công báo, thư viện luật)</span>
+        <span class="status mid">Qua bài tóm tắt của báo hoặc hãng luật, chưa đọc toàn văn</span>
+        <span class="status low">Chỉ thấy qua đoạn trích tìm kiếm, hoặc các nguồn mâu thuẫn</span>
+      </div>
+      <div class="law-groups"><div class="law-group"><h3>Thuế và hộ kinh doanh</h3><div class="laws"><article class="law" id="l-nq198"><h4>Nghị quyết 198/2025/QH15<span>Quốc hội</span></h4><dl><dt>Ban hành</dt><dd>17/05/2025</dd><dt>Áp dụng phần được dùng</dt><dd>01/01/2026</dd></dl><ul><li>Điều 10 khoản 6: bỏ thuế khoán với hộ, cá nhân kinh doanh từ 01/01/2026.</li><li>Điều 10 khoản 7: chấm dứt lệ phí môn bài từ 01/01/2026.</li></ul><span class="status low">Chỉ thấy qua đoạn trích tìm kiếm của hai trang tóm tắt; chưa đọc văn bản.</span><div class="srcs"><a class="src" href="https://luatvietnam.vn/thue-phi-le-phi/10-chinh-sach-moi-ve-thue-phi-theo-nghi-quyet-198-2025-qh15-565-102213-article.html" target="_blank" rel="noopener noreferrer">LuatVietnam</a><a class="src" href="https://thuviennhadat.vn/phap-luat/nghi-quyet-198-bo-thue-khoan-bo-le-phi-mon-bai-tu-01-01-2026-680780.html" target="_blank" rel="noopener noreferrer">Thư viện nhà đất</a></div></article><article class="law" id="l-nd68"><h4>Nghị định 68/2026/NĐ-CP và Thông tư 18/2026/TT-BTC<span>Chính sách thuế và quản lý thuế với hộ, cá nhân kinh doanh</span></h4><dl><dt>Ban hành</dt><dd>05/03/2026</dd><dt>Hiệu lực</dt><dd>từ ngày ban hành</dd></dl><ul><li>Hộ tự khai, tự tính, tự nộp thuế.</li><li>Phải thông báo mọi tài khoản ngân hàng và ví điện tử dùng cho kinh doanh (Khoản 4 Điều 13); hộ đang hoạt động nộp mẫu 01/BK-STK chậm nhất 20/4/2026.</li><li>Hộ dưới ngưỡng thông báo doanh thu thực tế mỗi năm một lần qua mẫu 01/TKN-CNKD, hạn 31/01 năm sau. Hộ trên ngưỡng khai theo quý (mẫu 01/CNKD).</li><li>Doanh thu tính ngưỡng gồm cả doanh thu đã được tổ chức khác khấu trừ hoặc nộp thay.</li></ul><span class="status mid">Đã đọc bài của Báo Chính phủ và Thời báo Tài chính Việt Nam; chưa đọc nguyên văn nghị định.</span><div class="srcs"><a class="src" href="https://baochinhphu.vn/tu-2026-ho-kinh-doanh-phai-bao-co-quan-thue-cac-tai-khoan-nhan-tien-102260307185152112.htm" target="_blank" rel="noopener noreferrer">Báo Chính phủ · 07/03/2026</a><a class="src" href="https://thoibaotaichinhvietnam.vn/nghi-dinh-682026nd-cp-buoc-chuyen-quan-trong-trong-quan-ly-thue-ho-kinh-doanh-193417.html" target="_blank" rel="noopener noreferrer">Thời báo Tài chính VN · 10/03/2026</a></div></article><article class="law" id="l-nd141"><h4>Nghị định 141/2026/NĐ-CP<span>Sửa Nghị định 68/2026 và Nghị định 320/2025</span></h4><dl><dt>Ngày ký</dt><dd>29/04/2026, chỉ có ở nguồn thứ cấp</dd><dt>Đăng toàn văn</dt><dd>25/05/2026 trên chinhphu.vn</dd><dt>Áp dụng</dt><dd>kỳ tính thuế 2026, từ 01/01/2026</dd></dl><ul><li>Thay “500 triệu đồng” bằng “01 tỷ đồng” ở các Điều 3, 4, 8, 9, 10, 11, 12, 17, 18 của Nghị định 68/2026.</li><li>Doanh thu trên 1 tỷ đồng/năm phải dùng hóa đơn điện tử có mã hoặc khởi tạo từ máy tính tiền; từ 1 tỷ trở xuống được tự chọn.</li><li>Doanh thu lũy kế vượt 1 tỷ trong năm: đăng ký hóa đơn điện tử trong 30 ngày sau kỳ tính thuế vượt ngưỡng.</li><li>Bộ Tài chính (7/2026): khoảng 80% hộ có doanh thu từ 1 tỷ trở xuống nên không phải nộp GTGT, TNCN; 99,6% hộ khai thuế điện tử trong nửa đầu 2026.</li></ul><span class="status ok">Nội dung đối chiếu trên trang toàn văn của chinhphu.vn. Ngày ký chưa xác nhận vì trang chính phủ không ghi.</span><div class="srcs"><a class="src" href="https://xaydungchinhsach.chinhphu.vn/toan-van-nghi-dinh-so-141-2026-nd-cp-nang-nguong-doanh-thu-khong-phai-chiu-thue-len-1-ty-dong-119260504154326455.htm" target="_blank" rel="noopener noreferrer">chinhphu.vn · 25/05/2026</a><a class="src" href="https://vneconomy.vn/ho-kinh-doanh-co-doanh-thu-duoi-1-ty-dong-chua-bat-buoc-dung-hoa-don-dien-tu.htm" target="_blank" rel="noopener noreferrer">VnEconomy</a><a class="src" href="https://luatvietnam.vn/tin-van-ban-moi/chinh-thuc-nang-nguong-doanh-thu-len-1-ty-dong-doi-voi-ho-kinh-doanh-tu-2026-186-108719-article.html" target="_blank" rel="noopener noreferrer">LuatVietnam</a><a class="src" href="https://vietstock.vn/2026/07/ho-kinh-doanh-lo-kho-ke-khai-thue-bo-tai-chinh-noi-gi-758-1472527.htm" target="_blank" rel="noopener noreferrer">Bộ Tài chính qua Vietstock · 28/07/2026</a></div></article><article class="law" id="l-nd70"><h4>Nghị định 70/2025/NĐ-CP<span>Sửa Nghị định 123/2020 về hóa đơn, chứng từ</span></h4><dl><dt>Ban hành</dt><dd>20/03/2025</dd><dt>Hiệu lực</dt><dd>01/06/2025</dd></dl><ul><li>Hộ có doanh thu từ 1 tỷ đồng/năm trở lên trong một số ngành (ăn uống, khách sạn, bán lẻ, vận tải hành khách, làm đẹp, vui chơi…) phải dùng hóa đơn điện tử khởi tạo từ máy tính tiền kết nối cơ quan thuế.</li></ul><span class="status mid">Qua bài tóm tắt của LuatVietnam và PwC Việt Nam; chưa đọc toàn văn.</span><div class="srcs"><a class="src" href="https://luatvietnam.vn/tin-van-ban-moi/5-truong-hop-bat-buoc-su-dung-hoa-don-khoi-tao-tu-may-tinh-tien-tu-01-6-2025-186-101567-article.html" target="_blank" rel="noopener noreferrer">LuatVietnam</a><a class="src" href="https://www.pwc.com/vn/vn/publications/news-brief/250416-changes-to-invoicing-regulations.html" target="_blank" rel="noopener noreferrer">PwC Việt Nam · 16/04/2025</a></div></article><article class="law" id="l-tt152"><h4>Thông tư 152/2025/TT-BTC<span>Chế độ kế toán hộ, cá nhân kinh doanh; thay Thông tư 88/2021</span></h4><dl><dt>Ban hành</dt><dd>31/12/2025</dd><dt>Hiệu lực</dt><dd>01/01/2026</dd></dl><ul><li>Chia nhóm sổ theo nghĩa vụ thuế thực tế, mỗi nhóm 1–4 sổ.</li><li>Chủ hộ tự ghi hoặc giao bố mẹ, vợ chồng, con, anh chị em ruột làm kế toán.</li><li>Lưu trữ sổ tối thiểu 5 năm.</li></ul><span class="status mid">Có link toàn văn trên Công báo; nội dung trong ghi chép lấy cùng các bài tóm tắt.</span><div class="srcs"><a class="src" href="https://congbaocdn.chinhphu.vn/180507251028987904/2026/1/28/final-152signed-17695739990221209521402.pdf" target="_blank" rel="noopener noreferrer">Công báo (PDF)</a><a class="src" href="https://www.sapo.vn/blog/thong-tu-152-2025-tt-btc" target="_blank" rel="noopener noreferrer">Sapo</a><a class="src" href="https://thuvienphapluat.vn/phap-luat-doanh-nghiep/cong-viec-phap-ly/che-do-ke-toan-ho-kinh-doanh-527.html" target="_blank" rel="noopener noreferrer">Thư viện pháp luật</a></div></article><article class="law" id="l-nd117"><h4>Nghị định 117/2025/NĐ-CP<span>Quản lý thuế với kinh doanh trên nền tảng thương mại điện tử, nền tảng số</span></h4><dl><dt>Ban hành</dt><dd>09/06/2025</dd><dt>Hiệu lực</dt><dd>01/07/2025</dd></dl><ul><li>Sàn có chức năng thanh toán khấu trừ, kê khai, nộp thay thuế cho người bán: hàng hóa 1% GTGT + 0,5% TNCN trên doanh thu gộp.</li><li>Tháng 8–9/2025: 63 sàn (55 trong nước, 8 nước ngoài) đã khai, nộp thay 1,07 nghìn tỷ đồng.</li></ul><span class="status mid">Qua bài tóm tắt của LuatVietnam và EY; chưa đọc toàn văn.</span><div class="srcs"><a class="src" href="https://luatvietnam.vn/tin-van-ban-moi/da-co-nghi-dinh-117-2025-nd-cp-ve-quan-ly-thue-doi-voi-kinh-doanh-tren-nen-tang-so-cua-ho-ca-nhan-186-102478-article.html" target="_blank" rel="noopener noreferrer">LuatVietnam</a><a class="src" href="https://www.ey.com/vi_vn/technical/tax/tax-and-law-updates/tin-nhanh-tu-van-thue-nhan-su-thang-6-nam-2025-nghi-dinh-117-ve-quan-ly-thue-doi-voi-hoat-dong-kinh-doanh-tren-nen-tang-thuong-mai-dien-tu-nen-tang-so" target="_blank" rel="noopener noreferrer">EY · 6/2025</a></div></article></div></div><div class="law-group"><h3>Ví điện tử và thanh toán</h3><div class="laws"><article class="law" id="l-tt25"><h4>Thông tư 25/2025/TT-NHNN<span>Sửa Thông tư 17/2024 về tài khoản thanh toán</span></h4><dl><dt>Ban hành</dt><dd>31/08/2025</dd><dt>Quy định tên tài khoản</dt><dd>từ 01/03/2026</dd></dl><ul><li>Tài khoản dùng cho kinh doanh phải đúng tên hộ trên Giấy chứng nhận đăng ký hộ kinh doanh; cấm bí danh, biệt danh.</li><li>MoMo cho biết Mã QR Doanh nghiệp là tài khoản nhận tiền đứng tên hộ theo quy định này (20/3/2026).</li></ul><span class="status mid">Qua bài tóm tắt của báo và LuatVietnam; chưa đọc toàn văn.</span><div class="srcs"><a class="src" href="https://nguoiquansat.vn/tu-1-3-2026-ho-kinh-doanh-phai-mo-tai-khoan-dung-ten-dang-ky-276481.html" target="_blank" rel="noopener noreferrer">Người Quan sát · 01/03/2026</a><a class="src" href="https://luatvietnam.vn/linh-vuc-khac/diem-moi-ve-thong-tu-25-2025-tt-nhnn-ve-tai-khoan-thanh-toan-883-103982-article.html" target="_blank" rel="noopener noreferrer">LuatVietnam</a><a class="src" href="https://www.momo.vn/tin-tuc/thong-cao-bao-chi/momo-cap-nhat-moi-nhat-ve-giai-phap-nhan-tien-8587" target="_blank" rel="noopener noreferrer">MoMo · 20/03/2026</a></div></article><article class="law" id="l-qd2345"><h4>Quyết định 2345/QĐ-NHNN<span>Ngân hàng Nhà nước</span></h4><dl><dt>Hiệu lực</dt><dd>01/07/2024</dd></dl><ul><li>Chuyển tiền trực tuyến hoặc nạp ví trên 10 triệu đồng/lần, hoặc tổng trên 20 triệu đồng/ngày, phải xác thực sinh trắc học đối chiếu chip căn cước.</li></ul><span class="status mid">Qua bài của báo và thư viện luật; chưa đọc toàn văn quyết định.</span><div class="srcs"><a class="src" href="https://baophapluat.vn/chuyen-tien-bang-xac-thuc-sinh-trac-hoc-tu-172024-giam-thieu-cac-vu-lua-dao-chuyen-tien-qua-tai-khoan-post515757.html" target="_blank" rel="noopener noreferrer">Báo Pháp luật</a><a class="src" href="https://thuvienphapluat.vn/chinh-sach-phap-luat-moi/vn/ho-tro-phap-luat/chinh-sach-moi/57646/chuyen-khoan-nap-tien-vi-dien-tu-tren-10-trieu-phai-xac-thuc-sinh-trac-hoc-tu-01-07-2024" target="_blank" rel="noopener noreferrer">Thư viện pháp luật</a><a class="src" href="https://luatvietnam.vn/tin-van-ban-moi/tu-2024-chuyen-khoan-tren-10-trieu-dong-phai-xac-thuc-sinh-trac-hoc-186-96491-article.html" target="_blank" rel="noopener noreferrer">LuatVietnam</a></div></article><article class="law" id="l-tt41"><h4>Thông tư 40/2024/TT-NHNN, sửa bởi Thông tư 41/2025/TT-NHNN<span>Dịch vụ trung gian thanh toán, ví điện tử</span></h4><dl><dt>Thông tư 41 hiệu lực</dt><dd>05/11/2025</dd></dl><ul><li>Ví điện tử không được cấp tín dụng hay trả lãi trên số dư (Khoản 5 Điều 25 Thông tư 40/2024).</li><li>Hạn mức 100 triệu đồng/tháng; 300 triệu đồng/tháng cho dịch vụ thiết yếu (điện, nước, viễn thông, học phí, viện phí, bảo hiểm, khoản vay đến hạn).</li><li>Từ 01/01/2026, mở ví phải xác thực sinh trắc học.</li></ul><span class="status mid">Có link văn bản Thông tư 40 trên Thư viện pháp luật; nội dung Thông tư 41 qua VNBA và Tuổi Trẻ, chưa đọc toàn văn.</span><div class="srcs"><a class="src" href="https://thuvienphapluat.vn/van-ban/Tien-te-Ngan-hang/Thong-tu-40-2024-TT-NHNN-huong-dan-hoat-dong-cung-ung-dich-vu-trung-gian-thanh-toan-615328.aspx" target="_blank" rel="noopener noreferrer">Thư viện pháp luật (TT 40)</a><a class="src" href="https://vnba.org.vn/vi/quy-dinh-moi-ve-vi-dien-tu--tang-an-toan--mo-rong-han-muc--siet-dinh-danh-19550.htm" target="_blank" rel="noopener noreferrer">VNBA · 10/11/2025</a><a class="src" href="https://tuoitre.vn/plo/tu-1-1-2026-muon-mo-vi-dien-tu-phai-xac-minh-thong-tin-sinh-trac-hoc-post880385.html" target="_blank" rel="noopener noreferrer">Tuổi Trẻ · 10/11/2025</a><a class="src" href="https://vietnamfinance.vn/thu-phi-nguoi-dung-bai-toan-kho-cua-vi-dien-tu-d149537.html" target="_blank" rel="noopener noreferrer">VietnamFinance · 24/08/2026</a></div></article><article class="law" id="l-tt53"><h4>Thông tư 53/2026/TT-NHNN<span>An toàn, quản lý rủi ro khi ứng dụng AI trong ngành ngân hàng</span></h4><dl><dt>Ký</dt><dd>30/09/2026</dd><dt>Hiệu lực</dt><dd>15/11/2026</dd></dl><ul><li>Phạm vi gồm cả tổ chức cung ứng dịch vụ trung gian thanh toán, tức các ví như MoMo.</li><li>AI tự động thực hiện thanh toán là rủi ro cao khi vượt 10 triệu đồng/lần hoặc 20 triệu đồng/ngày với cá nhân (50 triệu/lần, 100 triệu/ngày với tổ chức).</li><li>AI tự động quyết định tín dụng từ 50 triệu đồng trở lên là rủi ro cao.</li><li>Theo đưa tin, khách hàng phải có công cụ tạm dừng hoặc hủy quyền để AI tự động thanh toán; chi tiết này có thể lấy từ bản dự thảo.</li></ul><span class="status mid">Chưa đọc toàn văn; nội dung qua Thị trường Tài chính Tiền tệ và VietnamPlus. Yêu cầu về giải thích và chuyển tiếp cần đối chiếu.</span><div class="srcs"><a class="src" href="https://thitruongtaichinhtiente.vn/nhnn-ban-hanh-quy-dinh-ve-an-toan-quan-ly-rui-ro-khi-ung-dung-ai-trong-nganh-ngan-hang-86130.html" target="_blank" rel="noopener noreferrer">Thị trường Tài chính Tiền tệ</a><a class="src" href="https://www.vietnamplus.vn/ngan-hang-nha-nuoc-dat-nhieu-yeu-cau-khi-ngan-hang-ung-dung-ai-post1140808.vnp" target="_blank" rel="noopener noreferrer">VietnamPlus</a></div></article><article class="law" id="l-nd340"><h4>Nghị định 340/2025/NĐ-CP<span>Xử phạt vi phạm hành chính, trong đó có mua bán, thuê, cho thuê tài khoản</span></h4><dl><dt>Hiệu lực</dt><dd>09/02/2026</dd></dl><ul><li>Phạt 100–150 triệu đồng khi mua, bán, thuê, cho thuê, mượn từ 1 đến dưới 10 tài khoản; 150–200 triệu đồng từ 10 tài khoản trở lên.</li><li>Có thể bị xử lý hình sự theo Điều 291 Bộ luật Hình sự (đến 7 năm tù).</li><li>Một bài CafeF khác ghi mức “đến 250 triệu”, có thể là mức với tổ chức; chưa đối chiếu.</li></ul><span class="status low">Qua báo; các bài ghi mức phạt tối đa khác nhau và chưa đọc toàn văn nghị định.</span><div class="srcs"><a class="src" href="https://cafef.vn/mua-ban-tai-khoan-ngan-hang-coi-chung-ruoc-hoa-vao-than-188261001071944878.chn" target="_blank" rel="noopener noreferrer">CafeF · 01/10/2026</a><a class="src" href="https://cafef.vn/phat-den-250-trieu-dong-neu-nguoi-dung-tai-khoan-ngan-hang-co-hanh-vi-sau-188260805112154922.chn" target="_blank" rel="noopener noreferrer">CafeF · 05/08/2026</a></div></article></div></div><div class="law-group"><h3>Dữ liệu cá nhân và AI</h3><div class="laws"><article class="law" id="l-pdp"><h4>Luật Bảo vệ dữ liệu cá nhân 91/2025/QH15<span>Quốc hội</span></h4><dl><dt>Thông qua</dt><dd>26/06/2025</dd><dt>Hiệu lực</dt><dd>01/01/2026</dd></dl><ul><li>Điều 27: thông tin tài chính, ngân hàng, tín dụng phải áp dụng quy định về dữ liệu nhạy cảm.</li><li>Không được dùng thông tin tín dụng để chấm điểm, xếp hạng, đánh giá tín nhiệm khi chưa có sự đồng ý của chủ thể dữ liệu.</li></ul><span class="status mid">Có link văn bản trên Thư viện pháp luật; nội dung lấy cùng bài của Bộ Công an và hãng luật.</span><div class="srcs"><a class="src" href="https://bocongan.gov.vn/chinh-sach-phap-luat/bai-viet/bao-ve-du-lieu-ca-nhan-trong-mot-so-hoat-dong-1754989261" target="_blank" rel="noopener noreferrer">Bộ Công an</a><a class="src" href="https://thuvienphapluat.vn/van-ban/Bo-may-hanh-chinh/Luat-Bao-ve-du-lieu-ca-nhan-2025-so-91-2025-QH15-625628.aspx" target="_blank" rel="noopener noreferrer">Thư viện pháp luật</a><a class="src" href="https://yennamlawfirm.vn/luat-bao-ve-du-lieu-ca-nhan-91-2025-qh15/" target="_blank" rel="noopener noreferrer">Yen Nam Law</a></div></article><article class="law" id="l-nd356"><h4>Nghị định 356/2025/NĐ-CP<span>Hướng dẫn Luật Bảo vệ dữ liệu cá nhân; thay Nghị định 13/2023</span></h4><dl><dt>Ban hành</dt><dd>31/12/2025</dd><dt>Hiệu lực</dt><dd>01/01/2026</dd></dl><ul><li>Danh mục dữ liệu nhạy cảm được đưa tin là gồm thông tin tài khoản số, dữ liệu sinh trắc học và lịch sử giao dịch tài chính.</li></ul><span class="status mid">Qua bài tóm tắt của EY, LuatVietnam và PwC; chưa đọc toàn văn.</span><div class="srcs"><a class="src" href="https://www.ey.com/vi_vn/technical/tax/tax-and-law-updates/nghi-dinh-so-356-2025-nd-cp-quy-dinh-chi-tiet-mot-so-dieu-va-bien-phap-thi-hanh-luat-bao-ve-du-lieu-ca-nhan" target="_blank" rel="noopener noreferrer">EY</a><a class="src" href="https://luatvietnam.vn/legal-updates/new-features-of-decree-356-2025-compared-with-decree-13-2023-on-personal-data-protection-892-106712-article.html" target="_blank" rel="noopener noreferrer">LuatVietnam</a><a class="src" href="https://www.pwc.com/vn/vn/publications/legal-news-brief/20260128-new-rules-personal-data-protection.html" target="_blank" rel="noopener noreferrer">PwC · 28/01/2026</a></div></article><article class="law" id="l-ailaw"><h4>Luật Trí tuệ nhân tạo (134/2025/QH15)<span>Quốc hội</span></h4><dl><dt>Thông qua</dt><dd>10/12/2025</dd><dt>Hiệu lực</dt><dd>01/03/2026</dd><dt>Chuyển tiếp</dt><dd>18 tháng cho tài chính, y tế, giáo dục, đến khoảng 01/09/2027</dd></dl><ul><li>Phân loại theo mức rủi ro; hệ thống rủi ro cao phải quản lý rủi ro, có hồ sơ kỹ thuật, nhật ký vận hành và đánh giá sự phù hợp trước khi triển khai.</li><li>Chatbot phải cho người dùng biết họ đang tương tác với AI; âm thanh, hình ảnh, video do AI tạo phải gắn nhãn máy đọc được.</li></ul><span class="status low">Qua hãng luật và thư viện quốc tế. Số hiệu luật chỉ thấy ở nguồn thứ cấp; các nguồn mâu thuẫn về số tầng rủi ro (3 hay 4) và danh mục hệ thống rủi ro cao.</span><div class="srcs"><a class="src" href="https://www.allenandgledhill.com/vn/publication/articles/32667/s-new-law-on-artificial-intelligence-risk-based-regulatory-framework-in-force-1-march-2026" target="_blank" rel="noopener noreferrer">Allen &amp; Gledhill</a><a class="src" href="https://www.loc.gov/item/global-legal-monitor/2026-04-03/vietnam-ai-law-takes-effect" target="_blank" rel="noopener noreferrer">Library of Congress · 03/04/2026</a><a class="src" href="https://blogs.duanemorris.com/vietnam/2026/03/03/vietnam-the-first-law-on-artificial-intelligence-what-you-must-know/" target="_blank" rel="noopener noreferrer">Duane Morris · 03/03/2026</a><a class="src" href="https://www.vietnam-briefing.com/news/vietnams-ai-law-regulatory-milestone-business-implications.html/" target="_blank" rel="noopener noreferrer">Vietnam Briefing</a><a class="src" href="https://casrai.org/guides/vietnam-ai-law-134-2025" target="_blank" rel="noopener noreferrer">CASRAI (số hiệu luật)</a></div></article></div></div></div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="h-full">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Khoảng 13.400 từ · số liệu tính đến 24/11/2026</div>
+        <h2 id="h-full">Báo cáo đầy đủ</h2>
+        <p>Nhãn màu đánh dấu loại thông tin: <span class="ev ev-self">MoMo tự công bố</span> <span class="ev ev-snip">qua tóm tắt tìm kiếm</span> <span class="ev ev-inf">suy luận</span> <span class="ev ev-tech">kiến thức kỹ thuật chung</span>. Dữ kiện có link nguồn và không kèm nhãn đã được đối chiếu trong ghi chép nghiên cứu.</p>
+      </div>
+      <div class="report">
+        <nav class="toc" aria-label="Mục lục"><span class="eyebrow">Mục lục</span><ol><li><a href="#r0">Tóm tắt</a></li><li><a href="#r1">1. Đề thi thưởng cho sản phẩm thật, nơi AI làm việc thay người</a></li><li><a href="#r2">2. MoMo đã phủ kín khâu giao dịch; khoảng trống nằm ở hai đầu và phía người bán</a><ol><li><a href="#r2-1">Mô hình kinh doanh và quy mô</a></li><li><a href="#r2-2">Định hướng chiến lược</a></li><li><a href="#r2-3">Danh mục AI hiện có của MoMo</a></li><li><a href="#r2-4">Những khoảng trống chính MoMo thừa nhận</a></li></ol></li><li><a href="#r3">3. Người dùng đau nhất ở giao dịch treo, người bán đau nhất ở luật thuế mới</a><ol><li><a href="#r3-1">3.1 Người dùng cá nhân: sự cố giao dịch, lừa đảo thao túng và phí khó hiểu</a></li><li><a href="#r3-2">3.2 Người bán: luật thuế mới, dữ liệu phân mảnh và lừa đảo tại quầy</a></li></ol></li><li><a href="#r4">4. Thị trường cho thấy AI thắng khi gắn vào hành động, niềm tin và chi phí tuân thủ</a></li><li><a href="#r5">5. Hai mươi mốt ý tưởng thô, sáu ý tưởng qua được bốn bộ lọc</a></li><li><a href="#r6">6. Sáu ý tưởng dưới con mắt một giám khảo hoài nghi</a><ol><li><a href="#r6-1">6.1 Sổ Sẵn: trợ lý thuế và sổ sách bằng giọng nói cho hộ kinh doanh</a></li><li><a href="#r6-2">6.2 30 Phút Vàng: trợ lý phản ứng sau lừa đảo</a></li><li><a href="#r6-3">6.3 Tiền Về Thật: xác minh tiền về cho người bán</a></li><li><a href="#r6-4">6.4 Gỡ Rối Giao Dịch: agent xử lý giao dịch treo và trả trùng</a></li><li><a href="#r6-5">6.5 Phòng Tập Chống Lừa: nhận diện kịch bản và mô phỏng cho Gen Z</a></li><li><a href="#r6-6">6.6 Rõ Phí: minh bạch chi phí và quyền trừ tiền tự động</a></li></ol></li><li><a href="#r7">7. Sổ Sẵn dẫn bảng điểm vì cân bằng được tác động và khả thi</a></li><li><a href="#r8">8. Kế hoạch chín ngày đưa Sổ Sẵn lên sóng và giữ nó sống đến 11/12</a><ol><li><a href="#r8-1">Phạm vi: làm thật gì, giả lập gì</a></li><li><a href="#r8-2">Kiến trúc và bộ đánh giá</a></li><li><a href="#r8-3">Lịch làm việc mười ngày</a></li><li><a href="#r8-4">Kịch bản video 3 phút</a></li><li><a href="#r8-5">Cốt truyện slide 10 trang</a></li><li><a href="#r8-6">Tài liệu nộp và tuân thủ ngay từ thiết kế</a></li><li><a href="#r8-7">Rủi ro khi giám khảo tự thử và khi thuyết trình</a></li><li><a href="#r8-8">Phương án dự phòng: MVP của 30 Phút Vàng</a></li></ol></li><li><a href="#r9">Kết luận</a></li></ol></nav>
+        <div class="article" id="article">
+          <details class="toc-mobile"><summary>Mục lục</summary><ol><li><a href="#r0">Tóm tắt</a></li><li><a href="#r1">1. Đề thi thưởng cho sản phẩm thật, nơi AI làm việc thay người</a></li><li><a href="#r2">2. MoMo đã phủ kín khâu giao dịch; khoảng trống nằm ở hai đầu và phía người bán</a><ol><li><a href="#r2-1">Mô hình kinh doanh và quy mô</a></li><li><a href="#r2-2">Định hướng chiến lược</a></li><li><a href="#r2-3">Danh mục AI hiện có của MoMo</a></li><li><a href="#r2-4">Những khoảng trống chính MoMo thừa nhận</a></li></ol></li><li><a href="#r3">3. Người dùng đau nhất ở giao dịch treo, người bán đau nhất ở luật thuế mới</a><ol><li><a href="#r3-1">3.1 Người dùng cá nhân: sự cố giao dịch, lừa đảo thao túng và phí khó hiểu</a></li><li><a href="#r3-2">3.2 Người bán: luật thuế mới, dữ liệu phân mảnh và lừa đảo tại quầy</a></li></ol></li><li><a href="#r4">4. Thị trường cho thấy AI thắng khi gắn vào hành động, niềm tin và chi phí tuân thủ</a></li><li><a href="#r5">5. Hai mươi mốt ý tưởng thô, sáu ý tưởng qua được bốn bộ lọc</a></li><li><a href="#r6">6. Sáu ý tưởng dưới con mắt một giám khảo hoài nghi</a><ol><li><a href="#r6-1">6.1 Sổ Sẵn: trợ lý thuế và sổ sách bằng giọng nói cho hộ kinh doanh</a></li><li><a href="#r6-2">6.2 30 Phút Vàng: trợ lý phản ứng sau lừa đảo</a></li><li><a href="#r6-3">6.3 Tiền Về Thật: xác minh tiền về cho người bán</a></li><li><a href="#r6-4">6.4 Gỡ Rối Giao Dịch: agent xử lý giao dịch treo và trả trùng</a></li><li><a href="#r6-5">6.5 Phòng Tập Chống Lừa: nhận diện kịch bản và mô phỏng cho Gen Z</a></li><li><a href="#r6-6">6.6 Rõ Phí: minh bạch chi phí và quyền trừ tiền tự động</a></li></ol></li><li><a href="#r7">7. Sổ Sẵn dẫn bảng điểm vì cân bằng được tác động và khả thi</a></li><li><a href="#r8">8. Kế hoạch chín ngày đưa Sổ Sẵn lên sóng và giữ nó sống đến 11/12</a><ol><li><a href="#r8-1">Phạm vi: làm thật gì, giả lập gì</a></li><li><a href="#r8-2">Kiến trúc và bộ đánh giá</a></li><li><a href="#r8-3">Lịch làm việc mười ngày</a></li><li><a href="#r8-4">Kịch bản video 3 phút</a></li><li><a href="#r8-5">Cốt truyện slide 10 trang</a></li><li><a href="#r8-6">Tài liệu nộp và tuân thủ ngay từ thiết kế</a></li><li><a href="#r8-7">Rủi ro khi giám khảo tự thử và khi thuyết trình</a></li><li><a href="#r8-8">Phương án dự phòng: MVP của 30 Phút Vàng</a></li></ol></li><li><a href="#r9">Kết luận</a></li></ol></details>
+          <h2 id="r0">Tóm tắt</h2>
+<p>Ý tưởng đáng đầu tư nhất cho một đội sinh viên ở MoMo Tech Contest 2026 là <strong>"Sổ Sẵn"</strong>. Đây là trợ lý AI dùng giọng nói, giúp hộ kinh doanh tự ghi sổ, canh ngưỡng doanh thu 1 tỷ đồng và hiểu nghĩa vụ thuế mới dựa trên chính dòng tiền của họ. Đi kèm là một "bàn làm việc chính sách": AI đọc văn bản luật mới và đề xuất thay đổi quy tắc, nhân viên vận hành duyệt. Ý tưởng này hội đủ những gì đề thi và hội đồng giám khảo đòi hỏi:</p>
+<ul>
+<li><strong>Nỗi đau có số liệu độc lập mạnh:</strong> chỉ <strong>13,9%</strong> hộ hiểu rõ quy định thuế áp dụng từ 2026, và <strong>73,3%</strong> coi thủ tục pháp lý là trở ngại lớn nhất.</li>
+<li><strong>Quy mô lớn:</strong> cả nước có khoảng <strong>6,1 triệu hộ</strong>, trong đó <strong>hơn 500.000</strong> điểm bán dùng MoMo QR.</li>
+<li><strong>Thời điểm gấp:</strong> chu kỳ khai năm đầu tiên sau khi bỏ thuế khoán kết thúc <strong>31/01/2027</strong>, ngay sau chung kết.</li>
+<li><strong>Ít trùng với AI MoMo đang chạy:</strong> chấm điểm gian lận, nhãn người nhận, eKYC, chấm điểm tín dụng và Moni đều không đụng tới bài toán này.</li>
+<li><strong>Làm được trong 9 ngày:</strong> dữ liệu giả lập cộng văn bản luật công khai là đủ để AI tạo giá trị thật.</li>
+</ul>
+<p>Phương án dự phòng là <strong>"30 Phút Vàng"</strong>, trợ lý phản ứng sau lừa đảo cho cả nạn nhân lẫn chuyên viên chống gian lận. Đây là ý tưởng sáng tạo nhất và đánh thẳng vào giới hạn mà chính MoMo thừa nhận. Điểm yếu là tác động khó chứng minh, và ý tưởng hơi lệch định nghĩa "Chống lừa đảo" của đề (đề nhấn vào việc cảnh báo <em>trước khi</em> mất tiền). Một số hướng phổ biến nên tránh vì MoMo đã có hoặc vì đội không có dữ liệu để làm thật: cảnh báo trước khi chuyển tiền, gắn nhãn tài khoản nhận, phát hiện tài khoản trung gian nhận tiền lừa đảo (money mule), giải thích điểm tín dụng, nhắc gia hạn tự động. Rủi ro lớn nhất của Sổ Sẵn nằm ở hai chỗ: AI trích sai điều luật, và hạ tầng phải chạy không đổi từ 03/12 đến hết 11/12. Mục 8 nêu cách xử lý cụ thể cho cả hai.</p>
+<blockquote>
+<p><strong>Cách đọc báo cáo.</strong></p>
+<ul>
+<li><strong>Dữ kiện có link nguồn, không kèm ghi chú:</strong> lấy từ văn bản chính thức hoặc báo chí, đã được đối chiếu trong ghi chép nghiên cứu.</li>
+<li><strong>"<span class="ev ev-self">MoMo tự công bố</span>":</strong> số liệu do MoMo đưa ra, chưa có kiểm chứng độc lập.</li>
+<li><strong>"<span class="ev ev-snip">qua tóm tắt tìm kiếm</span>":</strong> nhóm nghiên cứu chỉ thấy đoạn trích, chưa đọc toàn văn.</li>
+<li><strong>"<span class="ev ev-inf">suy luận</span>":</strong> nhận định của người viết.</li>
+<li><strong>"<span class="ev ev-tech">kiến thức kỹ thuật chung</span>":</strong> hiểu biết về mô hình và công cụ, không lấy từ ghi chép nghiên cứu.</li>
+</ul>
+<p>Mọi số liệu tính đến 24/11/2026. Hôm nay là thứ Ba 24/11, còn khoảng 9,5 ngày đến hạn nộp.</p>
+</blockquote>
+<h2 id="r1">1. Đề thi thưởng cho sản phẩm thật, nơi AI làm việc thay người</h2>
+<p>Đề bảng sinh viên chỉ có một chủ đề lớn: <strong>"Imagine the Future Workspace (Human Centered. AI Powered)"</strong>. Câu dẫn của đề là: "Hãy tưởng tượng AI sẽ thay đổi cách đội ngũ fintech làm việc, và qua đó thay đổi cách con người mua sắm, thanh toán, quản lý tài chính và tự bảo vệ mình trên không gian số, rồi biến ý tưởng đó thành sản phẩm dùng được ngay hôm nay" (<a href="https://techday.momo.vn/content/exam.json" target="_blank" rel="noopener noreferrer">exam.json</a>). Câu này có hai vế nối với nhau bằng chữ "qua đó". Vế đầu nói về cách <em>đội ngũ fintech</em> làm việc, vế sau nói về lợi ích cho <em>người dân</em>. Phần lớn các đội có lẽ sẽ chỉ làm vế sau; bài nào nói được cả hai vế sẽ có lợi thế tự nhiên <span class="ev ev-inf">suy luận</span>.</p>
+<p>Phạm vi người dùng "không giới hạn" ("cá nhân, người bán, doanh nghiệp, đội vận hành…"), nhưng đội phải nêu rõ đối tượng trong slide. Sản phẩm phải thuộc ít nhất một trong ba chủ đề:</p>
+<ul>
+<li><strong>Trợ lý AI:</strong> "hiểu nhu cầu và hành động thay người dùng", gồm năm nhánh mua sắm, cá nhân, thanh toán, bán hàng, tài chính.</li>
+<li><strong>An ninh mạng:</strong> "phát hiện, ngăn chặn và phản ứng với các mối đe dọa".</li>
+<li><strong>Chống lừa đảo:</strong> giúp người dùng "nhận diện và được cảnh báo trước… trước khi mất tiền hoặc thông tin".</li>
+</ul>
+<p>Cụm "hành động thay người dùng" cho thấy đề muốn AI làm việc, không chỉ trả lời. Hai cụm "phản ứng" và "trước khi mất tiền" là ranh giới cần để ý khi xếp một ý tưởng vào chủ đề <span class="ev ev-inf">suy luận</span>.</p>
+<p>Yêu cầu sản phẩm khắt khe hơn một hackathon thông thường. Sản phẩm phải "cụ thể, sử dụng được trực tuyến, không chỉ là bản trình diễn hay bản mẫu thử". Giám khảo "tự dùng thử… không phụ thuộc vào máy local của đội". Và "<strong>AI là thành phần cốt lõi</strong> tạo ra giá trị của sản phẩm, không chỉ là tính năng phụ" (<a href="https://techday.momo.vn/content/exam.json" target="_blank" rel="noopener noreferrer">exam.json</a>). Bài nộp gồm bốn phần:</p>
+<ul>
+<li>hướng dẫn sử dụng tối đa 1 trang A4, có link và tài khoản dùng thử;</li>
+<li>mã nguồn .zip, kèm README khai báo tài sản có sẵn, thư viện mã nguồn mở và công cụ AI đã dùng;</li>
+<li>slide tối đa 10 trang PDF, "không được sửa sau khi nộp" và dùng luôn cho chung kết;</li>
+<li>video tối đa 3 phút quay sản phẩm chạy thật.</li>
+</ul>
+<p>Các mốc và điều khoản chính trong thể lệ (<a href="https://techday.momo.vn/assets/docs/the-le-cuoc-thi.pdf" target="_blank" rel="noopener noreferrer">Thể lệ</a>):</p>
+<ul>
+<li>Hạn nộp <strong>23:59:59 ngày 03/12/2026</strong>. Danh sách 5 đội vào chung kết công bố trong ngày 08/12. Chung kết thi trực tiếp ngày 11/12 tại TP.HCM.</li>
+<li>Đội phải giữ sản phẩm truy cập được đến hết ngày thi. Điều 31.4 cấm "cập nhật Sản phẩm đang chạy tại đường link đã nộp, sau hạn chót".</li>
+<li>Không giới hạn ngôn ngữ lập trình hay mô hình AI (Điều 12.1). Được dùng thư viện, dataset, mô hình có sẵn nếu có quyền sử dụng hợp pháp (12.2).</li>
+<li>Phải khai báo nguồn dữ liệu cá nhân hoặc dữ liệu doanh nghiệp (12.4). Cấm nộp sản phẩm đã làm từ trước cho chính bài toán (12.5). Phải khai báo công cụ AI đã dùng (28.4).</li>
+</ul>
+<p>Điểm quan trọng nhất cho việc chọn ý tưởng: <strong>đề không cung cấp dữ liệu, API, sandbox hay credit nào của MoMo</strong> (Điều 11; exam.json không liệt kê tài nguyên nào). Đội thi gồm 2–3 sinh viên quốc tịch Việt Nam từ 18 đến 23 tuổi, không ai đang làm việc cho MoMo, kể cả thực tập. Giải thưởng là 50, 30 và 20 triệu đồng; thành viên ba đội đứng đầu được vào thẳng vòng Leadership Interview của MoMo Talent 2027 (<a href="https://techday.momo.vn/content/content.json" target="_blank" rel="noopener noreferrer">content.json</a>).</p>
+<p>Thể lệ có ba tiêu chí chấm (<a href="https://techday.momo.vn/assets/docs/the-le-cuoc-thi.pdf" target="_blank" rel="noopener noreferrer">Thể lệ</a>):</p>
+<ul>
+<li><strong>Sáng tạo:</strong> "ý tưởng mới, có tính đột phá hoặc cách tiếp cận khác biệt so với các giải pháp hiện có".</li>
+<li><strong>Chất lượng &amp; mức độ hoàn thiện:</strong> "sản phẩm tại thời điểm nộp bài: vận hành ổn định, người dùng có thể trải nghiệm trực tiếp".</li>
+<li><strong>Tiềm năng tác động:</strong> "khả năng mở rộng trên quy mô lớn và số lượng người dùng có thể hưởng lợi".</li>
+</ul>
+<p><strong>Trọng số không được công bố.</strong> Ở vòng sơ loại, mỗi bài được ít nhất 3 giám khảo chấm độc lập. Cả bảy giám khảo đều làm công nghệ ở MoMo: CTO Thái Trí Hùng, Head of AI &amp; Data Hồng Trung Dũng, một Research Scientist, hai lãnh đạo AI Engineering, một Sr. Manager Software Engineering và Head of ITC Hà Nội (<a href="https://techday.momo.vn/content/content.json" target="_blank" rel="noopener noreferrer">content.json</a>). Từ đó có ba hệ quả <span class="ev ev-inf">suy luận</span>:</p>
+<ul>
+<li>Phần AI sẽ bị soi kỹ về kiến trúc, độ ổn định và cách đánh giá.</li>
+<li>Một sản phẩm hẹp mà chạy mượt có lợi hơn một sản phẩm rộng mà lỗi.</li>
+<li>Bất cứ thứ gì trùng với cái MoMo đang chạy sẽ bị nhận ra ngay, vì chính những người này đã xây nó.</li>
+</ul>
+<p>Tinh thần của ban tổ chức lặp lại ở khắp website: "Human centered ✦ AI powered". CEO Nguyễn Mạnh Tường viết: "Hiểu con người để đặt đúng bài toán". CTO Thái Trí Hùng viết: "Dẫn dắt AI, đừng để AI dẫn dắt mình". Điều 3 của thể lệ ghi mục đích cuộc thi là "cùng nhau xây dựng cách làm việc hiệu quả giữa con người và AI trong tương lai" (<a href="https://techday.momo.vn/content/content.json" target="_blank" rel="noopener noreferrer">content.json</a>; <a href="https://techday.momo.vn/assets/docs/the-le-cuoc-thi.pdf" target="_blank" rel="noopener noreferrer">Thể lệ</a>). Năm 2024, CTO còn nói người dùng "không quan tâm đến việc chúng tôi ứng dụng AI ở đâu", và AI nên "khiêm nhường đến mức vô hình" (<a href="https://cafebiz.vn/tai-dinh-vi-thanh-tro-thu-tai-chinh-voi-ai-cac-sep-momo-da-noi-gi-176241031171910802.chn" target="_blank" rel="noopener noreferrer">CafeBiz, 31/10/2024</a>). Trang chủ gọi đây là cuộc thi giải "bài toán thật của người dùng MoMo", còn đề thi ghi phạm vi người dùng "không giới hạn". Đề là văn bản cụ thể hơn. Dù vậy, chọn bài toán bám sát hệ sinh thái MoMo vẫn an toàn hơn cho tiêu chí tác động <span class="ev ev-inf">suy luận</span>.</p>
+<p>Trên cùng máy chủ còn có một đề khác, file exam-internal.json, dành cho "Bảng nội bộ dành cho nhân viên MoMo". <strong>Đề này không áp dụng cho sinh viên</strong>; ở đây chỉ dùng nó làm tín hiệu về những gì lãnh đạo MoMo đang bận tâm (<a href="https://techday.momo.vn/content/exam-internal.json" target="_blank" rel="noopener noreferrer">exam-internal.json</a>):</p>
+<ul>
+<li>Đề nội bộ yêu cầu sản phẩm "thể hiện rõ phần việc agent đảm nhận và phần việc con người kiểm soát hoặc ra quyết định".</li>
+<li>Đề tài trợ "Merchant SME 2027" nêu bối cảnh: MoMo phục vụ "khoảng 500.000 merchant SME, phần lớn chưa quen dùng công nghệ", muốn mở rộng lên 1 triệu, và phải "giữ chân merchant trước sự cạnh tranh của các ngân hàng" mà chi phí phục vụ không tăng.</li>
+<li>Các nhóm vấn đề của đề tài trợ gồm "Sản phẩm cho merchant SME low tech: số hóa, quản lý doanh thu, tài chính, thuế" và "Merchant Trust: Tiền về chắc chắn, sự cố được xử lý trước khi merchant phải gọi lên".</li>
+</ul>
+<p>Đội sinh viên có thể lấy cảm hứng từ các vấn đề này, nhưng không được trình bày chúng như yêu cầu chính thức của bảng sinh viên.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr class="header">
+<th>Ràng buộc (nguồn)</th>
+<th>Hệ quả cho việc chọn và làm ý tưởng <span class="ev ev-inf">suy luận</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Sản phẩm thật, giám khảo tự thử trực tuyến</td>
+<td>Phạm vi hẹp nhưng chạy mượt; mỗi giám khảo có sandbox riêng; không phụ thuộc phần cứng hay quyền hệ điều hành đặc biệt</td>
+</tr>
+<tr class="even">
+<td>AI là thành phần cốt lõi</td>
+<td>AI phải làm phần việc mà quy tắc cứng không làm được; tránh app thường gắn thêm chatbot</td>
+</tr>
+<tr class="odd">
+<td>Không có dữ liệu hay API của MoMo</td>
+<td>Chọn bài toán mà dữ liệu công khai (văn bản luật, thủ đoạn lừa đảo đã công bố, giọng nói) cộng dữ liệu giả lập vẫn đủ để AI có giá trị thật; khai báo trong README</td>
+</tr>
+<tr class="even">
+<td>Không được sửa sau 03/12, phải chạy đến 11/12</td>
+<td>Hạ tầng trả phí, luôn bật; có nhà cung cấp LLM dự phòng; đặt trần chi phí; đóng băng sản phẩm sớm</td>
+</tr>
+<tr class="odd">
+<td>Slide không sửa được và dùng luôn cho chung kết</td>
+<td>Làm slide ở chất lượng chung kết ngay từ đầu</td>
+</tr>
+<tr class="even">
+<td>Giám khảo là lãnh đạo kỹ thuật và AI của MoMo</td>
+<td>Phải có kiến trúc rõ, bộ đánh giá, số đo trung thực; không lặp lại thứ MoMo đã có</td>
+</tr>
+<tr class="odd">
+<td>2–3 sinh viên, khoảng 9,5 ngày</td>
+<td>Một luồng giá trị chính, tối đa ba tính năng lõi</td>
+</tr>
+</tbody>
+</table></div>
+<p>Từ các ràng buộc trên, có ba hướng sản phẩm hợp đề nhất:</p>
+<ol type="1">
+<li>Trợ lý <em>hành động</em> bên trong một luồng tiền cụ thể, không phải chatbot đa năng.</li>
+<li>Phòng thủ ở những khâu MoMo chưa phủ: trước khi người dùng mở màn hình chuyển tiền, sau khi tiền đã đi, và phía người bán.</li>
+<li>Công cụ cho người bán và đội vận hành, nơi thể hiện được mô hình "agent làm, con người duyệt" đúng tinh thần "Future Workspace".</li>
+</ol>
+<h2 id="r2">2. MoMo đã phủ kín khâu giao dịch; khoảng trống nằm ở hai đầu và phía người bán</h2>
+<h3 id="r2-1">Mô hình kinh doanh và quy mô</h3>
+<p>MoMo là tổ chức trung gian thanh toán có giấy phép ví điện tử 16/GP-NHNN. Theo Khoản 5 Điều 25 <a class="law-ref" href="#l-tt41">Thông tư 40/2024</a>, ví <strong>không được cấp tín dụng hay trả lãi</strong> cho người dùng. Vì vậy Ví Trả Sau và Vay Nhanh do đối tác như TPBank, MBV, VCBNeo cung cấp, MoMo chỉ là kênh phân phối và hưởng phí (<a href="https://vietnamfinance.vn/thu-phi-nguoi-dung-bai-toan-kho-cua-vi-dien-tu-d149537.html" target="_blank" rel="noopener noreferrer">VietnamFinance, 24/08/2026</a>).</p>
+<p>Theo DealStreetAsia dẫn hồ sơ nộp cơ quan quản lý, năm 2024 MoMo có doanh thu <strong>hơn 3.300 tỷ đồng</strong>, lãi ròng <strong>347,5 tỷ đồng</strong> và chi phí bán hàng <strong>1.990 tỷ đồng</strong> (<a href="https://www.bsa.org.vn/momo-co-lai-trong-ca-nam-2024-tai-khoi-dong-ke-hoach-ipo/" target="_blank" rel="noopener noreferrer">BSA/DealStreetAsia, 14/05/2025</a>). Chi phí bán hàng như vậy bằng khoảng 60% doanh thu, nên AI nào giảm được chi phí phục vụ hoặc chi phí khuyến mãi sẽ chạm vào dòng chi lớn nhất của MoMo <span class="ev ev-inf">suy luận</span>.</p>
+<p>MoMo nói có <strong>hơn 30 triệu người dùng</strong>. Một báo cáo chứng khoán cho năm 2024 ghi hơn 40 triệu tài khoản đăng ký nhưng chỉ khoảng <strong>10 triệu người dùng hoạt động hằng tháng</strong> (<a href="https://vnbusiness.vn/bat-ngo-voi-so-von-dieu-le-cua-ky-lan-cong-nghe-momo.html" target="_blank" rel="noopener noreferrer">VnBusiness, 13/01/2026</a>). Phía người bán, có <strong>hơn 500.000</strong> merchant và hộ kinh doanh dùng MoMo QR (<a href="https://tuoitre.vn/momo-va-hanh-trinh-15-nam-cung-tieu-thuong-viet-trong-chuyen-doi-so-20251230111814396.htm" target="_blank" rel="noopener noreferrer">Tuổi Trẻ, 30/12/2025</a>), và hơn 200.000 điểm bán dùng loa thông báo (MoMo tự công bố, <a href="https://www.momo.vn/tin-tuc/khuyen-mai/loa-bao-momo-nhan-tien-dung-chuan-tai-khoan-ho-8565" target="_blank" rel="noopener noreferrer">momo.vn</a>).</p>
+<p>Áp lực cạnh tranh có thật. Chuyển khoản liên ngân hàng và VietQR miễn phí đã biến thanh toán P2P và QR thành hàng hóa phổ thông (<a href="https://vietnamfinance.vn/thu-phi-nguoi-dung-bai-toan-kho-cua-vi-dien-tu-d149537.html" target="_blank" rel="noopener noreferrer">VietnamFinance</a>). Khảo sát Decision Lab quý 4/2024 cho thấy tỷ lệ người dùng coi app ngân hàng là nền tảng chính tăng lên 26% (<a href="https://www.dnse.com.vn/senses/tin-tuc/tung-la-ong-vua-vi-dien-tu-momo-va-zalopay-dang-dan-hut-hoi-truoc-doi-thu-quen-thuoc-35049338" target="_blank" rel="noopener noreferrer">DNSE, 13/05/2025</a>).</p>
+<h3 id="r2-2">Định hướng chiến lược</h3>
+<p>Từ 29/10/2024, MoMo định vị mình là "Trợ thủ tài chính với AI" và nói muốn làm "trợ thủ chuyển đổi số cho doanh nghiệp" (<a href="https://cafebiz.vn/tai-dinh-vi-thanh-tro-thu-tai-chinh-voi-ai-cac-sep-momo-da-noi-gi-176241031171910802.chn" target="_blank" rel="noopener noreferrer">CafeBiz</a>). Tại NExT Forum tháng 10/2026, đồng sáng lập Nguyễn Bá Diệp nói ba điều đáng chú ý (<a href="https://doanhnhan.baophapluat.vn/thuan-hoa-ten-lua-ai-cach-momo-dung-nguyen-ly-tesla-va-quy-dinh-thau-cam-de-giu-chan-nguoi-dung.md" target="_blank" rel="noopener noreferrer">Báo Pháp Luật</a>; <a href="https://e.vnexpress.net/news/business/momo-co-founder-calls-for-simpler-more-user-friendly-technology-5134123.html" target="_blank" rel="noopener noreferrer">e.VnExpress, 18/10/2026</a>):</p>
+<ul>
+<li>Tính năng nào không phục vụ nhiều người thì bị bỏ.</li>
+<li>Lãnh đạo cấp cao gọi điện trực tiếp cho người dùng 2 giờ mỗi tháng.</li>
+<li>AI đang làm quản lý quá tải thông tin: hàng trăm báo cáo mỗi giờ, so với 30–40 báo cáo mỗi ngày trước đây.</li>
+</ul>
+<p>Một ý tưởng tạo thêm báo cáo cho con người đọc sẽ đi ngược định hướng này. Một ý tưởng để AI gánh việc và con người chỉ duyệt sẽ đi cùng chiều <span class="ev ev-inf">suy luận</span>.</p>
+<h3 id="r2-3">Danh mục AI hiện có của MoMo</h3>
+<p>Bảng dưới tóm tắt các sáng kiến AI công khai của MoMo. Gần như mọi số liệu hiệu quả đều do MoMo tự công bố; ghi chép không tìm thấy kiểm toán hay đánh giá độc lập nào.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr class="header">
+<th>Sáng kiến AI của MoMo</th>
+<th>Kết quả công bố</th>
+<th>Hạn chế có bằng chứng</th>
+<th>Hệ quả cho ý tưởng thi</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Chấm điểm rủi ro giao dịch thời gian thực (hơn 1.000 tín hiệu, 100–300 ms) và Graph Network</td>
+<td>Khoảng 29.000 giao dịch bất thường/ngày; hơn 10.000 người được cảnh báo/ngày; 99,5% người được cảnh báo dừng lại; khoảng 15.000 tỷ đồng/năm được bảo vệ (MoMo tự công bố, <a href="https://vnexpress.net/momo-dung-ai-quet-29-000-giao-dich-bat-thuong-moi-ngay-5078052.html" target="_blank" rel="noopener noreferrer">VnExpress, 29/05/2026</a>)</td>
+<td>Không công bố tỷ lệ cảnh báo nhầm; nền tảng chỉ thấy "phút thứ 89"; tiền rời hệ thống trong chưa đến 30 phút (<a href="https://vtcnews.vn/dung-ai-chong-lai-lua-dao-bang-ai-ar1017693.html" target="_blank" rel="noopener noreferrer">VTC, 13/05/2026</a>)</td>
+<td>Không làm lại chấm điểm rủi ro</td>
+</tr>
+<tr class="even">
+<td>Nhãn cảnh báo tài khoản nhận xanh/vàng/đỏ và "Phản ánh giao dịch rủi ro", thử nghiệm từ 10/07/2025 (<a href="https://www.momo.vn/tin-tuc/thong-bao/an-tam-giao-dich-voi-2-tinh-nang-an-toan-bao-mat-7646" target="_blank" rel="noopener noreferrer">MoMo</a>)</td>
+<td>Không có số liệu riêng</td>
+<td>Chỉ được mô tả cho chuyển tiền ngân hàng</td>
+<td>Không làm "kiểm tra người nhận"</td>
+</tr>
+<tr class="odd">
+<td>eKYC, liveness, iProov Flashmark (từ 9/2025, <a href="https://vietnamnews.vn/economy/1724972/momo-partners-with-iproov-to-strengthen-biometric-security.html" target="_blank" rel="noopener noreferrer">Vietnam News</a>)</td>
+<td>Mở tài khoản ngân hàng trong 2–3 phút <span class="ev ev-self">MoMo tự công bố</span></td>
+<td>Người xác thực lỗi phải nhờ người thân hoặc ra cửa hàng</td>
+<td>Không làm bộ phát hiện deepfake cho eKYC</td>
+</tr>
+<tr class="even">
+<td>Chấm điểm tín dụng AI / Điểm Tin Cậy</td>
+<td>Tỷ lệ duyệt tăng gấp đôi, xử lý nhanh 10–30 lần (MoMo tự công bố, <a href="https://daibieunhandan.vn/ung-dung-ai-de-giup-nguoi-viet-lam-duoc-nhieu-hon-voi-tien-10351809.html" target="_blank" rel="noopener noreferrer">Đại biểu Nhân dân, 13/11/2024</a>); hai lần R&amp;D đầu thất bại, lần thứ ba thành công nhờ phân tích quan hệ mạng lưới (<a href="https://cafef.vn/giam-doc-khoa-hoc-du-lieu-momo-bat-mi-2-lan-vap-nga-va-triet-ly-phia-sau-mo-hinh-ai-giup-hang-trieu-nguoi-khong-cic-tiep-can-tin-dung-ngan-hang-188251020145531603.chn" target="_blank" rel="noopener noreferrer">CafeF, 20/10/2025</a>)</td>
+<td>Không công bố nợ xấu hay ngưỡng điểm</td>
+<td>Đội không có dữ liệu để cạnh tranh</td>
+</tr>
+<tr class="odd">
+<td>Moni (chuyển từ kịch bản rule-based sang LLM, <a href="https://momo.careers/blog/momo-tech-pioneers-the-minds-behind-ai-advancement-doi-ngu-dung-sau-tro-ly-ao-moni-2152" target="_blank" rel="noopener noreferrer">momo.careers</a>) và Quản lý chi tiêu</td>
+<td>"Bước đầu được người dùng đón nhận" <span class="ev ev-self">MoMo tự công bố</span></td>
+<td>MoMo thừa nhận phân loại từng giao dịch "tốn nhiều thời gian" (<a href="https://www.momo.vn/tin-tuc/thong-bao/ban-tin-gop-y-va-tinh-nang-moi-thang-9-2025-8004" target="_blank" rel="noopener noreferrer">MoMo, 03/10/2025</a>); không có bằng chứng Moni tự thực hiện tác vụ</td>
+<td>Trợ lý chi tiêu là sân đã có chủ</td>
+</tr>
+<tr class="even">
+<td>Chatbot chăm sóc khách hàng GenAI</td>
+<td>Khiếu nại hằng tuần giảm 75%, mức hài lòng tăng 23% (MoMo tự công bố, 2024)</td>
+<td>CTO: "AI cannot replace customer service staff" (<a href="https://theinvestor.vn/ai-cannot-replace-customer-service-staff-momo-exec-d13110.html" target="_blank" rel="noopener noreferrer">TheInvestor</a>)</td>
+<td>Chỉ khác biệt được nếu AI có quyền hành động</td>
+</tr>
+<tr class="odd">
+<td>AI cho merchant: nhập hóa đơn trong 10 giây, đề xuất mức ưu đãi (<a href="https://www.momo.vn/dtdn" target="_blank" rel="noopener noreferrer">MoMo Doanh nghiệp</a>, qua tóm tắt tìm kiếm); iPOS.vn, Nhanh.vn</td>
+<td>Không có số liệu</td>
+<td>Mảng mỏng nhất trong những gì MoMo công bố</td>
+<td>Khoảng trống tương đối</td>
+</tr>
+<tr class="even">
+<td>Chiến dịch "TinAI? – Kiểm trước tin sau" cùng Bộ Công an và VTV, có game phân biệt nội dung người hay AI tạo (<a href="https://vnexpress.net/momo-canh-bao-nguy-co-lua-dao-truoc-khi-chuyen-tien-5105527.html" target="_blank" rel="noopener noreferrer">VnExpress, 05/08/2026</a>)</td>
+<td>Không có số liệu</td>
+<td>Nền tảng chia sẻ tín hiệu liên ngành còn đang xây</td>
+<td>Tránh làm game giáo dục nhận diện AI</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="r2-4">Những khoảng trống chính MoMo thừa nhận</h3>
+<p>Các khoảng trống có bằng chứng tốt nhất đến từ chính lời MoMo:</p>
+<ul>
+<li>Hơn <strong>90%</strong> thiệt hại do người dùng bị thao túng rồi tự chuyển tiền. <strong>76%</strong> người bị lừa sẵn sàng rời nền tảng. <strong>70%</strong> nạn nhân dưới 25 tuổi, <strong>50%</strong> là sinh viên dưới 22 tuổi (<a href="https://vnexpress.net/momo-dung-ai-quet-29-000-giao-dich-bat-thuong-moi-ngay-5078052.html" target="_blank" rel="noopener noreferrer">VnExpress, 29/05/2026</a>).</li>
+<li>Tiền rời hệ thống trong chưa đến 30 phút, còn điều tra liên nền tảng mất nhiều ngày (<a href="https://vtcnews.vn/dung-ai-chong-lai-lua-dao-bang-ai-ar1017693.html" target="_blank" rel="noopener noreferrer">VTC</a>).</li>
+<li>Khả năng lấy lại tiền sau khi bị lừa thấp. Năm 2021, MoMo không hủy được các giao dịch đã hoàn tất ở merchant (<a href="https://vietnamnet.vn/nguoi-dung-vi-dien-tu-momo-bi-lua-mat-tien-vi-chu-quan-778291.html" target="_blank" rel="noopener noreferrer">VietNamNet, 2021</a>).</li>
+</ul>
+<p>Hai chi tiết sau quyết định mức trùng lặp của các ý tưởng về thuế:</p>
+<ul>
+<li>Bộ giải pháp cho tiểu thương mà MoMo công bố tháng 7/2025 <strong>đã có</strong> khai thuế online, hóa đơn điện tử, chữ ký số, đồng bộ kế toán và chấm điểm tín dụng từ dữ liệu giao dịch (<a href="https://www.momo.vn/tin-tuc/thong-cao-bao-chi/bo-giai-phap-tai-chinh-tu-momo-giup-tieu-thuong-7891" target="_blank" rel="noopener noreferrer">MoMo, 11/07/2025</a>).</li>
+<li>Tháng 3/2026, MoMo nói <strong>đang lên kế hoạch</strong> cho tờ khai thuế điền sẵn thông tin hộ (<a href="https://www.momo.vn/tin-tuc/thong-cao-bao-chi/momo-cap-nhat-moi-nhat-ve-giai-phap-nhan-tien-8587" target="_blank" rel="noopener noreferrer">MoMo, 20/03/2026</a>). Đến 11/2026, ghi chép chưa xác minh được tính năng này đã ra mắt hay chưa.</li>
+</ul>
+<p>Ngoài ra, ghi chép có liệt kê chiến dịch "Không Một Mình 2026" của MoMo nhưng không mô tả nội dung. Cần kiểm tra chiến dịch này có đụng tới hỗ trợ nạn nhân hay không trước khi chọn ý tưởng 30 Phút Vàng.</p>
+<h2 id="r3">3. Người dùng đau nhất ở giao dịch treo, người bán đau nhất ở luật thuế mới</h2>
+<h3 id="r3-1">3.1 Người dùng cá nhân: sự cố giao dịch, lừa đảo thao túng và phí khó hiểu</h3>
+<p>Ghi chép có một phân tích review riêng (<a href="https://play.google.com/store/apps/details?id=com.mservice.momotransfer" target="_blank" rel="noopener noreferrer">Google Play</a>; <a href="https://apps.apple.com/vn/app/id918751511" target="_blank" rel="noopener noreferrer">App Store VN</a>):</p>
+<ul>
+<li>Mẫu gồm 2.000 review mới nhất trên Google Play VN (15/10–23/11/2026) và 500 review App Store VN (09–23/11/2026).</li>
+<li>Review 1–2★ được tính là tiêu cực: 668 review, gán chủ đề bằng từ khóa tiếng Việt.</li>
+<li>Mẫu chỉ bao 5–6 tuần và có một sự cố ngày 05/11/2026 làm phồng số review xấu.</li>
+</ul>
+<p>Vì vậy các con số dưới đây là <strong>tín hiệu định hướng</strong>, không đại diện cho toàn bộ người dùng.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr class="header">
+<th>Chủ đề trong review tiêu cực</th>
+<th>Google Play (558 review)</th>
+<th>iOS (110 review)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Giao dịch lỗi, "đang xử lý" nhưng đã trừ tiền, chưa hoàn</td>
+<td><strong>20,3%</strong></td>
+<td><strong>32,7%</strong></td>
+</tr>
+<tr class="even">
+<td>App lag, bảo trì, không vào được</td>
+<td>20,1%</td>
+<td>18,2%</td>
+</tr>
+<tr class="odd">
+<td>Liên kết ngân hàng, nạp và rút tiền</td>
+<td>11,3%</td>
+<td>10,9%</td>
+</tr>
+<tr class="even">
+<td>Tự động trừ tiền, gia hạn thuê bao</td>
+<td>10,0%</td>
+<td>10,9%</td>
+</tr>
+<tr class="odd">
+<td>Chăm sóc khách hàng chậm, chỉ có trả lời tự động</td>
+<td>9,0%</td>
+<td>14,5%</td>
+</tr>
+<tr class="even">
+<td>Ví Trả Sau, vay, lãi, đòi nợ</td>
+<td>7,3%</td>
+<td>10,0%</td>
+</tr>
+<tr class="odd">
+<td>Nhắc tới AI hoặc trợ thủ (hầu hết là chê)</td>
+<td>5,7%</td>
+<td>3,6%</td>
+</tr>
+<tr class="even">
+<td>Lừa đảo, bảo mật (phần lớn là người dùng gọi chính MoMo là "lừa đảo")</td>
+<td>3,4%</td>
+<td>10,0%</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Giao dịch treo là nỗi đau lớn nhất.</strong> Người dùng viết: "Chuyển tiền cho tiệm cơm bị lỗi 'đang chờ xử lý'… tiền vẫn bị trừ mà tiệm chưa nhận được tiền nên mình đã dùng tài khoản khác để chuyển", và "không lẽ cái hóa đơn vài chục mà đi tra soát". Chính sách của MoMo là không cho hủy giao dịch đang xử lý (<a href="https://www.momo.vn/hoi-dap/toi-co-the-huy-giao-dich-dang-cho-xu-ly-hoac-thuc-hien-lai-giao-dich-duoc-khong" target="_blank" rel="noopener noreferrer">MoMo FAQ</a>); tiền bị trừ ở ngân hàng mà ví chưa cộng sẽ được hoàn trong 48 giờ (<a href="https://www.momo.vn/hoi-dap/nap-tien-tu-ngan-hang-tai-khoan-ngan-hang-bi-tru-tien-nhung-tai-khoan-momo-khong-thay-doi" target="_blank" rel="noopener noreferrer">MoMo FAQ</a>). Hotline tính phí 1.000đ/phút (<a href="https://www.momo.vn/tin-tuc/thong-bao/khong-ranh-cong-nghe-van-co-the-chuyen-khoan-de-7826" target="_blank" rel="noopener noreferrer">MoMo, 20/08/2025</a>). Gốc rễ là trạng thái giao dịch bất định giữa MoMo, ngân hàng và NAPAS, cộng với việc không có đường hủy hay hoàn tự động. Người dùng vì vậy trả lần hai qua kênh khác và mất tiền thật ở những khoản nhỏ không đáng tra soát <span class="ev ev-inf">suy luận</span>.</p>
+<p><strong>Lừa đảo là nỗi đau được đo đạc tốt nhất ở tầm quốc gia.</strong></p>
+<ul>
+<li>Bộ Công an ghi nhận khoảng <strong>4.200 vụ</strong>, thiệt hại <strong>khoảng 8.000 tỷ đồng</strong> năm 2025 (<a href="https://vov.vn/phap-luat/thiet-hai-tu-lua-dao-truc-tuyen-len-toi-8000-ty-dong-trong-nam-2025-post1286479.vov" target="_blank" rel="noopener noreferrer">VOV</a>).</li>
+<li>Khảo sát của Hiệp hội An ninh mạng Quốc gia (NCA) năm 2025: tỷ lệ nạn nhân giảm còn 0,18%; mạo danh công an là thủ đoạn số một; 34,13% người dùng gặp sự cố mã độc (<a href="https://dantri.com.vn/cong-nghe/nam-2025-nan-lua-dao-truc-tuyen-giam-nguoi-viet-van-mat-hon-6000-ty-dong-20260107104833121.htm" target="_blank" rel="noopener noreferrer">Dân trí, 08/01/2026</a>).</li>
+<li>Hệ thống SIMO của Ngân hàng Nhà nước trong 9 tháng 2026: hơn 5,6 triệu lượt cảnh báo, hơn 1,9 triệu lượt dừng hoặc hủy giao dịch, hơn 6.300 tỷ đồng (<a href="https://vietstock.vn/2026/10/hang-trieu-chu-tai-khoan-nhan-mot-canh-bao-hon-6300-ty-phai-tam-dung-757-1500164.htm" target="_blank" rel="noopener noreferrer">Vietstock, 08/10/2026</a>).</li>
+<li>Theo đưa tin về SIMO, cảnh báo vẫn dựa trên danh sách đen, và nạn nhân bị thao túng vẫn chuyển tiền dù đã qua OTP và sinh trắc (<a href="https://www.vietnamplus.vn/tu-nhung-cu-chuyen-khoan-vo-thuc-den-la-chan-canh-bao-som-post1124247.vnp" target="_blank" rel="noopener noreferrer">Vietnam+, 15/07/2026</a>).</li>
+</ul>
+<p>Lớp chống lừa đảo hiện tại cũng gây ma sát cho người dùng hợp lệ. Có ít review nhắc tới, nhưng rất cụ thể: "con AI chống lừa đảo tệ, bắt tôi phải đánh từng chữ"; "đang cần gấp mà cứ bắt 10 phút". Con số "99,5% dừng lại" của MoMo đo sự tạm dừng, không đo số vụ lừa bị ngăn <span class="ev ev-inf">suy luận</span>. Theo tính toán của nhóm nghiên cứu từ số liệu SIMO, chỉ khoảng một phần ba cảnh báo dẫn đến dừng hoặc hủy, tức phần lớn cảnh báo vẫn bị bỏ qua.</p>
+<p><strong>Phí và các khoản trừ tự động gây cảm giác bị "gài".</strong> Ví Trả Sau thu phí 33.000đ/tháng kể từ tháng có giao dịch thứ 6 (<a href="https://www.momo.vn/vi-tra-sau/bieu-phi" target="_blank" rel="noopener noreferrer">MoMo – Biểu phí</a>). Review phàn nàn Ví Trả Sau bị chọn làm nguồn tiền mặc định. Năm 2024 có khách "bỗng dưng nợ" 1.194.000đ vì Ví Trả Sau trả tiền App Store (<a href="https://cafef.vn/vu-khach-hang-bong-dung-no-gan-12-trieu-dong-do-vi-tra-sau-momo-chinh-thuc-len-tieng-188240401151950347.chn" target="_blank" rel="noopener noreferrer">CafeF, 01/04/2024</a>). Tuy vậy, tháng 9/2025 MoMo đã thêm tính năng đánh dấu giao dịch định kỳ, nhắc trước hạn và quản lý dịch vụ liên kết (<a href="https://www.momo.vn/tin-tuc/thong-bao/ban-tin-gop-y-va-tinh-nang-moi-thang-9-2025-8004" target="_blank" rel="noopener noreferrer">MoMo, 03/10/2025</a>).</p>
+<p>Về nền tảng tài chính cá nhân, chỉ khoảng <strong>33%</strong> người trưởng thành có tiền gửi tiết kiệm và <strong>71%</strong> có lịch sử tín dụng (<a href="https://vnexpress.net/mot-phan-ba-nguoi-viet-truong-thanh-co-tien-tiet-kiem-tai-ngan-hang-5043736.html" target="_blank" rel="noopener noreferrer">VnExpress, 24/02/2026</a>). Công nhân bị đòi nợ gây sức ép, và thẩm định tín dụng "không phản ánh dòng tiền thực" (<a href="https://cafef.vn/tin-dung-den-cong-nhan-thuong-xuyen-bi-doi-no-gay-suc-ep-188261119161622784.chn" target="_blank" rel="noopener noreferrer">CafeF, 19/11/2026</a>). Ngược lại, nhu cầu chia hóa đơn hay quỹ nhóm gần như không có bằng chứng: chỉ 2 trong 2.500 review nhắc tới. Không nên dựng ý tưởng chính trên đó.</p>
+<h3 id="r3-2">3.2 Người bán: luật thuế mới, dữ liệu phân mảnh và lừa đảo tại quầy</h3>
+<p><strong>Quy mô và sức khỏe.</strong> Việt Nam có khoảng <strong>6,1 triệu hộ kinh doanh</strong> với khoảng 10 triệu lao động. <strong>81,5%</strong> hộ giảm doanh thu năm 2025, và 55,2% coi kinh doanh là nguồn thu nhập <em>duy nhất</em> của gia đình (<a href="https://www.vcci.com.vn/tin-tuc/suc-khoe-ho-kinh-doanh-suy-giam-phan-lon-chi-lai-mong-hoac-hoa-von" target="_blank" rel="noopener noreferrer">VCCI, 19/05/2026</a>). Theo Bộ Tài chính, khoảng 80% hộ có doanh thu từ 1 tỷ đồng/năm trở xuống nên không phải nộp thuế GTGT và TNCN; khoảng 20% còn lại có nghĩa vụ thuế (<a href="https://vietstock.vn/2026/07/ho-kinh-doanh-lo-kho-ke-khai-thue-bo-tai-chinh-noi-gi-758-1472527.htm" target="_blank" rel="noopener noreferrer">Vietstock/VietNamNet, 28/07/2026</a>).</p>
+<p><strong>Khung pháp lý đổi hẳn trong 2025–2026:</strong></p>
+<ul>
+<li>Bỏ thuế khoán từ 01/01/2026.</li>
+<li><a class="law-ref" href="#l-nd68">Nghị định 68/2026</a> (ngày 05/03/2026): hộ tự khai, tự tính, tự nộp; phải thông báo <strong>mọi tài khoản ngân hàng và ví điện tử</strong> dùng cho kinh doanh (<a href="https://baochinhphu.vn/tu-2026-ho-kinh-doanh-phai-bao-co-quan-thue-cac-tai-khoan-nhan-tien-102260307185152112.htm" target="_blank" rel="noopener noreferrer">Báo Chính phủ, 07/03/2026</a>).</li>
+<li>Hộ dưới ngưỡng thông báo doanh thu năm bằng mẫu 01/TKN-CNKD, hạn <strong>31/01 năm sau</strong>. Hộ trên ngưỡng khai theo quý. Doanh thu tính ngưỡng <strong>gồm cả phần sàn thương mại điện tử đã khấu trừ</strong> (<a href="https://thoibaotaichinhvietnam.vn/nghi-dinh-682026nd-cp-buoc-chuyen-quan-trong-trong-quan-ly-thue-ho-kinh-doanh-193417.html" target="_blank" rel="noopener noreferrer">Thời báo Tài chính, 10/03/2026</a>).</li>
+<li><a class="law-ref" href="#l-nd141">Nghị định 141/2026</a> nâng ngưỡng từ 500 triệu lên <strong>1 tỷ đồng</strong>, áp dụng cho kỳ tính thuế 2026. Hộ trên ngưỡng phải dùng hóa đơn điện tử; khi doanh thu lũy kế vượt 1 tỷ, phải đăng ký hóa đơn điện tử trong <strong>30 ngày</strong> (<a href="https://xaydungchinhsach.chinhphu.vn/toan-van-nghi-dinh-so-141-2026-nd-cp-nang-nguong-doanh-thu-khong-phai-chiu-thue-len-1-ty-dong-119260504154326455.htm" target="_blank" rel="noopener noreferrer">chinhphu.vn, 25/05/2026</a>).</li>
+<li><a class="law-ref" href="#l-tt152">Thông tư 152/2025</a> quy định sổ kế toán theo nhóm nghĩa vụ; theo tóm tắt, chủ hộ có thể giao người thân làm kế toán (<a href="https://congbaocdn.chinhphu.vn/180507251028987904/2026/1/28/final-152signed-17695739990221209521402.pdf" target="_blank" rel="noopener noreferrer">Công báo</a>).</li>
+</ul>
+<p>Ngưỡng đã đi qua chuỗi 100 triệu → 200 triệu → 500 triệu → 1 tỷ (<a href="https://vietstock.vn/2026/07/ho-kinh-doanh-lo-kho-ke-khai-thue-bo-tai-chinh-noi-gi-758-1472527.htm" target="_blank" rel="noopener noreferrer">Vietstock</a>). Lần đổi từ 500 triệu lên 1 tỷ diễn ra chưa đầy hai tháng sau <a class="law-ref" href="#l-nd68">Nghị định 68</a>, nếu tính theo ngày ký 29/04/2026 mà các nguồn thứ cấp ghi.</p>
+<p><strong>Nỗi đau tuân thủ có số liệu mạnh nhất cả báo cáo.</strong> Khảo sát VCCI trên hơn 1.000 hộ ở 34 tỉnh thành (2–4/2026) cho thấy (<a href="https://thuonghieucongluan.com.vn/de-ho-kinh-doanh-khong-con-co-minh-truoc-rao-can-phap-ly-a317628.html" target="_blank" rel="noopener noreferrer">Thương hiệu &amp; Công luận, 10/05/2026</a>):</p>
+<ul>
+<li><strong>73,3%</strong> coi quy định pháp luật và thủ tục là trở ngại lớn nhất.</li>
+<li>Khoảng 40% thường lo lắng khi tuân thủ quy định mới.</li>
+<li>Chỉ <strong>13,9%</strong> hiểu rõ quy định áp dụng từ đầu 2026; hơn 33% chỉ "nghe nói".</li>
+<li><strong>71,2%</strong> khó lấy thông tin khách để xuất hóa đơn điện tử; <strong>67,6%</strong> lúng túng khi hạch toán chi phí được trừ; <strong>66,8%</strong> không theo kịp thay đổi chính sách.</li>
+</ul>
+<p>Đặt cạnh số liệu khai thuế, bức tranh rõ hơn. Nửa đầu 2026, <strong>99,6%</strong> hộ đã khai điện tử và 98,1% đúng hạn; ứng dụng thuế đang được nâng cấp thêm chatbot AI (<a href="https://vietstock.vn/2026/07/ho-kinh-doanh-lo-kho-ke-khai-thue-bo-tai-chinh-noi-gi-758-1472527.htm" target="_blank" rel="noopener noreferrer">Vietstock</a>). Như vậy nút thắt không nằm ở thao tác nộp, mà ở <strong>khâu hiểu và ra được con số đúng</strong> <span class="ev ev-inf">suy luận</span>.</p>
+<p>Nỗi sợ có hệ quả thật:</p>
+<ul>
+<li>Tháng 6/2025, nhiều quán treo biển không nhận chuyển khoản vì tin đồn "truy thu 1,5%" (<a href="https://vnexpress.net/nhieu-ho-kinh-doanh-tu-choi-nhan-chuyen-khoan-4894137.html" target="_blank" rel="noopener noreferrer">VnExpress, 04/06/2025</a>).</li>
+<li>Đến 3/2026, cơ quan thuế coi việc chỉ nhận tiền mặt là "dấu hiệu rủi ro cao" (<a href="https://thoibaotaichinhvietnam.vn/mot-bo-phan-ho-kinh-doanh-van-ne-thanh-toan-chuyen-khoan-de-che-giau-doanh-thu-193074.html" target="_blank" rel="noopener noreferrer">Thời báo Tài chính, 04/03/2026</a>).</li>
+</ul>
+<p>Dữ liệu doanh thu phân mảnh vì QR chủ yếu là "QR chuyển tiền" P2P, không có thông tin đơn hàng (<a href="https://vneconomy.vn/tu-chuyen-khoan-ca-nhan-den-thanh-toan-thuong-mai-chuan-quoc-gia.htm" target="_blank" rel="noopener noreferrer">VnEconomy, 24/11/2025</a>).</p>
+<p>Các công cụ hiện có đều miễn phí nhưng vẫn bắt người bán nhập liệu:</p>
+<ul>
+<li>MISA, Sapo, KiotViet.</li>
+<li>HDBank, Techcombank, Vietcombank tặng phần mềm và hóa đơn điện tử (<a href="https://tuoitre.vn/ho-kinh-doanh-het-ghi-chep-thu-cong-chuyen-sang-quan-ly-dong-tien-tren-nen-tang-so-20260603224956376.htm" target="_blank" rel="noopener noreferrer">Tuổi Trẻ, 04/06/2026</a>).</li>
+<li>Agribank miễn phí gói số hóa đến 31/12/2028 (qua tóm tắt tìm kiếm, <a href="https://tapchikinhtetaichinh.vn/ngan-hang-dong-hanh-ho-tro-ho-kinh-doanh-chuan-hoa-tai-khoan-149778.html" target="_blank" rel="noopener noreferrer">Tạp chí Kinh tế Tài chính</a>).</li>
+</ul>
+<p>Mỗi ngân hàng chỉ thấy tài khoản của mình, nên không ai tổng hợp được doanh thu đa nguồn để canh ngưỡng <span class="ev ev-inf">suy luận</span>.</p>
+<p><strong>Lừa đảo nhắm vào người bán đã có án thật:</strong></p>
+<ul>
+<li>Một đối tượng làm giả 309 ảnh "chuyển khoản thành công", chiếm hơn 13 tỷ đồng tiền vải của một tiểu thương chợ Ninh Hiệp (qua tóm tắt tìm kiếm, <a href="https://tuoitre.vn/photoshop-309-anh-chuyen-khoan-gia-chiem-doat-hon-13-ti-dong-tien-vai-cua-tieu-thuong-100260901115401713.htm" target="_blank" rel="noopener noreferrer">Tuổi Trẻ, 01/09/2026</a>).</li>
+<li>Kẻ gian phát lại thông báo cũ trên loa, hoặc giả nhân viên lắp loa để chiếm OTP và eKYC (<a href="https://cafef.vn/canh-giac-voi-chieu-lua-dao-cai-dat-loa-bao-bien-dong-so-du-188260907091439869.chn" target="_blank" rel="noopener noreferrer">CafeF, 07/09/2026</a>).</li>
+<li>Dán đè mã QR lên mã của cửa hàng (<a href="https://tuoitre.vn/nhieu-cua-hang-bi-ke-gian-dan-de-ma-qr-ngan-hang-de-chiem-doat-tien-20230825115347256.htm" target="_blank" rel="noopener noreferrer">Tuổi Trẻ, 2023</a>).</li>
+</ul>
+<p>Ở chợ truyền thống, nhiều tiểu thương lớn tuổi chỉ dùng điện thoại để nghe gọi và sợ nhầm khi đông khách (qua tóm tắt tìm kiếm, <a href="https://congthuong.vn/so-hoa-cho-truyen-thong-huong-toi-phat-trien-ben-vung-450808.html" target="_blank" rel="noopener noreferrer">Công Thương</a>). Vì vậy giọng nói và loa, thứ họ đã quen, là giao diện hợp lý hơn bàn phím <span class="ev ev-inf">suy luận</span>.</p>
+<h2 id="r4">4. Thị trường cho thấy AI thắng khi gắn vào hành động, niềm tin và chi phí tuân thủ</h2>
+<p><strong>Siêu ứng dụng châu Á.</strong> Ant nói AI Pay vượt 100 triệu người dùng vào tháng 2/2026 (<a href="https://www.pymnts.com/?p=3503024" target="_blank" rel="noopener noreferrer">PYMNTS</a>). Nhưng trợ lý chat đa năng Zhixiaobao được cho là "không đạt kỳ vọng" (<a href="https://eu.36kr.com/de/p/3857178983929091" target="_blank" rel="noopener noreferrer">36Kr EU</a>). Với Ah Bao, một số người dùng sớm chỉ mở ra để chat thử thay vì làm tác vụ, và bài viết nhận định niềm tin giao tiền cho AI phụ thuộc vào cảm giác kiểm soát nhiều hơn năng lực kỹ thuật (<a href="https://kr-asia.com/alipay-wants-more-than-a-supporting-role-in-the-ai-era" target="_blank" rel="noopener noreferrer">KrASIA, 22/07/2026</a>). Bài học: đo trợ lý bằng số tác vụ hoàn thành, không bằng số cuộc chat <span class="ev ev-inf">suy luận</span>.</p>
+<p><strong>AI cho người bán có sức hút thật khi gắn vào thiết bị và dòng tiền.</strong></p>
+<ul>
+<li>Paytm AI Soundbox nói 11 ngôn ngữ Ấn Độ và tóm tắt doanh thu (<a href="https://www.businesstoday.in/tech-today/launch/story/paytm-unveils-indias-first-ai-soundbox-for-merchants-shares-jump-25-after-launch-497139-2025-10-07" target="_blank" rel="noopener noreferrer">Business Today</a>); Paytm thu phí thuê bao và phí suy luận (<a href="https://yourstory.com/2025/11/paytms-q2-ai-soundbox-cautious-postpaid-revival-bnpl-lending" target="_blank" rel="noopener noreferrer">YourStory</a>).</li>
+<li>Đến 12/2025, cứ 4 merchant đang hoạt động của Grab thì có 1 dùng trợ lý MAI (<a href="https://www.grab.com/inside-grab/stories/new-tools-we-launched-in-2025-for-grab-merchants-to-boost-efficiency/" target="_blank" rel="noopener noreferrer">Grab</a>).</li>
+<li>Ngược lại, app sổ sách đứng riêng thu hẹp: Khatabook cắt nhân sự (<a href="https://inc42.com/buzz/khatabook-fires-over-40-employees-restructuring-exercise/amp" target="_blank" rel="noopener noreferrer">Inc42</a>), OkCredit vẫn lỗ (<a href="https://inc42.com/buzz/tiger-global-backed-okcredit-narrows-fy25-loss-by-34-to-inr-23-cr/" target="_blank" rel="noopener noreferrer">Inc42</a>). BukuWarung tăng trưởng nhờ chuyển sang thanh toán và cho vay (<a href="https://teknologi.bisnis.com/read/20260127/84/1947604/bukuwarung-cetak-60-juta-transaksi-pada-2025-punya-8-juta-pengguna" target="_blank" rel="noopener noreferrer">Bisnis.com</a>).</li>
+</ul>
+<p>Bài học trực tiếp cho Sổ Sẵn: sổ sách phải là sản phẩm phụ của dòng tiền QR, không đứng một mình.</p>
+<p><strong>Chống lừa đảo hiệu quả nhờ thiết kế can thiệp, không chỉ nhờ mô hình chính xác hơn.</strong></p>
+<ul>
+<li>Ở Anh, đánh giá của PSR cho thấy tổn thất do lừa đảo chuyển tiền có ủy quyền (APP) qua Faster Payments giảm khoảng 21% sau khi bắt buộc hoàn tiền (<a href="https://www.regulationtomorrow.com/2026/07/payment-fraud-falls-by-73m-following-psr-reimbursement-scheme/" target="_blank" rel="noopener noreferrer">Regulation Tomorrow</a>). UK Finance lại báo tổng tổn thất APP năm 2025 tăng 19%, lên £576,4 triệu (<a href="https://www.ukfinance.org.uk/news-and-insight/press-release/fraud-report-2026-press-release" target="_blank" rel="noopener noreferrer">UK Finance</a>). Hai nguồn này mâu thuẫn, có thể do đo khác phạm vi.</li>
+<li>Úc dùng tính năng xác nhận người nhận hơn 100 triệu lần (<a href="https://www.ausbanking.org.au/banks-hit-major-milestones-as-scam-fighting-technology-stops-thousands-of-risky-transfers/" target="_blank" rel="noopener noreferrer">ABA</a>).</li>
+<li>Singapore giảm khoảng 18% tổn thất năm 2025; tính năng Money Lock bảo vệ khoảng S$44 tỷ (<a href="https://www.mha.gov.sg/media-room/newsroom/the-singapore-special-event-beyond-borders-a-whole-of-society-approach-to-disrupting-scams-internationally-at-the-2nd-global-fraud-summit/" target="_blank" rel="noopener noreferrer">MHA</a>).</li>
+<li>Revolut nói tổn thất lừa đảo thẻ liên quan merchant "đầu tư" giảm 30% nhờ luồng can thiệp (<a href="https://www.revolut.com/news/revolut_launches_ai_feature_to_protect_customers_from_card_scams_and_break_the_scammers_spell/" target="_blank" rel="noopener noreferrer">Revolut</a>).</li>
+<li>Google Pay thí điểm cảnh báo khi người dùng đang gọi với số lạ và chia sẻ màn hình (<a href="https://techcrunch.com/2025/11/20/google-steps-up-ai-scam-protection-in-india-but-gaps-remain" target="_blank" rel="noopener noreferrer">TechCrunch, 20/11/2025</a>).</li>
+</ul>
+<p><strong>Tín dụng dựa trên dữ liệu ví có thực chất, nhưng rủi ro đẩy vay quá đà.</strong></p>
+<ul>
+<li>Khoảng 85–86% người vay của GCash lần đầu tiếp cận tín dụng chính thức (<a href="https://www.philstar.com/business/2026/08/09/2547919/building-trust-one-loan-time" target="_blank" rel="noopener noreferrer">Philstar</a>).</li>
+<li>IFC kết luận dữ liệu thay thế <em>bổ sung chứ không thay thế</em> phương pháp truyền thống (<a href="https://www.ifc.org/content/dam/ifc/doc/2026/cracking-the-credit-code-alternative-data-and-ai-for-financial-inclusion-summary.pdf" target="_blank" rel="noopener noreferrer">IFC, 5/2026</a>).</li>
+<li>Ở Kenya, tín dụng số dẫn tới nợ chồng nợ (<a href="https://www.gsma.com/solutions-and-impact/connectivity-for-good/mobile-for-development/uncategorized/does-digital-credit-lead-to-over-indebtedness-evidence-from-a-study/" target="_blank" rel="noopener noreferrer">GSMA</a>).</li>
+<li>Cleo AI phải trả 17 triệu USD để dàn xếp với FTC vì thiết kế lừa dối (<a href="https://www.ftc.gov/news-events/news/press-releases/2025/03/cash-advance-company-cleo-ai-agrees-pay-17-million-result-ftc-lawsuit-charging-it-deceives-consumers" target="_blank" rel="noopener noreferrer">FTC</a>).</li>
+</ul>
+<p><strong>Nhiều xu hướng còn là hype.</strong></p>
+<ul>
+<li>OpenAI gỡ tính năng thanh toán trong ChatGPT ngày 04/03/2026 (<a href="https://www.forrester.com/blogs/what-it-means-that-the-leader-in-agentic-commerce-just-pulled-back/" target="_blank" rel="noopener noreferrer">Forrester</a>).</li>
+<li>Klarna phải tuyển lại người làm chăm sóc khách hàng (<a href="https://www.entrepreneur.com/business-news/klarna-ceo-reverses-course-by-hiring-more-humans-not-ai/491396" target="_blank" rel="noopener noreferrer">Entrepreneur</a>). CBA rút quyết định thay tổng đài viên bằng voice bot (<a href="https://www.bloomberg.com/news/articles/2025-08-21/commonwealth-bank-reverses-job-cuts-decision-over-ai-chatbots" target="_blank" rel="noopener noreferrer">Bloomberg</a>).</li>
+<li>CFPB cảnh báo vòng lặp chatbot không thoát ra được người thật, gây hại nặng nhất cho người cao tuổi (<a href="https://consumerfinance.gov/data-research/research-reports/chatbots-in-consumer-finance" target="_blank" rel="noopener noreferrer">CFPB</a>).</li>
+<li>Báo cáo CCAF 2026: 81% tổ chức áp dụng AI nhưng chỉ 14% coi AI là yếu tố chuyển đổi chiến lược, và 55% thấy khó đo giá trị (<a href="https://www.jbs.cam.ac.uk/wp-content/uploads/2026/04/ccaf-2026-04-28-global-ai-in-financial-services-report.pdf" target="_blank" rel="noopener noreferrer">CCAF</a>).</li>
+</ul>
+<p><strong>Bức tranh Việt Nam.</strong></p>
+<ul>
+<li>Hơn 70% tổ chức tín dụng dùng AI/ML nhưng ít bên công bố hiệu quả tài chính (<a href="https://vir.com.vn/banks-accelerate-ai-adoption-154052.html" target="_blank" rel="noopener noreferrer">VIR</a>).</li>
+<li>VCB Digibot xử lý 88,5% yêu cầu (<a href="https://vnba.org.vn/vi/tri-tue-nhan-tao--ai--day-nhanh-chuyen-doi-so-nganh-ngan-hang-15271.htm" target="_blank" rel="noopener noreferrer">VNBA</a>). TPBank có VoicePay và ChatPay (<a href="https://vneconomy.vn/tpbank-ngan-hang-so-voi-ai-va-tu-dong-hoa.htm" target="_blank" rel="noopener noreferrer">VnEconomy</a>).</li>
+<li>Zalo có chatbot "Chống lừa đảo" từ 12/2025 (<a href="https://nhandan.vn/video-chatbot-ai-chong-lua-dao-tro-ly-an-ninh-mang-cua-ban-post938903.html" target="_blank" rel="noopener noreferrer">Nhân Dân</a>).</li>
+<li>Viettel đã huấn luyện mô hình tiếng Việt 120 tỷ tham số (<a href="https://thitruongtaichinhtiente.vn/viettel-huan-luyen-thanh-cong-mo-hinh-ai-chu-quyen-tieng-viet-120-ty-tham-so-dat-hieu-suat-thuoc-nhom-dan-dau-cung-quy-mo-83392.html" target="_blank" rel="noopener noreferrer">Thị trường Tài chính Tiền tệ</a>). CMC công bố mô hình pháp luật 32B và bộ đánh giá VLegal-Bench (<a href="https://vtcnews.vn/doanh-nghiep-ai-viet-nam-tren-ban-do-cong-nghe-the-gioi-ar1042792.html" target="_blank" rel="noopener noreferrer">VTC</a>).</li>
+<li>Ghi chép <strong>không tìm thấy</strong> ví điện tử nào ra mắt công cụ AI kê khai thuế cho hộ kinh doanh trong năm 2026.</li>
+</ul>
+<p><strong>Khung pháp lý định hình thiết kế.</strong></p>
+<ul>
+<li><strong><a class="law-ref" href="#l-tt53">Thông tư 53/2026/TT-NHNN</a></strong> ký ngày 30/09/2026, hiệu lực từ 15/11/2026, áp dụng cả cho tổ chức trung gian thanh toán (<a href="https://thitruongtaichinhtiente.vn/nhnn-ban-hanh-quy-dinh-ve-an-toan-quan-ly-rui-ro-khi-ung-dung-ai-trong-nganh-ngan-hang-86130.html" target="_blank" rel="noopener noreferrer">Thị trường Tài chính Tiền tệ</a>). Thông tư coi <strong>AI tự động thanh toán vượt 10 triệu đồng/lần hoặc 20 triệu đồng/ngày</strong> (với cá nhân) và <strong>AI tự quyết tín dụng từ 50 triệu đồng</strong> là rủi ro cao. Theo đưa tin, có thể từ bản dự thảo, chatbot phải báo ngay đầu phiên rằng người dùng đang tương tác với AI, và khách hàng phải có công cụ tạm dừng hoặc hủy quyền để AI tự thanh toán (<a href="https://www.vietnamplus.vn/ngan-hang-nha-nuoc-dat-nhieu-yeu-cau-khi-ngan-hang-ung-dung-ai-post1140808.vnp" target="_blank" rel="noopener noreferrer">Vietnam+</a>).</li>
+<li><strong><a class="law-ref" href="#l-ailaw">Luật AI 134/2025</a></strong> có hiệu lực từ 01/03/2026: chatbot phải cho người dùng biết họ đang tương tác với AI, và có thời gian chuyển tiếp 18 tháng cho ngành tài chính (<a href="https://www.allenandgledhill.com/vn/publication/articles/32667/s-new-law-on-artificial-intelligence-risk-based-regulatory-framework-in-force-1-march-2026" target="_blank" rel="noopener noreferrer">Allen &amp; Gledhill</a>).</li>
+<li><strong><a class="law-ref" href="#l-pdp">Luật Bảo vệ dữ liệu cá nhân 91/2025</a>:</strong> dùng thông tin tín dụng để chấm điểm phải có sự đồng ý của chủ thể dữ liệu (<a href="https://bocongan.gov.vn/chinh-sach-phap-luat/bai-viet/bao-ve-du-lieu-ca-nhan-trong-mot-so-hoat-dong-1754989261" target="_blank" rel="noopener noreferrer">Bộ Công an</a>).</li>
+<li><strong><a class="law-ref" href="#l-nd356">Nghị định 356/2025</a>:</strong> theo đưa tin, lịch sử giao dịch tài chính được xếp vào dữ liệu nhạy cảm (<a href="https://www.pwc.com/vn/vn/publications/legal-news-brief/20260128-new-rules-personal-data-protection.html" target="_blank" rel="noopener noreferrer">PwC</a>).</li>
+</ul>
+<div class="table-wrap"><table>
+<thead>
+<tr class="header">
+<th>Bài học từ thị trường</th>
+<th>Áp dụng cho ý tưởng thi <span class="ev ev-inf">suy luận</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Trợ lý chat đa năng không tạo thói quen (Zhixiaobao, Ah Bao)</td>
+<td>Trợ lý phải gắn vào một tác vụ có thời hạn và hậu quả thật</td>
+</tr>
+<tr class="even">
+<td>AI cho người bán sống được khi gắn vào thiết bị và dòng tiền (Paytm, Grab, BukuWarung)</td>
+<td>Lấy dữ liệu QR và loa làm điểm tựa, không làm app sổ sách đứng riêng</td>
+</tr>
+<tr class="odd">
+<td>Can thiệp đúng lúc hiệu quả hơn mô hình chính xác hơn (Anh, Úc, Singapore)</td>
+<td>Ý tưởng chống lừa đảo nên sáng tạo ở <em>hành động</em>, không ở bộ phân loại</td>
+</tr>
+<tr class="even">
+<td>Thanh toán bằng agent ngoài Trung Quốc còn là trình diễn (OpenAI, Visa)</td>
+<td>Không đặt cược vào "agent tự mua hàng"</td>
+</tr>
+<tr class="odd">
+<td>Thay người bằng AI chỉ vì chi phí thì phải đảo chiều (Klarna, CBA, CFPB)</td>
+<td>Luôn có đường thoát sang người thật; đo cả tỷ lệ giải quyết lẫn tỷ lệ liên hệ lại</td>
+</tr>
+<tr class="even">
+<td><a class="law-ref" href="#l-tt53">Thông tư 53/2026</a> áp dụng cho trung gian thanh toán</td>
+<td>Tuân thủ ngay từ thiết kế (báo đang dùng AI, có người duyệt, có nhật ký, có nút dừng) là điểm cộng</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="r5">5. Hai mươi mốt ý tưởng thô, sáu ý tưởng qua được bốn bộ lọc</h2>
+<p>Các ý tưởng dưới đây được sinh ra rộng có chủ đích: người dùng cá nhân, người bán, đội vận hành; trước, trong và sau giao dịch; cả các hướng ít hiển nhiên như lừa đảo nhắm vào người bán, phục hồi sau lừa đảo, giao dịch treo, thuế hộ kinh doanh. Mỗi ý tưởng phải qua bốn bộ lọc:</p>
+<ol type="1">
+<li><strong>Có bằng chứng nỗi đau độc lập</strong>, không tự giả định MoMo gặp vấn đề.</li>
+<li><strong>Không trùng</strong> với thứ MoMo đã chạy.</li>
+<li><strong>AI là lõi:</strong> làm được việc mà quy tắc cứng không làm được.</li>
+<li><strong>Làm thật được trong 9 ngày</strong>, với dữ liệu công khai hoặc giả lập, để giám khảo tự thử trực tuyến.</li>
+</ol>
+<div class="table-wrap"><table>
+<thead>
+<tr class="header">
+<th>#</th>
+<th>Ý tưởng</th>
+<th>Chủ đề</th>
+<th>Kết luận</th>
+<th>Lý do then chốt</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td><strong>Sổ Sẵn:</strong> trợ lý thuế và sổ sách bằng giọng nói cho hộ kinh doanh, kèm bàn làm việc chính sách</td>
+<td>Trợ lý AI + Chống lừa đảo</td>
+<td>Phân tích sâu</td>
+<td>Nỗi đau mạnh, có hạn chót, ít trùng, dữ liệu công khai đủ dùng</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td><strong>30 Phút Vàng:</strong> trợ lý phản ứng sau lừa đảo cho nạn nhân và chuyên viên</td>
+<td>An ninh mạng + Chống lừa đảo</td>
+<td>Phân tích sâu</td>
+<td>Khoảng trống MoMo tự thừa nhận</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td><strong>Tiền Về Thật:</strong> xác minh tiền về cho người bán (ảnh chuyển khoản giả, đối soát)</td>
+<td>Chống lừa đảo</td>
+<td>Phân tích sâu</td>
+<td>Có án thật; tín hiệu "Merchant Trust"</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td><strong>Gỡ Rối Giao Dịch:</strong> agent xử lý giao dịch treo và trả trùng</td>
+<td>Trợ lý thanh toán</td>
+<td>Phân tích sâu</td>
+<td>Nỗi đau lớn nhất trong review</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td><strong>Phòng Tập Chống Lừa:</strong> nhận diện kịch bản và mô phỏng lừa đảo cho Gen Z</td>
+<td>Chống lừa đảo</td>
+<td>Phân tích sâu</td>
+<td>Dữ liệu MoMo cho thấy nạn nhân trẻ</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td><strong>Rõ Phí:</strong> minh bạch chi phí và quyền trừ tiền tự động</td>
+<td>Trợ lý thanh toán</td>
+<td>Phân tích sâu (đối chứng)</td>
+<td>Nỗi đau có thật nhưng MoMo đã xử lý một phần</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>AI hỏi mục đích trước khi chuyển tiền</td>
+<td>Chống lừa đảo</td>
+<td>Loại</td>
+<td>MoMo đã có "điểm dừng có chủ đích" và câu hỏi xác nhận; cần tín hiệu rủi ro nội bộ; người dùng đã than ma sát</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>Phát hiện "đang gọi + chia sẻ màn hình" khi mở ví</td>
+<td>Chống lừa đảo</td>
+<td>Loại</td>
+<td>Cần quyền hệ điều hành và app native, giám khảo khó tự thử; Google đã thí điểm</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td>Người thân giám hộ tài chính cho người cao tuổi</td>
+<td>Chống lừa đảo</td>
+<td>Hạ xuống thành tính năng</td>
+<td>70% nạn nhân MoMo dưới 25 tuổi; bằng chứng về người già chỉ là các ca lẻ</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>Phát hiện tài khoản mule phía nhận</td>
+<td>An ninh mạng</td>
+<td>Loại</td>
+<td>Cần đồ thị nội bộ; MoMo đã có Graph Network</td>
+</tr>
+<tr class="odd">
+<td>11</td>
+<td>Trợ lý giải thích Điểm Tin Cậy</td>
+<td>Trợ lý tài chính</td>
+<td>Loại</td>
+<td>Không có mô hình thật để giải thích; MoMo không công bố ngưỡng</td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td>Tín dụng dòng tiền chống vay chồng cho tiểu thương</td>
+<td>Trợ lý tài chính</td>
+<td>Để vào lộ trình</td>
+<td>Quyết định thuộc ngân hàng đối tác; <a class="law-ref" href="#l-tt53">Thông tư 53</a> coi khoản từ 50 triệu là rủi ro cao; cần sự đồng ý theo luật dữ liệu</td>
+</tr>
+<tr class="odd">
+<td>13</td>
+<td>Ví ủy quyền cho AI trả hóa đơn trong hạn mức</td>
+<td>Trợ lý thanh toán</td>
+<td>Loại khỏi nhóm đầu</td>
+<td>Là hạ tầng, khác biệt thấp; thanh toán bằng agent đang thoái trào ngoài Trung Quốc</td>
+</tr>
+<tr class="even">
+<td>14</td>
+<td>Trợ lý mua sắm so giá nhiều sàn</td>
+<td>Trợ lý mua sắm</td>
+<td>Loại</td>
+<td>Phụ thuộc scraping và điều khoản sàn; không dùng tài sản của MoMo</td>
+</tr>
+<tr class="odd">
+<td>15</td>
+<td>Trợ lý cho chuyên viên xử lý 29.000 cờ gian lận mỗi ngày</td>
+<td>An ninh mạng</td>
+<td>Gộp vào #2</td>
+<td>Không biết công cụ nội bộ; ít người hưởng lợi trực tiếp</td>
+</tr>
+<tr class="even">
+<td>16</td>
+<td>Loa thông báo biết trò chuyện cho tiểu thương lớn tuổi</td>
+<td>Trợ lý bán hàng</td>
+<td>Gộp vào #1 làm giao diện</td>
+<td>Cần phần cứng; demo bằng web</td>
+</tr>
+<tr class="odd">
+<td>17</td>
+<td>AI soạn khuyến mãi nhắm khách quanh quán</td>
+<td>Trợ lý bán hàng</td>
+<td>Loại</td>
+<td>Cần dữ liệu người dùng MoMo; MoMo đã có AI đề xuất mức ưu đãi</td>
+</tr>
+<tr class="even">
+<td>18</td>
+<td>Số hóa hụi và quỹ nhóm có chấm điểm rủi ro</td>
+<td>Trợ lý tài chính</td>
+<td>Loại</td>
+<td>Pháp lý mơ hồ; bằng chứng nhu cầu yếu</td>
+</tr>
+<tr class="odd">
+<td>19</td>
+<td>Thanh toán bằng giọng nói cho người ít chữ</td>
+<td>Trợ lý thanh toán</td>
+<td>Loại</td>
+<td>TPBank VoicePay và Siri + MoMo đã có; giao dịch trên 10 triệu vẫn cần sinh trắc</td>
+</tr>
+<tr class="even">
+<td>20</td>
+<td>"CFO AI" cho người bán nhiều sàn</td>
+<td>Trợ lý tài chính</td>
+<td>Gộp vào #1</td>
+<td>Nhập sao kê sàn, theo dõi thuế đã bị khấu trừ</td>
+</tr>
+<tr class="odd">
+<td>21</td>
+<td>Giải thích và kháng nghị khi bị chặn vì kiểm tra thiết bị</td>
+<td>An ninh mạng</td>
+<td>Loại</td>
+<td>Hẹp; cần logic nội bộ</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="r6">6. Sáu ý tưởng dưới con mắt một giám khảo hoài nghi</h2>
+<h3 id="r6-1">6.1 Sổ Sẵn: trợ lý thuế và sổ sách bằng giọng nói cho hộ kinh doanh</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr class="header">
+<th>Hạng mục</th>
+<th>Phân tích</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Tên ý tưởng</td>
+<td><strong>Sổ Sẵn:</strong> "Hộ kinh doanh nói, AI ghi sổ và canh thuế", kèm bàn làm việc chính sách cho đội vận hành merchant</td>
+</tr>
+<tr class="even">
+<td>Đối tượng mục tiêu</td>
+<td>Chính: chủ hộ nhỏ (tạp hóa, quán ăn, sạp chợ, người bán online) có nhận QR, nhất là nhóm quanh ngưỡng 1 tỷ và người lớn tuổi ít gõ phím. Phụ: con cháu làm kế toán theo <a class="law-ref" href="#l-tt152">Thông tư 152/2025</a>; đội chăm sóc merchant và đội chính sách của ví</td>
+</tr>
+<tr class="odd">
+<td>Pain point</td>
+<td>Không biết mình phải khai gì, khi nào, đã vượt ngưỡng chưa; sợ sai bị phạt; sổ sách và chi phí phải nhập tay; doanh thu nằm rải ở nhiều tài khoản, ví và tiền mặt</td>
+</tr>
+<tr class="even">
+<td>Nguyên nhân và bản chất</td>
+<td><span class="ev ev-inf">suy luận</span> Thiếu "lớp hiểu" chứ không thiếu công cụ nộp, vì 99,6% đã khai điện tử. Ba nguyên nhân gốc: (1) dữ liệu phân mảnh, vì QR chủ yếu là chuyển khoản P2P trong khi ngưỡng tính gộp mọi kênh; (2) luật đổi nhanh, ngưỡng 500 triệu thành 1 tỷ sau chưa đầy hai tháng; (3) văn bản viết cho người hiểu kế toán, còn người bán quen nói hơn quen gõ</td>
+</tr>
+<tr class="odd">
+<td>Bằng chứng nỗi đau tồn tại</td>
+<td>VCCI 2026: 13,9% hiểu rõ, 73,3% coi thủ tục là trở ngại lớn nhất, 71,2%, 67,6%, 66,8%, khoảng 40% lo lắng; 6,1 triệu hộ; 80% hộ dưới ngưỡng vẫn phải thông báo doanh thu năm; làn sóng né chuyển khoản 6/2025; khảo sát của MoMo trên 203 hộ cho thấy phần lớn còn quản lý thủ công (<a href="https://www.momo.vn/tin-tuc/thong-cao-bao-chi/bo-giai-phap-tai-chinh-tu-momo-giup-tieu-thuong-7891" target="_blank" rel="noopener noreferrer">MoMo, 11/07/2025</a>)</td>
+</tr>
+<tr class="even">
+<td>Giải pháp hiện có và hạn chế</td>
+<td>Chatbot AI và eTax của ngành thuế, Sổ tay Cục Thuế: chung chung, không biết số liệu của từng hộ. MISA, Sapo, KiotViet, gói miễn phí của ngân hàng: phải nhập liệu, mỗi bên chỉ thấy tài khoản của mình. MoMo đã có khai thuế, hóa đơn điện tử, chữ ký số (7/2025) và kế hoạch tờ khai điền sẵn (3/2026): giải quyết khâu <em>nộp</em>, chưa giải quyết khâu <em>hiểu</em></td>
+</tr>
+<tr class="odd">
+<td>Giải pháp AI đề xuất</td>
+<td>AI lo phần <em>hiểu</em> (giọng nói, ảnh hóa đơn, sao kê lộn xộn, văn bản luật); một máy luật tất định <em>tính</em> nghĩa vụ; con người <em>duyệt</em>. Bốn năng lực: (1) ghi sổ không cần gõ; (2) tách tiền bán hàng khỏi tiền gia đình và tiền chuyển giữa các tài khoản của chính mình; (3) canh ngưỡng 1 tỷ và dự báo ngày vượt; (4) hỏi đáp có trích điều khoản và nhận biết văn bản sửa đổi. Thêm bàn làm việc chính sách: AI đọc văn bản mới, đề xuất thay đổi quy tắc, nhân viên duyệt, hệ thống tính lại và báo cho đúng những hộ bị ảnh hưởng</td>
+</tr>
+<tr class="even">
+<td>Cách hoạt động và kịch bản sử dụng</td>
+<td>(1) Cô Ba bán tạp hóa bấm mic: "Sáng nay bán hai thùng mì ba trăm nghìn tiền mặt, chú Tư nợ một trăm rưỡi". AI tạo hai bút toán và hỏi lại: "Chú Tư là khách ghi nợ quen, đúng không cô?". (2) Giao dịch QR và sao kê ngân hàng tự vào sổ; khoản "Me chuyen 2tr" được đánh dấu để cô xác nhận có phải tiền bán hàng không. (3) Màn hình Ngưỡng: lũy kế 812 triệu, dự báo vượt 1 tỷ cuối tháng 12 vì mùa Tết; nếu vượt, cô phải khai theo quý và đăng ký hóa đơn điện tử trong 30 ngày (trích <a class="law-ref" href="#l-nd141">Nghị định 141/2026</a>). (4) Cô kể "có người xưng cán bộ thuế bảo chuyển phí hồ sơ"; AI cảnh báo mạo danh. (5) Cuối tháng 1, AI lập bản nháp số liệu thông báo doanh thu năm; con gái cô duyệt từ xa</td>
+</tr>
+<tr class="odd">
+<td>Công nghệ, mô hình AI và dữ liệu</td>
+<td><span class="ev ev-tech">kiến thức kỹ thuật chung</span> LLM đa phương thức qua API để trích xuất và soạn câu trả lời; mô hình nhỏ hơn để phân loại; nhận dạng giọng nói tiếng Việt; truy xuất lai BM25 + embedding đa ngôn ngữ trên kho luật chia theo Điều/Khoản, có ngày hiệu lực và quan hệ sửa đổi; máy luật viết bằng mã, mỗi quy tắc kèm trích dẫn; dự báo chuỗi thời gian có mùa vụ. Dữ liệu: văn bản luật công khai (<a class="law-ref" href="#l-nd68">Nghị định 68/2026</a>, <a class="law-ref" href="#l-nd141">141/2026</a>, <a class="law-ref" href="#l-nd70">70/2025</a>; <a class="law-ref" href="#l-nd68">Thông tư 18/2026</a>, <a class="law-ref" href="#l-tt152">152/2025</a>, <a class="law-ref" href="#l-tt25">25/2025</a>; <a class="law-ref" href="#l-nq198">Nghị quyết 198/2025</a>), giao dịch giả lập, 100 ghi chú chuyển khoản do đội tự viết tay, 60 câu thoại tự thu</td>
+</tr>
+<tr class="even">
+<td>Điểm sáng tạo và khác biệt</td>
+<td>(1) Nghĩa vụ được cá nhân hóa theo dòng tiền thật từ nhiều nguồn, điều mỗi ngân hàng không tự làm được. (2) Truy xuất nhận biết sửa đổi: RAG thông thường sẽ trả lời "500 triệu" vì <a class="law-ref" href="#l-nd68">Nghị định 68</a> ghi vậy. (3) Bàn làm việc chính sách thể hiện đúng hai vế của đề: AI đổi cách đội fintech làm việc, qua đó đổi cách người bán quản lý tài chính. (4) Giọng nói hướng tới loa mà MoMo đã phát cho khoảng 200.000 điểm bán</td>
+</tr>
+<tr class="odd">
+<td>Giá trị cho người dùng và MoMo</td>
+<td>Hộ kinh doanh: hiểu nghĩa vụ, không phải nhập tay, tránh bị phạt, tránh bị lừa bởi kẻ mạo danh cán bộ thuế. MoMo <span class="ev ev-inf">suy luận</span>: công cụ giữ chân merchant khi ngân hàng cho không phần mềm; bớt câu hỏi thuế dồn về chăm sóc khách hàng; có hồ sơ dòng tiền, khi chủ hộ đồng ý, để sau này mở tín dụng dòng tiền qua đối tác; thêm lý do để doanh thu tiếp tục chảy qua QR MoMo</td>
+</tr>
+<tr class="even">
+<td>Tính khả thi khi xây MVP</td>
+<td>Cao. Dữ liệu cần thiết đều công khai hoặc giả lập hợp lệ; không cần API của MoMo; giám khảo thử được trên trình duyệt. Phần khó nhất là bộ đánh giá luật và hạ tầng ổn định, không phải mô hình</td>
+</tr>
+<tr class="odd">
+<td>Khó khăn, rủi ro, hạn chế</td>
+<td>AI trích sai luật khiến hộ bị phạt; luật tiếp tục đổi; trách nhiệm pháp lý; dữ liệu giao dịch là dữ liệu nhạy cảm; hộ có thể né QR vì sợ lộ doanh thu; ngân hàng miễn phí; nhận dạng giọng nói ở chợ ồn; chi phí suy luận so với doanh thu thấp từ mỗi hộ; MoMo có thể đang làm nội bộ</td>
+</tr>
+<tr class="even">
+<td>Phù hợp đề thi và khả năng cạnh tranh</td>
+<td>Thuộc Trợ lý AI, nhánh tài chính và bán hàng: với 55,2% hộ, kinh doanh là nguồn thu duy nhất của gia đình, nên tài chính kinh doanh cũng là tài chính gia đình. Có thêm Chống lừa đảo qua cảnh báo mạo danh cán bộ thuế; 62,08% người dùng từng gặp mạo danh cơ quan chức năng, trong đó có thuế (<a href="https://e.vnexpress.net/news/tech/vietnamese-lose-744m-to-online-scams-in-2024-4828826.html" target="_blank" rel="noopener noreferrer">VnExpress International</a>). Nói được cả hai vế của đề. Có lẽ khác biệt với số đông đội thi, vốn dễ chọn chatbot hoặc công cụ kiểm tra tin nhắn lừa đảo <span class="ev ev-inf">suy luận</span></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Phản biện như một giám khảo MoMo, và cách khắc phục:</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr class="header">
+<th>Câu hỏi hoài nghi</th>
+<th>Điểm yếu thật</th>
+<th>Cách khắc phục trong MVP</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>"Đây chỉ là RAG về thuế. Ngành thuế đã có chatbot AI."</td>
+<td>Đúng, nếu sản phẩm chỉ có hỏi đáp</td>
+<td>Hỏi đáp chỉ là một trong bốn năng lực; trọng tâm là nghĩa vụ cá nhân hóa từ sổ thật. Trình bày so sánh RAG thông thường với hệ thống nhận biết sửa đổi trên bộ câu hỏi chuẩn</td>
+</tr>
+<tr class="even">
+<td>"MoMo đã có khai thuế, hóa đơn điện tử và đang làm tờ khai điền sẵn."</td>
+<td>Có trùng ở khâu nộp</td>
+<td>Không làm khâu nộp. Xuất bản nháp số liệu sang công cụ hiện có. Định vị là lớp hiểu nằm trước khâu nộp và ghi rõ trên slide</td>
+</tr>
+<tr class="odd">
+<td>"LLM bịa điều luật, hộ bị phạt thì ai chịu?"</td>
+<td>Rủi ro nghiêm trọng nhất</td>
+<td>LLM không bao giờ tự tính con số; mọi con số đến từ máy luật có trích dẫn. Kiểm tra câu trích có thật trong văn bản; tự từ chối khi không đủ căn cứ; có nút "hỏi kế toán viên"; ghi rõ hộ tự khai và tự chịu trách nhiệm theo <a class="law-ref" href="#l-nd68">Nghị định 68/2026</a></td>
+</tr>
+<tr class="even">
+<td>"Ngân hàng cho không đến 2028, merchant dùng của bạn làm gì?"</td>
+<td>Không thắng về giá</td>
+<td>Thắng ở chỗ không phải nhập liệu, dùng giọng nói, gộp nhiều nguồn. Với MoMo đây là công cụ giữ chân, không phải nguồn thu</td>
+</tr>
+<tr class="odd">
+<td>"Hộ sợ lộ doanh thu sẽ né QR."</td>
+<td>Rủi ro hành vi có thật (6/2025)</td>
+<td>Không tự gửi dữ liệu cho cơ quan thuế; dữ liệu thuộc chủ hộ; ghi cả tiền mặt; thông điệp "tuân thủ dễ, không bị phạt"; từ chối tư vấn né thuế</td>
+</tr>
+<tr class="even">
+<td>"Gửi dữ liệu giao dịch nhạy cảm ra LLM nước ngoài?"</td>
+<td>Vấn đề thật khi triển khai thật</td>
+<td>MVP chỉ dùng dữ liệu giả lập. Lộ trình: che thông tin cá nhân trước khi gọi mô hình, xin đồng ý riêng theo <a class="law-ref" href="#l-nd356">Nghị định 356/2025</a>, cân nhắc LLM nội địa</td>
+</tr>
+<tr class="odd">
+<td>"Chợ ồn, giọng miền thì sao?"</td>
+<td>Chưa đo</td>
+<td>Đo độ chính xác theo từng trường trên 60 câu thu ở môi trường ồn; luôn có thẻ xác nhận trước khi ghi; có ô nhập chữ dự phòng</td>
+</tr>
+<tr class="even">
+<td>"Dữ liệu đánh giá do chính bạn sinh ra thì vô nghĩa."</td>
+<td>Nguy cơ tự kiểm tra chính mình</td>
+<td>Tách bộ sinh dữ liệu khỏi bộ đánh giá; viết tay và gán nhãn tay 100 ghi chú chuyển khoản; công bố cả các lỗi</td>
+</tr>
+<tr class="odd">
+<td>"Mỗi hộ tốn bao nhiêu tiền AI một tháng?"</td>
+<td>Bài học Shopify về chi phí LLM (<a href="https://www.metatrader.com/it/news/1706819-can-shopify-balance-sidekick-growth-with-higher-llm-costs" target="_blank" rel="noopener noreferrer">MetaTrader/Zacks</a>)</td>
+<td>Dùng mô hình nhỏ để phân loại, cache câu hỏi phổ biến; đo lượng token mỗi hộ mỗi tháng và đưa lên slide</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="r6-2">6.2 30 Phút Vàng: trợ lý phản ứng sau lừa đảo</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr class="header">
+<th>Hạng mục</th>
+<th>Phân tích</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Đối tượng</td>
+<td>Người vừa chuyển tiền cho kẻ lừa (theo dữ liệu MoMo, nhiều nhất là người trẻ và sinh viên); người thân hỗ trợ; chuyên viên chống gian lận và chăm sóc khách hàng của ví</td>
+</tr>
+<tr class="even">
+<td>Pain point</td>
+<td>Phát hiện mình bị lừa thì hoảng loạn, không biết gọi ai trước, thiếu bằng chứng, dễ bị lừa tiếp bởi "dịch vụ lấy lại tiền"</td>
+</tr>
+<tr class="odd">
+<td>Bản chất</td>
+<td><span class="ev ev-inf">suy luận</span> Phần lớn thiệt hại là giao dịch do chính nạn nhân thực hiện nên không có "nút hủy". Cơ hội duy nhất là tốc độ và chất lượng thông tin trong một khoảng thời gian rất ngắn, qua nhiều bên: ngân hàng nhận, công an, ví</td>
+</tr>
+<tr class="even">
+<td>Bằng chứng</td>
+<td>Hơn 90% thiệt hại do tự chuyển; 76% nạn nhân sẵn sàng rời nền tảng (<a href="https://vnexpress.net/momo-dung-ai-quet-29-000-giao-dich-bat-thuong-moi-ngay-5078052.html" target="_blank" rel="noopener noreferrer">VnExpress, 29/05/2026</a>); tiền rời hệ thống trong chưa đến 30 phút (<a href="https://vtcnews.vn/dung-ai-chong-lai-lua-dao-bang-ai-ar1017693.html" target="_blank" rel="noopener noreferrer">VTC</a>); khả năng lấy lại tiền thấp (<a href="https://thutucphapluat.com/bai-viet/5652" target="_blank" rel="noopener noreferrer">thutucphapluat.com</a>); chỉ 45,69% nạn nhân báo cơ quan chức năng (<a href="https://e.vnexpress.net/news/tech/vietnamese-lose-744m-to-online-scams-in-2024-4828826.html" target="_blank" rel="noopener noreferrer">VnExpress International</a>); có cảnh báo về "lừa đảo lần hai" (chỉ thấy tiêu đề, <a href="https://cafef.vn/canh-giac-voi-lua-dao-lan-hai-sau-khi-mat-tien-188260831155826124.chn" target="_blank" rel="noopener noreferrer">CafeF, 31/08/2026</a>)</td>
+</tr>
+<tr class="odd">
+<td>Hiện có và hạn chế</td>
+<td>MoMo có "Báo cáo lừa đảo", "Phản ánh giao dịch rủi ro", hotline tính phí, khóa tài khoản qua chăm sóc khách hàng; ngân hàng có SIMO. Đây là các biểu mẫu, không dẫn dắt người dùng; chưa thấy lớp chống lừa lần hai nào được công bố. Cần kiểm tra trùng với chiến dịch "Không Một Mình 2026"</td>
+</tr>
+<tr class="even">
+<td>Giải pháp AI</td>
+<td>Hội thoại hướng dẫn theo thời gian thực; trích xuất từ ảnh chụp tin nhắn và biên lai thành dòng thời gian; phân loại kịch bản theo các thủ đoạn đã được công an công bố; soạn sẵn đơn trình báo và đề nghị tra soát; lọc lừa đảo lần hai. Phía chuyên viên: hồ sơ có cấu trúc, gom cụm theo tài khoản nhận và kịch bản, đề xuất hành động để người duyệt</td>
+</tr>
+<tr class="odd">
+<td>Kịch bản</td>
+<td>Minh, sinh viên năm hai, chuyển 8 triệu "phí hồ sơ việc làm online". 40 phút sau thấy lạ, Minh mở 30 Phút Vàng và dán ảnh. AI dựng dòng thời gian, nhận ra kịch bản "việc nhẹ lương cao", đưa ra ba việc cần làm ngay kèm đồng hồ đếm ngược và đơn soạn sẵn. Hôm sau có tin nhắn "luật sư lấy lại tiền, phí 2 triệu"; AI cảnh báo đây là lừa đảo. Chuyên viên thấy hồ sơ của Minh nằm cùng cụm với 14 ca khác cùng tài khoản nhận, và bấm duyệt đề xuất phong tỏa (giả lập)</td>
+</tr>
+<tr class="even">
+<td>Công nghệ và dữ liệu</td>
+<td>LLM đa phương thức, mẫu văn bản pháp lý, phân loại vài-mẫu (few-shot), gom cụm theo định danh trích xuất được. Dữ liệu là kịch bản giả lập dựa trên các thủ đoạn công an đã công bố</td>
+</tr>
+<tr class="odd">
+<td>Sáng tạo</td>
+<td>Cao: chuyển trọng tâm từ trước giao dịch (đã đông người làm) sang sau giao dịch (chưa ai làm bài bản). MoMo nói đang huấn luyện lại mô hình bằng phỏng vấn nạn nhân; ý tưởng này biến các cuộc phỏng vấn đó thành dữ liệu có cấu trúc</td>
+</tr>
+<tr class="even">
+<td>Giá trị</td>
+<td>Nạn nhân hành động nhanh hơn, tránh mất tiền lần hai, bớt cô lập. MoMo <span class="ev ev-inf">suy luận</span>: giữ chân nhóm 76% muốn rời đi; giảm thời gian xử lý mỗi ca; có tín hiệu sớm về tài khoản nhận cho Graph Network. Để hình dung quy mô: nếu áp tỷ lệ 0,18% của NCA lên 30 triệu người dùng thì vào khoảng 54.000 người mỗi năm. Đây chỉ là phép nhân minh họa, không phải số liệu của MoMo</td>
+</tr>
+<tr class="odd">
+<td>Khả thi</td>
+<td>Phần mềm làm được, nhưng giá trị cốt lõi là phong tỏa tiền thật thì phải giả lập</td>
+</tr>
+<tr class="even">
+<td>Rủi ro</td>
+<td>Không chứng minh được việc tăng tỷ lệ thu hồi tiền; lệch định nghĩa "Chống lừa đảo" (trước khi mất tiền); nội dung hỗ trợ tâm lý nhạy cảm; dữ liệu nạn nhân là dữ liệu nhạy cảm</td>
+</tr>
+<tr class="odd">
+<td>Phù hợp và cạnh tranh</td>
+<td>Hợp chủ đề An ninh mạng ("phản ứng", "truy vết") và Chống lừa đảo (ngăn lần mất tiền thứ hai). Rất gần mối quan tâm về niềm tin số của MoMo. Ít đội làm</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Phản biện.</strong> Câu hỏi khó nhất của giám khảo sẽ là: "Tiền đi trong 30 phút, nạn nhân thường phát hiện muộn hơn thế, vậy sản phẩm lấy lại được bao nhiêu?" Câu trả lời trung thực là không hứa thu hồi. Giá trị được bảo vệ được là bốn thứ: tốc độ cho những người phát hiện sớm, chặn lừa đảo lần hai, chất lượng bằng chứng, và tín hiệu có cấu trúc gửi về đội chống gian lận. Với lệch chủ đề, cách xử lý là khai chủ đề chính là An ninh mạng (phản ứng với mối đe dọa) và trình bày phần chặn lừa đảo lần hai như một cảnh báo <em>trước khi</em> mất tiền lần nữa. Về nội dung tâm lý, chỉ dùng kịch bản đã được rà soát, không để LLM tự do khuyên nhủ, và luôn kèm hotline thật.</p>
+<h3 id="r6-3">6.3 Tiền Về Thật: xác minh tiền về cho người bán</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr class="header">
+<th>Hạng mục</th>
+<th>Phân tích</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Đối tượng và pain point</td>
+<td>Người bán sỉ nhận đơn qua Zalo, quán đông khách, tạp hóa. Họ không chắc ảnh chuyển khoản khách gửi là thật, và không chắc thông báo trên loa là giao dịch mới</td>
+</tr>
+<tr class="even">
+<td>Bản chất</td>
+<td><span class="ev ev-inf">suy luận</span> Ảnh thì dễ làm giả, loa chỉ phát âm thanh, chủ quán bận; tiền lại về nhiều tài khoản nên kiểm tra từng app mất thời gian</td>
+</tr>
+<tr class="odd">
+<td>Bằng chứng</td>
+<td>309 ảnh giả, hơn 13 tỷ đồng ở Ninh Hiệp <span class="ev ev-snip">qua tóm tắt tìm kiếm</span>; chiêu phát lại thông báo loa và giả kỹ thuật viên lắp loa (<a href="https://cafef.vn/canh-giac-voi-chieu-lua-dao-cai-dat-loa-bao-bien-dong-so-du-188260907091439869.chn" target="_blank" rel="noopener noreferrer">CafeF, 07/09/2026</a>); dán đè QR; theo một nghiên cứu của Visa, 43% doanh nghiệp nhỏ lo gian lận và chuyển nhầm (qua tóm tắt tìm kiếm, <a href="https://english.vov.vn/en/economy/visa-highlights-vietnamese-payment-trends-for-2026-post1264446.vov" target="_blank" rel="noopener noreferrer">VOV</a>)</td>
+</tr>
+<tr class="even">
+<td>Hiện có và hạn chế</td>
+<td>Công an khuyên kiểm tra số dư trên app ngân hàng trước khi giao hàng; MoMo QR 2.0 hiển thị rõ tài khoản cửa hàng (<a href="https://www.momo.vn/tin-tuc/thong-bao/moi-nang-cap-ma-qr-momo-the-he-20-buon-ban-an-tam-8413" target="_blank" rel="noopener noreferrer">MoMo</a>). Cả hai đều phải làm thủ công, mỗi tài khoản một lần</td>
+</tr>
+<tr class="odd">
+<td>Giải pháp AI</td>
+<td>Đọc ảnh chuyển khoản của nhiều ngân hàng (đa phương thức) → trích xuất trường → đối chiếu với sổ (MoMo cộng sao kê đã nhập) → kết luận "Đã về / Chưa thấy / Nghi giả", kèm dấu hiệu bất thường về định dạng và thời gian</td>
+</tr>
+<tr class="even">
+<td>Sáng tạo và khác biệt</td>
+<td>Khá cao; lừa đảo nhắm vào người bán đang bị bỏ ngỏ</td>
+</tr>
+<tr class="odd">
+<td>Khả thi</td>
+<td>Cao, nếu tái dùng sổ của Sổ Sẵn</td>
+</tr>
+<tr class="even">
+<td>Rủi ro</td>
+<td>Phần đáng tin cậy nhất là đối chiếu sổ, vốn không cần nhiều AI; nhận diện ảnh giả là cuộc chạy đua không có hồi kết; chống phát lại trên loa cần mật mã ở thiết bị, không phải AI</td>
+</tr>
+<tr class="odd">
+<td>Phù hợp</td>
+<td>Chống lừa đảo; khớp tín hiệu "Tiền về chắc chắn" trong đề nội bộ (chỉ là tín hiệu). Nên làm thành mô-đun ưu tiên thấp của Sổ Sẵn, không đứng riêng</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="r6-4">6.4 Gỡ Rối Giao Dịch: agent xử lý giao dịch treo và trả trùng</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr class="header">
+<th>Hạng mục</th>
+<th>Phân tích</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Đối tượng và pain point</td>
+<td>Mọi người dùng ví, nhất là khi trả tiền tại quán; người bán bị khách tưởng "ăn quỵt". Tiền đã bị trừ nhưng giao dịch "đang xử lý", người dùng trả lần hai, khoản nhỏ thì không đáng tra soát</td>
+</tr>
+<tr class="even">
+<td>Bản chất</td>
+<td>Trạng thái bất định giữa MoMo, ngân hàng và NAPAS; không có đường hủy</td>
+</tr>
+<tr class="odd">
+<td>Bằng chứng</td>
+<td>Mạnh: 20,3% review tiêu cực trên Google Play và 32,7% trên iOS; FAQ "chờ 48 giờ"; MoMo từng chạy chương trình bồi thường 10.000đ cho giao dịch treo quá 2 giờ (<a href="https://www.momo.vn/tin-tuc/thong-bao/chuyen-tien-muot-hon-bao-gio-het-khong-can-doi-8878" target="_blank" rel="noopener noreferrer">MoMo</a>)</td>
+</tr>
+<tr class="even">
+<td>Hiện có và hạn chế</td>
+<td>Chatbot GenAI (MoMo tự công bố khiếu nại giảm 75%), ticket, hotline; review chê "trợ thủ AI… không giải quyết được gì"</td>
+</tr>
+<tr class="odd">
+<td>Giải pháp AI</td>
+<td>Agent có công cụ: đọc trạng thái giao dịch, phát hiện trả trùng cùng người nhận, tự mở yêu cầu hoàn tiền kèm bằng chứng, chủ động báo tiến độ, cho người bán xem "khách đã trả, tiền về lúc X". Nhân viên vận hành duyệt các khoản hoàn vượt ngưỡng</td>
+</tr>
+<tr class="even">
+<td>Sáng tạo</td>
+<td>Trung bình: agent chăm sóc khách hàng là xu hướng chung (Toss, Klarna)</td>
+</tr>
+<tr class="odd">
+<td>Khả thi</td>
+<td>Trung bình: toàn bộ hệ thống nội bộ của MoMo phải giả lập, và giám khảo biết rõ cái gì là giả</td>
+</tr>
+<tr class="even">
+<td>Rủi ro</td>
+<td>Gốc rễ nằm ở khâu đối soát backend, nên AI dễ bị xem là miếng băng dán; trùng với chatbot hiện có; dễ trông ngây thơ trước chính đội đã xây hệ thống</td>
+</tr>
+<tr class="odd">
+<td>Phù hợp</td>
+<td>Trợ lý thanh toán; tác động lớn nhưng khó thuyết phục về sáng tạo</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="r6-5">6.5 Phòng Tập Chống Lừa: nhận diện kịch bản và mô phỏng cho Gen Z</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr class="header">
+<th>Hạng mục</th>
+<th>Phân tích</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Đối tượng và pain point</td>
+<td>Sinh viên và người trẻ bị thao túng qua kịch bản việc làm, đầu tư; một số bị dụ cho thuê tài khoản (<a class="law-ref" href="#l-nd340">Nghị định 340/2025</a> phạt 100–150 triệu đồng, <a href="https://cafef.vn/mua-ban-tai-khoan-ngan-hang-coi-chung-ruoc-hoa-vao-than-188261001071944878.chn" target="_blank" rel="noopener noreferrer">CafeF, 01/10/2026</a>)</td>
+</tr>
+<tr class="even">
+<td>Bằng chứng</td>
+<td>70% nạn nhân dưới 25 tuổi, 50% là sinh viên dưới 22 tuổi (dữ liệu MoMo, <a href="https://vnexpress.net/momo-dung-ai-quet-29-000-giao-dich-bat-thuong-moi-ngay-5078052.html" target="_blank" rel="noopener noreferrer">VnExpress</a>); NCA xếp hạng các thủ đoạn</td>
+</tr>
+<tr class="odd">
+<td>Hiện có và hạn chế</td>
+<td>Zalo có chatbot kiểm tra số điện thoại và link (12/2025); MoMo có chiến dịch "TinAI?". Thị trường đã đông</td>
+</tr>
+<tr class="even">
+<td>Giải pháp AI</td>
+<td>(a) Radar: dán đoạn chat → AI xác định kịch bản và bước hiện tại ("bạn đang ở bước 'nộp phí kích hoạt'"); (b) mô phỏng: LLM đóng vai kẻ lừa, thích ứng theo người dùng, rồi phân tích lại sau buổi tập</td>
+</tr>
+<tr class="odd">
+<td>Sáng tạo</td>
+<td>Radar thấp; phần mô phỏng ở mức trung bình</td>
+</tr>
+<tr class="even">
+<td>Khả thi</td>
+<td>Cao</td>
+</tr>
+<tr class="odd">
+<td>Rủi ro</td>
+<td>Khó chứng minh thay đổi hành vi; nhà cung cấp LLM có thể từ chối đóng vai kẻ lừa; nhiều đội khác có lẽ làm tương tự <span class="ev ev-inf">suy luận</span></td>
+</tr>
+<tr class="even">
+<td>Phù hợp</td>
+<td>Đúng chủ đề Chống lừa đảo, nhưng khó nổi bật</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="r6-6">6.6 Rõ Phí: minh bạch chi phí và quyền trừ tiền tự động</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr class="header">
+<th>Hạng mục</th>
+<th>Phân tích</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Đối tượng và pain point</td>
+<td>Người trẻ dùng Ví Trả Sau và các gói thuê bao; phí 33.000đ phát sinh mà không biết vì sao; nguồn tiền mặc định gây bất ngờ</td>
+</tr>
+<tr class="even">
+<td>Bằng chứng</td>
+<td>Trừ tiền tự động khoảng 10% review tiêu cực; Ví Trả Sau 7–10%; vụ 1.194.000đ năm 2024</td>
+</tr>
+<tr class="odd">
+<td>Hiện có và hạn chế</td>
+<td>MoMo đã thêm đánh dấu giao dịch định kỳ, nhắc trước hạn và quản lý dịch vụ liên kết (9/2025)</td>
+</tr>
+<tr class="even">
+<td>Giải pháp AI</td>
+<td>Giải thích tổng chi phí trước khi trả ("đây là giao dịch thứ 6, sẽ phát sinh phí 33.000đ"), nhận diện thuê bao từ lịch sử giao dịch, bảng quản lý các quyền trừ tiền</td>
+</tr>
+<tr class="odd">
+<td>Đánh giá</td>
+<td>AI không phải lõi (phần lớn là quy tắc); có xung đột với doanh thu phí của MoMo; trùng một phần với tính năng đã có. Hợp làm góp ý tính năng cho Moni hơn là bài thi</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="r7">7. Sổ Sẵn dẫn bảng điểm vì cân bằng được tác động và khả thi</h2>
+<p>Thể lệ không công bố trọng số, nên bảng dưới cho các tiêu chí trọng số bằng nhau. Điểm từ 1 đến 5 là đánh giá của người viết <span class="ev ev-inf">suy luận</span>, dựa trên bằng chứng ở các mục trên. Các cột được ghép với tiêu chí chính thức như sau:</p>
+<ul>
+<li>"Sáng tạo" và "Ít trùng với MoMo" ứng với tiêu chí Sáng tạo.</li>
+<li>"Hoàn thiện được trong 9 ngày" ứng với Chất lượng &amp; mức độ hoàn thiện.</li>
+<li>"Tác động và quy mô" và "Giá trị cho MoMo" ứng với Tiềm năng tác động.</li>
+<li>"AI là lõi" là điều kiện bắt buộc của đề.</li>
+</ul>
+<div class="table-wrap"><table>
+<thead>
+<tr class="header">
+<th>Ý tưởng</th>
+<th>Sáng tạo</th>
+<th>Hoàn thiện được trong 9 ngày</th>
+<th>Tác động và quy mô</th>
+<th>AI là lõi</th>
+<th>Giá trị cho MoMo</th>
+<th>Ít trùng với MoMo</th>
+<th>Tổng /30</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Sổ Sẵn</strong></td>
+<td>4</td>
+<td>5</td>
+<td>5</td>
+<td>4</td>
+<td>5</td>
+<td>4</td>
+<td><strong>27</strong></td>
+</tr>
+<tr class="even">
+<td>30 Phút Vàng</td>
+<td>5</td>
+<td>4</td>
+<td>3</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>24</td>
+</tr>
+<tr class="odd">
+<td>Tiền Về Thật</td>
+<td>4</td>
+<td>4</td>
+<td>3</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>23</td>
+</tr>
+<tr class="even">
+<td>Gỡ Rối Giao Dịch</td>
+<td>3</td>
+<td>3</td>
+<td>5</td>
+<td>3</td>
+<td>4</td>
+<td>2</td>
+<td>20</td>
+</tr>
+<tr class="odd">
+<td>Phòng Tập Chống Lừa</td>
+<td>3</td>
+<td>5</td>
+<td>3</td>
+<td>4</td>
+<td>3</td>
+<td>2</td>
+<td>20</td>
+</tr>
+<tr class="even">
+<td>Rõ Phí</td>
+<td>2</td>
+<td>4</td>
+<td>3</td>
+<td>2</td>
+<td>3</td>
+<td>2</td>
+<td>16</td>
+</tr>
+</tbody>
+</table></div>
+<p>Thứ hạng khá vững khi đổi trọng số. Nhân đôi cột Sáng tạo: Sổ Sẵn 31, 30 Phút Vàng 29, Tiền Về Thật 27. Nhân đôi cột Tác động: Sổ Sẵn 32, 30 Phút Vàng 27, Tiền Về Thật 26, Gỡ Rối Giao Dịch 25. Nhóm đầu không đổi.</p>
+<p>Các đánh đổi thể hiện rõ:</p>
+<ul>
+<li>Ý tưởng sáng tạo nhất (30 Phút Vàng) có tác động khó chứng minh nhất.</li>
+<li>Nỗi đau lớn nhất theo review (giao dịch treo) lại ít cần AI nhất và phụ thuộc nhiều nhất vào hệ thống nội bộ MoMo.</li>
+<li>Ý tưởng dễ làm nhất (Phòng Tập) nằm ở sân đông người nhất.</li>
+</ul>
+<p>Sổ Sẵn không thắng ở chủ đề, vì công cụ thuế đã có nhiều. Nó thắng ở cách tiếp cận: cá nhân hóa theo sổ thật, nhận biết sửa đổi luật, và có bàn làm việc người–AI. Điểm yếu cảm tính là thuế kém "hấp dẫn" hơn chống lừa đảo trong mắt một hội đồng vừa nhận giải AI cho niềm tin số. Cách bù là kể câu chuyện bằng số liệu và bằng hai vế của đề thi.</p>
+<p><strong>Quy tắc quyết định trước khi bắt tay làm.</strong> Ngay hôm nay, hãy mở app Đối tác/Merchant MoMo và kiểm tra tờ khai điền sẵn hay trợ lý thuế đã ra mắt chưa. Nếu MoMo đã có một trợ lý thuế dùng AI theo đúng hướng này, chuyển sang 30 Phút Vàng. Nếu đội mạnh về bảo mật và an toàn LLM hơn là xử lý dữ liệu, 30 Phút Vàng cũng là lựa chọn hợp lý. Tiền Về Thật chỉ nên làm như một mô-đun của Sổ Sẵn.</p>
+<h2 id="r8">8. Kế hoạch chín ngày đưa Sổ Sẵn lên sóng và giữ nó sống đến 11/12</h2>
+<h3 id="r8-1">Phạm vi: làm thật gì, giả lập gì</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr class="header">
+<th>Mức ưu tiên</th>
+<th>Hạng mục</th>
+<th>Làm thật</th>
+<th>Giả lập và khai báo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>P0</td>
+<td>Sổ đa nguồn</td>
+<td>Nhập giao dịch QR giả lập và file CSV sao kê; phân loại tiền bán hàng, tiền cá nhân, tiền hoàn, tiền chuyển giữa tài khoản của mình; loại trùng</td>
+<td>Dữ liệu MoMo và ngân hàng đều giả lập, khai báo trong README theo Điều 12.4</td>
+</tr>
+<tr class="even">
+<td>P0</td>
+<td>Ghi sổ bằng giọng nói và chữ</td>
+<td>Nhận dạng giọng nói → trích xuất cấu trúc (món, số lượng, tiền, người nợ) → thẻ xác nhận</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>P0</td>
+<td>Canh ngưỡng và nghĩa vụ</td>
+<td>Máy luật có phiên bản và ngày hiệu lực; dự báo ngày vượt 1 tỷ; liệt kê nghĩa vụ phát sinh</td>
+<td>Chưa tính số thuế phải nộp cho đến khi đối chiếu được tỷ lệ % theo ngành trong văn bản gốc</td>
+</tr>
+<tr class="even">
+<td>P0</td>
+<td>Hỏi đáp có trích dẫn</td>
+<td>Truy xuất nhận biết sửa đổi, kiểm tra trích dẫn, tự từ chối khi không đủ căn cứ</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>P0</td>
+<td>Bản nháp số liệu khai</td>
+<td>Tổng hợp số liệu cho thông báo doanh thu năm và khai quý</td>
+<td>Không nộp lên cổng thuế; không trình bày như mẫu chính thức</td>
+</tr>
+<tr class="even">
+<td>P0</td>
+<td>Sandbox cho từng giám khảo</td>
+<td>Nút "Tạo cửa hàng mẫu mới" và "Đặt lại"</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>P1</td>
+<td>Bàn làm việc chính sách</td>
+<td>AI đọc <a class="law-ref" href="#l-nd141">Nghị định 141</a> → đề xuất thay đổi quy tắc có trích dẫn → nhân viên duyệt → tính lại cho 1.000 hộ giả lập → soạn thông báo cho các hộ bị ảnh hưởng</td>
+<td>Quần thể hộ là giả lập</td>
+</tr>
+<tr class="even">
+<td>P1</td>
+<td>Người thân duyệt từ xa</td>
+<td>Link chỉ đọc, có ô bình luận</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>P1</td>
+<td>Cảnh báo mạo danh cán bộ thuế</td>
+<td>Phân loại tin nhắn hoặc lời kể về cuộc gọi, kèm hướng dẫn</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>P1</td>
+<td>Ảnh hóa đơn đầu vào</td>
+<td>Trích xuất thành dòng chi phí</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>P2</td>
+<td>Kiểm tra ảnh chuyển khoản (mô-đun Tiền Về Thật)</td>
+<td>Đối chiếu với sổ</td>
+<td>Ảnh mẫu do đội tự tạo</td>
+</tr>
+</tbody>
+</table></div>
+<p>Không làm: nộp tờ khai thật, chấm điểm tín dụng, dùng logo MoMo theo cách khiến người xem tưởng là sản phẩm chính thức. Giao diện ghi rõ "bản thử nghiệm độc lập cho hệ sinh thái MoMo".</p>
+<h3 id="r8-2">Kiến trúc và bộ đánh giá</h3>
+<p>Kiến trúc chia ba lớp: <em>AI hiểu, máy luật tính, con người duyệt</em>. Đây là cách trả lời trực tiếp câu "Dẫn dắt AI, đừng để AI dẫn dắt mình" của CTO.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr class="header">
+<th>Lớp</th>
+<th>Vai trò</th>
+<th>Công nghệ <span class="ev ev-tech">kiến thức kỹ thuật chung</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>AI hiểu</td>
+<td>Đọc giọng nói, ảnh, sao kê, văn bản luật</td>
+<td>LLM gọi hàm (function calling)</td>
+</tr>
+<tr class="even">
+<td>Máy luật</td>
+<td>Ngưỡng, nghĩa vụ, hạn nộp; mỗi quy tắc có trích dẫn và ngày hiệu lực</td>
+<td>Quy tắc viết bằng mã</td>
+</tr>
+<tr class="odd">
+<td>Lớp hội thoại</td>
+<td>Lấy con số từ máy luật qua công cụ; không bao giờ để LLM tự tính</td>
+<td>LLM kèm công cụ</td>
+</tr>
+<tr class="even">
+<td>Truy xuất</td>
+<td>Kho luật chia theo Điều/Khoản, gắn quan hệ "được sửa đổi bởi" để <a class="law-ref" href="#l-nd141">Nghị định 141</a> ghi đè <a class="law-ref" href="#l-nd68">Nghị định 68</a></td>
+<td>BM25 + embedding đa ngôn ngữ</td>
+</tr>
+<tr class="odd">
+<td>Vòng phản hồi</td>
+<td>Khoản nào AI không chắc thì hỏi lại chủ hộ; câu trả lời thành nhãn mới</td>
+<td>Học chủ động</td>
+</tr>
+</tbody>
+</table></div>
+<p>Các phương án công nghệ cụ thể <span class="ev ev-tech">kiến thức kỹ thuật chung</span>:</p>
+<ul>
+<li>Một LLM đa phương thức thương mại hỗ trợ tiếng Việt. Ghi chép cho thấy Grab dùng mô hình của OpenAI và Anthropic cho MAI (<a href="https://www.grab.com/sg/press/others/grab-deploys-agentic-ai-to-empower-merchants-and-driver-partners/" target="_blank" rel="noopener noreferrer">Grab</a>), TPBank dùng nhiều LLM.</li>
+<li>Nhận dạng giọng nói tiếng Việt từ nhà cung cấp đám mây hoặc mô hình mã nguồn mở.</li>
+<li>Cơ sở dữ liệu quan hệ có hỗ trợ vector.</li>
+<li>Máy chủ luôn bật, không dùng gói miễn phí tự ngủ.</li>
+</ul>
+<p>Bộ đánh giá là thứ phân biệt bài thi trước một hội đồng gồm Research Scientist và AI Engineering:</p>
+<ul>
+<li><strong>Hỏi đáp luật:</strong> 120 câu hỏi chuẩn lấy từ Sổ tay Cục Thuế và các nghị định, chấm ba thứ: câu trả lời đúng, câu trích có thật và hỗ trợ được câu trả lời, tỷ lệ tự từ chối. Trong đó có khoảng 20 câu "bẫy sửa đổi" (văn bản gốc ghi 500 triệu, quy định hiện hành là 1 tỷ) để so với RAG thông thường.</li>
+<li><strong>Phân loại giao dịch:</strong> độ chính xác trên 100 ghi chú chuyển khoản viết tay, gán nhãn tay, cộng 500 giao dịch giả lập.</li>
+<li><strong>Giọng nói:</strong> độ chính xác theo từng trường trên 60 câu thu ở quán cà phê ồn.</li>
+<li><strong>Vận hành:</strong> độ trễ p95 và chi phí token mỗi phiên.</li>
+</ul>
+<p>Công bố số thật, kể cả khi chưa đẹp.</p>
+<h3 id="r8-3">Lịch làm việc mười ngày</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr class="header">
+<th>Ngày</th>
+<th>AI và backend (A)</th>
+<th>Giao diện và giọng nói (B)</th>
+<th>Dữ liệu, luật, pitch (C)</th>
+<th>Mốc kiểm tra</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>T3 24/11</td>
+<td>Chốt schema; khung máy luật</td>
+<td>Khung web app chạy tốt trên điện thoại, đăng nhập, sandbox</td>
+<td>Kiểm tra MoMo đã có trợ lý thuế chưa; đăng ký đội nếu chưa; gom văn bản luật</td>
+<td>Chốt phạm vi</td>
+</tr>
+<tr class="even">
+<td>T4 25/11</td>
+<td>Bộ sinh dữ liệu giả lập; bộ phân loại v1</td>
+<td>Màn hình Sổ và màn hình Ngưỡng</td>
+<td>Chia luật theo Điều/Khoản; bảng sửa đổi từ <a class="law-ref" href="#l-nd141">Nghị định 141</a> sang 68</td>
+<td>Sổ hiển thị từ dữ liệu giả</td>
+</tr>
+<tr class="odd">
+<td>T5 26/11</td>
+<td>Truy xuất và kiểm tra trích dẫn</td>
+<td>Thu âm và nhận dạng giọng nói</td>
+<td>Viết 120 câu hỏi chuẩn</td>
+<td>Hỏi đáp có trích dẫn chạy trọn luồng</td>
+</tr>
+<tr class="even">
+<td>T6 27/11</td>
+<td>Trích xuất bút toán từ giọng nói</td>
+<td>Thẻ xác nhận, sửa lỗi</td>
+<td><strong>Gửi email câu hỏi cho BTC trước 23:59</strong>; thu 60 câu thoại</td>
+<td>Nói một câu ra đúng bút toán</td>
+</tr>
+<tr class="odd">
+<td>T7 28/11</td>
+<td>Dự báo ngưỡng; bản nháp số liệu khai</td>
+<td>Bảng tổng quan</td>
+<td>Đánh giá vòng 1</td>
+<td>Luồng demo chính chạy được</td>
+</tr>
+<tr class="even">
+<td>CN 29/11</td>
+<td>Bàn làm việc chính sách</td>
+<td>Chia sẻ cho người thân; cảnh báo mạo danh</td>
+<td>Đánh giá vòng 2, gom lỗi</td>
+<td>Xong P1 hoặc cắt bỏ</td>
+</tr>
+<tr class="odd">
+<td>T2 30/11</td>
+<td>Đưa lên production, LLM dự phòng, giới hạn tần suất, ghi log</td>
+<td>Tối ưu cho điện thoại, HTTPS cho mic</td>
+<td>Cho người ngoài dùng thử (chỉ dùng thử, không tham gia xây, theo Điều 31.2)</td>
+<td><strong>Đóng băng tính năng lúc 23:59</strong></td>
+</tr>
+<tr class="even">
+<td>T3 01/12</td>
+<td>Sửa lỗi, kiểm tra tải</td>
+<td>Quay video</td>
+<td>Slide v1, hướng dẫn 1 trang</td>
+<td>Có video thô</td>
+</tr>
+<tr class="odd">
+<td>T4 02/12</td>
+<td>README: tài sản có sẵn, mã nguồn mở, công cụ AI (kể cả trợ lý viết code), nguồn dữ liệu; xóa khóa API khỏi mã nguồn</td>
+<td>Dựng video hoàn chỉnh</td>
+<td>Slide bản cuối</td>
+<td>Chạy thử toàn bộ quy trình nộp</td>
+</tr>
+<tr class="even">
+<td>T5 03/12</td>
+<td>Nộp trước 18:00; kiểm tra link từ mạng và thiết bị khác</td>
+<td></td>
+<td></td>
+<td>Đóng băng; từ đây chỉ giám sát</td>
+</tr>
+</tbody>
+</table></div>
+<p>Bốn câu hỏi nên gửi BTC trước 23:59 ngày 27/11. Câu trả lời sẽ thành "FAQ chính thức" theo Điều 13.</p>
+<ol type="1">
+<li>Sản phẩm độc lập, chạy ngoài app MoMo, có hợp lệ không?</li>
+<li>Có được dùng tên và nhận diện MoMo trong giao diện thử nghiệm không?</li>
+<li>Nếu máy chủ sập sau 03/12, khởi động lại mà không đổi mã có bị coi là "cập nhật sản phẩm" không?</li>
+<li>Có credit đám mây từ nhà tài trợ không?</li>
+</ol>
+<h3 id="r8-4">Kịch bản video 3 phút</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr class="header">
+<th>Thời điểm</th>
+<th>Hình ảnh</th>
+<th>Thông điệp</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0:00–0:20</td>
+<td>Cô Ba ở quầy tạp hóa, giọng hỏi "Năm nay con có phải khai thuế không?"</td>
+<td>2026 bỏ thuế khoán; chỉ 13,9% hộ hiểu rõ quy định</td>
+</tr>
+<tr class="even">
+<td>0:20–0:50</td>
+<td>Bấm mic, nói một câu bán hàng; thẻ xác nhận hiện ra; AI hỏi lại khoản nợ</td>
+<td>Ghi sổ không cần gõ</td>
+</tr>
+<tr class="odd">
+<td>0:50–1:20</td>
+<td>Sổ tự gom QR và sao kê; khoản "Me chuyen 2tr" được hỏi lại</td>
+<td>AI tách tiền gia đình khỏi doanh thu, con người quyết</td>
+</tr>
+<tr class="even">
+<td>1:20–1:50</td>
+<td>Màn hình Ngưỡng: 812 triệu, dự báo vượt cuối tháng 12; nghĩa vụ phát sinh, trích <a class="law-ref" href="#l-nd141">Nghị định 141</a></td>
+<td>Cá nhân hóa theo dòng tiền thật</td>
+</tr>
+<tr class="odd">
+<td>1:50–2:15</td>
+<td>Hỏi về chi phí được trừ; dán tin nhắn "cán bộ thuế" đòi chuyển tiền</td>
+<td>Trả lời có trích dẫn; cảnh báo mạo danh</td>
+</tr>
+<tr class="even">
+<td>2:15–2:40</td>
+<td>Bàn làm việc chính sách: nạp <a class="law-ref" href="#l-nd141">Nghị định 141</a> → AI đề xuất thay đổi → nhân viên duyệt → 312 hộ được báo</td>
+<td>AI đổi cách đội fintech làm việc, qua đó đổi cách người bán tuân thủ</td>
+</tr>
+<tr class="odd">
+<td>2:40–3:00</td>
+<td>Số đo của bộ đánh giá; 6,1 triệu hộ, 500.000 merchant</td>
+<td>Tác động và đường đi vào hệ sinh thái MoMo</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="r8-5">Cốt truyện slide 10 trang</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr class="header">
+<th>Trang</th>
+<th>Nội dung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Tên, câu giá trị, đối tượng (hộ kinh doanh và đội vận hành merchant), chủ đề khai báo (Trợ lý AI và Chống lừa đảo)</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Vấn đề: 6,1 triệu hộ, bỏ thuế khoán, 13,9%, 73,3%, mốc 31/01/2027</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Bản chất: dữ liệu phân mảnh, luật đổi nhanh, giao diện chữ</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Giải pháp hiện có và khoảng trống: 99,6% đã khai điện tử nhưng khai được không có nghĩa là hiểu</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>Sổ Sẵn: ba hành động và một bàn làm việc</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>Bốn ảnh chụp luồng demo</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>Kiến trúc: AI hiểu, máy luật tính, con người duyệt; các lớp chặn sai sót</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>Đánh giá: số đo thật, có so sánh với RAG thông thường</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td>Tác động và độ khớp với MoMo: giữ chân merchant, giảm chi phí phục vụ, đường tới tín dụng có sự đồng ý; tuân thủ</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>Rủi ro và cách khắc phục, lộ trình (loa, app Merchant), đội</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="r8-6">Tài liệu nộp và tuân thủ ngay từ thiết kế</h3>
+<p><strong>Hướng dẫn một trang</strong> cho giám khảo đi theo đúng bốn bước của video: chọn hoặc tạo cửa hàng mẫu, nói một câu bán hàng, xem màn hình Ngưỡng, hỏi một câu về thuế. Thêm bước năm: mở bàn làm việc chính sách bằng vai trò nhân viên.</p>
+<p>Sản phẩm cần có sẵn các lớp tuân thủ sau:</p>
+<ul>
+<li>Báo ngay đầu phiên rằng người dùng đang trò chuyện với AI, theo <a class="law-ref" href="#l-ailaw">Luật AI</a> và tinh thần <a class="law-ref" href="#l-tt53">Thông tư 53</a>.</li>
+<li>Màn hình xin đồng ý dùng dữ liệu giao dịch, và nút xóa dữ liệu.</li>
+<li>Nhật ký mọi câu trả lời kèm nguồn.</li>
+<li>Từ chối tư vấn né thuế.</li>
+<li>Không tự nộp hồ sơ thay người dùng.</li>
+</ul>
+<p>Sổ Sẵn không thực hiện thanh toán và không quyết định tín dụng, nên có lẽ nằm ngoài các ngưỡng rủi ro cao của <a class="law-ref" href="#l-tt53">Thông tư 53</a> (suy luận, cần đối chiếu toàn văn).</p>
+<h3 id="r8-7">Rủi ro khi giám khảo tự thử và khi thuyết trình</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr class="header">
+<th>Rủi ro</th>
+<th>Cách giảm</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Nhà cung cấp LLM sập hoặc hết hạn mức trong 8 ngày không được sửa</td>
+<td>Có nhà cung cấp dự phòng tự chuyển; nạp trước tiền; trần chi phí; cache câu trả lời cho các câu hỏi chuẩn</td>
+</tr>
+<tr class="even">
+<td>Ba giám khảo trở lên cùng dùng một tài khoản, dữ liệu đè lên nhau</td>
+<td>Mỗi phiên một sandbox; nút đặt lại</td>
+</tr>
+<tr class="odd">
+<td>Trình duyệt chặn mic hoặc phòng chung kết ồn</td>
+<td>Bắt buộc HTTPS; bấm-để-nói; luôn có ô nhập chữ</td>
+</tr>
+<tr class="even">
+<td>Trích sai điều luật</td>
+<td>Kiểm tra trích dẫn, tự từ chối, có nút người thật</td>
+</tr>
+<tr class="odd">
+<td>Máy chủ ngủ hoặc chứng chỉ hết hạn</td>
+<td>Máy chủ luôn bật; kiểm tra hạn tên miền và SSL đến sau 11/12</td>
+</tr>
+<tr class="even">
+<td>Lộ khóa API trong file .zip</td>
+<td>Dùng biến môi trường; quét bí mật trước khi nộp</td>
+</tr>
+<tr class="odd">
+<td>Giám khảo hỏi câu ngoài phạm vi kho luật</td>
+<td>Trả lời "chưa đủ căn cứ" và chỉ kênh chính thức</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="r8-8">Phương án dự phòng: MVP của 30 Phút Vàng</h3>
+<p>Nếu chuyển hướng, giữ cùng nhịp mười ngày. MVP gồm:</p>
+<ul>
+<li>Phòng chat cho nạn nhân, nhận chữ và ảnh chụp.</li>
+<li>Trích xuất dòng thời gian và phân loại kịch bản theo thủ đoạn công an đã công bố.</li>
+<li>Danh sách việc cần làm có đồng hồ đếm ngược.</li>
+<li>Bản nháp đơn trình báo và đề nghị tra soát.</li>
+<li>Bộ lọc lừa đảo lần hai.</li>
+<li>Bảng điều khiển cho chuyên viên, có gom cụm theo tài khoản nhận và nút duyệt đề xuất.</li>
+</ul>
+<p>Phong tỏa tài khoản, kết nối SIMO và phản hồi của ngân hàng đều giả lập và khai báo trong README. Video nên kể trọn câu chuyện của Minh trong 3 phút và kết bằng góc nhìn của chuyên viên duyệt cụm 15 ca.</p>
+<h2 id="r9">Kết luận</h2>
+<p>Bài học quan trọng nhất từ nghiên cứu này là tìm lợi thế ở đúng chỗ. AI của MoMo mạnh nhất ở nơi dữ liệu nằm <em>bên trong</em> MoMo: rủi ro giao dịch, tín dụng, cá nhân hóa. Đội sinh viên không có dữ liệu đó, nên chỉ thắng được ở nơi tri thức <em>công khai nhưng lộn xộn</em>: văn bản luật đổi liên tục, thủ đoạn lừa đảo đã công bố, lời nói của người bán ở chợ. Ở đó, dữ liệu giả lập cộng nguồn công khai vẫn đủ để AI làm việc thật. Cũng từ đó, câu đề "AI thay đổi cách đội ngũ fintech làm việc, và qua đó…" trở thành một tiêu chí ngầm. Đội nào cho giám khảo thấy một vòng người–AI cụ thể, AI đề xuất và con người duyệt, rồi tác động lan tới hàng triệu người dùng, sẽ khác biệt với phần đông chỉ làm vế sau của đề.</p>
+<p>Điều quyết định trước một hội đồng toàn kỹ sư và nhà nghiên cứu AI không phải là mô hình mới nhất, mà là sự trung thực khi đánh giá. Một bài thi chỉ ra được lỗi "500 triệu hay 1 tỷ" mà RAG thông thường mắc phải, đo được lỗi của chính mình và để LLM tránh xa phần tính toán sẽ thuyết phục hơn một bản demo mượt mà không có số đo. Thời điểm cũng đang đứng về phía Sổ Sẵn: chung kết rơi đúng vào tháng cuối trước chu kỳ khai năm đầu tiên sau khi bỏ thuế khoán. Đó là thứ "dùng được ngay hôm nay" theo nghĩa đen của đề.</p>
+
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Tài liệu nghiên cứu độc lập của đội thi, không phải tài liệu chính thức của MoMo hay của ban tổ chức. Đề thi và thể lệ trích từ techday.momo.vn (exam.json đăng 20/11/2026, thể lệ v1.0 ngày 13/11/2026).</p>
+    <p>Văn bản pháp lý có thể tiếp tục được sửa đổi. Kiểm tra lại trên cổng thông tin chính thức trước khi đưa vào sản phẩm hoặc slide.</p>
+  </div>
+</footer>
+<div class="tooltip" id="tip" hidden></div>
+
+<script>
+(function () {
+  // Deadline rail: days left, computed in Vietnam time
+  var DAY = 86400000;
+  var now = Date.now();
+  var stops = document.querySelectorAll('#rail .stop');
+  for (var i = 0; i < stops.length; i++) {
+    var s = stops[i];
+    var due = Date.parse(s.getAttribute('data-due'));
+    var left = s.querySelector('.left');
+    if (isNaN(due) || !left) continue;
+    var diff = due - now;
+    if (diff < 0) { s.classList.add('past'); left.textContent = 'Đã qua'; continue; }
+    var days = Math.floor(diff / DAY);
+    left.textContent = days === 0 ? 'Hôm nay' : 'Còn ' + days + ' ngày';
+    if (days <= 3) s.classList.add('soon');
+  }
+
+  // Scorecard
+  var CRIT = [
+    { key: 'cr', label: 'Sáng tạo', tip: 'Ý tưởng mới, cách tiếp cận khác biệt' },
+    { key: 'done', label: 'Hoàn thiện trong 9 ngày', tip: '2–3 sinh viên, không có dữ liệu hay API của MoMo' },
+    { key: 'im', label: 'Tác động & quy mô', tip: 'Số người hưởng lợi, độ mạnh của bằng chứng nỗi đau' },
+    { key: 'ai', label: 'AI là lõi', tip: 'AI làm việc mà quy tắc cứng không làm được' },
+    { key: 'val', label: 'Giá trị cho MoMo', tip: 'Giữ chân người dùng hoặc merchant, giảm chi phí, mở nguồn thu' },
+    { key: 'dup', label: 'Ít trùng MoMo', tip: 'Càng cao càng ít trùng với thứ MoMo đã chạy' }
+  ];
+  var IDEAS = [
+    { name: 'Sổ Sẵn', desc: 'Trợ lý thuế và sổ sách bằng giọng nói cho hộ kinh doanh, kèm bàn làm việc chính sách', topic: 'Trợ lý AI · Chống lừa đảo', s: [4, 5, 5, 4, 5, 4] },
+    { name: '30 Phút Vàng', desc: 'Trợ lý phản ứng sau lừa đảo cho nạn nhân và chuyên viên', topic: 'An ninh mạng · Chống lừa đảo', s: [5, 4, 3, 4, 4, 4] },
+    { name: 'Tiền Về Thật', desc: 'Xác minh tiền về cho người bán: ảnh chuyển khoản giả, đối soát', topic: 'Chống lừa đảo', s: [4, 4, 3, 3, 4, 5] },
+    { name: 'Gỡ Rối Giao Dịch', desc: 'Agent xử lý giao dịch treo và trả trùng', topic: 'Trợ lý thanh toán', s: [3, 3, 5, 3, 4, 2] },
+    { name: 'Phòng Tập Chống Lừa', desc: 'Nhận diện kịch bản và mô phỏng lừa đảo cho Gen Z', topic: 'Chống lừa đảo', s: [3, 5, 3, 4, 3, 2] },
+    { name: 'Rõ Phí', desc: 'Minh bạch chi phí và quyền trừ tiền tự động', topic: 'Trợ lý thanh toán', s: [2, 4, 3, 2, 3, 2] }
+  ];
+  var WEIGHTS = { eq: [1, 1, 1, 1, 1, 1], cr: [2, 1, 1, 1, 1, 1], im: [1, 1, 2, 1, 1, 1] };
+  var mode = 'eq';
+  try { var saved = localStorage.getItem('score-mode'); if (saved && WEIGHTS[saved]) mode = saved; } catch (e) {}
+
+  var head = document.getElementById('score-head');
+  var body = document.getElementById('score-body');
+  function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function render() {
+    var w = WEIGHTS[mode];
+    var max = w.reduce(function (a, b) { return a + b; }, 0) * 5;
+    var totals = IDEAS.map(function (d) { return d.s.reduce(function (a, v, i) { return a + v * w[i]; }, 0); });
+    var sorted = totals.slice().sort(function (a, b) { return b - a; });
+    var h = '<th class="idea-h" scope="col">Ý tưởng</th>';
+    CRIT.forEach(function (c, i) { h += '<th scope="col" title="' + esc(c.tip) + '">' + esc(c.label) + (w[i] > 1 ? '<span class="x2">×2</span>' : '') + '</th>'; });
+    h += '<th scope="col" class="idea-h">Tổng /' + max + '</th>';
+    head.innerHTML = h;
+    var rows = '';
+    IDEAS.forEach(function (d, r) {
+      var rank = sorted.indexOf(totals[r]) + 1;
+      rows += '<tr class="' + (rank === 1 ? 'top' : '') + '"><td class="idea"><b>' + esc(d.name) + '</b><span>' + esc(d.desc) + '</span><span class="topic">' + esc(d.topic) + '</span></td>';
+      d.s.forEach(function (v, i) {
+        var ink = v >= 4 ? 'var(--s-ink-hi)' : 'var(--s-ink-lo)';
+        rows += '<td><div class="cell' + (w[i] > 1 ? ' dbl' : '') + '" style="background:var(--s' + v + ');color:' + ink + '" data-tip="' + esc(d.name + ' · ' + CRIT[i].label + ': ' + v + '/5' + (w[i] > 1 ? ' (tính ×2)' : '') + '. ' + CRIT[i].tip) + '">' + v + '</div></td>';
+      });
+      var pct = (totals[r] / max * 100).toFixed(1);
+      rows += '<td class="total"><div class="bar-row"><div class="track" tabindex="0" role="img" aria-label="' + esc(d.name + ': ' + totals[r] + ' trên ' + max + ', hạng ' + rank) + '" data-tip="' + esc(d.name + ': ' + totals[r] + '/' + max + ' · hạng ' + rank) + '"><div class="bar" style="width:' + pct + '%"></div></div><div class="tot"><span class="rank">' + rank + '</span>' + totals[r] + '<small>/' + max + '</small></div></div></td></tr>';
+    });
+    body.innerHTML = rows;
+    var btns = document.querySelectorAll('.seg button');
+    for (var i = 0; i < btns.length; i++) btns[i].setAttribute('aria-pressed', btns[i].getAttribute('data-w') === mode ? 'true' : 'false');
+  }
+  render();
+  document.querySelector('.seg').addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    mode = b.getAttribute('data-w');
+    try { localStorage.setItem('score-mode', mode); } catch (err) {}
+    render();
+  });
+
+  // Tooltip
+  var tip = document.getElementById('tip');
+  function show(el) {
+    var t = el.getAttribute('data-tip'); if (!t) return;
+    tip.textContent = t; tip.hidden = false;
+    var r = el.getBoundingClientRect();
+    var tw = tip.offsetWidth, th = tip.offsetHeight;
+    var x = Math.min(Math.max(8, r.left + r.width / 2 - tw / 2), window.innerWidth - tw - 8);
+    var y = r.top - th - 8; if (y < 8) y = r.bottom + 8;
+    tip.style.left = x + 'px'; tip.style.top = y + 'px';
+  }
+  function hide() { tip.hidden = true; }
+  document.addEventListener('pointerover', function (e) { var el = e.target.closest('[data-tip]'); if (el) show(el); else hide(); });
+  document.addEventListener('focusin', function (e) { var el = e.target.closest('[data-tip]'); if (el) show(el); else hide(); });
+  document.addEventListener('focusout', hide);
+  window.addEventListener('scroll', hide, { passive: true });
+
+  // Copy the four questions
+  var copyBtn = document.getElementById('copy-q');
+  var status = document.getElementById('copy-status');
+  copyBtn.addEventListener('click', function () {
+    var items = document.querySelectorAll('#btc-questions li');
+    var text = Array.prototype.map.call(items, function (li, i) { return (i + 1) + '. ' + li.textContent; }).join('\n');
+    function fallback() {
+      var range = document.createRange(); range.selectNodeContents(document.getElementById('btc-questions'));
+      var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(range);
+      status.textContent = 'Đã bôi đen 4 câu hỏi. Nhấn Ctrl+C hoặc ⌘C để sao chép.';
+    }
+    try {
+      navigator.clipboard.writeText(text).then(function () { status.textContent = 'Đã sao chép.'; }, fallback);
+    } catch (e) { fallback(); }
+  });
+
+  // Table of contents: highlight the section in view
+  var links = document.querySelectorAll('.toc a');
+  var map = {};
+  for (var j = 0; j < links.length; j++) map[links[j].getAttribute('href').slice(1)] = links[j];
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting && map[en.target.id]) {
+          for (var k = 0; k < links.length; k++) links[k].classList.remove('on');
+          map[en.target.id].classList.add('on');
+        }
+      });
+    }, { rootMargin: '0px 0px -70% 0px' });
+    document.querySelectorAll('.article h2[id], .article h3[id]').forEach(function (h) { io.observe(h); });
+  }
+})();
+</script>
